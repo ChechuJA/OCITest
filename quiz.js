@@ -101,11 +101,11 @@ const GLOSSARY = [
   {term:'Loss Function', def:'Mide error para optimización', cat:'ML'}
 ];
 
-function openModal(){
+function openModal(mdFile = 'documentacion.md'){
   docsModal.hidden = false;
   docsModal.setAttribute('aria-hidden','false');
   // Load documentation (fetch local markdown)
-  fetch('documentacion.md')
+  fetch(mdFile)
     .then(r=>r.text())
     .then(md=>{ 
       const rendered = renderMarkdownRich(md); 
@@ -121,10 +121,16 @@ function closeModal(){
   docsModal.hidden = true;
   docsModal.setAttribute('aria-hidden','true');
 }
-openDocsBtn?.addEventListener('click', openModal);
+openDocsBtn?.addEventListener('click', () => openModal('documentacion.md'));
 closeModalBtn?.addEventListener('click', closeModal);
 docsModal?.addEventListener('click', e=>{ if(e.target === docsModal) closeModal(); });
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && docsModal.getAttribute('aria-hidden')==='false') closeModal(); });
+
+// Event listeners for navigation links
+const readmeLink = document.getElementById('readmeLink');
+const documentacionLink = document.getElementById('documentacionLink');
+readmeLink?.addEventListener('click', (e) => { e.preventDefault(); openModal('README.md'); });
+documentacionLink?.addEventListener('click', (e) => { e.preventDefault(); openModal('documentacion.md'); });
 
 function renderGlossary(filter=''){ 
   const f = filter.trim().toLowerCase();
