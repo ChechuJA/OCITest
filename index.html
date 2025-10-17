@@ -9,6 +9,11 @@
 <body>
   <header>
     <h1>OCI Foundations AI Quiz</h1>
+    <nav class="top-nav" aria-label="Navegación principal">
+      <a href="README.md" target="_blank">📘 README</a>
+      <a href="documentacion.md" target="_blank">🧠 Documentación</a>
+      <a href="preguntas_oficiales.md" target="_blank">📄 Banco Oficial</a>
+    </nav>
     <p>Selecciona el banco y el modo para comenzar. Usa este quiz en tu navegador.</p>
   </header>
 
@@ -16,9 +21,9 @@
     <div class="control-group">
       <label for="bankSelect">Banco de preguntas:</label>
       <select id="bankSelect">
-        <option value="official">Oficiales (40)</option>
-        <option value="optional">Opcionales (9)</option>
-        <option value="both">Ambas (49)</option>
+  <option value="official">Oficiales (41)</option>
+  <option value="optional">Opcionales (9)</option>
+  <option value="both">Ambas (50)</option>
       </select>
     </div>
     <div class="control-group">
@@ -30,6 +35,7 @@
       </select>
     </div>
     <button id="startBtn">Comenzar</button>
+    <button id="openDocsBtn" type="button" title="Abrir documentación y glosario">📘 Docs / Glosario</button>
   </section>
 
   <main id="quiz" aria-live="polite" hidden>
@@ -45,15 +51,44 @@
     <ul id="options" class="options"></ul>
     <div id="feedback" class="feedback"></div>
     <div class="actions">
-      <button id="skipBtn" title="Mostrar explicación y saltar">Ver explicación / Saltar</button>
+  <button id="explainBtn" title="Ver explicación y saltar (X)">Explicación (X)</button>
+  <button id="skipBtn" title="Saltar sin explicación (S)">Saltar (S)</button>
+  <button id="markBtn" title="Marcar para segunda ronda (M)">Marcar (M)</button>
       <button id="nextBtn" disabled>Siguiente</button>
     </div>
   </main>
 
   <section id="summary" hidden></section>
 
+  <!-- Modal Documentación / Glosario -->
+  <div id="docsModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" hidden>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Documentación & Glosario</h2>
+        <button id="closeModalBtn" aria-label="Cerrar">✖</button>
+      </div>
+      <div class="modal-toolbar">
+        <input type="text" id="glossSearch" placeholder="Buscar término del glosario..." aria-label="Buscar término" />
+        <select id="glossCategory" aria-label="Filtrar por categoría">
+          <option value="">Todas categorías</option>
+          <option value="ML">ML</option>
+          <option value="Infra">Infra</option>
+          <option value="Prompting">Prompting</option>
+        </select>
+        <span id="searchCount" aria-live="polite"></span>
+      </div>
+      <div class="modal-body">
+        <div id="glossaryResults"></div>
+        <div class="docs-wrapper">
+          <nav id="docsIndex" aria-label="Índice documentación"></nav>
+          <article id="docsContent" class="docs-content"></article>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
-    <p>Resultados almacenados localmente (localStorage). No se envían datos.</p>
+    <p>Controles: A-D responder | Explicación (X) | Saltar (S) | Marcar (M). Resultados y fallos se guardan en localStorage.</p>
   </footer>
   <script src="quiz.js"></script>
 </body>

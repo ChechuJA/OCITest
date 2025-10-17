@@ -1,6 +1,9 @@
 body {font-family: system-ui, Arial, sans-serif; margin: 0; padding: 0; background:#f7f9fb; color:#222;}
 header, footer {padding:1rem 1.5rem; background:#143d59; color:#fff;}
 header h1 {margin:0 0 .25rem; font-size:1.6rem;}
+nav.top-nav {display:flex; gap:1rem; flex-wrap:wrap; margin:.5rem 0 0;}
+nav.top-nav a {color:#fffbf0; text-decoration:none; font-weight:600; padding:.35rem .6rem; background:#1768ac; border-radius:4px; font-size:.85rem;}
+nav.top-nav a:hover {background:#0f4c75;}
 #controls {display:flex; gap:1rem; flex-wrap:wrap; padding:1rem 1.5rem; background:#fff; border-bottom:1px solid #ddd;}
 .control-group {display:flex; flex-direction:column;}
 .control-group label {font-weight:600; margin-bottom:.25rem;}
@@ -31,3 +34,42 @@ ul.options li:hover {background:#eef6ff; border-color:#1768ac;}
 .code {font-family:monospace; background:#eee; padding:.15rem .35rem; border-radius:4px;}
 @media (max-width:600px){#controls{flex-direction:column;} ul.options li{font-size:.95rem;}}
 :focus-visible {outline:3px solid #ffbf00; outline-offset:2px;}
+
+/* Modal */
+.modal {position:fixed; inset:0; background:rgba(0,0,0,.55); display:flex; align-items:flex-start; justify-content:center; padding:3rem 1rem; z-index:1000;}
+.modal-content {background:#ffffff; max-width:1000px; width:100%; max-height:80vh; overflow:auto; border-radius:10px; box-shadow:0 6px 24px rgba(0,0,0,.25); display:flex; flex-direction:column;}
+.modal-header {display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; background:#143d59; color:#fff; border-top-left-radius:10px; border-top-right-radius:10px;}
+.modal-header h2 {margin:0; font-size:1.2rem;}
+#closeModalBtn {background:#1768ac; border:none; color:#fff; padding:.4rem .65rem; border-radius:4px; cursor:pointer;}
+#closeModalBtn:hover {background:#0f4c75;}
+.modal-toolbar {display:flex; gap:.75rem; align-items:center; padding:.75rem 1.25rem; border-bottom:1px solid #ddd; background:#f5f7fa; flex-wrap:wrap;}
+#glossSearch {flex:1; padding:.55rem .7rem; font-size:.95rem; border:1px solid #bbb; border-radius:6px;}
+#glossCategory {padding:.55rem .7rem; font-size:.9rem; border:1px solid #bbb; border-radius:6px; background:#fff;}
+#glossCategory:focus {border-color:#1768ac; box-shadow:0 0 0 2px rgba(23,104,172,.25);}
+#glossSearch:focus {border-color:#1768ac; box-shadow:0 0 0 2px rgba(23,104,172,.25);}
+#searchCount {font-size:.85rem; color:#444;}
+.modal-body {padding:1rem 1.25rem; display:grid; gap:1rem; grid-template-columns: minmax(250px, 300px) 1fr;}
+@media (max-width:900px){.modal-body{grid-template-columns:1fr;}}
+#glossaryResults {background:#fff; border:1px solid #ddd; border-radius:8px; padding:.75rem; max-height:60vh; overflow:auto;}
+#glossaryResults h3 {margin-top:0;}
+.gloss-item {margin:0 0 .65rem; padding:.5rem .6rem .9rem; background:#eef6ff; border-radius:6px; border:1px solid #d0e4f7; position:relative;}
+.gloss-item .copy-btn {position:absolute; top:.4rem; right:.4rem; font-size:.7rem; padding:.3rem .45rem; background:#1768ac; color:#fff; border:none; border-radius:4px; cursor:pointer;}
+.gloss-item .copy-btn:hover {background:#0f4c75;}
+.gloss-item .category-tag {display:inline-block; background:#143d59; color:#fff; font-size:.65rem; padding:.2rem .4rem; border-radius:4px; margin-left:.4rem;}
+.gloss-item mark {background:#ffd54f; padding:0 .2em; border-radius:3px;}
+.docs-wrapper {display:flex; flex-direction:row; gap:1rem;}
+#docsIndex {width:220px; max-height:60vh; overflow:auto; background:#fff; border:1px solid #ddd; border-radius:8px; padding:.6rem .7rem; font-size:.85rem; line-height:1.3; position:sticky; top:0;}
+#docsIndex a {display:block; color:#143d59; text-decoration:none; padding:.25rem .3rem; border-radius:4px;}
+#docsIndex a:hover {background:#eef6ff;}
+#docsIndex a.active {background:#1768ac; color:#fff; font-weight:600;}
+.docs-content {flex:1; padding:.75rem .9rem; background:#fff; border:1px solid #ddd; border-radius:8px; line-height:1.5; max-height:60vh; overflow:auto;}
+.docs-content h2, .docs-content h3 {scroll-margin-top:80px;}
+.docs-content table {width:100%; border-collapse:collapse; margin:1rem 0; font-size:.9rem;}
+.docs-content table th, .docs-content table td {border:1px solid #ccc; padding:.4rem .5rem; text-align:left;}
+.docs-content table th {background:#143d59; color:#fff;}
+.docs-content code {background:#f0f3f7; padding:.15rem .35rem; border-radius:4px; font-size:.85rem;}
+.modal[aria-hidden="true"] {display:none;}
+
+/* Button extension */
+#openDocsBtn {background:#ffb347; border-color:#e6952e; color:#222;}
+#openDocsBtn:hover {background:#ffa733;}
