@@ -16,9 +16,9 @@
     <div class="control-group">
       <label for="bankSelect">Banco de preguntas:</label>
       <select id="bankSelect">
-        <option value="official">Oficiales (40)</option>
-        <option value="optional">Opcionales (9)</option>
-        <option value="both">Ambas (49)</option>
+  <option value="official">Oficiales (41)</option>
+  <option value="optional">Opcionales (9)</option>
+  <option value="both">Ambas (50)</option>
       </select>
     </div>
     <div class="control-group">
@@ -45,7 +45,9 @@
     <ul id="options" class="options"></ul>
     <div id="feedback" class="feedback"></div>
     <div class="actions">
-      <button id="skipBtn" title="Mostrar explicación y saltar">Ver explicación / Saltar</button>
+  <button id="explainBtn" title="Ver explicación y saltar (X)">Explicación (X)</button>
+  <button id="skipBtn" title="Saltar sin explicación (S)">Saltar (S)</button>
+  <button id="markBtn" title="Marcar para segunda ronda (M)">Marcar (M)</button>
       <button id="nextBtn" disabled>Siguiente</button>
     </div>
   </main>
@@ -53,7 +55,7 @@
   <section id="summary" hidden></section>
 
   <footer>
-    <p>Resultados almacenados localmente (localStorage). No se envían datos.</p>
+    <p>Controles: A-D responder | Explicación (X) | Saltar (S) | Marcar (M). Resultados y fallos se guardan en localStorage.</p>
   </footer>
   <script src="quiz.js"></script>
 </body>

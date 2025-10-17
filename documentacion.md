@@ -1,5 +1,129 @@
 # Documentación Ampliada OCI Foundations (AI Focus)
 
+## Resumen Examen Oracle Cloud Infrastructure 2025 AI Foundations Associate (1Z0-1122-25)
+
+Este documento recopila el resumen teórico y las preguntas prácticas (oficiales y complementarias)
+para la preparación del examen 1Z0-1122-25 de Oracle Cloud Infrastructure (OCI) AI Foundations Associate.
+Incluye los conceptos clave de IA, ML, DL, Generative AI y los servicios de IA de OCI.
+
+1️⃣ Fundamentos de la IA
+• Simula procesos de inteligencia humana mediante algoritmos.
+• Incluye tareas como reconocimiento de voz, visión por computadora y lenguaje natural.
+
+2️⃣ Fundamentos del Aprendizaje Automático (ML)
+• Subcampo de la IA que permite a los sistemas aprender a partir de datos.
+• Tipos: supervisado, no supervisado y por refuerzo.
+
+3️⃣ Fundamentos del Aprendizaje Profundo (DL)
+• Subcampo del ML que utiliza redes neuronales profundas para procesar grandes volúmenes de datos.
+• CNN para imágenes, RNN para secuencias, Transformers para texto.
+
+4️⃣ Generative AI y Modelos de Lenguaje Grande (LLMs)
+• Generan contenido nuevo similar a los datos de entrenamiento.
+• Los LLM utilizan mecanismos de autoatención (Transformers) para comprender el lenguaje humano.
+
+5️⃣ Servicios de OCI para IA
+• OCI Vision: análisis de imágenes y videos.
+• OCI Language: procesamiento de lenguaje natural.
+• OCI Speech: conversión de voz a texto.
+• OCI Document Understanding: extracción de información de documentos.
+• OCI Data Science: entorno para crear, entrenar y desplegar modelos.
+
+---
+## Resumen Teórico (Distribución aproximada de dominios)
+
+1. **AI Fundamentals (≈10%)**
+	- Diferencias entre AI (paraguas), ML (aprende de datos), DL (redes profundas).
+	- Tipos de datos: estructurados, no estructurados (texto, imagen, audio), semiestructurados.
+	- Ejemplos: asistentes virtuales, reconocimiento de voz, visión artificial, recomendadores.
+	- Ciclo de vida alto nivel: problema -> datos -> modelo -> despliegue -> monitoreo -> mejora.
+
+2. **Machine Learning Fundamentals (≈15%)**
+	- Componentes: dataset, features (X), labels (y), split (train/validation/test).
+	- Supervisado: regresión (valor continuo), clasificación (etiquetas discretas).
+	- No supervisado: clustering (descubrir grupos), reducción dimensionalidad (PCA, t-SNE) para visualizar/mitigar ruido.
+	- Overfitting vs Underfitting:
+		 - Overfitting: baja pérdida train, alta pérdida test.
+		 - Underfitting: alta pérdida tanto train como test (modelo demasiado simple).
+	- Técnicas de mitigación: regularización (L2, dropout), más datos, early stopping, data augmentation.
+	- Métricas:
+		 - Accuracy = (TP+TN)/(Total)
+		 - Precision = TP/(TP+FP) (Qué tan confiables son los positivos predichos)
+		 - Recall = TP/(TP+FN) (Qué porcentaje de positivos reales recuperamos)
+		 - F1 = 2 * (precision * recall) / (precision + recall)
+		 - AUC-ROC para discriminación binaria, MAE/MSE para regresión.
+	- Evaluación adecuada: evitar leakage, k-fold cross validation cuando datos escasos.
+
+3. **Deep Learning Fundamentals (≈10%)**
+	- Redes neuronales profundas: capas lineales + activaciones no lineales (ReLU, GELU).
+	- CNN: convoluciones, filtros, pooling, extracción jerárquica (bordes -> texturas -> objetos).
+	- RNN/LSTM/GRU: manejo secuencial, problemas de vanishing/exploding gradient.
+	- Transformers: atención multi-cabeza, paralelización, mejores para dependencias largas.
+	- Parámetros vs hiperparámetros (learning rate, batch size, número de capas).
+	- Regularización DL: dropout, batch normalization, weight decay.
+
+4. **Generative AI & Large Language Models (≈15%)**
+	- Modelos generativos: aprenden distribución de datos (auto-regresivos, diffusion, VAEs, GANs).
+	- LLMs (Transformers): embeddings -> bloques atención -> capa salida (softmax tokens).
+	- In-Context Learning: ejemplos en el prompt; sin cambio de pesos.
+	- Fine-tuning vs Parameter-efficient (LoRA, adapters, T-Few) para reducir costo.
+	- Prompt Engineering: claridad, rol, ejemplos, restricciones (format specs), chain-of-thought opcional.
+	- Evaluación generativa:
+		 - Perplexity (fluidez), BLEU/ROUGE (similaridad n-gramas), METEOR (alineación semántica), Human eval (calidad subjetiva), Toxicity checks.
+	- Riesgos: alucinaciones, sesgos, fuga de información (prompt injection), coste de cómputo.
+
+5. **OCI AI Services & Infrastructure (≈10%)**
+	- AI Services:
+		 - Vision: OCR, clasificación documento, extracción clave-valor, detección objetos.
+		 - Language: clasificación, sentimiento, NER, detección idioma.
+		 - Speech: transcripción, normalización, puntuación confianza, archivos SRT, filtrado lenguaje (tagging/masking/removing).
+		 - Document Understanding: OCR + estructuración avanzada (no transcribe audio).
+		 - Anomaly Detection: series temporales; modelado patrones y desviaciones.
+		 - Generative AI: acceso a LLMs, T-Few, embeddings.
+	- Data Science:
+		 - Notebook Sessions (entorno interactivo), Model Catalog (registro/versionado), Deployment (endpoints), ADS SDK.
+	- Infraestructura:
+		 - Superclusters: GPUs de alta densidad + RDMA (latencia baja). Escala para LLM y entrenamiento intensivo.
+		 - GPUs: A100 (escala mediana), GB200 (exascala y entrenamiento extremo), roles comparativos.
+		 - Almacenamiento y red: Object Storage para datasets, Block para rendimiento, RDMA para throughput inter-nodos.
+	- AI Vector Search:
+		 - Embeddings para búsqueda semántica (texto, documentos, potencial multimodal).
+		 - Índices vectoriales: aproximación vs exacta (ANN – HNSW, IVF; conceptual).
+		 - ONNX dentro de Database 23ai para inferencia cercana a los datos.
+	- Gobernanza y seguridad:
+		 - Uso de OCI Vault para llaves y secretos (no parte directa del cómputo AI).
+		 - Principios de Trustworthy AI (lawful, ethical, robust) aplicados a despliegues.
+
+6. **Evaluación y Monitoreo (Complementario)**
+	- Monitoreo post-despliegue: drift de datos, degradación de métricas, latencia.
+	- Observabilidad: logging inferencias, tasas de error, perfilado de GPU.
+	- Re-entrenamiento programado vs bajo demanda (trigger por caída métrica).
+
+7. **Optimización y Coste**
+	- Escalado horizontal vs vertical (más nodos vs GPU más potente).
+	- Técnicas de ahorro: PEFT (T-Few), batching, caching embeddings.
+	- Elección de forma de cómputo: ajustar recursos a etapa (experimento vs producción).
+
+8. **Buenas Prácticas de Prompting (Generative)**
+	- Estructura sugerida: (Rol) + (Instrucción clara) + (Ejemplos opcionales) + (Formato esperado) + (Restricciones).
+	- Evitar ambigüedad y peticiones múltiples sin delimitadores.
+	- Uso de delimitadores (```texto```) para evitar inyección accidental.
+
+9. **Riesgos y Mitigación**
+	- Sesgo: diversificar dataset, auditorías.
+	- Seguridad: sanitizar entrada, limitar capacidad de ejecutar código, rotar llaves.
+	- Privacidad: anonimización de datos sensibles, encriptación en reposo y tránsito.
+
+10. **Resumen Fórmulas Clave**
+	- Accuracy = (TP+TN)/(TP+TN+FP+FN)
+	- Precision = TP/(TP+FP)
+	- Recall = TP/(TP+FN)
+	- F1 = 2*(Precision*Recall)/(Precision+Recall)
+	- MSE = (1/n) Σ (y_pred - y_true)^2
+	- Perplexity ≈ exp(average cross-entropy)
+
+---
+
 ## Objetivo
 Explicar el contenido base que originó el banco de preguntas y proporcionar una guía conceptual extendida para reforzar y mejorar la calidad de futuras preguntas del examen OCI Foundations con énfasis en servicios de IA y conceptos de Machine Learning.
 
