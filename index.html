@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>OCI Foundations AI Quiz</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>OCI Foundations AI Quiz</h1>
+    <p>Selecciona el banco y el modo para comenzar. Usa este quiz en tu navegador.</p>
+  </header>
+
+  <section id="controls">
+    <div class="control-group">
+      <label for="bankSelect">Banco de preguntas:</label>
+      <select id="bankSelect">
+        <option value="official">Oficiales (40)</option>
+        <option value="optional">Opcionales (9)</option>
+        <option value="both">Ambas (49)</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="modeSelect">Modo:</label>
+      <select id="modeSelect">
+        <option value="random">Aleatorio</option>
+        <option value="sequential">Secuencial</option>
+        <option value="review">Repasar falladas previas</option>
+      </select>
+    </div>
+    <button id="startBtn">Comenzar</button>
+  </section>
+
+  <main id="quiz" aria-live="polite" hidden>
+    <div id="progressWrapper">
+      <div id="progressText"></div>
+      <div id="timeRemaining" title="Tiempo restante"></div>
+      <div class="progress-bar" aria-label="Progreso del quiz">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+    <div id="progress"></div>
+    <div id="questionContainer"></div>
+    <ul id="options" class="options"></ul>
+    <div id="feedback" class="feedback"></div>
+    <div class="actions">
+      <button id="skipBtn" title="Mostrar explicación y saltar">Ver explicación / Saltar</button>
+      <button id="nextBtn" disabled>Siguiente</button>
+    </div>
+  </main>
+
+  <section id="summary" hidden></section>
+
+  <footer>
+    <p>Resultados almacenados localmente (localStorage). No se envían datos.</p>
+  </footer>
+  <script src="quiz.js"></script>
+</body>
+</html>
