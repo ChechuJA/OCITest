@@ -129,8 +129,10 @@ document.addEventListener('keydown', e=>{ if(e.key==='Escape' && docsModal.getAt
 // Event listeners for navigation links
 const readmeLink = document.getElementById('readmeLink');
 const documentacionLink = document.getElementById('documentacionLink');
+const bancoOficialLink = document.getElementById('bancoOficialLink');
 readmeLink?.addEventListener('click', (e) => { e.preventDefault(); openModal('README.md'); });
 documentacionLink?.addEventListener('click', (e) => { e.preventDefault(); openModal('documentacion.md'); });
+bancoOficialLink?.addEventListener('click', (e) => { e.preventDefault(); openModal('preguntas_oficiales.md'); });
 
 function renderGlossary(filter=''){ 
   const f = filter.trim().toLowerCase();
