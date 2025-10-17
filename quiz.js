@@ -75,6 +75,163 @@ const skipBtn = document.getElementById('skipBtn');
 const markBtn = document.getElementById('markBtn');
 const nextBtn = document.getElementById('nextBtn');
 const summaryEl = document.getElementById('summary');
+// Modal elements
+const openDocsBtn = document.getElementById('openDocsBtn');
+const docsModal = document.getElementById('docsModal');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const glossSearch = document.getElementById('glossSearch');
+const glossaryResults = document.getElementById('glossaryResults');
+const docsContent = document.getElementById('docsContent');
+const docsIndex = document.getElementById('docsIndex');
+const glossCategory = document.getElementById('glossCategory');
+const searchCount = document.getElementById('searchCount');
+
+// Glossary raw terms (mirroring documentacion.md table)
+const GLOSSARY = [
+  {term:'Embedding', def:'Vector semántico denso de texto/imagen', cat:'ML'},
+  {term:'Token', def:'Unidad mínima de entrada LLM', cat:'Prompting'},
+  {term:'Endpoint de Inferencia', def:'API que expone predicciones', cat:'ML'},
+  {term:'OCR', def:'Extracción de texto en imágenes', cat:'ML'},
+  {term:'Key-Value Extraction', def:'Pares estructurados (doc)', cat:'ML'},
+  {term:'Few-Shot', def:'Pocos ejemplos en prompt', cat:'Prompting'},
+  {term:'In-Context Learning', def:'Adaptación sin reentrenar', cat:'Prompting'},
+  {term:'Vanishing Gradient', def:'Gradiente que se extingue en secuencias largas', cat:'ML'},
+  {term:'T-Few', def:'Fine-tuning eficiente', cat:'Prompting'},
+  {term:'RDMA', def:'Red de baja latencia', cat:'Infra'},
+  {term:'Loss Function', def:'Mide error para optimización', cat:'ML'}
+];
+
+function openModal(){
+  docsModal.hidden = false;
+  docsModal.setAttribute('aria-hidden','false');
+  // Load documentation (fetch local markdown)
+  fetch('documentacion.md')
+    .then(r=>r.text())
+    .then(md=>{ 
+      const rendered = renderMarkdownRich(md); 
+      docsContent.innerHTML = rendered.html; 
+      buildDocsIndex(rendered.headings);
+      attachScrollSync(rendered.headings);
+    })
+    .catch(()=>{ docsContent.textContent='No se pudo cargar la documentación.'; });
+  renderGlossary();
+  glossSearch.focus();
+}
+function closeModal(){
+  docsModal.hidden = true;
+  docsModal.setAttribute('aria-hidden','true');
+}
+openDocsBtn?.addEventListener('click', openModal);
+closeModalBtn?.addEventListener('click', closeModal);
+docsModal?.addEventListener('click', e=>{ if(e.target === docsModal) closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && docsModal.getAttribute('aria-hidden')==='false') closeModal(); });
+
+function renderGlossary(filter=''){ 
+  const f = filter.trim().toLowerCase();
+  const cat = glossCategory.value;
+  let items = GLOSSARY;
+  if (cat) items = items.filter(it=> it.cat === cat);
+  if (f) items = items.filter(it=> it.term.toLowerCase().includes(f) || it.def.toLowerCase().includes(f));
+  searchCount.textContent = `${items.length} término(s)`;
+  glossaryResults.innerHTML = '<h3>Glosario</h3>' + (items.map(it=>{
+    const highlightedTerm = highlight(it.term, f);
+    const highlightedDef = highlight(it.def, f);
+    return `<div class="gloss-item"><strong>${highlightedTerm}</strong><span class="category-tag">${it.cat}</span><br>${highlightedDef}<button class="copy-btn" data-term="${it.term}">Copiar</button></div>`;
+  }).join('') || '<p>Sin coincidencias.</p>');
+  glossaryResults.querySelectorAll('.copy-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const t = btn.getAttribute('data-term');
+      navigator.clipboard.writeText(t).then(()=>{ btn.textContent='Copiado'; setTimeout(()=>btn.textContent='Copiar',1200); });
+    });
+  });
+}
+function highlight(text, f){
+  if(!f) return text;
+  const re = new RegExp(`(${escapeRegExp(f)})`,'gi');
+  return text.replace(re,'<mark>$1</mark>');
+}
+function escapeRegExp(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+glossSearch?.addEventListener('input', ()=> renderGlossary(glossSearch.value));
+glossCategory?.addEventListener('change', ()=> renderGlossary(glossSearch.value));
+
+// Rich markdown renderer: headings, paragraphs, emphasis, inline code, fenced code, tables, lists
+function renderMarkdownRich(md){
+  const esc = (s)=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const lines = md.split(/\r?\n/);
+  const out = [];
+  const headings = [];
+  let inCode = false, codeLang='';
+  let tableBuffer = [];
+  let listBuffer = [];
+  function flushTable(){
+    if(!tableBuffer.length) return;
+    // Build table
+    const rows = tableBuffer.map(r=> r.split('|').slice(1,-1).map(c=>c.trim()));
+    const header = rows[0];
+    const body = rows.slice(2); // skip separator
+    const htmlRows = body.map(r=> `<tr>${r.map((c,i)=>`<td>${formatInline(c)}</td>`).join('')}</tr>`).join('');
+    out.push(`<table><thead><tr>${header.map(h=>`<th>${formatInline(h)}</th>`).join('')}</tr></thead><tbody>${htmlRows}</tbody></table>`);
+    tableBuffer=[];
+  }
+  function flushList(){
+    if(!listBuffer.length) return;
+    const items = listBuffer.map(li=> `<li>${formatInline(li.replace(/^[*\-+]\s+/,'').trim())}</li>`).join('');
+    out.push(`<ul>${items}</ul>`); listBuffer=[];
+  }
+  function formatInline(text){
+    // Bold **text** / Italic *text* / inline code `code`
+    let t = esc(text);
+    t = t.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+    t = t.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g,'<em>$1</em>');
+    t = t.replace(/`([^`]+)`/g,'<code>$1</code>');
+    return t;
+  }
+  lines.forEach(line=>{
+    if(/^```/.test(line)){ // fenced code
+      if(!inCode){ inCode=true; codeLang=line.replace(/```/,'').trim(); out.push(`<pre class="code-block" data-lang="${esc(codeLang)}">`); }
+      else { inCode=false; codeLang=''; out.push('</pre>'); }
+      return;
+    }
+    if(inCode){ out.push(esc(line)+'\n'); return; }
+    if(/^#{1,6} /.test(line)){
+      flushTable(); flushList();
+      const level = line.match(/^#+/)[0].length;
+      const content = line.replace(/^#{1,6} /,'').trim();
+      const id = content.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+      headings.push({id, level, text:content});
+      out.push(`<h${level} id="${id}">${formatInline(content)}</h${level}>`);
+      return;
+    }
+    if(line.startsWith('|')){ tableBuffer.push(line); return; }
+    if(/^[*\-+]\s+/.test(line)){ listBuffer.push(line); return; }
+    if(line.trim()===''){ flushTable(); flushList(); return; }
+    flushTable(); flushList();
+    out.push(`<p>${formatInline(line)}</p>`);
+  });
+  flushTable(); flushList();
+  return {html: out.join('\n'), headings};
+}
+function buildDocsIndex(headings){
+  if(!docsIndex) return;
+  const links = headings.filter(h=>h.level<=3).map(h=>`<a href="#${h.id}" data-id="${h.id}">${h.text}</a>`).join('');
+  docsIndex.innerHTML = `<strong>Índice</strong>${links}`;
+}
+function attachScrollSync(headings){
+  const contentEl = docsContent;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const id = en.target.id;
+        docsIndex.querySelectorAll('a').forEach(a=> a.classList.toggle('active', a.dataset.id===id));
+      }
+    });
+  },{root:contentEl, threshold:0.3});
+  headings.forEach(h=>{ const el = document.getElementById(h.id); if(el) obs.observe(el); });
+  // Smooth scroll behavior
+  docsIndex.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', e=>{ e.preventDefault(); const target=document.getElementById(a.dataset.id); if(target){ target.scrollIntoView({behavior:'smooth'}); } });
+  });
+}
 
 // Estado
 let currentIndex = 0;
