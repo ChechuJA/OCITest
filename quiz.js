@@ -383,27 +383,29 @@ function getSelectedBank(){
   return [...QUESTIONS_OFFICIAL];
 }
 
+// Mapping from exam keys to file arrays (shared by buildExternalComposite and ensureExternalBanks)
+const EXTERNAL_FILE_MAP = {
+  'oci-foundations': ['Nuevos/Oracle Exam 1Z0-1085-25 Dump.md'],
+  'ai-oficial': ['Nuevos/Oracle Exam 1Z0-1122-25 Dump.md'],
+  'ai-practice': ['Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md'],
+  'ai-skill': ['Nuevos/Skill Check_ OCI AI Foundations.md'],
+  'ai-all': [
+    'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
+    'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
+    'Nuevos/Skill Check_ OCI AI Foundations.md'
+  ],
+  'vector-pro': ['Nuevos/Oracle Exam 1Z0-184-25 Dump.md'],
+  'all-exams': [
+    'Nuevos/Oracle Exam 1Z0-1085-25 Dump.md',
+    'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
+    'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
+    'Nuevos/Skill Check_ OCI AI Foundations.md',
+    'Nuevos/Oracle Exam 1Z0-184-25 Dump.md'
+  ]
+};
+
 function buildExternalComposite(key){
-  const map = {
-    'oci-foundations': ['Nuevos/Oracle Exam 1Z0-1085-25 Dump.md'],
-    'ai-oficial': ['Nuevos/Oracle Exam 1Z0-1122-25 Dump.md'],
-    'ai-practice': ['Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md'],
-    'ai-skill': ['Nuevos/Skill Check_ OCI AI Foundations.md'],
-    'ai-all': [
-      'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
-      'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
-      'Nuevos/Skill Check_ OCI AI Foundations.md'
-    ],
-    'vector-pro': ['Nuevos/Oracle Exam 1Z0-184-25 Dump.md'],
-    'all-exams': [
-      'Nuevos/Oracle Exam 1Z0-1085-25 Dump.md',
-      'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
-      'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
-      'Nuevos/Skill Check_ OCI AI Foundations.md',
-      'Nuevos/Oracle Exam 1Z0-184-25 Dump.md'
-    ]
-  };
-  const files = map[key]||[];
+  const files = EXTERNAL_FILE_MAP[key]||[];
   const banks = files.map(f=> EXTERNAL_BANKS[f]||[]).flat();
   return dedupQuestions(banks);
 }
