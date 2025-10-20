@@ -463,7 +463,8 @@ function parseMarkdownExam(md, source){
   if(!md) return [];
   const blocks = md.split(/\n#### /).slice(1).map(b=>'#### '+b.trim());
   const questions = [];
-  let idCounter = 1000; // IDs externos empiezan alto para no colisionar
+  const maxOfficialId = Math.max(0, ...QUESTIONS_OFFICIAL.map(q => q.id));
+  let idCounter = maxOfficialId + 1; // IDs externos empiezan después del máximo oficial
   blocks.forEach(b=>{
     const lines = b.split(/\n/);
     const qLine = lines[0].replace(/^####\s*Q\.?\s*/,'').trim();
