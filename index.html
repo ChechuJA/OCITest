@@ -10,20 +10,43 @@
   <header>
     <h1>OCI Foundations AI Quiz</h1>
     <nav class="top-nav" aria-label="Navegación principal">
-      <a href="#" id="readmeLink">📘 README</a>
-      <a href="#" id="documentacionLink">🧠 Documentación</a>
-      <a href="#" id="bancoOficialLink">📄 Banco Oficial</a>
+      <a href="README.md" target="_blank">📘 README</a>
+      <a href="documentacion.md" target="_blank">🧠 Documentación</a>
+      <a href="preguntas_oficiales.md" target="_blank">📄 Banco Oficial</a>
+      <a href="preguntas_completas.md" target="_blank">🗂️ Banco Completo (50)</a>
     </nav>
     <p>Selecciona el banco y el modo para comenzar. Usa este quiz en tu navegador.</p>
   </header>
 
   <section id="controls">
     <div class="control-group">
+      <label for="examSelect">Examen / Fuente:</label>
+      <select id="examSelect" title="Selecciona fuente externa o usar banco curado">
+        <option value="none">Banco curado (oficial/opcional)</option>
+        <optgroup label="OCI Foundations">
+          <option value="oci-foundations">OCI Foundations (1Z0-1085-25)</option>
+        </optgroup>
+        <optgroup label="AI Foundations">
+          <option value="ai-oficial">AI Foundations Oficial (1Z0-1122-25)</option>
+          <option value="ai-practice">AI Foundations Practice</option>
+          <option value="ai-skill">AI Foundations Skill Check</option>
+          <option value="ai-all">AI Foundations (Oficial + Practice + Skill)</option>
+        </optgroup>
+        <optgroup label="Vector Search">
+          <option value="vector-pro">Vector Search Professional (1Z0-184-25)</option>
+        </optgroup>
+        <optgroup label="Combinados">
+          <option value="all-exams">Todos externos (Found+AI+Vector)</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="control-group">
       <label for="bankSelect">Banco de preguntas:</label>
       <select id="bankSelect">
   <option value="official">Oficiales (41)</option>
   <option value="optional">Opcionales (9)</option>
   <option value="both">Ambas (50)</option>
+  <option value="complete">Completas (50)</option>
       </select>
     </div>
     <div class="control-group">
@@ -32,6 +55,14 @@
         <option value="random">Aleatorio</option>
         <option value="sequential">Secuencial</option>
         <option value="review">Repasar falladas previas</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="extendedToggle">Mostrar enunciado extendido:</label>
+      <select id="extendedToggle">
+        <option value="auto">Auto (si existe)</option>
+        <option value="on">Siempre (forzar si hay)</option>
+        <option value="off">Nunca</option>
       </select>
     </div>
     <button id="startBtn">Comenzar</button>
@@ -89,6 +120,7 @@
 
   <footer>
     <p>Controles: A-D responder | Explicación (X) | Saltar (S) | Marcar (M). Resultados y fallos se guardan en localStorage.</p>
+    <p><small>Multi-exam selector experimental: carga y parsea Markdown externo en tiempo real, sin modificar el texto original.</small></p>
   </footer>
   <script src="quiz.js"></script>
 </body>
