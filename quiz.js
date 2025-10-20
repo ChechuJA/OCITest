@@ -57,10 +57,37 @@ const QUESTIONS_OPTIONAL = [
   {id:107,q:"OCI Speech offers?",o:["Transcribe speech","Classify docs","Generate images","Detect faces"],a:0,e:"Audio -> texto."},
   {id:108,q:"Document Understanding cannot?",o:["Generate audio transcript","Extract tables","Classify documents","Extract text"],a:0,e:"No transcribe audio."},
   {id:109,q:"Interactive coding environment?",o:["Model Catalog","Conda Pack","Notebook Sessions","ADS Jobs"],a:2,e:"Notebook Sessions para desarrollo interactivo."},
+  // Nuevas preguntas O110–O134
+  {id:110,q:"Generative AI typical task?",o:["Detect credit card fraud","Count words","Identify article topic","Write themed poem"],a:3,e:"Produce contenido nuevo (poema)."},
+  {id:111,q:"Learning for autonomous driving decisions?",o:["Supervised","Unsupervised","Reinforcement","NLP"],a:2,e:"Agente optimiza recompensa acumulada."},
+  {id:112,q:"NOT core Computer Vision exam task?",o:["Facial recognition","Image classification","Object detection","Repair damaged images"],a:3,e:"Restauración no es foco principal."},
+  {id:113,q:"Find patterns without labels?",o:["Supervised","Unsupervised","Reinforcement","Regression"],a:1,e:"Descubre estructura inherente."},
+  {id:114,q:"App that typically NO ML?",o:["Password validation","Spam detection","Customer segmentation","Stock prediction"],a:0,e:"Reglas determinísticas suficientes."},
+  {id:115,q:"Activation used in logistic regression?",o:["Identity","Step","Sigmoid","Gaussian"],a:2,e:"Sigmoid mapea a probabilidad (0,1)."},
+  {id:116,q:"Seq2Seq translation architecture?",o:["One-to-One","One-to-Many","Many-to-One","Many-to-Many"],a:3,e:"Entrada y salida ambas secuencias."},
+  {id:117,q:"Handle long-range dependencies best?",o:["Simple RNN","CNN","LSTM","MLP"],a:2,e:"Puertas mitigan vanishing gradient."},
+  {id:118,q:"Component weighted sum + activation?",o:["Neuron","Bias","Classifier","Iterator"],a:0,e:"Neurona aplica w·x+b y activación."},
+  {id:119,q:"When can skip LLM fine-tuning?",o:["Needs task-specific adaptation","Bias mitigation","Domain vocab","Latency optimization"],a:0,e:"Si no hay adaptación específica basta prompting."},
+  {id:120,q:"NOT ideal seq model use?",o:["Time series","Image classification","Translation","Speech recognition"],a:1,e:"Imágenes mejor con CNN/ViT."},
+  {id:121,q:"Factor impacting LLM capability/cost?",o:["Interface buttons","Programming language","Model size/parameters","Concurrent users"],a:2,e:"Parámetros definen capacidad y coste."},
+  {id:122,q:"Datatype for embeddings DB 23ai?",o:["ARRAY","VECTOR","STRING","BOOLEAN"],a:1,e:"VECTOR almacena representaciones densas."},
+  {id:123,q:"Repeatable ML tasks infra?",o:["Conda Packs","Jobs","Compartments","Notebook Sessions"],a:1,e:"Jobs orquestan ejecuciones reproducibles."},
+  {id:124,q:"Expose model via HTTP?",o:["Model Catalog","Model Deployments","Jobs","Artifacts"],a:1,e:"Deployments crean endpoint inferencia."},
+  {id:125,q:"NOT OCI AI service?",o:["Vision","Speech","Language","Translator"],a:3,e:"Translator no listado como servicio standalone."},
+  {id:126,q:"Chat vs Embedding models?",o:["Ambos generan texto","Chat texto; Embedding vectores","Embedding texto; Chat vectores","Embedding sólo imágenes"],a:1,e:"Embeddings = representación semántica."},
+  {id:127,q:"Generative AI Playground purpose?",o:["Optimize GPU hardware","Test models visually no code","Create VCNs","Convert images to audio"],a:1,e:"Explorar prompts y respuestas."},
+  {id:128,q:"Primary role model endpoints?",o:["Scale storage","Serve fine-tuned model inference","Billing metrics","Translate SQL"],a:1,e:"Inferencia gestionada versión-controlada."},
+  {id:129,q:"Resource needed fine-tune domain LLM?",o:["Shared tenancy","Object Storage only","Dedicated AI Cluster","Dashboard"],a:2,e:"Cluster dedicado para ajuste parámetros."},
+  {id:130,q:"Language assumed NOT supported (example)?",o:["English","Spanish","Portuguese","Mandarin"],a:3,e:"Mandarín marcado como no soportado en ejemplo."},
+  {id:131,q:"Extract structured tables PDFs?",o:["Language","Speech","Document Understanding","Object Storage"],a:2,e:"DU reconstruye estructura tabular."},
+  {id:132,q:"Language service capability?",o:["Object detection","Sentiment analysis","Speech to text","Compile code"],a:1,e:"Sentiment incluido en Language."},
+  {id:133,q:"Algorithm updating weights ANN?",o:["Random Forest","SVM","Backpropagation","K-Means"],a:2,e:"Backprop calcula gradientes para optimización."},
+  {id:134,q:"Self-attention achieves?",o:["Focus only last tokens","Same importance every token","Contextual weighting tokens","Replace embeddings with rules"],a:2,e:"Asigna pesos contextuales por relevancia."},
 ];
 
 // Referencias DOM
 const bankSelect = document.getElementById('bankSelect');
+const examSelect = document.getElementById('examSelect');
 const modeSelect = document.getElementById('modeSelect');
 const startBtn = document.getElementById('startBtn');
 const quizEl = document.getElementById('quiz');
@@ -75,6 +102,7 @@ const skipBtn = document.getElementById('skipBtn');
 const markBtn = document.getElementById('markBtn');
 const nextBtn = document.getElementById('nextBtn');
 const summaryEl = document.getElementById('summary');
+const extendedToggle = document.getElementById('extendedToggle');
 // Modal elements
 const openDocsBtn = document.getElementById('openDocsBtn');
 const docsModal = document.getElementById('docsModal');
@@ -101,11 +129,11 @@ const GLOSSARY = [
   {term:'Loss Function', def:'Mide error para optimización', cat:'ML'}
 ];
 
-function openModal(mdFile = 'documentacion.md'){
+function openModal(){
   docsModal.hidden = false;
   docsModal.setAttribute('aria-hidden','false');
   // Load documentation (fetch local markdown)
-  fetch(mdFile)
+  fetch('documentacion.md')
     .then(r=>r.text())
     .then(md=>{ 
       const rendered = renderMarkdownRich(md); 
@@ -121,18 +149,10 @@ function closeModal(){
   docsModal.hidden = true;
   docsModal.setAttribute('aria-hidden','true');
 }
-openDocsBtn?.addEventListener('click', () => openModal('documentacion.md'));
+openDocsBtn?.addEventListener('click', openModal);
 closeModalBtn?.addEventListener('click', closeModal);
 docsModal?.addEventListener('click', e=>{ if(e.target === docsModal) closeModal(); });
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && docsModal.getAttribute('aria-hidden')==='false') closeModal(); });
-
-// Event listeners for navigation links
-const readmeLink = document.getElementById('readmeLink');
-const documentacionLink = document.getElementById('documentacionLink');
-const bancoOficialLink = document.getElementById('bancoOficialLink');
-readmeLink?.addEventListener('click', (e) => { e.preventDefault(); openModal('README.md'); });
-documentacionLink?.addEventListener('click', (e) => { e.preventDefault(); openModal('documentacion.md'); });
-bancoOficialLink?.addEventListener('click', (e) => { e.preventDefault(); openModal('preguntas_oficiales.md'); });
 
 function renderGlossary(filter=''){ 
   const f = filter.trim().toLowerCase();
@@ -253,33 +273,257 @@ let secondPass = false;
 const totalTimeSeconds = 7200; // 2 horas
 let remainingSeconds = totalTimeSeconds;
 let timerInterval = null;
+let EXTENDED_MAP = null; // id -> extended HTML block
+let extendedLoaded = false;
+// Bancos externos cacheados { rutaMarkdown: [preguntas] }
+const EXTERNAL_BANKS = {};
+const ENABLE_DEDUP = true; // desactivar si se quiere ver duplicados
+
+// Restaurar preferencias guardadas
+function restorePreferences(){
+  const savedExam = localStorage.getItem('examSelect');
+  if(savedExam && examSelect) examSelect.value = savedExam;
+  const savedBank = localStorage.getItem('bankSelect');
+  if(savedBank && bankSelect) bankSelect.value = savedBank;
+  const savedExt = localStorage.getItem('extendedMode');
+  if(savedExt && extendedToggle) extendedToggle.value = savedExt;
+}
+restorePreferences();
+examSelect?.addEventListener('change',()=> localStorage.setItem('examSelect', examSelect.value));
+bankSelect?.addEventListener('change',()=> localStorage.setItem('bankSelect', bankSelect.value));
+extendedToggle?.addEventListener('change',()=> localStorage.setItem('extendedMode', extendedToggle.value));
+
+// Cargar y preparar mapa de enunciados extendidos
+function loadExtended(){
+  if (extendedLoaded) return Promise.resolve();
+  return fetch('preguntas_extendidas.md')
+    .then(r=>r.text())
+    .then(txt=>{
+      EXTENDED_MAP = buildExtendedMap(txt);
+      extendedLoaded = true;
+    })
+    .catch(()=>{EXTENDED_MAP={}; extendedLoaded=true;});
+}
+
+// Heurística: asociar bloques por palabras clave presentes en pregunta corta.
+function buildExtendedMap(md){
+  const map={};
+  // Split by headings ### to isolate blocks
+  const parts = md.split(/\n### /).slice(1).map(p=>'### '+p.trim());
+  // Define keyword patterns for official IDs
+  const patterns = [
+    {id:1, r:/\bK-Nearest Neighbors|non-parametric\b/i},
+    {id:2, r:/\bRNN\b/i},
+    {id:3, r:/Vector Search/i},
+    {id:4, r:/overfitting/i},
+    {id:5, r:/Model Catalog/i},
+    {id:6, r:/Regression\b/i},
+    {id:7, r:/deploy trained model|OCI Data Science service/i},
+    {id:8, r:/Document Understanding NOT/i},
+    {id:9, r:/invoice|receipt|resume/i},
+    {id:10,r:/T-Few/i},
+    {id:11,r:/deep learning data type/i},
+    {id:12,r:/Normalization in Speech/i},
+    {id:13,r:/Profanity|Tagging/i},
+    {id:14,r:/merchant|key-value extraction/i},
+    {id:15,r:/LLMs vs traditional|large corpus/i},
+    {id:16,r:/self-driving car/i},
+    {id:17,r:/per-word certainty|Confidence scoring/i},
+    {id:18,r:/music sequences/i},
+    {id:19,r:/SRT|closed captions/i},
+    {id:20,r:/trustworthy AI/i},
+    {id:21,r:/inference function/i},
+    {id:22,r:/Select AI enhance|generate SQL/i},
+    {id:23,r:/Select AI prompts/i},
+    {id:24,r:/OCI Vault no es compute|NOT part of OCI AI Infrastructure/i},
+    {id:25,r:/Superclusters|GB200/i},
+    {id:26,r:/A100/i},
+    {id:27,r:/Few-shot prompting/i},
+    {id:28,r:/Tokens role/i},
+    {id:29,r:/complete poem/i},
+    {id:30,r:/Pretraining generative/i},
+    {id:31,r:/Hidden layer purpose/i},
+    {id:32,r:/vehicles and license plates|Object detection scenario/i},
+    {id:33,r:/image classification software|Deep Learning/i},
+    {id:34,r:/target variable/i},
+    {id:35,r:/Categorize news articles/i},
+    {id:36,r:/Vanishing gradient/i},
+    {id:37,r:/ONNX models/i},
+    {id:38,r:/face recognition|CNN/i},
+    {id:39,r:/spam filtering/i},
+    {id:40,r:/stock prices|time series/i},
+    {id:41,r:/loss function/i},
+  ];
+  parts.forEach(block=>{
+    patterns.forEach(p=>{ if(p.r.test(block)){ if(!map[p.id]) map[p.id]=sanitizeExtended(block); } });
+  });
+  return map;
+}
+
+function sanitizeExtended(block){
+  // Remove leading ### heading, keep content structured, escape HTML minimal then allow formatting markers
+  const lines = block.split(/\n/);
+  // Convert to simple HTML paragraphs preserving bullets
+  const html = lines.map(l=>{
+    if(/^### /.test(l)) return `<h3 class="ext-heading">${l.replace(/^### /,'')}</h3>`;
+    if(/^\s*[-•@O]/.test(l)) return `<p class="ext-line">${l}</p>`;
+    return `<p class="ext-line">${l}</p>`;
+  }).join('');
+  return html;
+}
 
 function getSelectedBank(){
+  // Si se selecciona fuente externa, ignorar select interno (salvo modo none)
+  if(examSelect && examSelect.value !== 'none'){
+    return buildExternalComposite(examSelect.value);
+  }
   if (bankSelect.value === 'official') return [...QUESTIONS_OFFICIAL];
   if (bankSelect.value === 'optional') return [...QUESTIONS_OPTIONAL];
-  return [...QUESTIONS_OFFICIAL, ...QUESTIONS_OPTIONAL];
+  if (bankSelect.value === 'both' || bankSelect.value === 'complete') return [...QUESTIONS_OFFICIAL, ...QUESTIONS_OPTIONAL];
+  return [...QUESTIONS_OFFICIAL];
+}
+
+// Mapping from exam keys to file arrays (shared by buildExternalComposite and ensureExternalBanks)
+const EXTERNAL_FILE_MAP = {
+  'oci-foundations': ['Nuevos/Oracle Exam 1Z0-1085-25 Dump.md'],
+  'ai-oficial': ['Nuevos/Oracle Exam 1Z0-1122-25 Dump.md'],
+  'ai-practice': ['Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md'],
+  'ai-skill': ['Nuevos/Skill Check_ OCI AI Foundations.md'],
+  'ai-all': [
+    'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
+    'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
+    'Nuevos/Skill Check_ OCI AI Foundations.md'
+  ],
+  'vector-pro': ['Nuevos/Oracle Exam 1Z0-184-25 Dump.md'],
+  'all-exams': [
+    'Nuevos/Oracle Exam 1Z0-1085-25 Dump.md',
+    'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
+    'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
+    'Nuevos/Skill Check_ OCI AI Foundations.md',
+    'Nuevos/Oracle Exam 1Z0-184-25 Dump.md'
+  ]
+};
+
+function buildExternalComposite(key){
+  const files = EXTERNAL_FILE_MAP[key]||[];
+  const banks = files.map(f=> EXTERNAL_BANKS[f]||[]).flat();
+  return dedupQuestions(banks);
+}
+
+function dedupQuestions(list){
+  if(!ENABLE_DEDUP) return list.slice();
+  const seen = new Map();
+  const out = [];
+  list.forEach(q=>{
+    const norm = normalizeQuestionText(q.q);
+    if(!seen.has(norm)){ seen.set(norm,true); out.push(q); }
+  });
+  return out;
+}
+function normalizeQuestionText(t){
+  return t.toLowerCase().replace(/[^a-z0-9 ]+/g,'').replace(/\s+/g,' ').trim();
+}
+
+async function ensureExternalBanks(){
+  const selected = examSelect?.value;
+  if(!selected || selected==='none') return;
+  const fileSets = {
+    'oci-foundations': ['Nuevos/Oracle Exam 1Z0-1085-25 Dump.md'],
+    'ai-oficial': ['Nuevos/Oracle Exam 1Z0-1122-25 Dump.md'],
+    'ai-practice': ['Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md'],
+    'ai-skill': ['Nuevos/Skill Check_ OCI AI Foundations.md'],
+    'ai-all': [
+      'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
+      'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
+      'Nuevos/Skill Check_ OCI AI Foundations.md'
+    ],
+    'vector-pro': ['Nuevos/Oracle Exam 1Z0-184-25 Dump.md'],
+    'all-exams': [
+      'Nuevos/Oracle Exam 1Z0-1085-25 Dump.md',
+      'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
+      'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
+      'Nuevos/Skill Check_ OCI AI Foundations.md',
+      'Nuevos/Oracle Exam 1Z0-184-25 Dump.md'
+    ]
+  };
+  const files = fileSets[selected]||[];
+  await Promise.all(files.map(f=> loadExternalMarkdown(f)));
+}
+
+async function loadExternalMarkdown(path){
+  if(EXTERNAL_BANKS[path]) return;
+  try {
+    const txt = await fetch(path).then(r=> r.ok ? r.text() : '');
+    EXTERNAL_BANKS[path] = parseMarkdownExam(txt, path);
+    runSecurityScan(path, txt);
+  } catch(e){ EXTERNAL_BANKS[path] = []; }
+}
+
+function parseMarkdownExam(md, source){
+  if(!md) return [];
+  const blocks = md.split(/\n#### /).slice(1).map(b=>'#### '+b.trim());
+  const questions = [];
+  const maxOfficialId = Math.max(0, ...QUESTIONS_OFFICIAL.map(q => q.id));
+  let idCounter = maxOfficialId + 1; // IDs externos empiezan después del máximo oficial
+  blocks.forEach(b=>{
+    const lines = b.split(/\n/);
+    const qLine = lines[0].replace(/^####\s*Q\.?\s*/,'').trim();
+    const opts = [];
+    let answerIndex = -1;
+    lines.slice(1).forEach(l=>{
+      const m = /^- \[(x| )\]\s*(.+)$/i.exec(l.trim());
+      if(m){
+        const correct = m[1].toLowerCase()==='x';
+        const text = m[2].replace(/✅|\u2705/g,'').trim();
+        opts.push(text);
+        if(correct) answerIndex = opts.length-1;
+      }
+    });
+    if(!qLine || !opts.length || answerIndex<0) return;
+    const explanation = extractInlineExplanation(lines);
+    questions.push({id:idCounter++, q:qLine, o:opts, a:answerIndex, e:explanation||'Sin explicación.', exam:source, raw:b});
+  });
+  return questions;
+}
+
+function extractInlineExplanation(lines){
+  const expl = lines.filter(l=>/^>\s*/.test(l)).map(l=> l.replace(/^>\s*/,'').trim()).join(' ');
+  return expl || '';
+}
+
+function runSecurityScan(path, txt){
+  const findings = [];
+  if(/<script\b/i.test(txt)) findings.push('Etiqueta <script>');
+  const longBase64 = txt.match(/[A-Za-z0-9+\/]{80,}=*/g);
+  if(longBase64) findings.push('Cadena base64 larga');
+  if(/javascript:|onerror=|onload=/i.test(txt)) findings.push('Atributo JS inline');
+  if(findings.length){ console.warn('Scan seguridad', path, findings); }
 }
 
 function startQuiz(){
   score = 0; wrong = []; skipped = []; marked = []; currentIndex = 0; answered = false; secondPass = false;
   const mode = modeSelect.value;
-  let bank = getSelectedBank();
-  if (mode === 'review'){
-    const stored = JSON.parse(localStorage.getItem('lastWrongIds')||'[]');
-    bank = bank.filter(q=> stored.includes(q.id));
-    if (!bank.length){
-      alert('No hay preguntas previas falladas para repaso en este banco.');
-      return;
+  let externalLoad = Promise.resolve();
+  if(examSelect && examSelect.value !== 'none') externalLoad = ensureExternalBanks();
+  externalLoad.then(()=>{
+    let bank = getSelectedBank();
+    if (mode === 'review'){
+      const stored = JSON.parse(localStorage.getItem('lastWrongIds')||'[]');
+      bank = bank.filter(q=> stored.includes(q.id));
+      if (!bank.length){
+        alert('No hay preguntas previas falladas para repaso en este banco.');
+        return;
+      }
     }
-  }
-  order = [...bank];
-  if (mode === 'random') shuffle(order);
-  remainingSeconds = totalTimeSeconds;
-  clearInterval(timerInterval);
-  startTimer();
-  quizEl.hidden = false;
-  summaryEl.hidden = true;
-  renderCurrent();
+    order = [...bank];
+    if (mode === 'random') shuffle(order);
+    remainingSeconds = totalTimeSeconds;
+    clearInterval(timerInterval);
+    startTimer();
+    quizEl.hidden = false;
+    summaryEl.hidden = true;
+    renderCurrent();
+  });
 }
 
 function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}}
@@ -292,7 +536,13 @@ function renderCurrent(){
   const stats = `Correctas: ${score} | Incorrectas: ${wrong.length} | Skipped: ${skipped.length} | Marcadas: ${marked.length}`;
   progressTextEl.textContent = `Progreso: ${answeredCount}/${order.length} (${percent}%)${secondPass ? ' (2ª ronda)' : ''}`;
   progressFillEl.style.width = `${percent}%`;
-  questionContainer.textContent = `Q${q.id}: ${q.q}`;
+  // Extended handling
+  let extendedHTML = '';
+  const extMode = extendedToggle ? extendedToggle.value : 'auto';
+  if (EXTENDED_MAP && EXTENDED_MAP[q.id] && extMode !== 'off'){
+    extendedHTML = `<div class="extended-block"><details open><summary>Enunciado extendido</summary>${EXTENDED_MAP[q.id]}</details></div>`;
+  }
+  questionContainer.innerHTML = `${extendedHTML}<div class="question-short">Q${q.id}: ${q.q}${q.exam?` <span class="badge exam-badge" title="Fuente externa">${shortExamName(q.exam)}</span>`:''}</div>`;
   optionsEl.innerHTML='';
   q.o.forEach((opt,idx)=>{
     const li=document.createElement('li');
@@ -384,6 +634,9 @@ function finishQuiz(){
 
 startBtn.addEventListener('click', startQuiz);
 startBtn.focus();
+
+// Cargar extended inicialmente
+loadExtended();
 
 function startTimer(){ updateTimerDisplay(); timerInterval=setInterval(()=>{remainingSeconds--; if(remainingSeconds<=0){remainingSeconds=0; updateTimerDisplay(); clearInterval(timerInterval); alert('Tiempo agotado. Se cerrará el examen.'); finishQuiz(); return;} updateTimerDisplay();},1000); }
 

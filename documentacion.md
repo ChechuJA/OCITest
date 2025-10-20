@@ -31,7 +31,51 @@
 | Generative AI | Crea nuevo contenido | LLM redactando texto | Nuevo foco en fundamentos |
 | Servicios OCI AI | APIs pre-entrenadas | Vision / Language / Speech | Facilitan integración rápida |
 
-### 📂 Servicios Principales
+### � Profundización Rápida Servicios de IA (Resumen Ampliado)
+| Servicio | Entrada principal | Salidas clave | Capacidades destacadas | Limitaciones típicas | Ejemplos examen |
+|----------|------------------|---------------|------------------------|---------------------|------------------|
+| Vision | Imagen / Documento (PDF, JPG, PNG) | Labels, bounding boxes, texto OCR, pares clave-valor | Clasificación documento, OCR, Detección objetos, Extracción campos | Calidad imagen / formato soportado, iluminación, tamaño máx | Factura → merchant/date/amount (key-value), Vehículos y matrículas (object detection) |
+| Document Understanding | Documento estructurado / escaneado | Texto + estructura (tablas, tipo doc) | OCR + segmentación + clasificación tipológica | No transcribe audio, depende legibilidad | Diferenciar recibo vs currículo |
+| Language | Texto | Categorías, sentimiento, NER, idioma | Multi‑idioma, ampliación categorías | Ambigüedad semántica, sarcasmo | Clasificar noticias (Politics/Tech/Sports) |
+| Speech | Audio | Transcript, puntuación confianza, marcas tiempo, SRT | Soporte formatos, filtrado lenguaje (tagging/masking/removing), normalización | Ruido de fondo, acentos extremos | Transcripción y normalización números |
+| Vector Search (DB 23ai) | Texto / Embeddings | IDs similares, puntuación similitud | Búsqueda semántica integrada en SQL con ONNX | Necesita embeddings consistentes | Consultas semánticas vs keyword |
+| Generative AI | Prompt (texto) | Texto generado, embeddings, fine-tuning parcial | T-Few, in-context, respuestas multi-turn | Riesgo alucinaciones, coste tokens | Diferencia pretraining vs supervisado |
+
+### 🔍 Matriz de Tareas Vision
+| Tarea | Descripción | ¿Servicio Vision? | Output típico | Ejemplo de uso |
+|-------|-------------|------------------|--------------|-----------------|
+| Clasificación de Imágenes | Asigna etiqueta global | Sí | Label + score | Distinguir factura vs recibo |
+| Clasificación de Documentos | Tipo documental | Sí | Document type | Identificar factura, currículum, contrato |
+| OCR | Extraer texto crudo | Sí | Texto + posiciones | Extraer número de factura |
+| Key-Value Extraction | Campos estructurados (merchant, total) | Sí | Pares (campo, valor, confianza) | Automatizar contabilidad |
+| Object Detection | Localizar múltiples objetos | Sí | Lista (label, bbox, score) | Vehículos y matrículas en parking |
+| Face Recognition | Identificar rostros específicos | No directo (requiere modelo custom) | Embeddings / labels | Control de acceso (custom) |
+| Table Extraction | Reconstruir tabla estructurada | Parcial (mejor en Document Understanding) | Celdas + contenido | Importar tabla de inventario |
+
+### 🧪 Flujo Combinado Ejemplo (Factura → Base de Datos)
+| Paso | Servicio | Acción | Resultado | Valor |
+|------|----------|--------|----------|-------|
+| 1 | Object Storage | Almacenar PDF factura | Archivo accesible | Persistencia |
+| 2 | Vision (Document Classification) | Determinar tipo factura | Tipo=Invoice | Ruteo correcto |
+| 3 | Vision (OCR + Key-Value) | Extraer texto y campos | merchant, date, amount | Automatiza captura |
+| 4 | Document Understanding | Extraer tabla de líneas | Items + precios | Detalle granular |
+| 5 | Generative AI (resumen) | Generar resumen contable | Texto estructurado | Auditoría rápida |
+| 6 | DB 23ai Vector Search | Indexar descripción ítems | Embeddings + índice | Búsquedas semánticas futuras |
+| 7 | Dashboard / Reporting | Visualizar métricas | KPIs gastos | Decisión financiera |
+
+### ⚙️ Métricas Relevantes por Tipo
+| Tipo Modelo | Métrica Clave | Complementarias | Riesgo típico |
+|-------------|--------------|-----------------|--------------|
+| Clasificación (Vision/Language) | Accuracy / F1 | Precision, Recall | Desbalance clases |
+| Detección Objetos | mAP (IoU thresholds) | Recall por clase | Occlusión / escala |
+| OCR / Extracción Campos | Exactitud campo | Confianza agregada | Texto borroso |
+| Speech | Word Error Rate (WER) | Char Error Rate, Latencia | Ruido ambiente |
+| Generative | Coherencia semántica | Perplexity, BLEU/ROUGE | Alucinación |
+| Vector Search | Similaridad (coseno) | Latencia consulta | Embeddings inconsistentes |
+
+> Nota: Las métricas exactas de la plataforma pueden presentarse como puntuaciones de confianza; el examen tiende a evaluar comprensión conceptual (qué métrica se aplica y por qué) más que fórmulas avanzadas.
+
+### �📂 Servicios Principales
 | Servicio | Función | Ejemplos Funcionales | Preguntas Relacionadas |
 |----------|--------|----------------------|------------------------|
 | Vision 🖼️ | Imagen/Documento | OCR, key-value, detección | Q9, Q14, Q32, Q33, Q38 |
@@ -286,3 +330,84 @@ Este documento extiende el material inicial proporcionando una base teórica est
 
 ---
 Fin de documentación.
+
+---
+## 📦 Nuevas Preguntas Propuestas (Generadas Originalmente)
+Estas NO provienen de fuentes externas copiadas; se diseñan para ampliar cobertura conceptual.
+
+1. Vision Key-Value Extraction – ¿Cuál es la principal ventaja frente a solo OCR?
+	A. Reduce tamaño de archivo
+	B. Elimina necesidad de indexar
+	C. Proporciona estructura semántica con campos específicos ✅
+	D. Convierte imágenes en audio
+	Explicación: OCR da texto plano; key-value añade pares semánticos listos para bases de datos.
+
+2. Document Understanding vs Vision – ¿Cuándo preferir Document Understanding para tablas?
+	A. Cuando se requieren bounding boxes de objetos pequeños
+	B. Cuando la prioridad es texto continuo sin estructura
+	C. Cuando se necesita reconstruir celdas y encabezados coherentes ✅
+	D. Cuando se traducen idiomas en línea
+	Explicación: Document Understanding encapsula estructura tabular mejor que OCR puro.
+
+3. Speech Normalization – ¿Qué transforma 12/10/2025 y “www.example.com” en formato estándar?
+	A. Confidence scoring
+	B. Profanity tagging
+	C. Normalization ✅
+	D. SRT alignment
+	Explicación: Normalization estandariza números, fechas, URLs para lectura uniforme.
+
+4. Vector Search – ¿Qué sucede si dos documentos comparten sinónimos pero pocas palabras exactas?
+	A. No se pueden encontrar
+	B. Búsqueda semántica aún los asocia por embeddings ✅
+	C. Requiere stemming manual
+	D. Solo coincide si hay mismo número de tokens
+	Explicación: Embeddings capturan significado más allá de coincidencia literal.
+
+5. Generative AI Seguridad – ¿Cuál es una mitigación ante prompt injection?
+	A. Aumentar batch size
+	B. Sanitizar y delimitar contenido del usuario ✅
+	C. Usar más GPUs
+	D. Reducir tokens
+	Explicación: Delimitadores y limpieza previenen ejecución de instrucciones maliciosas.
+
+6. Vision Object Detection – Métrica adecuada para evaluar superposición entre predicción y verdad:
+	A. Perplexity
+	B. Intersection over Union (IoU) ✅
+	C. Word Error Rate
+	D. Cosine similarity pura
+	Explicación: IoU mide calidad de bounding box; se agrega en mAP.
+
+7. Speech – ¿Por qué incluir SRT export en pipeline de transcripción?
+	A. Reduce consumo GPU
+	B. Facilita subtitulado sincronizado en video ✅
+	C. Mejora privacidad
+	D. Deshabilita tagging
+	Explicación: SRT estándar facilita integración multimedia.
+
+8. Trustworthy AI – ¿Ejemplo práctico de Robust?
+	A. Modelo ignora auditorías
+	B. Sistema incluye pruebas adversariales para inputs manipulados ✅
+	C. Elimina logs
+	D. Expone contraseñas para depurar
+	Explicación: Robustez implica resistencia frente a ataques o ruido.
+
+9. GPUs – ¿Por qué elegir A100 en fase experimental en vez de GB200?
+	A. Mayor exascala necesaria
+	B. Coste y escala ajustados a pruebas medianas ✅
+	C. A100 no soporta entrenamiento
+	D. GB200 menor latencia siempre
+	Explicación: A100 balance costo/rendimiento para iteración antes de escalar.
+
+10. Embeddings – ¿Qué pasa si se mezclan embeddings generados con distintos modelos en mismo índice Vector Search?
+	 A. Mejora precisión
+	 B. Degrada coherencia semántica y similitud ✅
+	 C. Acelera consultas
+	 D. Obliga a usar labeled data
+	 Explicación: Embeddings inconsistentes producen distancias no comparables.
+
+> Puedes integrar estas propuestas al banco opcional marcándolas con nuevos IDs (O110+), manteniendo trazabilidad.
+
+---
+## ⚖️ Nota sobre Fuentes Externas
+Se han referenciado públicamente enlaces (Scribd, repositorio GitHub) pero NO se copia texto directo para evitar infringir derechos. El contenido aquí es síntesis original basada en conocimiento general de OCI y prácticas comunes de examen de fundamentos.
+
