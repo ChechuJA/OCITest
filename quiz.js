@@ -543,14 +543,6 @@ function renderCurrent(){
     extendedHTML = `<div class="extended-block"><details open><summary>Enunciado extendido</summary>${EXTENDED_MAP[q.id]}</details></div>`;
   }
   questionContainer.innerHTML = `${extendedHTML}<div class="question-short">Q${q.id}: ${q.q}${q.exam?` <span class="badge exam-badge" title="Fuente externa">${shortExamName(q.exam)}</span>`:''}</div>`;
-function shortExamName(path){
-  if(/1085-25/.test(path)) return 'Foundations';
-  if(/1122-25/.test(path)) return 'AI-Oficial';
-  if(/Practice Exam_ OCI AI Foundations/.test(path)) return 'AI-Practice';
-  if(/Skill Check_ OCI AI Foundations/.test(path)) return 'AI-Skill';
-  if(/184-25/.test(path)) return 'Vector-Pro';
-  return 'Exam';
-}
   optionsEl.innerHTML='';
   q.o.forEach((opt,idx)=>{
     const li=document.createElement('li');
