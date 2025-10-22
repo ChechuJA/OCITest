@@ -1,0 +1,81 @@
+{
+  "exams": [
+    {
+      "id": "oci-ai-foundations",
+      "title": "OCI 2025 AI Foundations Associate",
+      "code": "1Z0-1122-25",
+      "file": "Nuevos/OCI AI Foundations 1Z0-1122-25.md",
+      "questions": 44,
+      "category": "AI",
+      "description": "Oracle Cloud Infrastructure AI Foundations certification exam"
+    },
+    {
+      "id": "ai-vector-search",
+      "title": "Oracle AI Vector Search Professional",
+      "code": "1Z0-184-25",
+      "file": "Nuevos/AI Vector Search Professional 1Z0-184-25.md",
+      "questions": 50,
+      "category": "AI",
+      "description": "Oracle AI Vector Search with RAG and embeddings"
+    },
+    {
+      "id": "oci-foundations-clean",
+      "title": "OCI 2025 Foundations Associate (Curated)",
+      "code": "1Z0-1085-25",
+      "file": "Nuevos/OCI Foundations 1Z0-1085-25.md",
+      "questions": 39,
+      "category": "Infrastructure",
+      "description": "Oracle Cloud Infrastructure Foundations - curated version"
+    },
+    {
+      "id": "oci-foundations-full",
+      "title": "OCI 2025 Foundations Associate (Full)",
+      "code": "1Z0-1085-25",
+      "file": "Nuevos/OCI Foundations 1Z0-1085-25 (Original).md",
+      "questions": 47,
+      "category": "Infrastructure",
+      "description": "Oracle Cloud Infrastructure Foundations - complete version"
+    },
+    {
+      "id": "mysql-developer",
+      "title": "MySQL 8.0 Database Developer",
+      "code": "1Z0-909",
+      "file": "Nuevos/MySQL Database Developer 1Z0-909.md",
+      "questions": 77,
+      "category": "Database",
+      "description": "MySQL 8.0 Database Developer certification"
+    },
+    {
+      "id": "mysql-implementation",
+      "title": "MySQL Implementation Associate",
+      "code": "1Z0-922",
+      "file": "Nuevos/MySQL Implementation 1Z0-922.md",
+      "questions": 52,
+      "category": "Database",
+      "description": "MySQL Implementation and Administration"
+    }
+  ],
+  "categories": [
+    {
+      "id": "AI",
+      "name": "Artificial Intelligence",
+      "description": "AI, Machine Learning, Vector Search, and Generative AI"
+    },
+    {
+      "id": "Infrastructure",
+      "name": "Cloud Infrastructure",
+      "description": "OCI Compute, Networking, Security, and Architecture"
+    },
+    {
+      "id": "Database",
+      "name": "Database",
+      "description": "MySQL, SQL, Database Administration and Development"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "totalExams": 6,
+    "totalQuestions": 309,
+    "lastUpdated": "2025-10-22"
+  }
+}

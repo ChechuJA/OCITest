@@ -1,7 +1,6 @@
-// OCI Foundations AI Quiz - Web Version (limpio y sincronizado)
+// OCI Foundations AI Quiz - Web Version
+// Lógica del quiz: bancos, modos, flujo, almacenamiento de fallos.
 
-// Preguntas oficiales (Q1=KNN, Q2=RNN) usando campos compactos:
-// id, q (question), o (options), a (answer index), e (explanation)
 const QUESTIONS_OFFICIAL = [
   {id:1,q:"Which algorithm is a non-parametric approach for supervised learning?",o:["Linear Regression","K-Nearest Neighbors (KNN)","Random Forest","Decision Trees"],a:1,e:"KNN almacena los datos y usa distancias; no ajusta parámetros internos."},
   {id:2,q:"Deep Learning - Key feature of RNNs?",o:["Parallel processing","Used for images","Feedback loop retains info across time steps","No internal state"],a:2,e:"RNN conserva estado temporal mediante estado oculto."},
@@ -46,605 +45,328 @@ const QUESTIONS_OFFICIAL = [
   {id:41,q:"Primary role of a loss function during training?",o:["Generate new samples","Measure prediction error to guide optimization","Increase dataset size","Store model weights"],a:1,e:"Cuantifica el error para guiar la optimización y ajuste de pesos."},
 ];
 
-// Preguntas opcionales (IDs 101+)
 const QUESTIONS_OPTIONAL = [
-  {id:101,q:"Domain sentiment & translation?",o:["Computer Vision","Speech Processing","Natural Language Processing","Anomaly Detection"],a:2,e:"NLP cubre análisis de sentimiento y traducción."},
-  {id:102,q:"Model training involves?",o:["Write full program","Relate inputs to outputs","Deploy endpoint","Run inference"],a:1,e:"Ajustar parámetros mapeo entrada-salida."},
-  {id:103,q:"Primary purpose CNN?",o:["Sequential data","Patterns in images","Music generation","Store labels"],a:1,e:"Patrones espaciales en imágenes."},
-  {id:104,q:"Generative vs supervised?",o:["Only classification","Model data distribution create new","Needs labeled pairs","No training"],a:1,e:"Genera muestras nuevas."},
-  {id:105,q:"Advantage Superclusters?",o:["Social integration","High performance complex AI","Cheapest always","Only simple scripts"],a:1,e:"Escalado GPU + red RDMA."},
-  {id:106,q:"In-context learning means?",o:["Weight change","Examples in prompt","Zero-shot","Manual features"],a:1,e:"Ejemplos en prompt sin ajustar pesos."},
-  {id:107,q:"OCI Speech offers?",o:["Transcribe speech","Classify docs","Generate images","Detect faces"],a:0,e:"Audio -> texto."},
-  {id:108,q:"Document Understanding cannot?",o:["Generate audio transcript","Extract tables","Classify documents","Extract text"],a:0,e:"No transcribe audio."},
-  {id:109,q:"Interactive coding environment?",o:["Model Catalog","Conda Pack","Notebook Sessions","ADS Jobs"],a:2,e:"Notebook Sessions para desarrollo interactivo."},
-  // Nuevas preguntas O110–O134
-  {id:110,q:"Generative AI typical task?",o:["Detect credit card fraud","Count words","Identify article topic","Write themed poem"],a:3,e:"Produce contenido nuevo (poema)."},
-  {id:111,q:"Learning for autonomous driving decisions?",o:["Supervised","Unsupervised","Reinforcement","NLP"],a:2,e:"Agente optimiza recompensa acumulada."},
-  {id:112,q:"NOT core Computer Vision exam task?",o:["Facial recognition","Image classification","Object detection","Repair damaged images"],a:3,e:"Restauración no es foco principal."},
-  {id:113,q:"Find patterns without labels?",o:["Supervised","Unsupervised","Reinforcement","Regression"],a:1,e:"Descubre estructura inherente."},
-  {id:114,q:"App that typically NO ML?",o:["Password validation","Spam detection","Customer segmentation","Stock prediction"],a:0,e:"Reglas determinísticas suficientes."},
-  {id:115,q:"Activation used in logistic regression?",o:["Identity","Step","Sigmoid","Gaussian"],a:2,e:"Sigmoid mapea a probabilidad (0,1)."},
-  {id:116,q:"Seq2Seq translation architecture?",o:["One-to-One","One-to-Many","Many-to-One","Many-to-Many"],a:3,e:"Entrada y salida ambas secuencias."},
-  {id:117,q:"Handle long-range dependencies best?",o:["Simple RNN","CNN","LSTM","MLP"],a:2,e:"Puertas mitigan vanishing gradient."},
-  {id:118,q:"Component weighted sum + activation?",o:["Neuron","Bias","Classifier","Iterator"],a:0,e:"Neurona aplica w·x+b y activación."},
-  {id:119,q:"When can skip LLM fine-tuning?",o:["Needs task-specific adaptation","Bias mitigation","Domain vocab","Latency optimization"],a:0,e:"Si no hay adaptación específica basta prompting."},
-  {id:120,q:"NOT ideal seq model use?",o:["Time series","Image classification","Translation","Speech recognition"],a:1,e:"Imágenes mejor con CNN/ViT."},
-  {id:121,q:"Factor impacting LLM capability/cost?",o:["Interface buttons","Programming language","Model size/parameters","Concurrent users"],a:2,e:"Parámetros definen capacidad y coste."},
-  {id:122,q:"Datatype for embeddings DB 23ai?",o:["ARRAY","VECTOR","STRING","BOOLEAN"],a:1,e:"VECTOR almacena representaciones densas."},
-  {id:123,q:"Repeatable ML tasks infra?",o:["Conda Packs","Jobs","Compartments","Notebook Sessions"],a:1,e:"Jobs orquestan ejecuciones reproducibles."},
-  {id:124,q:"Expose model via HTTP?",o:["Model Catalog","Model Deployments","Jobs","Artifacts"],a:1,e:"Deployments crean endpoint inferencia."},
-  {id:125,q:"NOT OCI AI service?",o:["Vision","Speech","Language","Translator"],a:3,e:"Translator no listado como servicio standalone."},
-  {id:126,q:"Chat vs Embedding models?",o:["Ambos generan texto","Chat texto; Embedding vectores","Embedding texto; Chat vectores","Embedding sólo imágenes"],a:1,e:"Embeddings = representación semántica."},
-  {id:127,q:"Generative AI Playground purpose?",o:["Optimize GPU hardware","Test models visually no code","Create VCNs","Convert images to audio"],a:1,e:"Explorar prompts y respuestas."},
-  {id:128,q:"Primary role model endpoints?",o:["Scale storage","Serve fine-tuned model inference","Billing metrics","Translate SQL"],a:1,e:"Inferencia gestionada versión-controlada."},
-  {id:129,q:"Resource needed fine-tune domain LLM?",o:["Shared tenancy","Object Storage only","Dedicated AI Cluster","Dashboard"],a:2,e:"Cluster dedicado para ajuste parámetros."},
-  {id:130,q:"Language assumed NOT supported (example)?",o:["English","Spanish","Portuguese","Mandarin"],a:3,e:"Mandarín marcado como no soportado en ejemplo."},
-  {id:131,q:"Extract structured tables PDFs?",o:["Language","Speech","Document Understanding","Object Storage"],a:2,e:"DU reconstruye estructura tabular."},
-  {id:132,q:"Language service capability?",o:["Object detection","Sentiment analysis","Speech to text","Compile code"],a:1,e:"Sentiment incluido en Language."},
-  {id:133,q:"Algorithm updating weights ANN?",o:["Random Forest","SVM","Backpropagation","K-Means"],a:2,e:"Backprop calcula gradientes para optimización."},
-  {id:134,q:"Self-attention achieves?",o:["Focus only last tokens","Same importance every token","Contextual weighting tokens","Replace embeddings with rules"],a:2,e:"Asigna pesos contextuales por relevancia."},
+  {id:101,q:"Primary task of a discriminator in a GAN?",o:["Generate new data samples","Distinguish between real and generated data","Optimize generator loss","Encode input features"],a:1,e:"Discriminador clasifica si la muestra es real o generada."},
+  {id:102,q:"Process of adding randomness to data to protect sensitive information?",o:["Data augmentation","Differential privacy","Feature engineering","Batch normalization"],a:1,e:"Differential Privacy agrega ruido para proteger privacidad."},
+  {id:103,q:"Transformer attention allows model to focus on?",o:["Fixed context window","Entire sequence regardless of distance","Adjacent tokens only","Previous sentence only"],a:1,e:"Attention captura relaciones en toda la secuencia."},
+  {id:104,q:"Primary function of the encoder in a transformer?",o:["Generate output tokens","Map input sequence to context","Decode sequences","Normalize embeddings"],a:1,e:"El encoder genera representaciones contextuales de la entrada."},
+  {id:105,q:"RLHF aligns model outputs with?",o:["Training data statistics","Human preferences and values","Predefined templates","Random sampling"],a:1,e:"RLHF usa feedback humano para alinear salidas a valores deseados."},
+  {id:106,q:"Regularization in ML primarily helps?",o:["Speed up training","Prevent overfitting","Increase model size","Generate synthetic data"],a:1,e:"Regularización reduce sobreajuste penalizando complejidad."},
+  {id:107,q:"Common application of contrastive learning?",o:["Time series forecasting","Self-supervised representation learning","Classification only","Data augmentation"],a:1,e:"Aprendizaje contrastivo aprende representaciones sin etiquetas."},
+  {id:108,q:"Batch normalization in neural networks does?",o:["Regularizes weights","Stabilizes training by normalizing layer inputs","Generates data samples","Reduces learning rate"],a:1,e:"Batch Norm normaliza activaciones para estabilizar entrenamiento."},
+  {id:109,q:"Role of activation functions in a neural network?",o:["Store parameters","Introduce non-linearity","Compute loss","Initialize weights"],a:1,e:"Funciones de activación permiten redes aprender relaciones no lineales."},
+  {id:110,q:"Which of the following is a key task for Generative AI?",o:["Data encryption","Data classification","Content generation","Data migration"],a:2,e:"Generative AI crea contenido nuevo (texto, imágenes, etc.)."},
+  {id:111,q:"In reinforcement learning, what is the agent's goal?",o:["Minimize loss function","Maximize cumulative reward","Label training data","Reduce dimensionality"],a:1,e:"El agente busca maximizar la recompensa acumulada."},
+  {id:112,q:"What is a common use case for computer vision?",o:["Text sentiment analysis","Object detection in images","Time series forecasting","Speech synthesis"],a:1,e:"Computer vision detecta y clasifica objetos en imágenes."},
+  {id:113,q:"Which algorithm is commonly used for unsupervised learning?",o:["Logistic regression","K-Means clustering","Linear regression","Decision trees"],a:1,e:"K-Means es un algoritmo de clustering no supervisado."},
+  {id:114,q:"What is a common password validation approach?",o:["Regular expressions","Neural networks","K-means","PCA"],a:0,e:"Regex valida patrones de formato de contraseñas."},
+  {id:115,q:"What does the softmax activation function do?",o:["Converts outputs to probabilities","Introduces sparsity","Reduces dimensionality","Normalizes inputs"],a:0,e:"Softmax convierte logits en distribución de probabilidad."},
+  {id:116,q:"Which model architecture is best suited for sequence-to-sequence tasks?",o:["Feedforward NN","Encoder-Decoder (Seq2Seq)","Decision Tree","K-NN"],a:1,e:"Seq2Seq (ej. Transformers) mapea secuencias a secuencias."},
+  {id:117,q:"What is a key advantage of LSTM over standard RNN?",o:["Faster training","Mitigates vanishing gradient problem","Requires less data","Smaller model size"],a:1,e:"LSTM con gates maneja mejor gradientes de largo plazo."},
+  {id:118,q:"What does a neuron in a neural network compute?",o:["Weighted sum + activation","Only the loss","Data normalization","Gradient descent"],a:0,e:"Neurona calcula suma ponderada y aplica función de activación."},
+  {id:119,q:"What is the purpose of fine-tuning a pre-trained model?",o:["Increase model size","Adapt model to specific task/domain","Remove all weights","Train from scratch"],a:1,e:"Fine-tuning adapta un modelo preentrenado a un dominio específico."},
+  {id:120,q:"Which factor most directly impacts the cost of an LLM inference?",o:["Model size and input length","Color of the logo","Number of developers","Office location"],a:0,e:"Tamaño del modelo y longitud de input afectan cómputo/costo."},
+  {id:121,q:"What is an embedding in NLP?",o:["A type of regularization","A dense vector representation of text","A loss function","A data augmentation technique"],a:1,e:"Embedding representa palabras/tokens como vectores densos."},
+  {id:122,q:"What is OCI Data Science Jobs used for?",o:["Storing data","Running batch ML workloads","Real-time inference","Data visualization only"],a:1,e:"Jobs ejecuta trabajos batch (entrenamiento, procesamiento)."},
+  {id:123,q:"What is the purpose of OCI Data Science Model Deployment?",o:["Store datasets","Serve models via API endpoints","Train models","Visualize data"],a:1,e:"Model Deployment expone modelos como endpoints HTTP."},
+  {id:124,q:"What is the OCI Generative AI Playground used for?",o:["Production deployment","Experimenting with prompts and models","Storing training data","Managing security policies"],a:1,e:"Playground permite probar prompts y modelos generativos."},
+  {id:125,q:"Which OCI service provides pre-built AI models for language tasks?",o:["OCI Compute","OCI Object Storage","OCI Language","OCI Vault"],a:2,e:"OCI Language ofrece NER, sentiment, clasificación, etc."},
+  {id:126,q:"What languages does OCI Language service support?",o:["Only English","Multiple languages including Spanish","Only programming languages","Only Asian languages"],a:1,e:"OCI Language soporta múltiples idiomas (inglés, español, etc.)."},
+  {id:127,q:"What is OCI Document Understanding used for?",o:["Managing databases","Extracting text, tables, and structure from documents","Training custom models","Real-time video streaming"],a:1,e:"Document Understanding extrae texto, tablas y estructura."},
+  {id:128,q:"What is a key feature of OCI Vision service?",o:["Speech recognition","Image classification and object detection","Time series analysis","Data warehousing"],a:1,e:"Vision clasifica imágenes y detecta objetos."},
+  {id:129,q:"What does OCI Anomaly Detection service do?",o:["Encrypts data","Detects unusual patterns in time series data","Generates synthetic data","Translates languages"],a:1,e:"Anomaly Detection identifica patrones anómalos en series temporales."},
+  {id:130,q:"What is sentiment analysis?",o:["Detecting objects in images","Determining emotional tone of text","Clustering data","Dimensionality reduction"],a:1,e:"Sentiment analysis clasifica el tono emocional (positivo/negativo/neutro)."},
+  {id:131,q:"What is the role of backpropagation in neural networks?",o:["Initialize weights","Compute gradients for weight updates","Generate outputs","Normalize inputs"],a:1,e:"Backpropagation calcula gradientes para ajustar pesos."},
+  {id:132,q:"What does self-attention in transformers compute?",o:["Loss function","Relevance of each token to others in sequence","Learning rate","Batch size"],a:1,e:"Self-attention pondera la relevancia entre tokens de la secuencia."},
+  {id:133,q:"Which metric is commonly used to evaluate classification models?",o:["Mean Squared Error","Accuracy, Precision, Recall, F1","R-squared","Mean Absolute Error"],a:1,e:"Clasificación usa accuracy, precision, recall, F1."},
+  {id:134,q:"What is transfer learning?",o:["Moving data between servers","Using a pre-trained model as starting point for new task","Training multiple models simultaneously","Deleting old models"],a:1,e:"Transfer learning reutiliza conocimiento de un modelo preentrenado."},
 ];
 
-// Referencias DOM
 const bankSelect = document.getElementById('bankSelect');
-const examSelect = document.getElementById('examSelect');
 const modeSelect = document.getElementById('modeSelect');
 const startBtn = document.getElementById('startBtn');
 const quizEl = document.getElementById('quiz');
+const progressEl = document.getElementById('progress');
 const progressTextEl = document.getElementById('progressText');
 const progressFillEl = document.getElementById('progressFill');
 const timeRemainingEl = document.getElementById('timeRemaining');
 const questionContainer = document.getElementById('questionContainer');
 const optionsEl = document.getElementById('options');
 const feedbackEl = document.getElementById('feedback');
-const explainBtn = document.getElementById('explainBtn');
 const skipBtn = document.getElementById('skipBtn');
-const markBtn = document.getElementById('markBtn');
 const nextBtn = document.getElementById('nextBtn');
 const summaryEl = document.getElementById('summary');
-const extendedToggle = document.getElementById('extendedToggle');
-// Modal elements
-const openDocsBtn = document.getElementById('openDocsBtn');
-const docsModal = document.getElementById('docsModal');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const glossSearch = document.getElementById('glossSearch');
-const glossaryResults = document.getElementById('glossaryResults');
-const docsContent = document.getElementById('docsContent');
-const docsIndex = document.getElementById('docsIndex');
-const glossCategory = document.getElementById('glossCategory');
-const searchCount = document.getElementById('searchCount');
 
-// Glossary raw terms (mirroring documentacion.md table)
-const GLOSSARY = [
-  {term:'Embedding', def:'Vector semántico denso de texto/imagen', cat:'ML'},
-  {term:'Token', def:'Unidad mínima de entrada LLM', cat:'Prompting'},
-  {term:'Endpoint de Inferencia', def:'API que expone predicciones', cat:'ML'},
-  {term:'OCR', def:'Extracción de texto en imágenes', cat:'ML'},
-  {term:'Key-Value Extraction', def:'Pares estructurados (doc)', cat:'ML'},
-  {term:'Few-Shot', def:'Pocos ejemplos en prompt', cat:'Prompting'},
-  {term:'In-Context Learning', def:'Adaptación sin reentrenar', cat:'Prompting'},
-  {term:'Vanishing Gradient', def:'Gradiente que se extingue en secuencias largas', cat:'ML'},
-  {term:'T-Few', def:'Fine-tuning eficiente', cat:'Prompting'},
-  {term:'RDMA', def:'Red de baja latencia', cat:'Infra'},
-  {term:'Loss Function', def:'Mide error para optimización', cat:'ML'}
-];
-
-function openModal(){
-  docsModal.hidden = false;
-  docsModal.setAttribute('aria-hidden','false');
-  // Load documentation (fetch local markdown)
-  fetch('documentacion.md')
-    .then(r=>r.text())
-    .then(md=>{ 
-      const rendered = renderMarkdownRich(md); 
-      docsContent.innerHTML = rendered.html; 
-      buildDocsIndex(rendered.headings);
-      attachScrollSync(rendered.headings);
-    })
-    .catch(()=>{ docsContent.textContent='No se pudo cargar la documentación.'; });
-  renderGlossary();
-  glossSearch.focus();
-}
-function closeModal(){
-  docsModal.hidden = true;
-  docsModal.setAttribute('aria-hidden','true');
-}
-openDocsBtn?.addEventListener('click', openModal);
-closeModalBtn?.addEventListener('click', closeModal);
-docsModal?.addEventListener('click', e=>{ if(e.target === docsModal) closeModal(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape' && docsModal.getAttribute('aria-hidden')==='false') closeModal(); });
-
-function renderGlossary(filter=''){ 
-  const f = filter.trim().toLowerCase();
-  const cat = glossCategory.value;
-  let items = GLOSSARY;
-  if (cat) items = items.filter(it=> it.cat === cat);
-  if (f) items = items.filter(it=> it.term.toLowerCase().includes(f) || it.def.toLowerCase().includes(f));
-  searchCount.textContent = `${items.length} término(s)`;
-  glossaryResults.innerHTML = '<h3>Glosario</h3>' + (items.map(it=>{
-    const highlightedTerm = highlight(it.term, f);
-    const highlightedDef = highlight(it.def, f);
-    return `<div class="gloss-item"><strong>${highlightedTerm}</strong><span class="category-tag">${it.cat}</span><br>${highlightedDef}<button class="copy-btn" data-term="${it.term}">Copiar</button></div>`;
-  }).join('') || '<p>Sin coincidencias.</p>');
-  glossaryResults.querySelectorAll('.copy-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const t = btn.getAttribute('data-term');
-      navigator.clipboard.writeText(t).then(()=>{ btn.textContent='Copiado'; setTimeout(()=>btn.textContent='Copiar',1200); });
-    });
-  });
-}
-function highlight(text, f){
-  if(!f) return text;
-  const re = new RegExp(`(${escapeRegExp(f)})`,'gi');
-  return text.replace(re,'<mark>$1</mark>');
-}
-function escapeRegExp(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
-glossSearch?.addEventListener('input', ()=> renderGlossary(glossSearch.value));
-glossCategory?.addEventListener('change', ()=> renderGlossary(glossSearch.value));
-
-// Rich markdown renderer: headings, paragraphs, emphasis, inline code, fenced code, tables, lists
-function renderMarkdownRich(md){
-  const esc = (s)=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const lines = md.split(/\r?\n/);
-  const out = [];
-  const headings = [];
-  let inCode = false, codeLang='';
-  let tableBuffer = [];
-  let listBuffer = [];
-  function flushTable(){
-    if(!tableBuffer.length) return;
-    // Build table
-    const rows = tableBuffer.map(r=> r.split('|').slice(1,-1).map(c=>c.trim()));
-    const header = rows[0];
-    const body = rows.slice(2); // skip separator
-    const htmlRows = body.map(r=> `<tr>${r.map((c,i)=>`<td>${formatInline(c)}</td>`).join('')}</tr>`).join('');
-    out.push(`<table><thead><tr>${header.map(h=>`<th>${formatInline(h)}</th>`).join('')}</tr></thead><tbody>${htmlRows}</tbody></table>`);
-    tableBuffer=[];
-  }
-  function flushList(){
-    if(!listBuffer.length) return;
-    const items = listBuffer.map(li=> `<li>${formatInline(li.replace(/^[*\-+]\s+/,'').trim())}</li>`).join('');
-    out.push(`<ul>${items}</ul>`); listBuffer=[];
-  }
-  function formatInline(text){
-    // Bold **text** / Italic *text* / inline code `code`
-    let t = esc(text);
-    t = t.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
-    t = t.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g,'<em>$1</em>');
-    t = t.replace(/`([^`]+)`/g,'<code>$1</code>');
-    return t;
-  }
-  lines.forEach(line=>{
-    if(/^```/.test(line)){ // fenced code
-      if(!inCode){ inCode=true; codeLang=line.replace(/```/,'').trim(); out.push(`<pre class="code-block" data-lang="${esc(codeLang)}">`); }
-      else { inCode=false; codeLang=''; out.push('</pre>'); }
-      return;
-    }
-    if(inCode){ out.push(esc(line)+'\n'); return; }
-    if(/^#{1,6} /.test(line)){
-      flushTable(); flushList();
-      const level = line.match(/^#+/)[0].length;
-      const content = line.replace(/^#{1,6} /,'').trim();
-      const id = content.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-      headings.push({id, level, text:content});
-      out.push(`<h${level} id="${id}">${formatInline(content)}</h${level}>`);
-      return;
-    }
-    if(line.startsWith('|')){ tableBuffer.push(line); return; }
-    if(/^[*\-+]\s+/.test(line)){ listBuffer.push(line); return; }
-    if(line.trim()===''){ flushTable(); flushList(); return; }
-    flushTable(); flushList();
-    out.push(`<p>${formatInline(line)}</p>`);
-  });
-  flushTable(); flushList();
-  return {html: out.join('\n'), headings};
-}
-function buildDocsIndex(headings){
-  if(!docsIndex) return;
-  const links = headings.filter(h=>h.level<=3).map(h=>`<a href="#${h.id}" data-id="${h.id}">${h.text}</a>`).join('');
-  docsIndex.innerHTML = `<strong>Índice</strong>${links}`;
-}
-function attachScrollSync(headings){
-  const contentEl = docsContent;
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(en=>{
-      if(en.isIntersecting){
-        const id = en.target.id;
-        docsIndex.querySelectorAll('a').forEach(a=> a.classList.toggle('active', a.dataset.id===id));
-      }
-    });
-  },{root:contentEl, threshold:0.3});
-  headings.forEach(h=>{ const el = document.getElementById(h.id); if(el) obs.observe(el); });
-  // Smooth scroll behavior
-  docsIndex.querySelectorAll('a').forEach(a=>{
-    a.addEventListener('click', e=>{ e.preventDefault(); const target=document.getElementById(a.dataset.id); if(target){ target.scrollIntoView({behavior:'smooth'}); } });
-  });
-}
-
-// Estado
 let currentIndex = 0;
+let currentBank = [];
 let order = [];
 let score = 0;
 let wrong = [];
-let skipped = [];
-let marked = [];
 let answered = false;
-let secondPass = false;
-const totalTimeSeconds = 7200; // 2 horas
+let totalTimeSeconds = 7200; // 2 horas
 let remainingSeconds = totalTimeSeconds;
 let timerInterval = null;
-let EXTENDED_MAP = null; // id -> extended HTML block
-let extendedLoaded = false;
-// Bancos externos cacheados { rutaMarkdown: [preguntas] }
-const EXTERNAL_BANKS = {};
-const ENABLE_DEDUP = true; // desactivar si se quiere ver duplicados
 
-// Restaurar preferencias guardadas
-function restorePreferences(){
-  const savedExam = localStorage.getItem('examSelect');
-  if(savedExam && examSelect) examSelect.value = savedExam;
-  const savedBank = localStorage.getItem('bankSelect');
-  if(savedBank && bankSelect) bankSelect.value = savedBank;
-  const savedExt = localStorage.getItem('extendedMode');
-  if(savedExt && extendedToggle) extendedToggle.value = savedExt;
-}
-restorePreferences();
-examSelect?.addEventListener('change',()=> localStorage.setItem('examSelect', examSelect.value));
-bankSelect?.addEventListener('change',()=> localStorage.setItem('bankSelect', bankSelect.value));
-extendedToggle?.addEventListener('change',()=> localStorage.setItem('extendedMode', extendedToggle.value));
-
-// Cargar y preparar mapa de enunciados extendidos
-function loadExtended(){
-  if (extendedLoaded) return Promise.resolve();
-  return fetch('preguntas_extendidas.md')
-    .then(r=>r.text())
-    .then(txt=>{
-      EXTENDED_MAP = buildExtendedMap(txt);
-      extendedLoaded = true;
-    })
-    .catch(()=>{EXTENDED_MAP={}; extendedLoaded=true;});
-}
-
-// Heurística: asociar bloques por palabras clave presentes en pregunta corta.
-function buildExtendedMap(md){
-  const map={};
-  // Split by headings ### to isolate blocks
-  const parts = md.split(/\n### /).slice(1).map(p=>'### '+p.trim());
-  // Define keyword patterns for official IDs
-  const patterns = [
-    {id:1, r:/\bK-Nearest Neighbors|non-parametric\b/i},
-    {id:2, r:/\bRNN\b/i},
-    {id:3, r:/Vector Search/i},
-    {id:4, r:/overfitting/i},
-    {id:5, r:/Model Catalog/i},
-    {id:6, r:/Regression\b/i},
-    {id:7, r:/deploy trained model|OCI Data Science service/i},
-    {id:8, r:/Document Understanding NOT/i},
-    {id:9, r:/invoice|receipt|resume/i},
-    {id:10,r:/T-Few/i},
-    {id:11,r:/deep learning data type/i},
-    {id:12,r:/Normalization in Speech/i},
-    {id:13,r:/Profanity|Tagging/i},
-    {id:14,r:/merchant|key-value extraction/i},
-    {id:15,r:/LLMs vs traditional|large corpus/i},
-    {id:16,r:/self-driving car/i},
-    {id:17,r:/per-word certainty|Confidence scoring/i},
-    {id:18,r:/music sequences/i},
-    {id:19,r:/SRT|closed captions/i},
-    {id:20,r:/trustworthy AI/i},
-    {id:21,r:/inference function/i},
-    {id:22,r:/Select AI enhance|generate SQL/i},
-    {id:23,r:/Select AI prompts/i},
-    {id:24,r:/OCI Vault no es compute|NOT part of OCI AI Infrastructure/i},
-    {id:25,r:/Superclusters|GB200/i},
-    {id:26,r:/A100/i},
-    {id:27,r:/Few-shot prompting/i},
-    {id:28,r:/Tokens role/i},
-    {id:29,r:/complete poem/i},
-    {id:30,r:/Pretraining generative/i},
-    {id:31,r:/Hidden layer purpose/i},
-    {id:32,r:/vehicles and license plates|Object detection scenario/i},
-    {id:33,r:/image classification software|Deep Learning/i},
-    {id:34,r:/target variable/i},
-    {id:35,r:/Categorize news articles/i},
-    {id:36,r:/Vanishing gradient/i},
-    {id:37,r:/ONNX models/i},
-    {id:38,r:/face recognition|CNN/i},
-    {id:39,r:/spam filtering/i},
-    {id:40,r:/stock prices|time series/i},
-    {id:41,r:/loss function/i},
-  ];
-  parts.forEach(block=>{
-    patterns.forEach(p=>{ if(p.r.test(block)){ if(!map[p.id]) map[p.id]=sanitizeExtended(block); } });
-  });
-  return map;
-}
-
-function sanitizeExtended(block){
-  // Remove leading ### heading, keep content structured, escape HTML minimal then allow formatting markers
-  const lines = block.split(/\n/);
-  // Convert to simple HTML paragraphs preserving bullets
-  const html = lines.map(l=>{
-    if(/^### /.test(l)) return `<h3 class="ext-heading">${l.replace(/^### /,'')}</h3>`;
-    if(/^\s*[-•@O]/.test(l)) return `<p class="ext-line">${l}</p>`;
-    return `<p class="ext-line">${l}</p>`;
-  }).join('');
-  return html;
-}
-
-function getSelectedBank(){
-  // Si se selecciona fuente externa, ignorar select interno (salvo modo none)
-  if(examSelect && examSelect.value !== 'none'){
-    return buildExternalComposite(examSelect.value);
-  }
+function getBank() {
   if (bankSelect.value === 'official') return [...QUESTIONS_OFFICIAL];
   if (bankSelect.value === 'optional') return [...QUESTIONS_OPTIONAL];
-  if (bankSelect.value === 'both' || bankSelect.value === 'complete') return [...QUESTIONS_OFFICIAL, ...QUESTIONS_OPTIONAL];
-  return [...QUESTIONS_OFFICIAL];
+  return [...QUESTIONS_OFFICIAL, ...QUESTIONS_OPTIONAL];
 }
 
-// Mapping from exam keys to file arrays (shared by buildExternalComposite and ensureExternalBanks)
-const EXTERNAL_FILE_MAP = {
-  'oci-foundations': ['Nuevos/Oracle Exam 1Z0-1085-25 Dump.md'],
-  'ai-oficial': ['Nuevos/Oracle Exam 1Z0-1122-25 Dump.md'],
-  'ai-practice': ['Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md'],
-  'ai-skill': ['Nuevos/Skill Check_ OCI AI Foundations.md'],
-  'ai-all': [
-    'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
-    'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
-    'Nuevos/Skill Check_ OCI AI Foundations.md'
-  ],
-  'vector-pro': ['Nuevos/Oracle Exam 1Z0-184-25 Dump.md'],
-  'all-exams': [
-    'Nuevos/Oracle Exam 1Z0-1085-25 Dump.md',
-    'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
-    'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
-    'Nuevos/Skill Check_ OCI AI Foundations.md',
-    'Nuevos/Oracle Exam 1Z0-184-25 Dump.md'
-  ]
-};
-
-function buildExternalComposite(key){
-  const files = EXTERNAL_FILE_MAP[key]||[];
-  const banks = files.map(f=> EXTERNAL_BANKS[f]||[]).flat();
-  return dedupQuestions(banks);
-}
-
-function dedupQuestions(list){
-  if(!ENABLE_DEDUP) return list.slice();
-  const seen = new Map();
-  const out = [];
-  list.forEach(q=>{
-    const norm = normalizeQuestionText(q.q);
-    if(!seen.has(norm)){ seen.set(norm,true); out.push(q); }
-  });
-  return out;
-}
-function normalizeQuestionText(t){
-  return t.toLowerCase().replace(/[^a-z0-9 ]+/g,'').replace(/\s+/g,' ').trim();
-}
-
-async function ensureExternalBanks(){
-  const selected = examSelect?.value;
-  if(!selected || selected==='none') return;
-  const fileSets = {
-    'oci-foundations': ['Nuevos/Oracle Exam 1Z0-1085-25 Dump.md'],
-    'ai-oficial': ['Nuevos/Oracle Exam 1Z0-1122-25 Dump.md'],
-    'ai-practice': ['Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md'],
-    'ai-skill': ['Nuevos/Skill Check_ OCI AI Foundations.md'],
-    'ai-all': [
-      'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
-      'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
-      'Nuevos/Skill Check_ OCI AI Foundations.md'
-    ],
-    'vector-pro': ['Nuevos/Oracle Exam 1Z0-184-25 Dump.md'],
-    'all-exams': [
-      'Nuevos/Oracle Exam 1Z0-1085-25 Dump.md',
-      'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md',
-      'Nuevos/Practice Exam_ OCI AI Foundations Associate Certification.md',
-      'Nuevos/Skill Check_ OCI AI Foundations.md',
-      'Nuevos/Oracle Exam 1Z0-184-25 Dump.md'
-    ]
-  };
-  const files = fileSets[selected]||[];
-  await Promise.all(files.map(f=> loadExternalMarkdown(f)));
-}
-
-async function loadExternalMarkdown(path){
-  if(EXTERNAL_BANKS[path]) return;
+function getReviewBank() {
   try {
-    const txt = await fetch(path).then(r=> r.ok ? r.text() : '');
-    EXTERNAL_BANKS[path] = parseMarkdownExam(txt, path);
-    runSecurityScan(path, txt);
-  } catch(e){ EXTERNAL_BANKS[path] = []; }
+    const stored = JSON.parse(localStorage.getItem('lastWrongIds') || '[]');
+    if (!stored.length) return [];
+    const all = [...QUESTIONS_OFFICIAL, ...QUESTIONS_OPTIONAL];
+    return all.filter(q => stored.includes(q.id));
+  } catch (e) { return []; }
 }
 
-function parseMarkdownExam(md, source){
-  if(!md) return [];
-  const blocks = md.split(/\n#### /).slice(1).map(b=>'#### '+b.trim());
-  const questions = [];
-  const maxOfficialId = Math.max(0, ...QUESTIONS_OFFICIAL.map(q => q.id));
-  let idCounter = maxOfficialId + 1; // IDs externos empiezan después del máximo oficial
-  blocks.forEach(b=>{
-    const lines = b.split(/\n/);
-    const qLine = lines[0].replace(/^####\s*Q\.?\s*/,'').trim();
-    const opts = [];
-    let answerIndex = -1;
-    lines.slice(1).forEach(l=>{
-      const m = /^- \[(x| )\]\s*(.+)$/i.exec(l.trim());
-      if(m){
-        const correct = m[1].toLowerCase()==='x';
-        const text = m[2].replace(/✅|\u2705/g,'').trim();
-        opts.push(text);
-        if(correct) answerIndex = opts.length-1;
-      }
-    });
-    if(!qLine || !opts.length || answerIndex<0) return;
-    const explanation = extractInlineExplanation(lines);
-    questions.push({id:idCounter++, q:qLine, o:opts, a:answerIndex, e:explanation||'Sin explicación.', exam:source, raw:b});
-  });
-  return questions;
-}
-
-function extractInlineExplanation(lines){
-  const expl = lines.filter(l=>/^>\s*/.test(l)).map(l=> l.replace(/^>\s*/,'').trim()).join(' ');
-  return expl || '';
-}
-
-function runSecurityScan(path, txt){
-  const findings = [];
-  if(/<script\b/i.test(txt)) findings.push('Etiqueta <script>');
-  const longBase64 = txt.match(/[A-Za-z0-9+\/]{80,}=*/g);
-  if(longBase64) findings.push('Cadena base64 larga');
-  if(/javascript:|onerror=|onload=/i.test(txt)) findings.push('Atributo JS inline');
-  if(findings.length){ console.warn('Scan seguridad', path, findings); }
-}
-
-function startQuiz(){
-  score = 0; wrong = []; skipped = []; marked = []; currentIndex = 0; answered = false; secondPass = false;
+function startQuiz() {
+  score = 0; wrong = []; answered = false; feedbackEl.textContent = '';
   const mode = modeSelect.value;
-  let externalLoad = Promise.resolve();
-  if(examSelect && examSelect.value !== 'none') externalLoad = ensureExternalBanks();
-  externalLoad.then(()=>{
-    let bank = getSelectedBank();
-    if (mode === 'review'){
-      const stored = JSON.parse(localStorage.getItem('lastWrongIds')||'[]');
-      bank = bank.filter(q=> stored.includes(q.id));
-      if (!bank.length){
-        alert('No hay preguntas previas falladas para repaso en este banco.');
-        return;
-      }
-    }
-    order = [...bank];
-    if (mode === 'random') shuffle(order);
-    remainingSeconds = totalTimeSeconds;
-    clearInterval(timerInterval);
-    startTimer();
-    quizEl.hidden = false;
-    summaryEl.hidden = true;
-    renderCurrent();
-  });
+  currentBank = mode === 'review' ? getReviewBank() : getBank();
+  if (mode === 'review' && currentBank.length === 0) {
+    alert('No hay preguntas previas falladas almacenadas.');
+    return;
+  }
+  order = [...currentBank];
+  if (mode === 'random') shuffle(order);
+  currentIndex = 0;
+  // Reiniciar timer
+  clearInterval(timerInterval);
+  remainingSeconds = totalTimeSeconds;
+  startTimer();
+  quizEl.hidden = false;
+  summaryEl.hidden = true;
+  renderCurrent();
 }
 
-function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}}
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()* (i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}}
 
-function renderCurrent(){
-  nextBtn.disabled = true; answered = false;
+function renderCurrent() {
+  nextBtn.disabled = true;
+  answered = false;
   const q = order[currentIndex];
-  const answeredCount = currentIndex;
-  const percent = ((answeredCount/order.length)*100).toFixed(1);
-  const stats = `Correctas: ${score} | Incorrectas: ${wrong.length} | Skipped: ${skipped.length} | Marcadas: ${marked.length}`;
-  progressTextEl.textContent = `Progreso: ${answeredCount}/${order.length} (${percent}%)${secondPass ? ' (2ª ronda)' : ''}`;
+  progressEl.textContent = '';
+  const answeredCount = currentIndex; // antes de responder actual
+  const percent = ((answeredCount / order.length) * 100).toFixed(1);
+  progressTextEl.textContent = `Progreso: ${answeredCount}/${order.length} (${percent}%)`;
   progressFillEl.style.width = `${percent}%`;
-  // Extended handling
-  let extendedHTML = '';
-  const extMode = extendedToggle ? extendedToggle.value : 'auto';
-  if (EXTENDED_MAP && EXTENDED_MAP[q.id] && extMode !== 'off'){
-    extendedHTML = `<div class="extended-block"><details open><summary>Enunciado extendido</summary>${EXTENDED_MAP[q.id]}</details></div>`;
-  }
-  questionContainer.innerHTML = `${extendedHTML}<div class="question-short">Q${q.id}: ${q.q}${q.exam?` <span class="badge exam-badge" title="Fuente externa">${shortExamName(q.exam)}</span>`:''}</div>`;
-  optionsEl.innerHTML='';
+  questionContainer.textContent = `Q${q.id}: ${q.q}`;
+  optionsEl.innerHTML = '';
   q.o.forEach((opt,idx)=>{
-    const li=document.createElement('li');
-    const btn=document.createElement('button');
-    btn.textContent=`${String.fromCharCode(65+idx)}. ${opt}`;
-    btn.addEventListener('click',()=>selectOption(idx));
-    li.appendChild(btn); optionsEl.appendChild(li);
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.textContent = `${String.fromCharCode(65+idx)}. ${opt}`;
+    btn.addEventListener('click', ()=> selectOption(idx));
+    li.appendChild(btn);
+    optionsEl.appendChild(li);
   });
-  feedbackEl.className='feedback'; feedbackEl.textContent=stats;
+  feedbackEl.className = 'feedback';
+  feedbackEl.textContent = '';
 }
 
 function selectOption(idx){
   if (answered) return;
   const q = order[currentIndex];
-  answered = true; nextBtn.disabled = false;
+  answered = true;
+  nextBtn.disabled = false;
   if (idx === q.a){
-    score++; feedbackEl.textContent='✔ Correcto'; feedbackEl.classList.add('correct');
+    score++;
+    feedbackEl.textContent = '✔ Correcto';
+    feedbackEl.classList.add('correct');
   } else {
     wrong.push(q);
-    feedbackEl.textContent=`✘ Incorrecto. Correcta: ${String.fromCharCode(65+q.a)}\n${q.e}`;
+    feedbackEl.textContent = `✘ Incorrecto. Correcta: ${String.fromCharCode(65+q.a)}\n${q.e}`;
     feedbackEl.classList.add('incorrect');
   }
 }
 
-// Explicación y salto (X)
-explainBtn.addEventListener('click',()=>{
-  if (answered) return;
+skipBtn.addEventListener('click', ()=>{
+  if (answered) return; // si ya respondió no se salta
   const q = order[currentIndex];
-  skipped.push(q); answered = true; nextBtn.disabled = false;
-  feedbackEl.textContent=`Explicación: ${q.e} (Correcta: ${String.fromCharCode(65+q.a)})`;
-  feedbackEl.className='feedback incorrect';
-});
-// Saltar sin explicación (S)
-skipBtn.addEventListener('click',()=>{
-  if (answered) return;
-  const q = order[currentIndex];
-  skipped.push(q); answered = true; nextBtn.disabled = false;
-  feedbackEl.textContent=`Saltada.`;
-  feedbackEl.className='feedback';
-});
-// Marcar (M)
-markBtn.addEventListener('click',()=>{
-  if (answered) return;
-  const q = order[currentIndex];
-  marked.push(q); answered = true; nextBtn.disabled = false;
-  feedbackEl.textContent=`Marcada para segunda ronda.`;
-  feedbackEl.className='feedback';
+  wrong.push(q); // contar como incorrecta
+  answered = true;
+  nextBtn.disabled = false;
+  feedbackEl.textContent = `Explicación: ${q.e} (Correcta: ${String.fromCharCode(65+q.a)})`;
+  feedbackEl.className = 'feedback incorrect';
 });
 
-nextBtn.addEventListener('click',()=>{
+nextBtn.addEventListener('click', ()=>{
   if (!answered) return;
   currentIndex++;
   if (currentIndex >= order.length){
-    if (!secondPass && marked.length){
-      secondPass = true;
-      order = [...marked];
-      currentIndex = 0;
-      marked = [];
-      renderCurrent();
-    } else {
-      finishQuiz();
-    }
+    finishQuiz();
   } else {
     renderCurrent();
   }
 });
 
 function finishQuiz(){
-  quizEl.hidden = true; summaryEl.hidden = false; clearInterval(timerInterval);
-  const totalResponded = score + wrong.length + skipped.length;
-  const pct = totalResponded?((score/totalResponded)*100).toFixed(1):'0.0';
+  quizEl.hidden = true;
+  summaryEl.hidden = false;
+  const total = order.length;
+  const pct = ((score/total)*100).toFixed(1);
+  clearInterval(timerInterval);
   summaryEl.innerHTML = `<h2>Resumen</h2>
-    <p>Correctas: ${score} | Incorrectas: ${wrong.length} | Skipped: ${skipped.length}</p>
-    <p>Puntuación efectiva: <strong>${score}/${totalResponded}</strong> (${pct}%).</p>`;
+    <p>Puntuación: <strong>${score}/${total}</strong> (${pct}%).</p>`;
   if (wrong.length){
-    const ids = wrong.map(q=>q.id); localStorage.setItem('lastWrongIds', JSON.stringify(ids));
+    const ids = wrong.map(q=>q.id);
+    localStorage.setItem('lastWrongIds', JSON.stringify(ids));
     const list = wrong.map(q=>`<li>Q${q.id} - ${q.q} <span class="badge">Correcta: ${String.fromCharCode(65+q.a)}</span></li>`).join('');
-    summaryEl.innerHTML += `<h3>Incorrectas</h3><ul>${list}</ul><p>Guardadas para repaso.</p>`;
+    summaryEl.innerHTML += `<h3>Preguntas falladas</h3><ul>${list}</ul><p>Guardadas para repaso.</p>`;
   } else {
-    localStorage.setItem('lastWrongIds','[]'); summaryEl.innerHTML += '<p>¡Perfecto! Sin errores.</p>';
-  }
-  if (skipped.length){
-    const listS = skipped.map(q=>`<li>Q${q.id} - ${q.q}</li>`).join('');
-    summaryEl.innerHTML += `<h3>Skipped</h3><ul>${listS}</ul>`;
+    localStorage.setItem('lastWrongIds', '[]');
+    summaryEl.innerHTML += '<p>¡Perfecto! Sin errores.</p>';
   }
   summaryEl.innerHTML += '<p><button id="restartBtn">Reiniciar</button></p>';
-  document.getElementById('restartBtn').addEventListener('click',()=>{quizEl.hidden=true; summaryEl.hidden=true; score=0; wrong=[]; skipped=[]; marked=[];});
+  document.getElementById('restartBtn').addEventListener('click', ()=>{
+    quizEl.hidden = true; summaryEl.hidden = true; score=0; wrong=[]; });
 }
 
 startBtn.addEventListener('click', startQuiz);
+
+// Accesibilidad teclado para opciones (ya son botones)
+// Foco inicial al iniciar
 startBtn.focus();
 
-// Cargar extended inicialmente
-loadExtended();
-
-function startTimer(){ updateTimerDisplay(); timerInterval=setInterval(()=>{remainingSeconds--; if(remainingSeconds<=0){remainingSeconds=0; updateTimerDisplay(); clearInterval(timerInterval); alert('Tiempo agotado. Se cerrará el examen.'); finishQuiz(); return;} updateTimerDisplay();},1000); }
+function startTimer(){
+  updateTimerDisplay();
+  timerInterval = setInterval(()=>{
+    remainingSeconds--;
+    if (remainingSeconds <= 0){
+      remainingSeconds = 0;
+      updateTimerDisplay();
+      clearInterval(timerInterval);
+      alert('Tiempo agotado. Se cerrará el examen.');
+      finishQuiz();
+      return;
+    }
+    updateTimerDisplay();
+  },1000);
+}
 
 function updateTimerDisplay(){
-  const h=Math.floor(remainingSeconds/3600);
-  const m=Math.floor((remainingSeconds%3600)/60);
-  const s=remainingSeconds%60;
-  const pad=v=>v.toString().padStart(2,'0');
-  timeRemainingEl.textContent=`Tiempo restante: ${pad(h)}:${pad(m)}:${pad(s)}`;
-  if (remainingSeconds<=600){ timeRemainingEl.id='timeWarning'; } else { timeRemainingEl.id=''; }
+  const h = Math.floor(remainingSeconds/3600);
+  const m = Math.floor((remainingSeconds%3600)/60);
+  const s = remainingSeconds%60;
+  const pad = v => v.toString().padStart(2,'0');
+  timeRemainingEl.textContent = `Tiempo restante: ${pad(h)}:${pad(m)}:${pad(s)}`;
+  if (remainingSeconds <= 600){ // últimos 10 minutos
+    timeRemainingEl.id = 'timeWarning';
+  } else {
+    timeRemainingEl.id = '';
+  }
 }
+
+// ============================================================================
+// GESTIÓN DE EXÁMENES EXTERNOS
+// ============================================================================
+
+let examsCatalog = null;
+let currentExternalQuestions = [];
+
+// Referencias a nuevos elementos DOM
+const examSourceEl = document.getElementById('examSource');
+const builtinBankEl = document.getElementById('builtinBank');
+const externalExamEl = document.getElementById('externalExam');
+const examSelectEl = document.getElementById('examSelect');
+
+// Cargar catálogo al iniciar
+async function initializeExamsCatalog() {
+  examsCatalog = await loadExamsCatalog();
+  
+  if (!examsCatalog) {
+    console.warn('No se pudo cargar el catálogo de exámenes');
+    examSourceEl.disabled = true;
+    return;
+  }
+  
+  // Poblar selector de exámenes por categoría
+  examSelectEl.innerHTML = '<option value="">-- Seleccione un examen --</option>';
+  
+  // Agrupar por categoría
+  const categories = {};
+  examsCatalog.exams.forEach(exam => {
+    if (!categories[exam.category]) {
+      categories[exam.category] = [];
+    }
+    categories[exam.category].push(exam);
+  });
+  
+  // Crear optgroups
+  Object.keys(categories).sort().forEach(category => {
+    const optgroup = document.createElement('optgroup');
+    optgroup.label = category;
+    
+    categories[category].forEach(exam => {
+      const option = document.createElement('option');
+      option.value = exam.file;
+      option.textContent = `${exam.title} (${exam.questions} preguntas)`;
+      optgroup.appendChild(option);
+    });
+    
+    examSelectEl.appendChild(optgroup);
+  });
+  
+  console.log('✅ Catálogo de exámenes inicializado');
+}
+
+// Manejar cambio de fuente
+examSourceEl.addEventListener('change', () => {
+  const isExternal = examSourceEl.value === 'external';
+  builtinBankEl.hidden = isExternal;
+  externalExamEl.hidden = !isExternal;
+});
+
+// Inicializar al cargar la página
+if (typeof loadExamsCatalog === 'function') {
+  initializeExamsCatalog();
+} else {
+  console.warn('exam-loader.js no está cargado. Funcionalidad de exámenes externos deshabilitada.');
+  examSourceEl.disabled = true;
+}
+
+// Modificar startQuiz para soportar exámenes externos
+const originalStartQuiz = startQuiz;
+startQuiz = async function() {
+  // Si es examen externo, cargar preguntas primero
+  if (examSourceEl.value === 'external') {
+    const selectedFile = examSelectEl.value;
+    
+    if (!selectedFile) {
+      alert('Por favor selecciona un examen');
+      return;
+    }
+    
+    // Mostrar loading
+    startBtn.disabled = true;
+    startBtn.textContent = 'Cargando...';
+    
+    // Cargar examen
+    currentExternalQuestions = await loadExam(selectedFile);
+    
+    if (currentExternalQuestions.length === 0) {
+      alert('Error al cargar el examen. Verifica la consola para más detalles.');
+      startBtn.disabled = false;
+      startBtn.textContent = 'Comenzar';
+      return;
+    }
+    
+    console.log(`✅ Examen externo cargado: ${currentExternalQuestions.length} preguntas`);
+    
+    // Usar preguntas externas
+    pool = currentExternalQuestions.slice();
+    
+    // Continuar con el flujo normal
+    startBtn.textContent = 'Comenzar';
+    startBtn.disabled = false;
+  } else {
+    // Usar preguntas integradas (comportamiento original)
+    currentExternalQuestions = [];
+  }
+  
+  // Llamar a la función original
+  originalStartQuiz();
+};
