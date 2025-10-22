@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test - Exam Loader</title>
+</head>
+<body>
+  <h1>Test del Sistema de Carga de Exámenes</h1>
+  <div id="results"></div>
+  
+  <script src="exam-loader.js"></script>
+  <script>
+    const results = document.getElementById('results');
+    
+    async function runTests() {
+      results.innerHTML = '<p>🔍 Ejecutando pruebas...</p>';
+      
+      // Test 1: Cargar catálogo
+      results.innerHTML += '<h2>Test 1: Cargar Catálogo</h2>';
+      const catalog = await loadExamsCatalog();
+      
+      if (catalog) {
+        results.innerHTML += `<p>✅ Catálogo cargado: ${catalog.exams.length} exámenes</p>`;
+        results.innerHTML += '<ul>';
+        catalog.exams.forEach(exam => {
+          results.innerHTML += `<li>${exam.title} - ${exam.questions} preguntas</li>`;
+        });
+        results.innerHTML += '</ul>';
+      } else {
+        results.innerHTML += '<p>❌ Error al cargar catálogo</p>';
+        return;
+      }
+      
+      // Test 2: Cargar un examen de muestra
+      results.innerHTML += '<h2>Test 2: Cargar Examen de Muestra</h2>';
+      const sampleExam = catalog.exams[0];
+      results.innerHTML += `<p>Cargando: ${sampleExam.title}...</p>`;
+      
+      const questions = await loadExam(sampleExam.file);
+      
+      if (questions.length > 0) {
+        results.innerHTML += `<p>✅ Examen cargado: ${questions.length} preguntas</p>`;
+        results.innerHTML += '<h3>Primera pregunta:</h3>';
+        const q = questions[0];
+        results.innerHTML += `<p><strong>Q${q.id}:</strong> ${q.q}</p>`;
+        results.innerHTML += '<ul>';
+        q.o.forEach((opt, i) => {
+          const marker = i === q.a ? '✅' : '❌';
+          results.innerHTML += `<li>${marker} ${opt}</li>`;
+        });
+        results.innerHTML += '</ul>';
+        results.innerHTML += `<p><em>Explicación: ${q.e}</em></p>`;
+      } else {
+        results.innerHTML += '<p>❌ Error al cargar examen</p>';
+      }
+      
+      results.innerHTML += '<h2>✨ Pruebas completadas</h2>';
+    }
+    
+    runTests();
+  </script>
+</body>
+</html>

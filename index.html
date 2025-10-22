@@ -9,44 +9,29 @@
 <body>
   <header>
     <h1>OCI Foundations AI Quiz</h1>
-    <nav class="top-nav" aria-label="Navegación principal">
-      <a href="README.md" target="_blank">📘 README</a>
-      <a href="documentacion.md" target="_blank">🧠 Documentación</a>
-      <a href="preguntas_oficiales.md" target="_blank">📄 Banco Oficial</a>
-      <a href="preguntas_completas.md" target="_blank">🗂️ Banco Completo (50)</a>
-    </nav>
     <p>Selecciona el banco y el modo para comenzar. Usa este quiz en tu navegador.</p>
   </header>
 
   <section id="controls">
     <div class="control-group">
-      <label for="examSelect">Examen / Fuente:</label>
-      <select id="examSelect" title="Selecciona fuente externa o usar banco curado">
-        <option value="none">Banco curado (oficial/opcional)</option>
-        <optgroup label="OCI Foundations">
-          <option value="oci-foundations">OCI Foundations (1Z0-1085-25)</option>
-        </optgroup>
-        <optgroup label="AI Foundations">
-          <option value="ai-oficial">AI Foundations Oficial (1Z0-1122-25)</option>
-          <option value="ai-practice">AI Foundations Practice</option>
-          <option value="ai-skill">AI Foundations Skill Check</option>
-          <option value="ai-all">AI Foundations (Oficial + Practice + Skill)</option>
-        </optgroup>
-        <optgroup label="Vector Search">
-          <option value="vector-pro">Vector Search Professional (1Z0-184-25)</option>
-        </optgroup>
-        <optgroup label="Combinados">
-          <option value="all-exams">Todos externos (Found+AI+Vector)</option>
-        </optgroup>
+      <label for="examSource">Fuente de preguntas:</label>
+      <select id="examSource">
+        <option value="builtin">Preguntas integradas (75)</option>
+        <option value="external">Exámenes externos</option>
       </select>
     </div>
-    <div class="control-group">
+    <div class="control-group" id="builtinBank">
       <label for="bankSelect">Banco de preguntas:</label>
       <select id="bankSelect">
-  <option value="official">Oficiales (41)</option>
-  <option value="optional">Opcionales (9)</option>
-  <option value="both">Ambas (50)</option>
-  <option value="complete">Completas (50)</option>
+        <option value="official">Oficiales (41)</option>
+        <option value="optional">Opcionales (34)</option>
+        <option value="both">Ambas (75)</option>
+      </select>
+    </div>
+    <div class="control-group" id="externalExam" hidden>
+      <label for="examSelect">Seleccionar examen:</label>
+      <select id="examSelect">
+        <option value="">Cargando exámenes...</option>
       </select>
     </div>
     <div class="control-group">
@@ -57,16 +42,7 @@
         <option value="review">Repasar falladas previas</option>
       </select>
     </div>
-    <div class="control-group">
-      <label for="extendedToggle">Mostrar enunciado extendido:</label>
-      <select id="extendedToggle">
-        <option value="auto">Auto (si existe)</option>
-        <option value="on">Siempre (forzar si hay)</option>
-        <option value="off">Nunca</option>
-      </select>
-    </div>
     <button id="startBtn">Comenzar</button>
-    <button id="openDocsBtn" type="button" title="Abrir documentación y glosario">📘 Docs / Glosario</button>
   </section>
 
   <main id="quiz" aria-live="polite" hidden>
@@ -82,46 +58,17 @@
     <ul id="options" class="options"></ul>
     <div id="feedback" class="feedback"></div>
     <div class="actions">
-  <button id="explainBtn" title="Ver explicación y saltar (X)">Explicación (X)</button>
-  <button id="skipBtn" title="Saltar sin explicación (S)">Saltar (S)</button>
-  <button id="markBtn" title="Marcar para segunda ronda (M)">Marcar (M)</button>
+      <button id="skipBtn" title="Mostrar explicación y saltar">Ver explicación / Saltar</button>
       <button id="nextBtn" disabled>Siguiente</button>
     </div>
   </main>
 
   <section id="summary" hidden></section>
 
-  <!-- Modal Documentación / Glosario -->
-  <div id="docsModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" hidden>
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modalTitle">Documentación & Glosario</h2>
-        <button id="closeModalBtn" aria-label="Cerrar">✖</button>
-      </div>
-      <div class="modal-toolbar">
-        <input type="text" id="glossSearch" placeholder="Buscar término del glosario..." aria-label="Buscar término" />
-        <select id="glossCategory" aria-label="Filtrar por categoría">
-          <option value="">Todas categorías</option>
-          <option value="ML">ML</option>
-          <option value="Infra">Infra</option>
-          <option value="Prompting">Prompting</option>
-        </select>
-        <span id="searchCount" aria-live="polite"></span>
-      </div>
-      <div class="modal-body">
-        <div id="glossaryResults"></div>
-        <div class="docs-wrapper">
-          <nav id="docsIndex" aria-label="Índice documentación"></nav>
-          <article id="docsContent" class="docs-content"></article>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <footer>
-    <p>Controles: A-D responder | Explicación (X) | Saltar (S) | Marcar (M). Resultados y fallos se guardan en localStorage.</p>
-    <p><small>Multi-exam selector experimental: carga y parsea Markdown externo en tiempo real, sin modificar el texto original.</small></p>
+    <p>Resultados almacenados localmente (localStorage). No se envían datos.</p>
   </footer>
+  <script src="exam-loader.js"></script>
   <script src="quiz.js"></script>
 </body>
 </html>
