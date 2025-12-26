@@ -225,7 +225,7 @@ function selectOption(idx){
   nextBtn.disabled = false;
   if (idx === q.a){
     score++;
-    feedbackEl.textContent = '✔ Correcto';
+    feedbackEl.textContent = `✔ Correcto, es la ${formatCorrectAnswer(q)}`;
     feedbackEl.classList.add('correct');
   } else {
     wrong.push(q);
@@ -264,7 +264,7 @@ nextBtn.addEventListener('click', ()=>{
 
     if (isCorrect) {
       score++;
-      feedbackEl.textContent = '✔ Correcto';
+      feedbackEl.textContent = `✔ Correcto, ${correct.length > 1 ? 'son las' : 'es la'} ${formatCorrectAnswer(q)}`;
       feedbackEl.classList.add('correct');
     } else {
       wrong.push(q);
