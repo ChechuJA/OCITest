@@ -1,11 +1,42 @@
 {
   "exams": [
     {
+      "id": "oci-ai-builtin-official",
+      "title": "OCI AI Foundations (Integradas Oficiales)",
+      "code": "",
+      "file": "builtin:official",
+      "questions": 41,
+      "provider": "OCI",
+      "category": "AI",
+      "description": "Preguntas integradas oficiales del banco OCI AI"
+    },
+    {
+      "id": "oci-ai-builtin-optional",
+      "title": "OCI AI Foundations (Integradas Opcionales)",
+      "code": "",
+      "file": "builtin:optional",
+      "questions": 34,
+      "provider": "OCI",
+      "category": "AI",
+      "description": "Preguntas integradas opcionales del banco OCI AI"
+    },
+    {
+      "id": "oci-ai-builtin-both",
+      "title": "OCI AI Foundations (Integradas Completas)",
+      "code": "",
+      "file": "builtin:both",
+      "questions": 75,
+      "provider": "OCI",
+      "category": "AI",
+      "description": "Todas las preguntas integradas del banco OCI AI"
+    },
+    {
       "id": "oci-ai-foundations",
       "title": "OCI 2025 AI Foundations Associate",
       "code": "1Z0-1122-25",
       "file": "Nuevos/OCI AI Foundations 1Z0-1122-25.md",
       "questions": 44,
+      "provider": "OCI",
       "category": "AI",
       "description": "Oracle Cloud Infrastructure AI Foundations certification exam"
     },
@@ -15,6 +46,7 @@
       "code": "1Z0-184-25",
       "file": "Nuevos/AI Vector Search Professional 1Z0-184-25.md",
       "questions": 50,
+      "provider": "OCI",
       "category": "AI",
       "description": "Oracle AI Vector Search with RAG and embeddings"
     },
@@ -24,6 +56,7 @@
       "code": "1Z0-1085-25",
       "file": "Nuevos/OCI Foundations 1Z0-1085-25.md",
       "questions": 39,
+      "provider": "OCI",
       "category": "Infrastructure",
       "description": "Oracle Cloud Infrastructure Foundations - curated version"
     },
@@ -33,6 +66,7 @@
       "code": "1Z0-1085-25",
       "file": "Nuevos/OCI Foundations 1Z0-1085-25 (Original).md",
       "questions": 47,
+      "provider": "OCI",
       "category": "Infrastructure",
       "description": "Oracle Cloud Infrastructure Foundations - complete version"
     },
@@ -42,6 +76,7 @@
       "code": "1Z0-909",
       "file": "Nuevos/MySQL Database Developer 1Z0-909.md",
       "questions": 77,
+      "provider": "OCI",
       "category": "Database",
       "description": "MySQL 8.0 Database Developer certification"
     },
@@ -51,8 +86,29 @@
       "code": "1Z0-922",
       "file": "Nuevos/MySQL Implementation 1Z0-922.md",
       "questions": 52,
+      "provider": "OCI",
       "category": "Database",
       "description": "MySQL Implementation and Administration"
+    },
+    {
+      "id": "hashicorp-terraform",
+      "title": "HashiCorp Terraform",
+      "code": "",
+      "file": "Nuevos/HashiCorp Terraform.md",
+      "questions": 0,
+      "provider": "HashiCorp",
+      "category": "Infrastructure",
+      "description": "Pendiente de importar (Word)"
+    },
+    {
+      "id": "github-gh-300",
+      "title": "GitHub Copilot (GH-300)",
+      "code": "GH-300",
+      "file": "Descargables/GH-300/gh300-questions.json",
+      "questions": 129,
+      "provider": "GitHub",
+      "category": "AI",
+      "description": "Pendiente de importar (JSON)"
     }
   ],
   "categories": [
@@ -70,12 +126,17 @@
       "id": "Database",
       "name": "Database",
       "description": "MySQL, SQL, Database Administration and Development"
+    },
+    {
+      "id": "DevOps",
+      "name": "DevOps",
+      "description": "CI/CD, automation, and developer workflows"
     }
   ],
   "metadata": {
     "version": "1.0.0",
-    "totalExams": 6,
-    "totalQuestions": 309,
-    "lastUpdated": "2025-10-22"
+    "totalExams": 11,
+    "totalQuestions": 459,
+    "lastUpdated": "2025-12-26"
   }
 }

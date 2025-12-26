@@ -107,9 +107,38 @@ let totalTimeSeconds = 7200; // 2 horas
 let remainingSeconds = totalTimeSeconds;
 let timerInterval = null;
 
+// Si se selecciona un examen externo, este array sustituye a los bancos integrados.
+let externalBankOverride = null;
+
+// Contexto del run actual para evitar mezclar estados (p.ej. repaso de falladas).
+let currentRun = { source: 'builtin', externalFile: null };
+
+let multiSelectedIndices = [];
+
+function isMultiAnswerQuestion(q) {
+  return q && Array.isArray(q.a);
+}
+
+function formatCorrectAnswer(q) {
+  if (!q) return '';
+  if (Array.isArray(q.a)) {
+    return q.a.map(i => String.fromCharCode(65 + i)).join(', ');
+  }
+  if (typeof q.a === 'number' && q.a >= 0) {
+    return String.fromCharCode(65 + q.a);
+  }
+  return '';
+}
+
 function getBank() {
-  if (bankSelect.value === 'official') return [...QUESTIONS_OFFICIAL];
-  if (bankSelect.value === 'optional') return [...QUESTIONS_OPTIONAL];
+  console.log('🔎 getBank llamado, externalBankOverride:', externalBankOverride ? externalBankOverride.length : 'null');
+  
+  if (Array.isArray(externalBankOverride) && externalBankOverride.length) {
+    console.log('✅ Devolviendo banco externo/catalog con', externalBankOverride.length, 'preguntas');
+    return [...externalBankOverride];
+  }
+  
+  console.log('⚠️ getBank fallback a integrado (no debería llegar aquí con el nuevo flujo)');
   return [...QUESTIONS_OFFICIAL, ...QUESTIONS_OPTIONAL];
 }
 
@@ -148,6 +177,9 @@ function renderCurrent() {
   nextBtn.disabled = true;
   answered = false;
   const q = order[currentIndex];
+  const isMulti = isMultiAnswerQuestion(q);
+  multiSelectedIndices = [];
+  nextBtn.textContent = isMulti ? 'Comprobar' : 'Siguiente';
   progressEl.textContent = '';
   const answeredCount = currentIndex; // antes de responder actual
   const percent = ((answeredCount / order.length) * 100).toFixed(1);
@@ -170,6 +202,25 @@ function renderCurrent() {
 function selectOption(idx){
   if (answered) return;
   const q = order[currentIndex];
+
+  // Preguntas con múltiples respuestas correctas: permitir selección múltiple
+  if (isMultiAnswerQuestion(q)) {
+    const exists = multiSelectedIndices.includes(idx);
+    if (exists) {
+      multiSelectedIndices = multiSelectedIndices.filter(i => i !== idx);
+    } else {
+      multiSelectedIndices = [...multiSelectedIndices, idx].sort((a, b) => a - b);
+    }
+
+    // Reflejar selección (clase CSS) sin introducir nuevos estilos obligatorios.
+    Array.from(optionsEl.querySelectorAll('button')).forEach((buttonEl, buttonIdx) => {
+      buttonEl.classList.toggle('selected', multiSelectedIndices.includes(buttonIdx));
+    });
+
+    nextBtn.disabled = multiSelectedIndices.length === 0;
+    return;
+  }
+
   answered = true;
   nextBtn.disabled = false;
   if (idx === q.a){
@@ -178,7 +229,7 @@ function selectOption(idx){
     feedbackEl.classList.add('correct');
   } else {
     wrong.push(q);
-    feedbackEl.textContent = `✘ Incorrecto. Correcta: ${String.fromCharCode(65+q.a)}\n${q.e}`;
+    feedbackEl.textContent = `✘ Incorrecto. Correcta: ${formatCorrectAnswer(q)}\n${q.e}`;
     feedbackEl.classList.add('incorrect');
   }
 }
@@ -189,11 +240,40 @@ skipBtn.addEventListener('click', ()=>{
   wrong.push(q); // contar como incorrecta
   answered = true;
   nextBtn.disabled = false;
-  feedbackEl.textContent = `Explicación: ${q.e} (Correcta: ${String.fromCharCode(65+q.a)})`;
+  feedbackEl.textContent = `Explicación: ${q.e} (Correcta: ${formatCorrectAnswer(q)})`;
   feedbackEl.className = 'feedback incorrect';
+  nextBtn.textContent = 'Siguiente';
 });
 
 nextBtn.addEventListener('click', ()=>{
+  const q = order[currentIndex];
+
+  // En multi-respuesta, el botón "Comprobar" valida antes de avanzar.
+  if (!answered && isMultiAnswerQuestion(q)) {
+    answered = true;
+    nextBtn.textContent = 'Siguiente';
+
+    const selected = [...multiSelectedIndices].sort((a, b) => a - b);
+    const correct = [...q.a].sort((a, b) => a - b);
+    const isCorrect = selected.length === correct.length && selected.every((v, i) => v === correct[i]);
+
+    // Deshabilitar cambios tras comprobar
+    Array.from(optionsEl.querySelectorAll('button')).forEach(buttonEl => {
+      buttonEl.disabled = true;
+    });
+
+    if (isCorrect) {
+      score++;
+      feedbackEl.textContent = '✔ Correcto';
+      feedbackEl.classList.add('correct');
+    } else {
+      wrong.push(q);
+      feedbackEl.textContent = `✘ Incorrecto. Correctas: ${formatCorrectAnswer(q)}\n${q.e}`;
+      feedbackEl.classList.add('incorrect');
+    }
+    return;
+  }
+
   if (!answered) return;
   currentIndex++;
   if (currentIndex >= order.length){
@@ -213,11 +293,22 @@ function finishQuiz(){
     <p>Puntuación: <strong>${score}/${total}</strong> (${pct}%).</p>`;
   if (wrong.length){
     const ids = wrong.map(q=>q.id);
-    localStorage.setItem('lastWrongIds', JSON.stringify(ids));
-    const list = wrong.map(q=>`<li>Q${q.id} - ${q.q} <span class="badge">Correcta: ${String.fromCharCode(65+q.a)}</span></li>`).join('');
-    summaryEl.innerHTML += `<h3>Preguntas falladas</h3><ul>${list}</ul><p>Guardadas para repaso.</p>`;
+    // Importante: no sobrescribir el repaso integrado con IDs de exámenes externos
+    // (los IDs suelen empezar en 1 y podrían coincidir con el banco integrado).
+    if (currentRun.source === 'builtin') {
+      localStorage.setItem('lastWrongIds', JSON.stringify(ids));
+    } else {
+      localStorage.setItem('lastWrongIdsExternal', JSON.stringify({ file: currentRun.externalFile, ids }));
+    }
+    const list = wrong.map(q=>`<li>Q${q.id} - ${q.q} <span class="badge">Correcta: ${formatCorrectAnswer(q)}</span></li>`).join('');
+    summaryEl.innerHTML += `<h3>Preguntas falladas</h3><ul>${list}</ul>`;
+    summaryEl.innerHTML += currentRun.source === 'builtin'
+      ? `<p>Guardadas para repaso.</p>`
+      : `<p>Nota: En exámenes externos no se usan para el modo "Repasar falladas".</p>`;
   } else {
-    localStorage.setItem('lastWrongIds', '[]');
+    if (currentRun.source === 'builtin') {
+      localStorage.setItem('lastWrongIds', '[]');
+    }
     summaryEl.innerHTML += '<p>¡Perfecto! Sin errores.</p>';
   }
   summaryEl.innerHTML += '<p><button id="restartBtn">Reiniciar</button></p>';
@@ -225,7 +316,7 @@ function finishQuiz(){
     quizEl.hidden = true; summaryEl.hidden = true; score=0; wrong=[]; });
 }
 
-startBtn.addEventListener('click', startQuiz);
+// NO agregar listener aquí todavía, lo haremos después del wrap
 
 // Accesibilidad teclado para opciones (ya son botones)
 // Foco inicial al iniciar
@@ -261,16 +352,12 @@ function updateTimerDisplay(){
 }
 
 // ============================================================================
-// GESTIÓN DE EXÁMENES EXTERNOS
+// GESTIÓN DE CATÁLOGO Y SELECCIÓN DE EXÁMENES
 // ============================================================================
 
 let examsCatalog = null;
-let currentExternalQuestions = [];
-
-// Referencias a nuevos elementos DOM
-const examSourceEl = document.getElementById('examSource');
-const builtinBankEl = document.getElementById('builtinBank');
-const externalExamEl = document.getElementById('externalExam');
+let examsLoaded = new Map();
+const providerSelectEl = document.getElementById('providerSelect');
 const examSelectEl = document.getElementById('examSelect');
 
 // Cargar catálogo al iniciar
@@ -279,94 +366,153 @@ async function initializeExamsCatalog() {
   
   if (!examsCatalog) {
     console.warn('No se pudo cargar el catálogo de exámenes');
-    examSourceEl.disabled = true;
+    providerSelectEl.disabled = true;
+    examSelectEl.disabled = true;
     return;
   }
   
-  // Poblar selector de exámenes por categoría
+  // Extraer proveedores únicos y ordenar con GitHub/HashiCorp primero (prioritarios)
+  const providersSet = new Set((examsCatalog.exams || []).map(e => e.provider || 'Otros'));
+  const priority = ['GitHub', 'HashiCorp'];
+  const providers = [
+    ...priority.filter(p => providersSet.has(p)),
+    ...[...providersSet].filter(p => !priority.includes(p)).sort()
+  ];
+  
+  providerSelectEl.innerHTML = '<option value="">-- Seleccione un proveedor --</option>';
+  providers.forEach(provider => {
+    const option = document.createElement('option');
+    option.value = provider;
+    option.textContent = provider;
+    providerSelectEl.appendChild(option);
+  });
+  
+  console.log('✅ Catálogo cargado:', examsCatalog.exams.length, 'exámenes,', providers.length, 'proveedores');
+}
+
+// Manejar cambio de proveedor
+providerSelectEl.addEventListener('change', () => {
+  const provider = providerSelectEl.value;
+  
+  if (!provider) {
+    examSelectEl.disabled = true;
+    examSelectEl.innerHTML = '<option value="">-- Primero seleccione un proveedor --</option>';
+    return;
+  }
+  
+  // Filtrar exámenes del proveedor seleccionado
+  let exams = (examsCatalog.exams || []).filter(e => (e.provider || 'Otros') === provider);
+  
+  // Para OCI: ordenar con "Integradas" primero (builtin:*), luego el resto
+  if (provider === 'OCI') {
+    const builtin = exams.filter(e => e.file.startsWith('builtin:'));
+    const external = exams.filter(e => !e.file.startsWith('builtin:')).sort((a, b) => a.title.localeCompare(b.title));
+    exams = [...builtin, ...external];
+  } else {
+    exams.sort((a, b) => a.title.localeCompare(b.title));
+  }
+  
+  examSelectEl.disabled = false;
   examSelectEl.innerHTML = '<option value="">-- Seleccione un examen --</option>';
   
-  // Agrupar por categoría
-  const categories = {};
-  examsCatalog.exams.forEach(exam => {
-    if (!categories[exam.category]) {
-      categories[exam.category] = [];
-    }
-    categories[exam.category].push(exam);
+  exams.forEach(exam => {
+    const option = document.createElement('option');
+    option.value = exam.file;
+    option.dataset.examId = exam.id;
+    
+    const parts = [exam.title];
+    if (exam.code) parts.push(exam.code);
+    if (exam.category) parts.push(exam.category);
+    parts.push(`${exam.questions} preguntas`);
+    if (exam.questions === 0) parts.push('⏳ pendiente');
+    
+    option.textContent = parts.join(' — ');
+    examSelectEl.appendChild(option);
   });
   
-  // Crear optgroups
-  Object.keys(categories).sort().forEach(category => {
-    const optgroup = document.createElement('optgroup');
-    optgroup.label = category;
-    
-    categories[category].forEach(exam => {
-      const option = document.createElement('option');
-      option.value = exam.file;
-      option.textContent = `${exam.title} (${exam.questions} preguntas)`;
-      optgroup.appendChild(option);
-    });
-    
-    examSelectEl.appendChild(optgroup);
-  });
-  
-  console.log('✅ Catálogo de exámenes inicializado');
-}
-
-// Manejar cambio de fuente
-examSourceEl.addEventListener('change', () => {
-  const isExternal = examSourceEl.value === 'external';
-  builtinBankEl.hidden = isExternal;
-  externalExamEl.hidden = !isExternal;
+  console.log('📂 Proveedor seleccionado:', provider, '→', exams.length, 'exámenes disponibles');
 });
 
-// Inicializar al cargar la página
-if (typeof loadExamsCatalog === 'function') {
-  initializeExamsCatalog();
-} else {
-  console.warn('exam-loader.js no está cargado. Funcionalidad de exámenes externos deshabilitada.');
-  examSourceEl.disabled = true;
-}
-
-// Modificar startQuiz para soportar exámenes externos
+// Modificar startQuiz para cargar desde catálogo
 const originalStartQuiz = startQuiz;
 startQuiz = async function() {
-  // Si es examen externo, cargar preguntas primero
-  if (examSourceEl.value === 'external') {
-    const selectedFile = examSelectEl.value;
+  const selectedFile = examSelectEl.value;
+  console.log('🔍 startQuiz invocado, archivo:', selectedFile);
+  
+  if (!selectedFile) {
+    alert('Por favor selecciona un examen');
+    return;
+  }
+  
+  const selectedExam = (examsCatalog.exams || []).find(e => e.file === selectedFile);
+  if (!selectedExam) {
+    alert('Examen no encontrado en el catálogo');
+    return;
+  }
+  
+  if (selectedExam.questions === 0) {
+    alert('Este examen está pendiente de importar. Pásame el Word/JSON y lo integro sin inventar preguntas.');
+    return;
+  }
+
+  if (modeSelect.value === 'review') {
+    alert('El modo "Repasar falladas" solo aplica a las preguntas integradas por ahora.');
+    return;
+  }
+
+  // Mostrar loading
+  startBtn.disabled = true;
+  startBtn.textContent = 'Cargando...';
+  
+  // Cargar examen (o usar cache si ya lo tenemos)
+  let questions;
+  
+  if (selectedFile.startsWith('builtin:')) {
+    const bankType = selectedFile.split(':')[1];
+    console.log('📝 Cargando banco integrado:', bankType);
     
-    if (!selectedFile) {
-      alert('Por favor selecciona un examen');
-      return;
-    }
+    if (bankType === 'official') questions = [...QUESTIONS_OFFICIAL];
+    else if (bankType === 'optional') questions = [...QUESTIONS_OPTIONAL];
+    else questions = [...QUESTIONS_OFFICIAL, ...QUESTIONS_OPTIONAL];
     
-    // Mostrar loading
-    startBtn.disabled = true;
-    startBtn.textContent = 'Cargando...';
+    currentRun = { source: 'builtin', externalFile: selectedFile };
+  } else {
+    console.log('📂 Cargando archivo externo:', selectedFile);
+    questions = await loadExam(selectedFile);
     
-    // Cargar examen
-    currentExternalQuestions = await loadExam(selectedFile);
-    
-    if (currentExternalQuestions.length === 0) {
+    if (questions.length === 0) {
       alert('Error al cargar el examen. Verifica la consola para más detalles.');
       startBtn.disabled = false;
       startBtn.textContent = 'Comenzar';
       return;
     }
     
-    console.log(`✅ Examen externo cargado: ${currentExternalQuestions.length} preguntas`);
-    
-    // Usar preguntas externas
-    pool = currentExternalQuestions.slice();
-    
-    // Continuar con el flujo normal
-    startBtn.textContent = 'Comenzar';
-    startBtn.disabled = false;
-  } else {
-    // Usar preguntas integradas (comportamiento original)
-    currentExternalQuestions = [];
+    currentRun = { source: 'external', externalFile: selectedFile };
   }
   
-  // Llamar a la función original
+  console.log(`✅ Examen cargado: ${questions.length} preguntas`);
+  console.log('📊 Primera pregunta (muestra):', questions[0]);
+  
+  externalBankOverride = questions;
+  console.log('✅ externalBankOverride configurado con', externalBankOverride.length, 'preguntas');
+  
+  // Continuar con el flujo normal
+  startBtn.textContent = 'Comenzar';
+  startBtn.disabled = false;
+  
+  console.log('🚀 Llamando a originalStartQuiz()');
   originalStartQuiz();
 };
+
+// Inicializar al cargar la página
+if (typeof loadExamsCatalog === 'function') {
+  initializeExamsCatalog();
+} else {
+  console.warn('exam-loader.js no está cargado.');
+  providerSelectEl.disabled = true;
+  examSelectEl.disabled = true;
+}
+
+// CRÍTICO: Agregar el event listener DESPUÉS del wrap para que use la función correcta
+startBtn.addEventListener('click', startQuiz);
+console.log('✅ Event listener configurado para startBtn');

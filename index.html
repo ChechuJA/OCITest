@@ -2,36 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>OCI Foundations AI Quiz</title>
+  <title>Quiz de Certificaciones</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>OCI Foundations AI Quiz</h1>
-    <p>Selecciona el banco y el modo para comenzar. Usa este quiz en tu navegador.</p>
+    <h1>Quiz de Certificaciones</h1>
+    <p>Selecciona el proveedor, examen y modo para comenzar.</p>
   </header>
 
   <section id="controls">
     <div class="control-group">
-      <label for="examSource">Fuente de preguntas:</label>
-      <select id="examSource">
-        <option value="builtin">Preguntas integradas (75)</option>
-        <option value="external">Exámenes externos</option>
+      <label for="providerSelect">Proveedor:</label>
+      <select id="providerSelect">
+        <option value="">-- Seleccione un proveedor --</option>
       </select>
     </div>
-    <div class="control-group" id="builtinBank">
-      <label for="bankSelect">Banco de preguntas:</label>
-      <select id="bankSelect">
-        <option value="official">Oficiales (41)</option>
-        <option value="optional">Opcionales (34)</option>
-        <option value="both">Ambas (75)</option>
-      </select>
-    </div>
-    <div class="control-group" id="externalExam" hidden>
-      <label for="examSelect">Seleccionar examen:</label>
-      <select id="examSelect">
-        <option value="">Cargando exámenes...</option>
+    <div class="control-group">
+      <label for="examSelect">Examen:</label>
+      <select id="examSelect" disabled>
+        <option value="">-- Primero seleccione un proveedor --</option>
       </select>
     </div>
     <div class="control-group">
@@ -66,7 +57,7 @@
   <section id="summary" hidden></section>
 
   <footer>
-    <p>Resultados almacenados localmente (localStorage). No se envían datos.</p>
+    <p>Resultados almacenados localmente. No se envían datos.</p>
   </footer>
   <script src="exam-loader.js"></script>
   <script src="quiz.js"></script>

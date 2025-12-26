@@ -74,6 +74,61 @@ function parseMarkdownExam(markdownText) {
 }
 
 /**
+ * Parsea un examen en formato JSON.
+ * Formato esperado (por pregunta):
+ * {
+ *   id: number,
+ *   question: string,
+ *   answers: [{ key: "A", text: "..." }, ...],
+ *   correctKeys: ["B", "C"]
+ * }
+ */
+function parseJsonExam(jsonData) {
+    if (!Array.isArray(jsonData)) return [];
+
+    return jsonData
+        .map((item, index) => {
+            const questionText = (item && typeof item.question === 'string') ? item.question.trim() : '';
+            const answers = Array.isArray(item && item.answers) ? item.answers : [];
+            const correctKeys = Array.isArray(item && item.correctKeys) ? item.correctKeys : [];
+
+            const orderedAnswers = answers
+                .map(a => ({
+                    key: (a && a.key != null) ? String(a.key).trim() : '',
+                    text: (a && typeof a.text === 'string') ? a.text.trim() : ''
+                }))
+                .filter(a => a.key && a.text)
+                .sort((a, b) => a.key.localeCompare(b.key));
+
+            const options = orderedAnswers.map(a => a.text);
+
+            const keyToIndex = new Map(orderedAnswers.map((a, i) => [a.key.toUpperCase(), i]));
+            const correctIndices = correctKeys
+                .map(k => keyToIndex.get(String(k).trim().toUpperCase()))
+                .filter(i => typeof i === 'number');
+
+            // a puede ser number (una correcta) o array (múltiples correctas)
+            let a;
+            if (correctIndices.length <= 1) {
+                a = (correctIndices.length === 1) ? correctIndices[0] : -1;
+            } else {
+                a = Array.from(new Set(correctIndices)).sort((x, y) => x - y);
+            }
+
+            return {
+                id: (item && typeof item.id === 'number') ? item.id : (index + 1),
+                q: questionText,
+                o: options,
+                a,
+                e: (item && typeof item.explanation === 'string' && item.explanation.trim())
+                    ? item.explanation.trim()
+                    : 'Sin explicación disponible'
+            };
+        })
+        .filter(q => q.q && Array.isArray(q.o) && q.o.length);
+}
+
+/**
  * Carga un examen desde un archivo markdown
  */
 async function loadExam(filePath) {
@@ -82,8 +137,10 @@ async function loadExam(filePath) {
         if (!response.ok) {
             throw new Error(`Error al cargar ${filePath}: ${response.status}`);
         }
-        const text = await response.text();
-        const questions = parseMarkdownExam(text);
+        const isJson = /\.json(\?.*)?$/i.test(filePath);
+        const questions = isJson
+            ? parseJsonExam(await response.json())
+            : parseMarkdownExam(await response.text());
         
         console.log(`✅ Cargado: ${filePath} (${questions.length} preguntas)`);
         return questions;
@@ -113,5 +170,5 @@ async function loadExamsCatalog() {
 
 // Exportar funciones
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { parseMarkdownExam, loadExam, loadExamsCatalog };
+    module.exports = { parseMarkdownExam, parseJsonExam, loadExam, loadExamsCatalog };
 }
