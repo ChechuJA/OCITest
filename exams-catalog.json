@@ -92,13 +92,13 @@
     },
     {
       "id": "hashicorp-terraform",
-      "title": "HashiCorp Terraform",
-      "code": "",
-      "file": "Nuevos/HashiCorp Terraform.md",
-      "questions": 0,
+      "title": "HashiCorp Terraform Associate",
+      "code": "003",
+      "file": "Descargables/Terraform/terraform-questions.json",
+      "questions": 378,
       "provider": "HashiCorp",
       "category": "Infrastructure",
-      "description": "Pendiente de importar (Word)"
+      "description": "HashiCorp Certified: Terraform Associate certification"
     },
     {
       "id": "github-gh-300",
@@ -136,7 +136,7 @@
   "metadata": {
     "version": "1.0.0",
     "totalExams": 11,
-    "totalQuestions": 459,
+    "totalQuestions": 837,
     "lastUpdated": "2025-12-26"
   }
 }
