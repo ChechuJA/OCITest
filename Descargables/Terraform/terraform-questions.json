@@ -112,32 +112,26 @@
   },
   {
     "id": 6,
-    "question": "You run a local-exec provisioner in a null resource called null_resource.run_script and realize that you need to rerun the script.",
+    "question": "You run a local-exec provisioner in a null resource called null_resource.run_script and realize that you need to rerun the script. Which of the following commands would you use first?",
     "answers": [
       {
         "key": "A",
-        "text": "Which of the following commands would you use first?"
-      },
-      {
-        "key": "B",
         "text": "terraform taint null_resource.run_script."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "terraform apply -target=null_resource.run_script"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform validate null_resource.run_script."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "terraform plan -target=null_resource.run_script"
       }
     ],
-    "correctKeys": [
-      "A"
-    ],
+    "correctKeys": [],
     "explanation": "As discussed, the `taint` command used to be the right choice; however, it is deprecated. The right answer is: terraform apply -replace=\"null_resource.run_script\""
   },
   {
@@ -224,31 +218,27 @@
   },
   {
     "id": 10,
-    "question": "You have deployed a new webapp with a public IP address on a cloud provider. However, you did not create any outputs for your code.",
+    "question": "You have deployed a new webapp with a public IP address on a cloud provider. However, you did not create any outputs for your code. What is the best method to quickly find the IP address of the resource you deployed?",
     "answers": [
       {
         "key": "A",
-        "text": "What is the best method to quickly find the IP address of the resource you deployed?"
-      },
-      {
-        "key": "B",
         "text": "Run terraform output ip_address to view the result."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Run terraform state list to find the name of the resource, then terraform state show to find the attributes including public IP address."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Run terraform destroy then terraform apply and look for the IP address in stdout."
       }
     ],
     "correctKeys": [
-      "C"
+      "B"
     ],
     "explanation": "Reference https://www.terraform.io/docs/cli/commands/output.html"
   },
@@ -468,26 +458,22 @@
   },
   {
     "id": 20,
-    "question": "You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead.",
+    "question": "You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead. What are the two things you must do to achieve this? (Choose two.)",
     "answers": [
       {
         "key": "A",
-        "text": "What are the two things you must do to achieve this? (Choose two.)"
-      },
-      {
-        "key": "B",
         "text": "Provision new VMs using Terraform with the same VM names."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Use the terraform import command for the existing VMs."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Write Terraform configuration for the existing VMs."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Run the terraform import-gcp command."
       }
     ],
@@ -499,31 +485,27 @@
   },
   {
     "id": 21,
-    "question": "You have recently started a new job at a retailer as an engineer. As part of this new role, you have been tasked with evaluating multiple outages that occurred during peak shopping time during the holiday season. Your investigation found that the team is manually deploying new compute instances and configuring each compute instance manually. This has led to inconsistent configuration between each compute instance.",
+    "question": "You have recently started a new job at a retailer as an engineer. As part of this new role, you have been tasked with evaluating multiple outages that occurred during peak shopping time during the holiday season. Your investigation found that the team is manually deploying new compute instances and configuring each compute instance manually. This has led to inconsistent configuration between each compute instance. How would you solve this using infrastructure as code?",
     "answers": [
       {
         "key": "A",
-        "text": "How would you solve this using infrastructure as code?"
-      },
-      {
-        "key": "B",
         "text": "Implement a ticketing workflow that makes engineers submit a ticket before manually provisioning and configuring a resource."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Implement a checklist that engineers can follow when configuring compute instances."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Replace the compute instance type with a larger version to reduce the number of required deployments."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Implement a provisioning pipeline that deploys infrastructure configurations committed to your version control system following code reviews."
       }
     ],
     "correctKeys": [
-      "D"
+      "C"
     ],
     "explanation": ""
   },
@@ -718,32 +700,27 @@
   },
   {
     "id": 30,
-    "question": "You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform.",
+    "question": "You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform. Which command should you use to show all of the resources that will be deleted? (Choose two.)",
     "answers": [
       {
         "key": "A",
-        "text": "Which command should you use to show all of the resources that will be deleted? (Choose two.)"
-      },
-      {
-        "key": "B",
         "text": "Run terraform plan -destroy."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "This is not possible. You can only show resources that will be created."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Run terraform state rm *."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval."
       }
     ],
     "correctKeys": [
-      "A",
-      "D"
+      "C"
     ],
     "explanation": "Reference https://www.terraform.io/docs/cli/commands/state/rm.htm"
   },
@@ -837,32 +814,26 @@
   },
   {
     "id": 35,
-    "question": "You have multiple team members collaborating on infrastructure as code (IaC) using Terraform and want to apply formatting standards for readability.",
+    "question": "You have multiple team members collaborating on infrastructure as code (IaC) using Terraform and want to apply formatting standards for readability. How can you format Terraform HCL (HashiCorp Configuration Language) code according to standard Terraform style convention?",
     "answers": [
       {
         "key": "A",
-        "text": "How can you format Terraform HCL (HashiCorp Configuration Language) code according to standard Terraform style convention?"
-      },
-      {
-        "key": "B",
         "text": "Run the terraform fmt command during the code linting phase of your CI/CD process"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Designate one person in each team to review and format everyone's code"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Manually apply two spaces indentation and align equal sign \"=\" characters in every Terraform file (*.tf)"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Write a shell script to transform Terraform files using tools such as AWK, Python, and sed"
       }
     ],
-    "correctKeys": [
-      "A"
-    ],
+    "correctKeys": [],
     "explanation": "Reference https://www.terraform.io/docs/language/syntax/style.html"
   },
   {
@@ -919,32 +890,28 @@
   },
   {
     "id": 38,
-    "question": "You have declared a variable called var.list which is a list of objects that all have an attribute id.",
+    "question": "You have declared a variable called var.list which is a list of objects that all have an attribute id. Which options will produce a list of the IDs? (Choose two.)",
     "answers": [
       {
         "key": "A",
-        "text": "Which options will produce a list of the IDs? (Choose two.)"
-      },
-      {
-        "key": "B",
         "text": "{ for o in var.list : o => o.id }"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "var.list[*].id"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "[ var.list[*].id ]"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "[ for o in var.list : o.id ]"
       }
     ],
     "correctKeys": [
-      "B",
-      "D"
+      "A",
+      "C"
     ],
     "explanation": "You can retrieve the list of IDs in your Terraform configuration using either of these options: output \"users_splat\" { value = var.users[*].id } output \"users_for\" { value = [for user in var.users : user.id] } Both these outputs will produce the same list of IDs: [\"id1\", \"id2\", \"id3\"]."
   },
@@ -980,31 +947,27 @@
   },
   {
     "id": 40,
-    "question": "When using a module block to reference a module stored on the public Terraform Module Registry such as:",
+    "question": "When using a module block to reference a module stored on the public Terraform Module Registry such as: How do you specify version 1.0.0?",
     "answers": [
       {
         "key": "A",
-        "text": "How do you specify version 1.0.0?"
-      },
-      {
-        "key": "B",
         "text": "Modules stored on the public Terraform Module Registry do not support versioning"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Append ?ref=v1.0.0 argument to the source path"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Add version = \"1.0.0\" attribute to module block"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Nothing modules stored on the public Terraform Module Registry always default to version 1.0.0."
       }
     ],
     "correctKeys": [
-      "C"
+      "B"
     ],
     "explanation": ""
   },
@@ -1133,31 +1096,27 @@
   },
   {
     "id": 46,
-    "question": "Examine the following Terraform configuration, which uses the data source for an AWS AMI.",
+    "question": "Examine the following Terraform configuration, which uses the data source for an AWS AMI. What value should you enter for the ami argument in the AWS instance resource?",
     "answers": [
       {
         "key": "A",
-        "text": "What value should you enter for the ami argument in the AWS instance resource?"
-      },
-      {
-        "key": "B",
         "text": "aws_ami.ubuntu"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "data.aws_ami.ubuntu"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "data.aws_ami.ubuntu.id"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "aws_ami.ubuntu.id"
       }
     ],
     "correctKeys": [
-      "C"
+      "B"
     ],
     "explanation": "resource \"aws_instance\" \"web\" { ami = data.aws_ami.ubuntu.id Reference https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance"
   },
@@ -1177,31 +1136,27 @@
   },
   {
     "id": 48,
-    "question": "You have never used Terraform before and would like to test it out using a shared team account for a cloud provider. The shared team account already contains 15 virtual machines (VM). You develop a Terraform configuration containing one VM, perform terraform apply, and see that your VM was created successfully.",
+    "question": "You have never used Terraform before and would like to test it out using a shared team account for a cloud provider. The shared team account already contains 15 virtual machines (VM). You develop a Terraform configuration containing one VM, perform terraform apply, and see that your VM was created successfully. What should you do to delete the newly-created VM with Terraform?",
     "answers": [
       {
         "key": "A",
-        "text": "What should you do to delete the newly-created VM with Terraform?"
-      },
-      {
-        "key": "B",
         "text": "The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy and select the newly-created VM."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "The Terraform state file only contains the one new VM. Execute terraform destroy."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Delete the Terraform state file and execute Terraform apply."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Delete the VM using the cloud provider console and terraform apply to apply the changes to the Terraform state file."
       }
     ],
     "correctKeys": [
-      "B"
+      "A"
     ],
     "explanation": ""
   },
@@ -1495,26 +1450,21 @@
   },
   {
     "id": 61,
-    "question": "FILL BLANK -",
+    "question": "FILL BLANK - Which flag would you add to terraform plan to save the execution plan to a file?",
     "answers": [
       {
         "key": "A",
-        "text": "Which flag would you add to terraform plan to save the execution plan to a file?"
-      },
-      {
-        "key": "B",
         "text": "Type your answer in the field provided. The text field is not case-sensitive and all variations of the correct answer are accepted."
       }
     ],
     "correctKeys": [
-      "F",
-      "I",
-      "L",
       "E",
-      "N",
-      "A",
+      "H",
+      "K",
+      "D",
       "M",
-      "E"
+      "L",
+      "D"
     ],
     "explanation": "Reference https://www.terraform.io/docs/cli/commands/plan.html"
   },
@@ -1640,31 +1590,27 @@
   },
   {
     "id": 68,
-    "question": "You would like to reuse the same Terraform configuration for your development and production environments with a different state file for each.",
+    "question": "You would like to reuse the same Terraform configuration for your development and production environments with a different state file for each. Which command would you use?",
     "answers": [
       {
         "key": "A",
-        "text": "Which command would you use?"
-      },
-      {
-        "key": "B",
         "text": "terraform import"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "terraform workspace"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform state"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "terraform init"
       }
     ],
     "correctKeys": [
-      "B"
+      "A"
     ],
     "explanation": ""
   },
@@ -1696,61 +1642,51 @@
   },
   {
     "id": 70,
-    "question": "You're building a CI/CD (continuous integration/ continuous delivery) pipeline and need to inject sensitive variables into your Terraform run.",
+    "question": "You're building a CI/CD (continuous integration/ continuous delivery) pipeline and need to inject sensitive variables into your Terraform run. How can you do this safely?",
     "answers": [
       {
         "key": "A",
-        "text": "How can you do this safely?"
-      },
-      {
-        "key": "B",
         "text": "Pass variables to Terraform with a -var flag."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Copy the sensitive variables into your Terraform code."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Store the sensitive variables in a secure_vars.tf file."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Store the sensitive variables as plain text in a source code repository."
       }
     ],
-    "correctKeys": [
-      "A"
-    ],
+    "correctKeys": [],
     "explanation": ""
   },
   {
     "id": 71,
-    "question": "Your security team scanned some Terraform workspaces and found secrets stored in a plaintext in state files.",
+    "question": "Your security team scanned some Terraform workspaces and found secrets stored in a plaintext in state files. How can you protect sensitive data stored in Terraform state files?",
     "answers": [
       {
         "key": "A",
-        "text": "How can you protect sensitive data stored in Terraform state files?"
-      },
-      {
-        "key": "B",
         "text": "Delete the state file every time you run Terraform."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Store the state in an encrypted backend."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Edit your state file to scrub out the sensitive data."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Always store your secrets in a secrets.tfvars file."
       }
     ],
     "correctKeys": [
-      "B"
+      "A"
     ],
     "explanation": "Reference https://www.terraform.io/docs/language/state/sensitive-data.html"
   },
@@ -1774,32 +1710,26 @@
   },
   {
     "id": 73,
-    "question": "You want to know from which paths Terraform is loading providers referenced in your Terraform configuration (*.tf files). You need to enable debug messages to find this out.",
+    "question": "You want to know from which paths Terraform is loading providers referenced in your Terraform configuration (*.tf files). You need to enable debug messages to find this out. Which of the following would achieve this?",
     "answers": [
       {
         "key": "A",
-        "text": "Which of the following would achieve this?"
-      },
-      {
-        "key": "B",
         "text": "Set the environment variable TF_LOG=TRACE"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Set verbose logging for each provider in your Terraform configuration."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Set the environment variable TF_VAR_log=TRACE"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Set the environment variable TF_LOG_PATH."
       }
     ],
-    "correctKeys": [
-      "A"
-    ],
+    "correctKeys": [],
     "explanation": "Reference https://www.terraform.io/docs/cli/config/environment-variables.html"
   },
   {
@@ -1834,31 +1764,27 @@
   },
   {
     "id": 75,
-    "question": "You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully.",
+    "question": "You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully. What will happen if you delete the VM using the cloud provider console, and run terraform apply again without changing any Terraform code?",
     "answers": [
       {
         "key": "A",
-        "text": "What will happen if you delete the VM using the cloud provider console, and run terraform apply again without changing any Terraform code?"
-      },
-      {
-        "key": "B",
         "text": "Terraform will remove the VM from state file."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Terraform will report an error."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Terraform will not make any changes."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Terraform will recreate the VM."
       }
     ],
     "correctKeys": [
-      "D"
+      "C"
     ],
     "explanation": ""
   },
@@ -1890,31 +1816,27 @@
   },
   {
     "id": 77,
-    "question": "Your DevOps team is currently using the local backend for your Terraform configuration. You would like to move to a remote backend to begin storing the state file in a central location.",
+    "question": "Your DevOps team is currently using the local backend for your Terraform configuration. You would like to move to a remote backend to begin storing the state file in a central location. Which of the following backends would not work?",
     "answers": [
       {
         "key": "A",
-        "text": "Which of the following backends would not work?"
-      },
-      {
-        "key": "B",
         "text": "Amazon S3"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Artifactory"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Git"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Terraform Cloud."
       }
     ],
     "correctKeys": [
-      "C"
+      "B"
     ],
     "explanation": "Reference https://secrethub.io/blog/secret-management-for-terraform/"
   },
@@ -1972,31 +1894,27 @@
   },
   {
     "id": 80,
-    "question": "You write a new Terraform configuration and immediately run terraform apply in the CLI using the local backend.",
+    "question": "You write a new Terraform configuration and immediately run terraform apply in the CLI using the local backend. Why will the apply fail?",
     "answers": [
       {
         "key": "A",
-        "text": "Why will the apply fail?"
-      },
-      {
-        "key": "B",
         "text": "Terraform needs you to format your code according to best practices first"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Terraform needs to install the necessary plugins first"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "The Terraform CLI needs you to log into Terraform cloud first"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Terraform requires you to manually run terraform plan first."
       }
     ],
     "correctKeys": [
-      "B"
+      "A"
     ],
     "explanation": ""
   },
@@ -2028,31 +1946,27 @@
   },
   {
     "id": 82,
-    "question": "A fellow developer on your team is asking for some help in refactoring their Terraform code. As part of their application's architecture, they are going to tear down an existing deployment managed by Terraform and deploy new. However, there is a server resource named aws_instance.ubuntu[1] they would like to keep performing some additional analysis.",
+    "question": "A fellow developer on your team is asking for some help in refactoring their Terraform code. As part of their application's architecture, they are going to tear down an existing deployment managed by Terraform and deploy new. However, there is a server resource named aws_instance.ubuntu[1] they would like to keep performing some additional analysis. What command should be used to tell Terraform to no longer manage the resource?",
     "answers": [
       {
         "key": "A",
-        "text": "What command should be used to tell Terraform to no longer manage the resource?"
-      },
-      {
-        "key": "B",
         "text": "terraform apply rm aws_instance.ubuntu[1]"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "terraform state rm aws_instance.ubuntu[1]"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform plan rm aws_instance.ubuntu[1]"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "terraform delete aws_instance.ubuntu[1]."
       }
     ],
     "correctKeys": [
-      "B"
+      "A"
     ],
     "explanation": "Reference https://www.terraform.io/docs/cli/commands/state/rm.html"
   },
@@ -2102,62 +2016,52 @@
   },
   {
     "id": 85,
-    "question": "You need to constrain the GitHub provider to version 2.1 or greater.",
+    "question": "You need to constrain the GitHub provider to version 2.1 or greater. Which of the following should you put into the Terraform 0.12 configuration's provider block?",
     "answers": [
       {
         "key": "A",
-        "text": "Which of the following should you put into the Terraform 0.12 configuration's provider block?"
-      },
-      {
-        "key": "B",
         "text": "version >= 2.1"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "version ~> 2.1"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "version = \"<= 2.1\""
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "version = \">= 2.1\""
       }
     ],
     "correctKeys": [
-      "D"
+      "C"
     ],
     "explanation": "Reference https://github.com/hashicorp/terraform-provider-null/issues/31"
   },
   {
     "id": 86,
-    "question": "You just scaled your VM infrastructure and realized you set the count variable to the wrong value. You correct the value and save your change.",
+    "question": "You just scaled your VM infrastructure and realized you set the count variable to the wrong value. You correct the value and save your change. What do you do next to make your infrastructure match your configuration?",
     "answers": [
       {
         "key": "A",
-        "text": "What do you do next to make your infrastructure match your configuration?"
-      },
-      {
-        "key": "B",
         "text": "Run an apply and confirm the planned changes."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Inspect your Terraform state because you want to change it."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Reinitialize because your configuration has changed."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Inspect all Terraform outputs to make sure they are correct."
       }
     ],
-    "correctKeys": [
-      "A"
-    ],
+    "correctKeys": [],
     "explanation": ""
   },
   {
@@ -2451,31 +2355,27 @@
   },
   {
     "id": 99,
-    "question": "You need to deploy resources into two different cloud regions in the same Terraform configuration. To do that, you declare multiple provider configurations as follows:",
+    "question": "You need to deploy resources into two different cloud regions in the same Terraform configuration. To do that, you declare multiple provider configurations as follows: What meta-argument do you need to configure in a resource block to deploy the resource to the `us-west-2` AWS region?",
     "answers": [
       {
         "key": "A",
-        "text": "What meta-argument do you need to configure in a resource block to deploy the resource to the `us-west-2` AWS region?"
-      },
-      {
-        "key": "B",
         "text": "alias = west"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "provider = west"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "provider = aws.west"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "alias = aws.west."
       }
     ],
     "correctKeys": [
-      "C"
+      "B"
     ],
     "explanation": "Reference https://github.com/hashicorp/terraform/issues/451"
   },
@@ -2809,31 +2709,27 @@
   },
   {
     "id": 114,
-    "question": "You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully.",
+    "question": "You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully. What will happen if you terraform apply again immediately afterwards without changing any Terraform code?",
     "answers": [
       {
         "key": "A",
-        "text": "What will happen if you terraform apply again immediately afterwards without changing any Terraform code?"
-      },
-      {
-        "key": "B",
         "text": "Terraform will terminate and recreate the VM."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Terraform will create another duplicate VM."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Terraform will apply the VM to the state file."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Nothing."
       }
     ],
     "correctKeys": [
-      "D"
+      "C"
     ],
     "explanation": ""
   },
@@ -2921,31 +2817,27 @@
   },
   {
     "id": 118,
-    "question": "You have just developed a new Terraform configuration for two virtual machines with a cloud provider. You would like to create the infrastructure for the first time.",
+    "question": "You have just developed a new Terraform configuration for two virtual machines with a cloud provider. You would like to create the infrastructure for the first time. Which Terraform command should you run first?",
     "answers": [
       {
         "key": "A",
-        "text": "Which Terraform command should you run first?"
-      },
-      {
-        "key": "B",
         "text": "terraform apply."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "terraform plan."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform show."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "terraform init."
       }
     ],
     "correctKeys": [
-      "D"
+      "C"
     ],
     "explanation": ""
   },
@@ -3230,16 +3122,9 @@
   },
   {
     "id": 130,
-    "question": "You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource \"main\".",
-    "answers": [
-      {
-        "key": "A",
-        "text": "Which of these is the correct way to define the output value using HCL2?"
-      }
-    ],
-    "correctKeys": [
-      "A"
-    ],
+    "question": "You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource \"main\". Which of these is the correct way to define the output value using HCL2?",
+    "answers": [],
+    "correctKeys": [],
     "explanation": "no such definition as \"return\""
   },
   {
@@ -3323,32 +3208,27 @@
   },
   {
     "id": 134,
-    "question": "You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform.",
+    "question": "You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform. Which command should you use to show all of the resources that will be deleted? (Choose two.)",
     "answers": [
       {
         "key": "A",
-        "text": "Which command should you use to show all of the resources that will be deleted? (Choose two.)"
-      },
-      {
-        "key": "B",
         "text": "Run terraform plan -destroy."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Run terraform show -destroy."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Run terraform show -destroy."
       }
     ],
     "correctKeys": [
-      "A",
-      "C"
+      "B"
     ],
     "explanation": ""
   },
@@ -3424,41 +3304,30 @@
   },
   {
     "id": 138,
-    "question": "You have modified your Terraform configuration to fix a typo in the Terraform ID of a resource from aws_security_group.htp to aws_security_group.http",
+    "question": "You have modified your Terraform configuration to fix a typo in the Terraform ID of a resource from aws_security_group.htp to aws_security_group.http Which of the following commands would you run to update the ID in state without destroying the resource?",
     "answers": [
       {
         "key": "A",
-        "text": "Which of the following commands would you run to update the ID in state without destroying the resource?"
-      },
-      {
-        "key": "B",
         "text": "Terraform state mv aws_security_group.htp aws_security_group.http"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "terraform apply"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform refresh."
       }
     ],
-    "correctKeys": [
-      "A"
-    ],
+    "correctKeys": [],
     "explanation": ""
   },
   {
     "id": 139,
-    "question": "You are creating a Terraform configuration which needs to make use of multiple providers, one for AWS and one for Datadog.",
-    "answers": [
-      {
-        "key": "A",
-        "text": "Which of the following provider blocks would allow you to do this?"
-      }
-    ],
+    "question": "You are creating a Terraform configuration which needs to make use of multiple providers, one for AWS and one for Datadog. Which of the following provider blocks would allow you to do this?",
+    "answers": [],
     "correctKeys": [
-      "B"
+      "A"
     ],
     "explanation": "Reference https://www.terraform.io/language/providers/configuration"
   },
@@ -3557,31 +3426,27 @@
   },
   {
     "id": 144,
-    "question": "You're writing a Terraform configuration that needs to read input from a local file called id_rsa.pub.",
+    "question": "You're writing a Terraform configuration that needs to read input from a local file called id_rsa.pub. Which built-in Terraform function can you use to import the file's contents as a string?",
     "answers": [
       {
         "key": "A",
-        "text": "Which built-in Terraform function can you use to import the file's contents as a string?"
-      },
-      {
-        "key": "B",
         "text": "fileset(\"id_rsa.pub\")"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "filebase64(\"id_rsa.pub\")"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "templatefile(\"id_rsa.pub\")"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "file(\"id_rsa.pub\")."
       }
     ],
     "correctKeys": [
-      "D"
+      "C"
     ],
     "explanation": ""
   },
@@ -3886,31 +3751,27 @@
   },
   {
     "id": 156,
-    "question": "You need to write some Terraform code that adds 42 firewall rules to a security group as shown in the example.",
+    "question": "You need to write some Terraform code that adds 42 firewall rules to a security group as shown in the example. What can you use to avoid writing 42 different nested ingress config blocks by hand?",
     "answers": [
       {
         "key": "A",
-        "text": "What can you use to avoid writing 42 different nested ingress config blocks by hand?"
-      },
-      {
-        "key": "B",
         "text": "A count loop"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "A for block"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "A for each block"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "A dynamic block."
       }
     ],
     "correctKeys": [
-      "D"
+      "C"
     ],
     "explanation": "Reference https://awstip.com/terraform-for-vs-for-each-7ff8506a1f94"
   },
@@ -4222,35 +4083,31 @@
   },
   {
     "id": 169,
-    "question": "As a member of an operations team that uses infrastructure as code (IaC) practices, you are tasked with making a change to an infrastructure stack running in a public cloud.",
+    "question": "As a member of an operations team that uses infrastructure as code (IaC) practices, you are tasked with making a change to an infrastructure stack running in a public cloud. Which pattern would follow IaC best practices for making a change?",
     "answers": [
       {
         "key": "A",
-        "text": "Which pattern would follow IaC best practices for making a change?"
-      },
-      {
-        "key": "B",
         "text": "Clone the repository containing your infrastructure code and then run the code."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Use the public cloud console to make the change after a database record has been approved."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Make the change programmatically via the public cloud CLI."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Make the change via the public cloud API endpoint."
       },
       {
-        "key": "F",
+        "key": "E",
         "text": "Submit a pull request and wait for an approved merge of the proposed changes."
       }
     ],
     "correctKeys": [
-      "E"
+      "D"
     ],
     "explanation": ""
   },
@@ -4344,31 +4201,27 @@
   },
   {
     "id": 174,
-    "question": "You have a Terraform configuration that defines a single virtual machine with no references to it. You have run terraform apply to create the resource, and then removed the resource definition from your Terraform configuration file.",
+    "question": "You have a Terraform configuration that defines a single virtual machine with no references to it. You have run terraform apply to create the resource, and then removed the resource definition from your Terraform configuration file. What will happen when you run terraform apply in the working directory again?",
     "answers": [
       {
         "key": "A",
-        "text": "What will happen when you run terraform apply in the working directory again?"
-      },
-      {
-        "key": "B",
         "text": "Nothing"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Terraform will destroy the virtual machine."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Terraform will error."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Terraform will remove the virtual machine from the state file, but the resource will still exist."
       }
     ],
     "correctKeys": [
-      "B"
+      "A"
     ],
     "explanation": ""
   },
@@ -4911,36 +4764,32 @@
   },
   {
     "id": 197,
-    "question": "You have some Terraform code and a variable definitions file named dev.auto.tfvars that you tested successfully in the dev environment. You want to deploy the same code in the staging environment with a separate variable definition file and a separate state file.",
+    "question": "You have some Terraform code and a variable definitions file named dev.auto.tfvars that you tested successfully in the dev environment. You want to deploy the same code in the staging environment with a separate variable definition file and a separate state file. Which two actions should you perform? (Choose two.)",
     "answers": [
       {
         "key": "A",
-        "text": "Which two actions should you perform? (Choose two.)"
-      },
-      {
-        "key": "B",
         "text": "Copy the existing terraform.tfstate file and save it as staging.terraform.tfstate"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Write a new staging.auto.tfvars variable definition file and run Terraform with the var-file=”staging.auto.tfvars” flag"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Create a new Terraform workspace for staging."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Create a new Terraform provider for staging."
       },
       {
-        "key": "F",
+        "key": "E",
         "text": "Add new Terraform code (*.tf files) for staging in the same directory."
       }
     ],
     "correctKeys": [
-      "B",
-      "C"
+      "A",
+      "B"
     ],
     "explanation": ""
   },
@@ -5068,62 +4917,52 @@
   },
   {
     "id": 203,
-    "question": "You decide to move a Terraform state file to Amazon S3 from another location. You write the code below into a file called backend.tf.",
+    "question": "You decide to move a Terraform state file to Amazon S3 from another location. You write the code below into a file called backend.tf. Which command will migrate your current state file to the new S3 remote backend?",
     "answers": [
       {
         "key": "A",
-        "text": "Which command will migrate your current state file to the new S3 remote backend?"
-      },
-      {
-        "key": "B",
         "text": "terraform state."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "terraform init."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform refresh."
       },
       {
-        "key": "E",
-        "text": "terraform push."
-      }
-    ],
-    "correctKeys": [
-      "B"
-    ],
-    "explanation": ""
-  },
-  {
-    "id": 204,
-    "question": "You want to tag multiple resources with a string that is a combination of a generated random_id and a variable.",
-    "answers": [
-      {
-        "key": "A",
-        "text": "How should you use the same value in all these resources without repeating the random_id and variable in each resource?"
-      },
-      {
-        "key": "B",
-        "text": "Local values"
-      },
-      {
-        "key": "C",
-        "text": "Data source"
-      },
-      {
         "key": "D",
-        "text": "Modules"
-      },
-      {
-        "key": "E",
-        "text": "Outputs."
+        "text": "terraform push."
       }
     ],
     "correctKeys": [
       "A"
     ],
+    "explanation": ""
+  },
+  {
+    "id": 204,
+    "question": "You want to tag multiple resources with a string that is a combination of a generated random_id and a variable. How should you use the same value in all these resources without repeating the random_id and variable in each resource?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Local values"
+      },
+      {
+        "key": "B",
+        "text": "Data source"
+      },
+      {
+        "key": "C",
+        "text": "Modules"
+      },
+      {
+        "key": "D",
+        "text": "Outputs."
+      }
+    ],
+    "correctKeys": [],
     "explanation": ""
   },
   {
@@ -5172,32 +5011,26 @@
   },
   {
     "id": 207,
-    "question": "While deploying a virtual machine, the first launch user_data script fails due to race condition with another resource deployed during the same Terraform run.",
+    "question": "While deploying a virtual machine, the first launch user_data script fails due to race condition with another resource deployed during the same Terraform run. What is the least disruptive method to correct the issue?",
     "answers": [
       {
         "key": "A",
-        "text": "What is the least disruptive method to correct the issue?"
-      },
-      {
-        "key": "B",
         "text": "Run terraform taint against the virtual machine’s resource name, then terraform apply."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Restart the virtual machine from the cloud portal."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Run terraform apply again."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Run terraform destroy then terraform apply."
       }
     ],
-    "correctKeys": [
-      "A"
-    ],
+    "correctKeys": [],
     "explanation": "Reference https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax"
   },
   {
@@ -5238,31 +5071,27 @@
   },
   {
     "id": 210,
-    "question": "You want to define multiple data disks as nested blocks inside the resource block for a virtual machine.",
+    "question": "You want to define multiple data disks as nested blocks inside the resource block for a virtual machine. What Terraform feature would help you define the blocks using the values in a variable?",
     "answers": [
       {
         "key": "A",
-        "text": "What Terraform feature would help you define the blocks using the values in a variable?"
-      },
-      {
-        "key": "B",
         "text": "Local values"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Collection functions"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Dynamic blocks"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Count arguments."
       }
     ],
     "correctKeys": [
-      "C"
+      "B"
     ],
     "explanation": ""
   },
@@ -5524,24 +5353,18 @@
   },
   {
     "id": 221,
-    "question": "You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource “main”.",
+    "question": "You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource “main”. Which of these is the correct way to define the output value using HCL2?",
     "answers": [
       {
         "key": "A",
-        "text": "Which of these is the correct way to define the output value using HCL2?"
-      },
-      {
-        "key": "B",
         "text": "C."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "D."
       }
     ],
-    "correctKeys": [
-      "A"
-    ],
+    "correctKeys": [],
     "explanation": "C is not valid because the quotes."
   },
   {
@@ -8314,32 +8137,27 @@
   },
   {
     "id": 334,
-    "question": "Kristen is using modules to provision an Azure environment for a new application. She is using the following code and specifying a version of her virtual machine module to ensure she's calling the correct module.",
+    "question": "Kristen is using modules to provision an Azure environment for a new application. She is using the following code and specifying a version of her virtual machine module to ensure she's calling the correct module. Which of the following provides support for the versioning of a module? (select two)?",
     "answers": [
       {
         "key": "A",
-        "text": "Which of the following provides support for the versioning of a module? (select two)?"
-      },
-      {
-        "key": "B",
         "text": "public module registry"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "local file paths"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "modules stored in GitLab"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "private module registry"
       }
     ],
     "correctKeys": [
-      "A",
-      "D"
+      "C"
     ],
     "explanation": "Version constraints are supported only for modules installed from a module registry, such as the public Terraform Registry or Terraform Cloud's private module registry. Other module sources can provide their own versioning mechanisms within the source string itself or might not support versions at all. In particular, modules sourced from local file paths do not support version; since they're loaded from the same source repository, they always share the same version as their caller. Reference: https://www.terraform.io/language/modules/syntax#version"
   },
@@ -8531,33 +8349,29 @@
   },
   {
     "id": 342,
-    "question": "When configuring a remote backend in Terraform, it might be a good idea to purposely omit some of the required arguments to ensure secrets and other relevant data are not inadvertently shared with others.",
+    "question": "When configuring a remote backend in Terraform, it might be a good idea to purposely omit some of the required arguments to ensure secrets and other relevant data are not inadvertently shared with others. What are the ways the remaining configuration can be added to Terraform so it can initialize and communicate with the backend? (select three)",
     "answers": [
       {
         "key": "A",
-        "text": "What are the ways the remaining configuration can be added to Terraform so it can initialize and communicate with the backend? (select three)"
-      },
-      {
-        "key": "B",
         "text": "directly querying HashiCorp Vault for the secrets"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "use the -backend-config=PATH to specify a separate config file"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "interactively on the command line"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "command-line key/value pairs"
       }
     ],
     "correctKeys": [
+      "A",
       "B",
-      "C",
-      "D"
+      "C"
     ],
     "explanation": ""
   },
@@ -8673,31 +8487,27 @@
   },
   {
     "id": 347,
-    "question": "You have been given requirements to create a security group for a new application. Since your organization standardizes on Terraform, you want to add this new security group with the fewest number of lines of code.",
+    "question": "You have been given requirements to create a security group for a new application. Since your organization standardizes on Terraform, you want to add this new security group with the fewest number of lines of code. What feature could you use to iterate over a list of required tcp ports to add to the new security group?",
     "answers": [
       {
         "key": "A",
-        "text": "What feature could you use to iterate over a list of required tcp ports to add to the new security group?"
-      },
-      {
-        "key": "B",
         "text": "dynamic backend"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "splat expression"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform import"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "dynamic block"
       }
     ],
     "correctKeys": [
-      "D"
+      "C"
     ],
     "explanation": ""
   },

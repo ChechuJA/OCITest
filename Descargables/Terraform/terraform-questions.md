@@ -1,6 +1,6 @@
 # HashiCorp Terraform Associate
 
-Total de preguntas: 370
+Total de preguntas: 379
 
 #### Q1. The terraform.tfstate file always matches your currently built infrastructure.
 
@@ -42,13 +42,12 @@ Total de preguntas: 370
 
 > Reference https://github.com/hashicorp/terraform/issues/17928
 
-#### Q6. You run a local-exec provisioner in a null resource called null_resource.run_script and realize that you need to rerun the script.
+#### Q6. You run a local-exec provisioner in a null resource called null_resource.run_script and realize that you need to rerun the script. Which of the following commands would you use first?
 
-- [x] A. Which of the following commands would you use first?
-- [ ] B. terraform taint null_resource.run_script.
-- [ ] C. terraform apply -target=null_resource.run_script
-- [ ] D. terraform validate null_resource.run_script.
-- [ ] E. terraform plan -target=null_resource.run_script
+- [ ] A. terraform taint null_resource.run_script.
+- [ ] B. terraform apply -target=null_resource.run_script
+- [ ] C. terraform validate null_resource.run_script.
+- [ ] D. terraform plan -target=null_resource.run_script
 
 > As discussed, the `taint` command used to be the right choice; however, it is deprecated. The right answer is: terraform apply -replace="null_resource.run_script"
 
@@ -80,13 +79,12 @@ Total de preguntas: 370
 
 > Reference https://www.terraform.io/docs/cli/commands/init.html
 
-#### Q10. You have deployed a new webapp with a public IP address on a cloud provider. However, you did not create any outputs for your code.
+#### Q10. You have deployed a new webapp with a public IP address on a cloud provider. However, you did not create any outputs for your code. What is the best method to quickly find the IP address of the resource you deployed?
 
-- [ ] A. What is the best method to quickly find the IP address of the resource you deployed?
-- [ ] B. Run terraform output ip_address to view the result.
-- [x] C. In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file.
-- [ ] D. Run terraform state list to find the name of the resource, then terraform state show to find the attributes including public IP address.
-- [ ] E. Run terraform destroy then terraform apply and look for the IP address in stdout.
+- [ ] A. Run terraform output ip_address to view the result.
+- [x] B. In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file.
+- [ ] C. Run terraform state list to find the name of the resource, then terraform state show to find the attributes including public IP address.
+- [ ] D. Run terraform destroy then terraform apply and look for the IP address in stdout.
 
 > Reference https://www.terraform.io/docs/cli/commands/output.html
 
@@ -166,23 +164,21 @@ Total de preguntas: 370
 
 > Reference https://www.terraform.io/docs/language/functions/chomp.html
 
-#### Q20. You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead.
+#### Q20. You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead. What are the two things you must do to achieve this? (Choose two.)
 
-- [ ] A. What are the two things you must do to achieve this? (Choose two.)
-- [x] B. Provision new VMs using Terraform with the same VM names.
-- [x] C. Use the terraform import command for the existing VMs.
-- [ ] D. Write Terraform configuration for the existing VMs.
-- [ ] E. Run the terraform import-gcp command.
+- [ ] A. Provision new VMs using Terraform with the same VM names.
+- [x] B. Use the terraform import command for the existing VMs.
+- [x] C. Write Terraform configuration for the existing VMs.
+- [ ] D. Run the terraform import-gcp command.
 
 > The terraform import command is used to import existing infrastructure. Import existing Google Cloud resources into Terraform with Terraformer. Reference https://www.terraform.io/docs/cli/import/usage.html https://cloud.google.com/docs/terraform
 
-#### Q21. You have recently started a new job at a retailer as an engineer. As part of this new role, you have been tasked with evaluating multiple outages that occurred during peak shopping time during the holiday season. Your investigation found that the team is manually deploying new compute instances and configuring each compute instance manually. This has led to inconsistent configuration between each compute instance.
+#### Q21. You have recently started a new job at a retailer as an engineer. As part of this new role, you have been tasked with evaluating multiple outages that occurred during peak shopping time during the holiday season. Your investigation found that the team is manually deploying new compute instances and configuring each compute instance manually. This has led to inconsistent configuration between each compute instance. How would you solve this using infrastructure as code?
 
-- [ ] A. How would you solve this using infrastructure as code?
-- [ ] B. Implement a ticketing workflow that makes engineers submit a ticket before manually provisioning and configuring a resource.
-- [ ] C. Implement a checklist that engineers can follow when configuring compute instances.
-- [x] D. Replace the compute instance type with a larger version to reduce the number of required deployments.
-- [ ] E. Implement a provisioning pipeline that deploys infrastructure configurations committed to your version control system following code reviews.
+- [ ] A. Implement a ticketing workflow that makes engineers submit a ticket before manually provisioning and configuring a resource.
+- [ ] B. Implement a checklist that engineers can follow when configuring compute instances.
+- [x] C. Replace the compute instance type with a larger version to reduce the number of required deployments.
+- [ ] D. Implement a provisioning pipeline that deploys infrastructure configurations committed to your version control system following code reviews.
 
 > 
 
@@ -253,13 +249,12 @@ Total de preguntas: 370
 
 > The terraform validate command validates the syntax and arguments of the Terraform configuration files. Reference https://www.terraform.io/docs/cli/code/index.html
 
-#### Q30. You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform.
+#### Q30. You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform. Which command should you use to show all of the resources that will be deleted? (Choose two.)
 
-- [x] A. Which command should you use to show all of the resources that will be deleted? (Choose two.)
-- [ ] B. Run terraform plan -destroy.
-- [ ] C. This is not possible. You can only show resources that will be created.
-- [x] D. Run terraform state rm *.
-- [ ] E. Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval.
+- [ ] A. Run terraform plan -destroy.
+- [ ] B. This is not possible. You can only show resources that will be created.
+- [x] C. Run terraform state rm *.
+- [ ] D. Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval.
 
 > Reference https://www.terraform.io/docs/cli/commands/state/rm.htm
 
@@ -295,13 +290,12 @@ Total de preguntas: 370
 
 > Reference https://www.terraform.io/docs/language/settings/backends/local.html
 
-#### Q35. You have multiple team members collaborating on infrastructure as code (IaC) using Terraform and want to apply formatting standards for readability.
+#### Q35. You have multiple team members collaborating on infrastructure as code (IaC) using Terraform and want to apply formatting standards for readability. How can you format Terraform HCL (HashiCorp Configuration Language) code according to standard Terraform style convention?
 
-- [x] A. How can you format Terraform HCL (HashiCorp Configuration Language) code according to standard Terraform style convention?
-- [ ] B. Run the terraform fmt command during the code linting phase of your CI/CD process
-- [ ] C. Designate one person in each team to review and format everyone's code
-- [ ] D. Manually apply two spaces indentation and align equal sign "=" characters in every Terraform file (*.tf)
-- [ ] E. Write a shell script to transform Terraform files using tools such as AWK, Python, and sed
+- [ ] A. Run the terraform fmt command during the code linting phase of your CI/CD process
+- [ ] B. Designate one person in each team to review and format everyone's code
+- [ ] C. Manually apply two spaces indentation and align equal sign "=" characters in every Terraform file (*.tf)
+- [ ] D. Write a shell script to transform Terraform files using tools such as AWK, Python, and sed
 
 > Reference https://www.terraform.io/docs/language/syntax/style.html
 
@@ -323,13 +317,12 @@ Total de preguntas: 370
 
 > Reference https://www.terraform.io/docs/cli/commands/init.html
 
-#### Q38. You have declared a variable called var.list which is a list of objects that all have an attribute id.
+#### Q38. You have declared a variable called var.list which is a list of objects that all have an attribute id. Which options will produce a list of the IDs? (Choose two.)
 
-- [ ] A. Which options will produce a list of the IDs? (Choose two.)
-- [x] B. { for o in var.list : o => o.id }
-- [ ] C. var.list[*].id
-- [x] D. [ var.list[*].id ]
-- [ ] E. [ for o in var.list : o.id ]
+- [x] A. { for o in var.list : o => o.id }
+- [ ] B. var.list[*].id
+- [x] C. [ var.list[*].id ]
+- [ ] D. [ for o in var.list : o.id ]
 
 > You can retrieve the list of IDs in your Terraform configuration using either of these options: output "users_splat" { value = var.users[*].id } output "users_for" { value = [for user in var.users : user.id] } Both these outputs will produce the same list of IDs: ["id1", "id2", "id3"].
 
@@ -343,13 +336,12 @@ Total de preguntas: 370
 
 > Terraform CLI defines the following OPTIONAL arguments for variable declarations: default - A default value which then makes the variable optional. type - This argument specifies what value types are accepted for the variable. description - This specifies the input variable's documentation. validation - A block to define validation rules, usually in addition to type constraints. sensitive - Limits Terraform UI output when the variable is used in configuration. nullable - Specify if the variable can be null within the module. Reference https://www.terraform.io/docs/language/values/variables.html
 
-#### Q40. When using a module block to reference a module stored on the public Terraform Module Registry such as:
+#### Q40. When using a module block to reference a module stored on the public Terraform Module Registry such as: How do you specify version 1.0.0?
 
-- [ ] A. How do you specify version 1.0.0?
-- [ ] B. Modules stored on the public Terraform Module Registry do not support versioning
-- [x] C. Append ?ref=v1.0.0 argument to the source path
-- [ ] D. Add version = "1.0.0" attribute to module block
-- [ ] E. Nothing modules stored on the public Terraform Module Registry always default to version 1.0.0.
+- [ ] A. Modules stored on the public Terraform Module Registry do not support versioning
+- [x] B. Append ?ref=v1.0.0 argument to the source path
+- [ ] C. Add version = "1.0.0" attribute to module block
+- [ ] D. Nothing modules stored on the public Terraform Module Registry always default to version 1.0.0.
 
 > 
 
@@ -396,13 +388,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q46. Examine the following Terraform configuration, which uses the data source for an AWS AMI.
+#### Q46. Examine the following Terraform configuration, which uses the data source for an AWS AMI. What value should you enter for the ami argument in the AWS instance resource?
 
-- [ ] A. What value should you enter for the ami argument in the AWS instance resource?
-- [ ] B. aws_ami.ubuntu
-- [x] C. data.aws_ami.ubuntu
-- [ ] D. data.aws_ami.ubuntu.id
-- [ ] E. aws_ami.ubuntu.id
+- [ ] A. aws_ami.ubuntu
+- [x] B. data.aws_ami.ubuntu
+- [ ] C. data.aws_ami.ubuntu.id
+- [ ] D. aws_ami.ubuntu.id
 
 > resource "aws_instance" "web" { ami = data.aws_ami.ubuntu.id Reference https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
 
@@ -412,13 +403,12 @@ Total de preguntas: 370
 
 > Correct Answer: depends_on
 
-#### Q48. You have never used Terraform before and would like to test it out using a shared team account for a cloud provider. The shared team account already contains 15 virtual machines (VM). You develop a Terraform configuration containing one VM, perform terraform apply, and see that your VM was created successfully.
+#### Q48. You have never used Terraform before and would like to test it out using a shared team account for a cloud provider. The shared team account already contains 15 virtual machines (VM). You develop a Terraform configuration containing one VM, perform terraform apply, and see that your VM was created successfully. What should you do to delete the newly-created VM with Terraform?
 
-- [ ] A. What should you do to delete the newly-created VM with Terraform?
-- [x] B. The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy and select the newly-created VM.
-- [ ] C. The Terraform state file only contains the one new VM. Execute terraform destroy.
-- [ ] D. Delete the Terraform state file and execute Terraform apply.
-- [ ] E. Delete the VM using the cloud provider console and terraform apply to apply the changes to the Terraform state file.
+- [x] A. The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy and select the newly-created VM.
+- [ ] B. The Terraform state file only contains the one new VM. Execute terraform destroy.
+- [ ] C. Delete the Terraform state file and execute Terraform apply.
+- [ ] D. Delete the VM using the cloud provider console and terraform apply to apply the changes to the Terraform state file.
 
 > 
 
@@ -524,10 +514,9 @@ Total de preguntas: 370
 
 > Reference https://www.hashicorp.com/blog/detecting-and-managing-drift-with-terraform
 
-#### Q61. FILL BLANK -
+#### Q61. FILL BLANK - Which flag would you add to terraform plan to save the execution plan to a file?
 
-- [x] A. Which flag would you add to terraform plan to save the execution plan to a file?
-- [ ] B. Type your answer in the field provided. The text field is not case-sensitive and all variations of the correct answer are accepted.
+- [ ] A. Type your answer in the field provided. The text field is not case-sensitive and all variations of the correct answer are accepted.
 
 > Reference https://www.terraform.io/docs/cli/commands/plan.html
 
@@ -576,13 +565,12 @@ Total de preguntas: 370
 
 > Reference https://github.com/hashicorp/terraform/issues/19235
 
-#### Q68. You would like to reuse the same Terraform configuration for your development and production environments with a different state file for each.
+#### Q68. You would like to reuse the same Terraform configuration for your development and production environments with a different state file for each. Which command would you use?
 
-- [ ] A. Which command would you use?
-- [x] B. terraform import
-- [ ] C. terraform workspace
-- [ ] D. terraform state
-- [ ] E. terraform init
+- [x] A. terraform import
+- [ ] B. terraform workspace
+- [ ] C. terraform state
+- [ ] D. terraform init
 
 > 
 
@@ -595,23 +583,21 @@ Total de preguntas: 370
 
 > 
 
-#### Q70. You're building a CI/CD (continuous integration/ continuous delivery) pipeline and need to inject sensitive variables into your Terraform run.
+#### Q70. You're building a CI/CD (continuous integration/ continuous delivery) pipeline and need to inject sensitive variables into your Terraform run. How can you do this safely?
 
-- [x] A. How can you do this safely?
-- [ ] B. Pass variables to Terraform with a -var flag.
-- [ ] C. Copy the sensitive variables into your Terraform code.
-- [ ] D. Store the sensitive variables in a secure_vars.tf file.
-- [ ] E. Store the sensitive variables as plain text in a source code repository.
+- [ ] A. Pass variables to Terraform with a -var flag.
+- [ ] B. Copy the sensitive variables into your Terraform code.
+- [ ] C. Store the sensitive variables in a secure_vars.tf file.
+- [ ] D. Store the sensitive variables as plain text in a source code repository.
 
 > 
 
-#### Q71. Your security team scanned some Terraform workspaces and found secrets stored in a plaintext in state files.
+#### Q71. Your security team scanned some Terraform workspaces and found secrets stored in a plaintext in state files. How can you protect sensitive data stored in Terraform state files?
 
-- [ ] A. How can you protect sensitive data stored in Terraform state files?
-- [x] B. Delete the state file every time you run Terraform.
-- [ ] C. Store the state in an encrypted backend.
-- [ ] D. Edit your state file to scrub out the sensitive data.
-- [ ] E. Always store your secrets in a secrets.tfvars file.
+- [x] A. Delete the state file every time you run Terraform.
+- [ ] B. Store the state in an encrypted backend.
+- [ ] C. Edit your state file to scrub out the sensitive data.
+- [ ] D. Always store your secrets in a secrets.tfvars file.
 
 > Reference https://www.terraform.io/docs/language/state/sensitive-data.html
 
@@ -622,13 +608,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q73. You want to know from which paths Terraform is loading providers referenced in your Terraform configuration (*.tf files). You need to enable debug messages to find this out.
+#### Q73. You want to know from which paths Terraform is loading providers referenced in your Terraform configuration (*.tf files). You need to enable debug messages to find this out. Which of the following would achieve this?
 
-- [x] A. Which of the following would achieve this?
-- [ ] B. Set the environment variable TF_LOG=TRACE
-- [ ] C. Set verbose logging for each provider in your Terraform configuration.
-- [ ] D. Set the environment variable TF_VAR_log=TRACE
-- [ ] E. Set the environment variable TF_LOG_PATH.
+- [ ] A. Set the environment variable TF_LOG=TRACE
+- [ ] B. Set verbose logging for each provider in your Terraform configuration.
+- [ ] C. Set the environment variable TF_VAR_log=TRACE
+- [ ] D. Set the environment variable TF_LOG_PATH.
 
 > Reference https://www.terraform.io/docs/cli/config/environment-variables.html
 
@@ -642,13 +627,12 @@ Total de preguntas: 370
 
 > Latest version of Terraform can import as part of apply in case you have import {} clauses. Since this is not part of the answers, explicit call remains, answer D.
 
-#### Q75. You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully.
+#### Q75. You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully. What will happen if you delete the VM using the cloud provider console, and run terraform apply again without changing any Terraform code?
 
-- [ ] A. What will happen if you delete the VM using the cloud provider console, and run terraform apply again without changing any Terraform code?
-- [ ] B. Terraform will remove the VM from state file.
-- [ ] C. Terraform will report an error.
-- [x] D. Terraform will not make any changes.
-- [ ] E. Terraform will recreate the VM.
+- [ ] A. Terraform will remove the VM from state file.
+- [ ] B. Terraform will report an error.
+- [x] C. Terraform will not make any changes.
+- [ ] D. Terraform will recreate the VM.
 
 > 
 
@@ -661,13 +645,12 @@ Total de preguntas: 370
 
 > Reference https://www.terraform.io/language/settings/backends/configuration#credentials-and-sensitive-data
 
-#### Q77. Your DevOps team is currently using the local backend for your Terraform configuration. You would like to move to a remote backend to begin storing the state file in a central location.
+#### Q77. Your DevOps team is currently using the local backend for your Terraform configuration. You would like to move to a remote backend to begin storing the state file in a central location. Which of the following backends would not work?
 
-- [ ] A. Which of the following backends would not work?
-- [ ] B. Amazon S3
-- [x] C. Artifactory
-- [ ] D. Git
-- [ ] E. Terraform Cloud.
+- [ ] A. Amazon S3
+- [x] B. Artifactory
+- [ ] C. Git
+- [ ] D. Terraform Cloud.
 
 > Reference https://secrethub.io/blog/secret-management-for-terraform/
 
@@ -689,13 +672,12 @@ Total de preguntas: 370
 
 > Reference https://www.terraform.io/docs/language/modules/sources.html
 
-#### Q80. You write a new Terraform configuration and immediately run terraform apply in the CLI using the local backend.
+#### Q80. You write a new Terraform configuration and immediately run terraform apply in the CLI using the local backend. Why will the apply fail?
 
-- [ ] A. Why will the apply fail?
-- [x] B. Terraform needs you to format your code according to best practices first
-- [ ] C. Terraform needs to install the necessary plugins first
-- [ ] D. The Terraform CLI needs you to log into Terraform cloud first
-- [ ] E. Terraform requires you to manually run terraform plan first.
+- [x] A. Terraform needs you to format your code according to best practices first
+- [ ] B. Terraform needs to install the necessary plugins first
+- [ ] C. The Terraform CLI needs you to log into Terraform cloud first
+- [ ] D. Terraform requires you to manually run terraform plan first.
 
 > 
 
@@ -708,13 +690,12 @@ Total de preguntas: 370
 
 > Reference https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
 
-#### Q82. A fellow developer on your team is asking for some help in refactoring their Terraform code. As part of their application's architecture, they are going to tear down an existing deployment managed by Terraform and deploy new. However, there is a server resource named aws_instance.ubuntu[1] they would like to keep performing some additional analysis.
+#### Q82. A fellow developer on your team is asking for some help in refactoring their Terraform code. As part of their application's architecture, they are going to tear down an existing deployment managed by Terraform and deploy new. However, there is a server resource named aws_instance.ubuntu[1] they would like to keep performing some additional analysis. What command should be used to tell Terraform to no longer manage the resource?
 
-- [ ] A. What command should be used to tell Terraform to no longer manage the resource?
-- [x] B. terraform apply rm aws_instance.ubuntu[1]
-- [ ] C. terraform state rm aws_instance.ubuntu[1]
-- [ ] D. terraform plan rm aws_instance.ubuntu[1]
-- [ ] E. terraform delete aws_instance.ubuntu[1].
+- [x] A. terraform apply rm aws_instance.ubuntu[1]
+- [ ] B. terraform state rm aws_instance.ubuntu[1]
+- [ ] C. terraform plan rm aws_instance.ubuntu[1]
+- [ ] D. terraform delete aws_instance.ubuntu[1].
 
 > Reference https://www.terraform.io/docs/cli/commands/state/rm.html
 
@@ -734,23 +715,21 @@ Total de preguntas: 370
 
 > *with the new “import” block, in fact, it can.
 
-#### Q85. You need to constrain the GitHub provider to version 2.1 or greater.
+#### Q85. You need to constrain the GitHub provider to version 2.1 or greater. Which of the following should you put into the Terraform 0.12 configuration's provider block?
 
-- [ ] A. Which of the following should you put into the Terraform 0.12 configuration's provider block?
-- [ ] B. version >= 2.1
-- [ ] C. version ~> 2.1
-- [x] D. version = "<= 2.1"
-- [ ] E. version = ">= 2.1"
+- [ ] A. version >= 2.1
+- [ ] B. version ~> 2.1
+- [x] C. version = "<= 2.1"
+- [ ] D. version = ">= 2.1"
 
 > Reference https://github.com/hashicorp/terraform-provider-null/issues/31
 
-#### Q86. You just scaled your VM infrastructure and realized you set the count variable to the wrong value. You correct the value and save your change.
+#### Q86. You just scaled your VM infrastructure and realized you set the count variable to the wrong value. You correct the value and save your change. What do you do next to make your infrastructure match your configuration?
 
-- [x] A. What do you do next to make your infrastructure match your configuration?
-- [ ] B. Run an apply and confirm the planned changes.
-- [ ] C. Inspect your Terraform state because you want to change it.
-- [ ] D. Reinitialize because your configuration has changed.
-- [ ] E. Inspect all Terraform outputs to make sure they are correct.
+- [ ] A. Run an apply and confirm the planned changes.
+- [ ] B. Inspect your Terraform state because you want to change it.
+- [ ] C. Reinitialize because your configuration has changed.
+- [ ] D. Inspect all Terraform outputs to make sure they are correct.
 
 > 
 
@@ -856,13 +835,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q99. You need to deploy resources into two different cloud regions in the same Terraform configuration. To do that, you declare multiple provider configurations as follows:
+#### Q99. You need to deploy resources into two different cloud regions in the same Terraform configuration. To do that, you declare multiple provider configurations as follows: What meta-argument do you need to configure in a resource block to deploy the resource to the `us-west-2` AWS region?
 
-- [ ] A. What meta-argument do you need to configure in a resource block to deploy the resource to the `us-west-2` AWS region?
-- [ ] B. alias = west
-- [x] C. provider = west
-- [ ] D. provider = aws.west
-- [ ] E. alias = aws.west.
+- [ ] A. alias = west
+- [x] B. provider = west
+- [ ] C. provider = aws.west
+- [ ] D. alias = aws.west.
 
 > Reference https://github.com/hashicorp/terraform/issues/451
 
@@ -983,13 +961,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q114. You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully.
+#### Q114. You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully. What will happen if you terraform apply again immediately afterwards without changing any Terraform code?
 
-- [ ] A. What will happen if you terraform apply again immediately afterwards without changing any Terraform code?
-- [ ] B. Terraform will terminate and recreate the VM.
-- [ ] C. Terraform will create another duplicate VM.
-- [x] D. Terraform will apply the VM to the state file.
-- [ ] E. Nothing.
+- [ ] A. Terraform will terminate and recreate the VM.
+- [ ] B. Terraform will create another duplicate VM.
+- [x] C. Terraform will apply the VM to the state file.
+- [ ] D. Nothing.
 
 > 
 
@@ -1021,13 +998,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q118. You have just developed a new Terraform configuration for two virtual machines with a cloud provider. You would like to create the infrastructure for the first time.
+#### Q118. You have just developed a new Terraform configuration for two virtual machines with a cloud provider. You would like to create the infrastructure for the first time. Which Terraform command should you run first?
 
-- [ ] A. Which Terraform command should you run first?
-- [ ] B. terraform apply.
-- [ ] C. terraform plan.
-- [x] D. terraform show.
-- [ ] E. terraform init.
+- [ ] A. terraform apply.
+- [ ] B. terraform plan.
+- [x] C. terraform show.
+- [ ] D. terraform init.
 
 > 
 
@@ -1128,9 +1104,8 @@ Total de preguntas: 370
 
 > 
 
-#### Q130. You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource "main".
+#### Q130. You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource "main". Which of these is the correct way to define the output value using HCL2?
 
-- [x] A. Which of these is the correct way to define the output value using HCL2?
 
 > no such definition as "return"
 
@@ -1161,13 +1136,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q134. You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform.
+#### Q134. You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform. Which command should you use to show all of the resources that will be deleted? (Choose two.)
 
-- [x] A. Which command should you use to show all of the resources that will be deleted? (Choose two.)
-- [ ] B. Run terraform plan -destroy.
-- [x] C. Run terraform show -destroy.
-- [ ] D. Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval.
-- [ ] E. Run terraform show -destroy.
+- [ ] A. Run terraform plan -destroy.
+- [x] B. Run terraform show -destroy.
+- [ ] C. Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval.
+- [ ] D. Run terraform show -destroy.
 
 > 
 
@@ -1196,18 +1170,16 @@ Total de preguntas: 370
 
 > 
 
-#### Q138. You have modified your Terraform configuration to fix a typo in the Terraform ID of a resource from aws_security_group.htp to aws_security_group.http
+#### Q138. You have modified your Terraform configuration to fix a typo in the Terraform ID of a resource from aws_security_group.htp to aws_security_group.http Which of the following commands would you run to update the ID in state without destroying the resource?
 
-- [x] A. Which of the following commands would you run to update the ID in state without destroying the resource?
-- [ ] B. Terraform state mv aws_security_group.htp aws_security_group.http
-- [ ] C. terraform apply
-- [ ] D. terraform refresh.
+- [ ] A. Terraform state mv aws_security_group.htp aws_security_group.http
+- [ ] B. terraform apply
+- [ ] C. terraform refresh.
 
 > 
 
-#### Q139. You are creating a Terraform configuration which needs to make use of multiple providers, one for AWS and one for Datadog.
+#### Q139. You are creating a Terraform configuration which needs to make use of multiple providers, one for AWS and one for Datadog. Which of the following provider blocks would allow you to do this?
 
-- [ ] A. Which of the following provider blocks would allow you to do this?
 
 > Reference https://www.terraform.io/language/providers/configuration
 
@@ -1244,13 +1216,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q144. You're writing a Terraform configuration that needs to read input from a local file called id_rsa.pub.
+#### Q144. You're writing a Terraform configuration that needs to read input from a local file called id_rsa.pub. Which built-in Terraform function can you use to import the file's contents as a string?
 
-- [ ] A. Which built-in Terraform function can you use to import the file's contents as a string?
-- [ ] B. fileset("id_rsa.pub")
-- [ ] C. filebase64("id_rsa.pub")
-- [x] D. templatefile("id_rsa.pub")
-- [ ] E. file("id_rsa.pub").
+- [ ] A. fileset("id_rsa.pub")
+- [ ] B. filebase64("id_rsa.pub")
+- [x] C. templatefile("id_rsa.pub")
+- [ ] D. file("id_rsa.pub").
 
 > 
 
@@ -1355,13 +1326,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q156. You need to write some Terraform code that adds 42 firewall rules to a security group as shown in the example.
+#### Q156. You need to write some Terraform code that adds 42 firewall rules to a security group as shown in the example. What can you use to avoid writing 42 different nested ingress config blocks by hand?
 
-- [ ] A. What can you use to avoid writing 42 different nested ingress config blocks by hand?
-- [ ] B. A count loop
-- [ ] C. A for block
-- [x] D. A for each block
-- [ ] E. A dynamic block.
+- [ ] A. A count loop
+- [ ] B. A for block
+- [x] C. A for each block
+- [ ] D. A dynamic block.
 
 > Reference https://awstip.com/terraform-for-vs-for-each-7ff8506a1f94
 
@@ -1471,14 +1441,13 @@ Total de preguntas: 370
 
 > You can set TF_LOG to one of the log levels (in order of decreasing verbosity) TRACE, DEBUG, INFO, WARN or ERROR to change the verbosity of the log
 
-#### Q169. As a member of an operations team that uses infrastructure as code (IaC) practices, you are tasked with making a change to an infrastructure stack running in a public cloud.
+#### Q169. As a member of an operations team that uses infrastructure as code (IaC) practices, you are tasked with making a change to an infrastructure stack running in a public cloud. Which pattern would follow IaC best practices for making a change?
 
-- [ ] A. Which pattern would follow IaC best practices for making a change?
-- [ ] B. Clone the repository containing your infrastructure code and then run the code.
-- [ ] C. Use the public cloud console to make the change after a database record has been approved.
-- [ ] D. Make the change programmatically via the public cloud CLI.
-- [x] E. Make the change via the public cloud API endpoint.
-- [ ] F. Submit a pull request and wait for an approved merge of the proposed changes.
+- [ ] A. Clone the repository containing your infrastructure code and then run the code.
+- [ ] B. Use the public cloud console to make the change after a database record has been approved.
+- [ ] C. Make the change programmatically via the public cloud CLI.
+- [x] D. Make the change via the public cloud API endpoint.
+- [ ] E. Submit a pull request and wait for an approved merge of the proposed changes.
 
 > 
 
@@ -1514,13 +1483,12 @@ Total de preguntas: 370
 
 > Reference https://www.terraform.io/cli/commands/init
 
-#### Q174. You have a Terraform configuration that defines a single virtual machine with no references to it. You have run terraform apply to create the resource, and then removed the resource definition from your Terraform configuration file.
+#### Q174. You have a Terraform configuration that defines a single virtual machine with no references to it. You have run terraform apply to create the resource, and then removed the resource definition from your Terraform configuration file. What will happen when you run terraform apply in the working directory again?
 
-- [ ] A. What will happen when you run terraform apply in the working directory again?
-- [x] B. Nothing
-- [ ] C. Terraform will destroy the virtual machine.
-- [ ] D. Terraform will error.
-- [ ] E. Terraform will remove the virtual machine from the state file, but the resource will still exist.
+- [x] A. Nothing
+- [ ] B. Terraform will destroy the virtual machine.
+- [ ] C. Terraform will error.
+- [ ] D. Terraform will remove the virtual machine from the state file, but the resource will still exist.
 
 > 
 
@@ -1712,14 +1680,13 @@ Total de preguntas: 370
 
 > Reference https://developer.hashicorp.com/terraform/cloud-docs/workspaces/settings/vcs
 
-#### Q197. You have some Terraform code and a variable definitions file named dev.auto.tfvars that you tested successfully in the dev environment. You want to deploy the same code in the staging environment with a separate variable definition file and a separate state file.
+#### Q197. You have some Terraform code and a variable definitions file named dev.auto.tfvars that you tested successfully in the dev environment. You want to deploy the same code in the staging environment with a separate variable definition file and a separate state file. Which two actions should you perform? (Choose two.)
 
-- [ ] A. Which two actions should you perform? (Choose two.)
-- [x] B. Copy the existing terraform.tfstate file and save it as staging.terraform.tfstate
-- [x] C. Write a new staging.auto.tfvars variable definition file and run Terraform with the var-file=”staging.auto.tfvars” flag
-- [ ] D. Create a new Terraform workspace for staging.
-- [ ] E. Create a new Terraform provider for staging.
-- [ ] F. Add new Terraform code (*.tf files) for staging in the same directory.
+- [x] A. Copy the existing terraform.tfstate file and save it as staging.terraform.tfstate
+- [x] B. Write a new staging.auto.tfvars variable definition file and run Terraform with the var-file=”staging.auto.tfvars” flag
+- [ ] C. Create a new Terraform workspace for staging.
+- [ ] D. Create a new Terraform provider for staging.
+- [ ] E. Add new Terraform code (*.tf files) for staging in the same directory.
 
 > 
 
@@ -1766,23 +1733,21 @@ Total de preguntas: 370
 
 > 
 
-#### Q203. You decide to move a Terraform state file to Amazon S3 from another location. You write the code below into a file called backend.tf.
+#### Q203. You decide to move a Terraform state file to Amazon S3 from another location. You write the code below into a file called backend.tf. Which command will migrate your current state file to the new S3 remote backend?
 
-- [ ] A. Which command will migrate your current state file to the new S3 remote backend?
-- [x] B. terraform state.
-- [ ] C. terraform init.
-- [ ] D. terraform refresh.
-- [ ] E. terraform push.
+- [x] A. terraform state.
+- [ ] B. terraform init.
+- [ ] C. terraform refresh.
+- [ ] D. terraform push.
 
 > 
 
-#### Q204. You want to tag multiple resources with a string that is a combination of a generated random_id and a variable.
+#### Q204. You want to tag multiple resources with a string that is a combination of a generated random_id and a variable. How should you use the same value in all these resources without repeating the random_id and variable in each resource?
 
-- [x] A. How should you use the same value in all these resources without repeating the random_id and variable in each resource?
-- [ ] B. Local values
-- [ ] C. Data source
-- [ ] D. Modules
-- [ ] E. Outputs.
+- [ ] A. Local values
+- [ ] B. Data source
+- [ ] C. Modules
+- [ ] D. Outputs.
 
 > 
 
@@ -1802,13 +1767,12 @@ Total de preguntas: 370
 
 > Specifying a versions is not mandatory. When a version is not specified, Terraform just downloads the latest version
 
-#### Q207. While deploying a virtual machine, the first launch user_data script fails due to race condition with another resource deployed during the same Terraform run.
+#### Q207. While deploying a virtual machine, the first launch user_data script fails due to race condition with another resource deployed during the same Terraform run. What is the least disruptive method to correct the issue?
 
-- [x] A. What is the least disruptive method to correct the issue?
-- [ ] B. Run terraform taint against the virtual machine’s resource name, then terraform apply.
-- [ ] C. Restart the virtual machine from the cloud portal.
-- [ ] D. Run terraform apply again.
-- [ ] E. Run terraform destroy then terraform apply.
+- [ ] A. Run terraform taint against the virtual machine’s resource name, then terraform apply.
+- [ ] B. Restart the virtual machine from the cloud portal.
+- [ ] C. Run terraform apply again.
+- [ ] D. Run terraform destroy then terraform apply.
 
 > Reference https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax
 
@@ -1826,13 +1790,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q210. You want to define multiple data disks as nested blocks inside the resource block for a virtual machine.
+#### Q210. You want to define multiple data disks as nested blocks inside the resource block for a virtual machine. What Terraform feature would help you define the blocks using the values in a variable?
 
-- [ ] A. What Terraform feature would help you define the blocks using the values in a variable?
-- [ ] B. Local values
-- [x] C. Collection functions
-- [ ] D. Dynamic blocks
-- [ ] E. Count arguments.
+- [ ] A. Local values
+- [x] B. Collection functions
+- [ ] C. Dynamic blocks
+- [ ] D. Count arguments.
 
 > 
 
@@ -1925,11 +1888,10 @@ Total de preguntas: 370
 
 > The Terraform Cloud/Terraform Enterprise private module registry allows organizations to store and share Terraform configurations in a private and secure way. This method keeps the configurations confidential within your organization, supports Terraform's semantic version constraints, and provides a browsable directory.
 
-#### Q221. You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource “main”.
+#### Q221. You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource “main”. Which of these is the correct way to define the output value using HCL2?
 
-- [x] A. Which of these is the correct way to define the output value using HCL2?
-- [ ] B. C.
-- [ ] C. D.
+- [ ] A. C.
+- [ ] B. D.
 
 > C is not valid because the quotes.
 
@@ -2902,13 +2864,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q334. Kristen is using modules to provision an Azure environment for a new application. She is using the following code and specifying a version of her virtual machine module to ensure she's calling the correct module.
+#### Q334. Kristen is using modules to provision an Azure environment for a new application. She is using the following code and specifying a version of her virtual machine module to ensure she's calling the correct module. Which of the following provides support for the versioning of a module? (select two)?
 
-- [x] A. Which of the following provides support for the versioning of a module? (select two)?
-- [ ] B. public module registry
-- [ ] C. local file paths
-- [x] D. modules stored in GitLab
-- [ ] E. private module registry
+- [ ] A. public module registry
+- [ ] B. local file paths
+- [x] C. modules stored in GitLab
+- [ ] D. private module registry
 
 > Version constraints are supported only for modules installed from a module registry, such as the public Terraform Registry or Terraform Cloud's private module registry. Other module sources can provide their own versioning mechanisms within the source string itself or might not support versions at all. In particular, modules sourced from local file paths do not support version; since they're loaded from the same source repository, they always share the same version as their caller. Reference: https://www.terraform.io/language/modules/syntax#version
 
@@ -2976,13 +2937,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q342. When configuring a remote backend in Terraform, it might be a good idea to purposely omit some of the required arguments to ensure secrets and other relevant data are not inadvertently shared with others.
+#### Q342. When configuring a remote backend in Terraform, it might be a good idea to purposely omit some of the required arguments to ensure secrets and other relevant data are not inadvertently shared with others. What are the ways the remaining configuration can be added to Terraform so it can initialize and communicate with the backend? (select three)
 
-- [ ] A. What are the ways the remaining configuration can be added to Terraform so it can initialize and communicate with the backend? (select three)
-- [x] B. directly querying HashiCorp Vault for the secrets
-- [x] C. use the -backend-config=PATH to specify a separate config file
-- [x] D. interactively on the command line
-- [ ] E. command-line key/value pairs
+- [x] A. directly querying HashiCorp Vault for the secrets
+- [x] B. use the -backend-config=PATH to specify a separate config file
+- [x] C. interactively on the command line
+- [ ] D. command-line key/value pairs
 
 > 
 
@@ -3023,13 +2983,12 @@ Total de preguntas: 370
 
 > 
 
-#### Q347. You have been given requirements to create a security group for a new application. Since your organization standardizes on Terraform, you want to add this new security group with the fewest number of lines of code.
+#### Q347. You have been given requirements to create a security group for a new application. Since your organization standardizes on Terraform, you want to add this new security group with the fewest number of lines of code. What feature could you use to iterate over a list of required tcp ports to add to the new security group?
 
-- [ ] A. What feature could you use to iterate over a list of required tcp ports to add to the new security group?
-- [ ] B. dynamic backend
-- [ ] C. splat expression
-- [x] D. terraform import
-- [ ] E. dynamic block
+- [ ] A. dynamic backend
+- [ ] B. splat expression
+- [x] C. terraform import
+- [ ] D. dynamic block
 
 > 
 
