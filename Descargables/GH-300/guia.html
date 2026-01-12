@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guía de Estudio GH-300: GitHub Copilot</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+      main { max-width: 800px; margin: 0 auto; padding: 2rem; background: #fff; min-height: 80vh; }
+      h1, h2, h3 { color: #143d59; }
+      h1 { border-bottom: 2px solid #e0e6eb; padding-bottom: 0.5rem; }
+      table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+      th, td { border: 1px solid #ddd; padding: 0.75rem; text-align: left; }
+      th { background-color: #f7f9fb; }
+      ul { line-height: 1.6; }
+      li { margin-bottom: 0.5rem; }
+      .back-link { display: inline-block; margin-bottom: 1rem; color: #1768ac; text-decoration: none; font-weight: bold; }
+      .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Guía de Estudio GH-300</h1>
+    <p>Recurso de preparación para la certificación GitHub Copilot</p>
+  </header>
+
+  <main>
+    <a href="../../index.html" class="back-link">← Volver al Quiz</a>
+
+    <h1>Guía de Estudio para GH-300: GitHub Copilot</h1>
+
+    <p>Esta guía está diseñada para ayudarte a preparar la certificación <strong>GH-300: GitHub Copilot</strong>. Abarca los dominios principales y habilidades medidas en el examen, traducidos y explicados para facilitar su comprensión en español.</p>
+
+    <hr />
+
+    <h2>📚 Estructura del Examen</h2>
+    <p>El examen evalúa tus habilidades en las siguientes áreas:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Dominio</th>
+          <th>Peso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dominio 1: IA Responsable</strong></td>
+          <td>7%</td>
+        </tr>
+        <tr>
+          <td><strong>Dominio 2: Planes y características de GitHub Copilot</strong></td>
+          <td>31%</td>
+        </tr>
+        <tr>
+          <td><strong>Dominio 3: Cómo funciona GitHub Copilot y manejo de datos</strong></td>
+          <td>15%</td>
+        </tr>
+        <tr>
+          <td><strong>Dominio 4: Elaboración e Ingeniería de Prompts</strong></td>
+          <td>9%</td>
+        </tr>
+        <tr>
+          <td><strong>Dominio 5: Casos de uso de IA para desarrolladores</strong></td>
+          <td>14%</td>
+        </tr>
+        <tr>
+          <td><strong>Dominio 6: Pruebas (Testing) con GitHub Copilot</strong></td>
+          <td>9%</td>
+        </tr>
+        <tr>
+          <td><strong>Dominio 7: Fundamentos de privacidad y exclusiones de contexto</strong></td>
+          <td>15%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>🧠 Dominio 1: IA Responsable (7%)</h2>
+    <p>Aborda la ética y seguridad en el uso de herramientas generativas.</p>
+    <ul>
+      <li><strong>Riesgos de la IA:</strong> Comprender sesgos, alucinaciones y errores.</li>
+      <li><strong>Limitaciones:</strong> Los modelos dependen de sus datos de entrenamiento; pueden tener información desactualizada o sesgada.</li>
+      <li><strong>Validación:</strong> <strong>SIEMPRE</strong> se debe revisar el código generado. La responsabilidad final es del desarrollador.</li>
+      <li><strong>Daños potenciales:</strong>
+        <ul>
+          <li><em>Sesgo (Bias):</em> Estereotipos en el código o comentarios.</li>
+          <li><em>Seguridad:</em> Código vulnerable.</li>
+          <li><em>Privacidad:</em> Fugas de datos sensibles.</li>
+        </ul>
+      </li>
+      <li><strong>IA Ética:</strong> Principios de transparencia, justicia y responsabilidad.</li>
+    </ul>
+
+    <hr />
+
+    <h2>💼 Dominio 2: Planes y Características (31%)</h2>
+    <p>Diferencias clave entre las versiones de Copilot.</p>
+
+    <h3>Comparativa de Planes</h3>
+    <ol>
+      <li><strong>Copilot Individual:</strong>
+        <ul>
+          <li>Para uso personal.</li>
+          <li>Gestión individual de facturación.</li>
+          <li>No tiene gestión centralizada de políticas.</li>
+        </ul>
+      </li>
+      <li><strong>Copilot Business:</strong>
+        <ul>
+          <li>Para organizaciones.</li>
+          <li>Gestión de políticas a nivel de organización (ej. bloquear sugerencias de código público).</li>
+          <li>Gestión de licencias por puesto (seat management).
+          <li><strong>Exclusión de archivos (Content Exclusions):</strong> Bloquear repositorios o rutas específicas para que no sean usados por Copilot.</li>
+          <li>Logs de auditoría.</li>
+        </ul>
+      </li>
+      <li><strong>Copilot Enterprise:</strong>
+        <ul>
+          <li>Integración profunda con GitHub.com.</li>
+          <li><strong>Copilot Chat en GitHub.com:</strong> Preguntar sobre repositorios enteros.</li>
+          <li><strong>Knowledge Bases:</strong> Indexar documentación interna y código para respuestas personalizadas.</li>
+          <li>Resúmenes de Pull Requests automáticos.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Características en el IDE y CLI</h3>
+    <ul>
+      <li><strong>Autocompletado (Ghost text):</strong> Sugerencias mientras escribes.</li>
+      <li><strong>Chat:</strong> Panel lateral o inline para preguntas y refactorización.</li>
+      <li><strong>CLI:</strong> Comandos en terminal (<code>gh copilot suggest</code>, <code>gh copilot explain</code>).</li>
+    </ul>
+
+    <hr />
+
+    <h2>⚙️ Dominio 3: Funcionamiento y Datos (15%)</h2>
+    <p>Entender qué pasa "bajo el capó".</p>
+
+    <h3>Ciclo de vida de una sugerencia (Data Pipeline)</h3>
+    <ol>
+      <li><strong>Context Gathering (Recolección de contexto):</strong> Copilot mira el archivo abierto, pestañas vecinas, y cursor para entender qué necesitas.</li>
+      <li><strong>Prompt Building:</strong> Construye un prompt para el LLM (Large Language Model) con ese contexto.</li>
+      <li><strong>Filtrado (Proxy):</strong> Pasa por filtros de toxicidad y seguridad antes de ir al modelo.</li>
+      <li><strong>Generación:</strong> El modelo (OpenAI Codex/GPT) genera opciones.</li>
+      <li><strong>Post-procesamiento:</strong> Se filtra de nuevo (ej. filtro de duplicidad contra código público).</li>
+      <li><strong>Sugerencia:</strong> Aparece en tu editor.</li>
+    </ol>
+
+    <h3>Manejo de Datos</h3>
+    <ul>
+      <li><strong>Individual:</strong> Puede compartir snippets para mejorar el modelo (opcional).</li>
+      <li><strong>Business/Enterprise:</strong> Por defecto NO usan tu código para entrenar modelos base.</li>
+    </ul>
+
+    <h3>Limitaciones Técnicas</h3>
+    <ul>
+      <li><strong>Ventana de contexto:</strong> Cantidad limitada de "memoria" (tokens) que el modelo puede "leer" a la vez.</li>
+      <li><strong>Alucinaciones:</strong> El modelo predice texto probable, no "piensa" ni verifica hechos.</li>
+    </ul>
+
+    <hr />
+
+    <h2>🗣️ Dominio 4: Ingeniería de Prompts (9%)</h2>
+    <p>Cómo pedir las cosas para obtener mejores resultados.</p>
+    <ul>
+      <li><strong>Componentes de un buen Prompt:</strong>
+        <ul>
+          <li><strong>Contexto:</strong> ¿Qué quieres hacer? ¿Qué lenguaje? ¿Qué librerías?</li>
+          <li><strong>Instrucción:</strong> Verbo claro ("Escribe", "Explica", "Refactoriza").</li>
+          <li><strong>Ejemplos (Few-shot prompting):</strong> Darle ejemplos de entrada/salida ayuda mucho al modelo.</li>
+        </ul>
+      </li>
+      <li><strong>Mejorar resultados:</strong>
+        <ul>
+          <li>Abrir archivos relacionados (para dar contexto).</li>
+          <li>Ser específico.</li>
+          <li>Iterar (refinar la pregunta).</li>
+        </ul>
+      </li>
+    </ul>
+
+    <hr />
+
+    <h2>🛠️ Dominio 5: Casos de Uso (14%)</h2>
+    <p>¿Para qué sirve realmente en el día a día?</p>
+    <ul>
+      <li><strong>Aprender lenguajes:</strong> "Explícame qué hace este código de Rust".</li>
+      <li><strong>Traducir código:</strong> "Pasa esta función de Python a JavaScript".</li>
+      <li><strong>Documentación:</strong> "Genera JSDoc para esta función".</li>
+      <li><strong>Refactorización:</strong> "Simplifica este bucle", "Mejora la legibilidad".</li>
+      <li><strong>Debugging:</strong> "¿Por qué falla esto?", "Encuentra el bug lógico".</li>
+      <li><strong>Generar datos de prueba:</strong> "Crea un JSON con 10 usuarios ficticios".</li>
+      <li><strong>Modernización:</strong> Actualizar código legacy.</li>
+    </ul>
+
+    <hr />
+
+    <h2>🧪 Dominio 6: Testing (9%)</h2>
+    <p>Automatización de pruebas.</p>
+    <ul>
+      <li><strong>Generación de Unit Tests:</strong> "Genera pruebas unitarias para esta clase usando Jest".</li>
+      <li><strong>Casos borde (Edge cases):</strong> Copilot es bueno sugiriendo entradas nulas, vacías o extremas.</li>
+      <li><strong>Boilerplate:</strong> Escribir la estructura repetitiva de los tests.</li>
+      <li><strong>Aserciones:</strong> Sugerir validaciones lógicas.</li>
+    </ul>
+
+    <hr />
+
+    <h2>🔒 Dominio 7: Privacidad y Exclusiones (15%)</h2>
+    <p>Proteger la propiedad intelectual.</p>
+
+    <h3>Exclusiones de Contenido (Content Exclusions)</h3>
+    <ul>
+      <li>Configurables a nivel de Organización o Repositorio.</li>
+      <li>Si un archivo está excluido:
+        <ul>
+          <li>Copilot NO lo lee para generar contexto.</li>
+          <li>Copilot NO ofrece sugerencias dentro de ese archivo.</li>
+        </ul>
+      </li>
+      <li>Útil para código sensible, secretos, o datos PII.</li>
+    </ul>
+
+    <h3>Detección de Duplicados (Duplication Detection)</h3>
+    <ul>
+      <li>Opción para bloquear sugerencias que coincidan con código público existente en GitHub (aprox. 150 caracteres).</li>
+      <li>Protege contra infracciones de copyright involuntarias.</li>
+    </ul>
+
+    <h3>Solución de Problemas (Troubleshooting)</h3>
+    <ul>
+      <li>Si no hay sugerencias:
+        <ul>
+          <li>Verificar conexión a internet.</li>
+          <li>Verificar login.</li>
+          <li>Verificar si el archivo está excluido.</li>
+          <li>Verificar si el tipo de archivo es compatible.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <hr />
+
+    <h2>🔗 Recursos Adicionales</h2>
+    <ul>
+      <li><a href="https://docs.github.com/es/copilot">Documentación Oficial de GitHub Copilot (Español)</a></li>
+      <li><a href="https://resources.github.com/copilot-trust-center/">GitHub Copilot Trust Center</a></li>
+      <li><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-300">Microsoft Learn - GH-300 Study Guide (Original en Inglés)</a></li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>Quiz de Certificaciones - Documentación de Estudio</p>
+  </footer>
+</body>
+</html>
