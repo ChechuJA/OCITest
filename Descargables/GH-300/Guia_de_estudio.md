@@ -2,6 +2,12 @@
 
 Esta guía está diseñada para ayudarte a preparar la certificación **GH-300: GitHub Copilot**. Abarca los dominios principales y habilidades medidas en el examen, traducidos y explicados para facilitar su comprensión en español.
 
+## 🎧 Recurso de Audio
+
+**[📥 Descargar preguntas en audio (MP3)](GH-300examen.mp3)**
+
+Escucha las preguntas del examen en formato de audio para repasar mientras te desplazas, haces ejercicio o en cualquier momento que prefieras el aprendizaje auditivo.
+
 ---
 
 ## 📚 Estructura del Examen

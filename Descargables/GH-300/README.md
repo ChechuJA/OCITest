@@ -1,5 +1,13 @@
 # GH-300 — GitHub Copilot (Exam)
 
+## 📖 Guía de Estudio
+- **[📚 Ver Guía de Estudio Completa](Guia_de_estudio.md)** - Todos los dominios del examen explicados en español
+
+## 🎧 Descargar Audio
+- **[📥 Descargar preguntas en audio (MP3)](GH-300examen.mp3)** - Escucha las preguntas mientras te desplazas
+
+---
+
 ## Recursos (para no perderlos)
 
 Rutas de aprendizaje:
