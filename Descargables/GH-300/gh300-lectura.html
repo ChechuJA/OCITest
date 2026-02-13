@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GH-300 GitHub Copilot - Preguntas y Respuestas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .controls {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        #searchInput {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        #searchInput:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .content {
+            padding: 30px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .question-card {
+            background: #ffffff;
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+        
+        .question-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+        
+        .answer {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        
+        .answer-label {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-right: 10px;
+        }
+        
+        .answer-key {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .answer-text {
+            color: #1b5e20;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        
+        /* Scrollbar personalizado */
+        .content::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .content::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 5px;
+        }
+        
+        .content::-webkit-scrollbar-thumb:hover {
+            background: #5568d3;
+        }
+        
+        /* Sección de Materiales */
+        .materials-section {
+            background: #f8f9fa;
+            border-top: 3px solid #667eea;
+        }
+        
+        .materials-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .materials-header:hover {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+        }
+        
+        .materials-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .materials-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .materials-content.expanded {
+            max-height: 2000px;
+            padding: 30px;
+        }
+        
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .material-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .material-card.audio-card {
+            border-left-color: #4caf50;
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .material-card h3 {
+            color: #2c3e50;
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .material-card p {
+            color: #6c757d;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        
+        .material-card audio {
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        .download-btn, .btn-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .download-btn:hover, .btn-link:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+        
+        .btn-link {
+            background: #28a745;
+        }
+        
+        .btn-link:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 GH-300 GitHub Copilot</h1>
+            <div class="subtitle">Preguntas y Respuestas Correctas para Certificación</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalQuestions">129</div>
+                <div class="stat-label">Preguntas Totales</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="visibleQuestions">129</div>
+                <div class="stat-label">Mostrando</div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar preguntas..." />
+            <button class="btn btn-primary" onclick="clearSearch()">Limpiar</button>
+            <button class="btn btn-secondary" onclick="printPage()">📄 Imprimir</button>
+        </div>
+        
+        <div class="content" id="questionsContainer">
+            <!-- Las preguntas se cargarán dinámicamente -->
+        </div>
+        
+        <div class="footer">
+            <p>📚 Preparación para Certificación GH-300 | Total: 129 Preguntas</p>
+            <p>Generado el <span id="currentDate"></span></p>
+        </div>
+        
+        <!-- Material Descargable -->
+        <div class="materials-section" id="materialsSection">
+            <div class="materials-header" onclick="toggleMaterials()">
+                <h2>📦 Material GH-300</h2>
+                <span class="toggle-icon" id="toggleIcon">▼</span>
+            </div>
+            <div class="materials-content" id="materialsContent">
+                <div class="material-grid">
+                    <!-- Audio Files -->
+                    <div class="material-card audio-card">
+                        <div class="card-icon">🎧</div>
+                        <h3>Audio: Examen Completo</h3>
+                        <p>Preguntas y respuestas completas</p>
+                        <audio controls>
+                            <source src="GH-300examen.mp3" type="audio/mpeg">
+                            Tu navegador no soporta audio HTML5.
+                        </audio>
+                        <a href="GH-300examen.mp3" download class="download-btn">⬇️ Descargar</a>
+                    </div>
+                    
+                    <div class="material-card audio-card">
+                        <div class="card-icon">✅</div>
+                        <h3>Audio: Solo Respuestas</h3>
+                        <p>Respuestas correctas únicamente</p>
+                        <audio controls>
+                            <source src="solorespuestas.mp3" type="audio/mpeg">
+                            Tu navegador no soporta audio HTML5.
+                        </audio>
+                        <a href="solorespuestas.mp3" download class="download-btn">⬇️ Descargar</a>
+                    </div>
+                    
+                    <!-- Documentos -->
+                    <div class="material-card">
+                        <div class="card-icon">📄</div>
+                        <h3>Guía de Estudio</h3>
+                        <p>Guía completa en HTML</p>
+                        <a href="guia.html" class="btn-link" target="_blank">🔗 Abrir Guía</a>
+                        <a href="Guia_de_estudio.md" download class="download-btn">⬇️ Descargar MD</a>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="card-icon">📝</div>
+                        <h3>Preguntas en Texto</h3>
+                        <p>Archivo de lectura (Español)</p>
+                        <a href="gh300-lectura-es.txt" download class="download-btn">⬇️ Descargar TXT</a>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="card-icon">📋</div>
+                        <h3>Preguntas Markdown</h3>
+                        <p>Formato Markdown completo</p>
+                        <a href="gh300-questions.md" download class="download-btn">⬇️ Descargar MD</a>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="card-icon">💾</div>
+                        <h3>Base de Datos JSON</h3>
+                        <p>Datos estructurados</p>
+                        <a href="gh300-questions.json" download class="download-btn">⬇️ Descargar JSON</a>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="card-icon">ℹ️</div>
+                        <h3>README</h3>
+                        <p>Información del examen</p>
+                        <a href="README.md" download class="download-btn">⬇️ Descargar MD</a>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Quiz Interactivo</h3>
+                        <p>Practicar con el quiz completo</p>
+                        <a href="../../index.html" class="btn-link" target="_blank">🔗 Ir al Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questionsData = [];
+        
+        // Cargar preguntas desde el JSON
+        fetch('gh300-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                questionsData.push(...data);
+                renderQuestions(questionsData);
+            })
+            .catch(error => {
+                console.error('Error al cargar preguntas:', error);
+                document.getElementById('questionsContainer').innerHTML = 
+                    '<div style="text-align: center; padding: 50px; color: #e74c3c;"><h2>⚠️ Error al cargar las preguntas</h2><p>Asegúrate de que el archivo gh300-questions.json esté en la misma carpeta.</p></div>';
+            });
+        
+        function renderQuestions(questions) {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+            
+            questions.forEach(q => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.dataset.questionId = q.id;
+                
+                // Obtener respuestas correctas
+                const correctAnswers = q.answers.filter(ans => q.correctKeys.includes(ans.key));
+                
+                // Crear HTML de respuestas
+                const answersHTML = correctAnswers.map(ans => `
+                    <div class="answer">
+                        <span class="answer-key">${ans.key}</span>
+                        <span class="answer-text">${ans.text}</span>
+                    </div>
+                `).join('');
+                
+                card.innerHTML = `
+                    <span class="question-number">P${q.id}</span>
+                    <div class="question-text">${q.question}</div>
+                    ${answersHTML}
+                `;
+                
+                container.appendChild(card);
+            });
+            
+            updateStats(questions.length);
+        }
+        
+        function updateStats(count) {
+            document.getElementById('visibleQuestions').textContent = count;
+        }
+        
+        // Búsqueda en tiempo real
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm === '') {
+                renderQuestions(questionsData);
+                return;
+            }
+            
+            const filtered = questionsData.filter(q => {
+                const questionMatch = q.question.toLowerCase().includes(searchTerm);
+                const answerMatch = q.answers.some(ans => 
+                    ans.text.toLowerCase().includes(searchTerm)
+                );
+                return questionMatch || answerMatch;
+            });
+            
+            renderQuestions(filtered);
+        });
+        
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            renderQuestions(questionsData);
+        }
+        
+        function printPage() {
+            window.print();
+        }
+        
+        function toggleMaterials() {
+            const content = document.getElementById('materialsContent');
+            const icon = document.getElementById('toggleIcon');
+            
+            content.classList.toggle('expanded');
+            icon.classList.toggle('rotated');
+        }
+        
+        // Mostrar fecha actual
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>
