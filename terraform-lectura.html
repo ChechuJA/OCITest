@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📖 Terraform 004 - Preguntas y Respuestas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5a623 0%, #d97e39 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f5a623 0%, #d97e39 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .controls {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .controls input, .controls button {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        
+        .controls input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .controls button {
+            background: #f5a623;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .controls button:hover {
+            background: #d97e39;
+        }
+        
+        .stats {
+            padding: 10px 20px;
+            background: white;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .question-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .question-item:hover {
+            background: #f5f5f5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #f5a623;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .answers {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .answer {
+            padding: 8px 0;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        .answer.correct {
+            background: #c8e6c9;
+            padding: 8px 12px;
+            border-left: 4px solid #4caf50;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .explanation {
+            padding: 15px;
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            border-radius: 4px;
+            font-size: 0.95em;
+            color: #1565c0;
+            line-height: 1.5;
+        }
+        
+        .material-section {
+            padding: 20px;
+            background: #fff3e0;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 2px dashed #f5a623;
+        }
+        
+        .material-section h3 {
+            margin-bottom: 15px;
+            color: #e65100;
+        }
+        
+        .material-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .material-links a {
+            padding: 10px 15px;
+            background: #f5a623;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .material-links a:hover {
+            background: #d97e39;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 Terraform 004</h1>
+            <p>Preguntas y Respuestas</p>
+        </div>
+        
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Buscar preguntas..." />
+            <button id="clearBtn">Limpiar búsqueda</button>
+            <button id="printBtn">🖨️ Imprimir</button>
+        </div>
+        
+        <div class="stats">
+            <span id="stats">Cargando preguntas...</span>
+        </div>
+        
+        <div class="content" id="content">
+            <p style="text-align: center; color: #999;">Cargando preguntas...</p>
+        </div>
+        
+        <div class="material-section">
+            <h3>📚 Materiales de Estudio</h3>
+            <div class="material-links">
+                <a href="terraform-questions.md" target="_blank">📄 Ver en Markdown</a>
+                <a href="terraform-questions.json" target="_blank">📋 Descargar JSON</a>
+                <a href="README.md" target="_blank">📖 Guía Oficial</a>
+                <a href="https://developer.hashicorp.com/terraform/docs" target="_blank">🔗 Docs Oficiales</a>
+                <a href="../../../index.html" target="_blank">🎯 Quiz Completo</a>
+                <a href="../../../lectura-todas.html" target="_blank">📚 Centro de Estudio</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let questions = [];
+        
+        async function loadQuestions() {
+            try {
+                const response = await fetch('terraform-questions.json');
+                questions = await response.json();
+                renderQuestions(questions);
+            } catch (error) {
+                document.getElementById('content').innerHTML = '<p style="color: red;">Error al cargar preguntas</p>';
+            }
+        }
+        
+        function renderQuestions(items) {
+            const content = document.getElementById('content');
+            const stats = document.getElementById('stats');
+            
+            if (items.length === 0) {
+                content.innerHTML = '<p style="text-align: center; color: #999;">No se encontraron resultados</p>';
+                stats.textContent = 'Sin resultados';
+                return;
+            }
+            
+            stats.textContent = `Mostrando ${items.length} de ${questions.length} preguntas`;
+            
+            content.innerHTML = items.map(q => `
+                <div class="question-item">
+                    <div class="question-number">Q${q.id}.</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="answers">
+                        ${q.answers.map(a => {
+                            const isCorrect = q.correctKeys.includes(a.key);
+                            return `<div class="answer ${isCorrect ? 'correct' : ''}">
+                                ${a.key}. ${a.text}
+                            </div>`;
+                        }).join('')}
+                    </div>
+                    ${q.explanation ? `<div class="explanation"><strong>Explicación:</strong> ${q.explanation}</div>` : ''}
+                </div>
+            `).join('');
+        }
+        
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const search = e.target.value.toLowerCase();
+            const filtered = questions.filter(q => 
+                q.question.toLowerCase().includes(search) ||
+                q.answers.some(a => a.text.toLowerCase().includes(search)) ||
+                q.explanation.toLowerCase().includes(search)
+            );
+            renderQuestions(filtered);
+        });
+        
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            document.getElementById('searchInput').value = '';
+            renderQuestions(questions);
+        });
+        
+        document.getElementById('printBtn').addEventListener('click', () => {
+            window.print();
+        });
+        
+        loadQuestions();
+    </script>
+</body>
+</html>
