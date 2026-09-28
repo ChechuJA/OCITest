@@ -34,7 +34,7 @@
       "id": "oci-ai-foundations",
       "title": "OCI 2025 AI Foundations Associate",
       "code": "1Z0-1122-25",
-      "file": "Nuevos/OCI AI Foundations 1Z0-1122-25.md",
+      "file": "Exámenes/OCI/OCI AI Foundations 1Z0-1122-25.md",
       "questions": 44,
       "provider": "OCI",
       "category": "AI",
@@ -44,7 +44,7 @@
       "id": "ai-vector-search",
       "title": "Oracle AI Vector Search Professional",
       "code": "1Z0-184-25",
-      "file": "Nuevos/AI Vector Search Professional 1Z0-184-25.md",
+      "file": "Exámenes/OCI/AI Vector Search Professional 1Z0-184-25.md",
       "questions": 50,
       "provider": "OCI",
       "category": "AI",
@@ -54,7 +54,7 @@
       "id": "oci-foundations-clean",
       "title": "OCI 2025 Foundations Associate (Curated)",
       "code": "1Z0-1085-25",
-      "file": "Nuevos/OCI Foundations 1Z0-1085-25.md",
+      "file": "Exámenes/OCI/OCI Foundations 1Z0-1085-25.md",
       "questions": 39,
       "provider": "OCI",
       "category": "Infrastructure",
@@ -64,7 +64,7 @@
       "id": "oci-foundations-full",
       "title": "OCI 2025 Foundations Associate (Full)",
       "code": "1Z0-1085-25",
-      "file": "Nuevos/OCI Foundations 1Z0-1085-25 (Original).md",
+      "file": "Exámenes/OCI/OCI Foundations 1Z0-1085-25 (Original).md",
       "questions": 47,
       "provider": "OCI",
       "category": "Infrastructure",
@@ -74,7 +74,7 @@
       "id": "mysql-developer",
       "title": "MySQL 8.0 Database Developer",
       "code": "1Z0-909",
-      "file": "Nuevos/MySQL Database Developer 1Z0-909.md",
+      "file": "Exámenes/MySQL/MySQL Database Developer 1Z0-909.md",
       "questions": 77,
       "provider": "OCI",
       "category": "Database",
@@ -84,7 +84,7 @@
       "id": "mysql-implementation",
       "title": "MySQL Implementation Associate",
       "code": "1Z0-922",
-      "file": "Nuevos/MySQL Implementation 1Z0-922.md",
+      "file": "Exámenes/MySQL/MySQL Implementation 1Z0-922.md",
       "questions": 52,
       "provider": "OCI",
       "category": "Database",
@@ -94,7 +94,7 @@
       "id": "hashicorp-terraform",
       "title": "HashiCorp Terraform Associate",
       "code": "003",
-      "file": "Descargables/Terraform/terraform-questions.json",
+      "file": "Descargables/Terraform/003/terraform-questions.json",
       "questions": 378,
       "provider": "HashiCorp",
       "category": "Infrastructure",
@@ -109,6 +109,26 @@
       "provider": "GitHub",
       "category": "AI",
       "description": "Pendiente de importar (JSON)"
+    },
+    {
+      "id": "hashicorp-terraform-004",
+      "title": "HashiCorp Terraform Associate (004)",
+      "code": "004",
+      "file": "Descargables/Terraform/004/terraform-questions.json",
+      "questions": 221,
+      "provider": "HashiCorp",
+      "category": "Infrastructure",
+      "description": "HashiCorp Certified: Terraform Associate certification - Nueva versión"
+    },
+    {
+      "id": "hashicorp-vault",
+      "title": "HashiCorp Vault Associate",
+      "code": "VAULT",
+      "file": "Descargables/Vault/vault-questions.json",
+      "questions": 86,
+      "provider": "HashiCorp",
+      "category": "DevOps",
+      "description": "HashiCorp Certified: Vault Associate certification"
     }
   ],
   "categories": [
@@ -134,9 +154,9 @@
     }
   ],
   "metadata": {
-    "version": "1.0.0",
-    "totalExams": 11,
-    "totalQuestions": 837,
-    "lastUpdated": "2025-12-26"
+    "version": "1.1.0",
+    "totalExams": 13,
+    "totalQuestions": 1144,
+    "lastUpdated": "2026-09-28"
   }
 }
