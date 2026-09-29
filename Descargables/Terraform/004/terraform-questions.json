@@ -422,26 +422,22 @@
   },
   {
     "id": 18,
-    "question": "A resource block is shown in the Exhibit space of this page.",
+    "question": "A resource block is shown in the Exhibit space of this page.\n\n```\nresource \"aws_vpc\" \"main\" {\n  name = \"test\"\n}\n```\n\nWhat is the provider for this resource?",
     "answers": [
       {
         "key": "A",
-        "text": "What is the provider for this resource?"
-      },
-      {
-        "key": "B",
         "text": "main"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "vpc"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "aws"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "test"
       }
     ],
@@ -602,7 +598,7 @@
   },
   {
     "id": 26,
-    "question": "A variable block is shown in the Exhibit space of this page.\n\nvariable \"tags\"{\n  description = \"Metadata tags for resources\"\n  type = _____________\n}\n\nYou will use this variable as the value for the tags argument in several resources. The data format must be a set of key value pairs. Which type argument would you use?",
+    "question": "A variable block is shown in the Exhibit space of this page.\n\n```\nvariable \"tags\"{\n  description = \"Metadata tags for resources\"\n  type = _____________\n}\n```\n\nYou will use this variable as the value for the tags argument in several resources. The data format must be a set of key value pairs. Which type argument would you use?",
     "answers": [
       {
         "key": "A",
@@ -1264,7 +1260,7 @@
   },
   {
     "id": 53,
-    "question": "The Exhibit section of this page shows part of a configuration you've been asked to update.\n\ndata \"azurerm_resource_group\" \"example\"{\n  name = var.resource_group_name\n}\n\nresource \"azurerm_virtual_network\" \"example\"{\n  name = ____________\n}\n\nThe name of the Azure Virtual Network should be set to the name of the resource group followed by a dash and the word \"vnet\". Which expression fulfils this requirement?",
+    "question": "The Exhibit section of this page shows part of a configuration you've been asked to update.\n\n```\ndata \"azurerm_resource_group\" \"example\"{\n  name = var.resource_group_name\n}\n\nresource \"azurerm_virtual_network\" \"example\"{\n  name = ____________\n}\n```\n\nThe name of the Azure Virtual Network should be set to the name of the resource group followed by a dash and the word \"vnet\". Which expression fulfils this requirement?",
     "answers": [
       {
         "key": "A",
@@ -1316,7 +1312,7 @@
   },
   {
     "id": 55,
-    "question": "A resource block is shown in the Exhibit space of this page.\n\nresource \"aws_instance\" \"web\"{\n  count = 2\n  name = \"terraform-${count.index}\"\n}\n\nHow do you reference the name value of the second instance of this resource?",
+    "question": "A resource block is shown in the Exhibit space of this page.\n\n```\nresource \"aws_instance\" \"web\"{\n  count = 2\n  name = \"terraform-${count.index}\"\n}\n```\n\nHow do you reference the name value of the second instance of this resource?",
     "answers": [
       {
         "key": "A",
@@ -1420,7 +1416,7 @@
   },
   {
     "id": 59,
-    "question": "The Terraform configuration shown in the Exhibit space on this page will create a new AWS instance.\n\ndata \"aws_instance\" \"web\"{\n  filter{\n    name = \"tag:Name\"\n    values = [\"web\"]\n  }\n}",
+    "question": "The Terraform configuration shown in the Exhibit space on this page will create a new AWS instance.\n\n```\ndata \"aws_instance\" \"web\"{\n  filter{\n    name = \"tag:Name\"\n    values = [\"web\"]\n  }\n}\n```",
     "answers": [
       {
         "key": "A",
@@ -1482,7 +1478,7 @@
   },
   {
     "id": 62,
-    "question": "A data source is shown in the Exhibit space of this page.\n\ndata \"aws_ami\" \"web\"{\n  most_recent = true\n  owners = [\"self\"]\n  tags = {\n    Name = \"web-server\"\n  }\n}\n\nHow do you reference the id attribute of this data source?",
+    "question": "A data source is shown in the Exhibit space of this page.\n\n```\ndata \"aws_ami\" \"web\"{\n  most_recent = true\n  owners = [\"self\"]\n  tags = {\n    Name = \"web-server\"\n  }\n}\n```\n\nHow do you reference the id attribute of this data source?",
     "answers": [
       {
         "key": "A",
@@ -1508,7 +1504,7 @@
   },
   {
     "id": 63,
-    "question": "A resource block is shown in the Exhibit space of this page.\n\nresource \"kubernetes_namespace\" \"example\"{\n  name = \"test\"\n}\n\nHow would you reference the attribute name of this resource in HCL?",
+    "question": "A resource block is shown in the Exhibit space of this page.\n\n```\nresource \"kubernetes_namespace\" \"example\"{\n  name = \"test\"\n}\n```\n\nHow would you reference the attribute name of this resource in HCL?",
     "answers": [
       {
         "key": "A",
@@ -1560,7 +1556,7 @@
   },
   {
     "id": 65,
-    "question": "Two resources blocks are shown in the Exhibit space on this page: azurerm_linux_web_app, and azurerm_role_assignment.\n\nWhen provisioned, the web app will use the role assignment during creation, so the role assignment must be created first.\n\nHow do you ensure the azurerm_role_assignment resource is created first?",
+    "question": "Two resources blocks are shown in the Exhibit space on this page: azurerm_linux_web_app, and azurerm_role_assignment.\n\n```\nresource \"azurerm_linux_web_app\" \"app\"{\n  name = \"example-app\"\n  resource_group_name = azurerm_resource_group.rg.name\n  location = azurerm_resource_group.rg.location\n  service_plan_id = azurerm_service_plan.plan.id\n\n  identity{\n    type = \"UserAssigned\"\n    identity_ids = [azurerm_user_assigned_identity.app.id]\n  }\n}\n\nresource \"azurerm_role_assignment\" \"kv_access\"{\n  scope = azurerm_key_vault.kv.id\n  role_definition_name = \"Key Vault Secrets User\"\n  principal_id = azurerm_user_assigned_identity.identity.app.principal_id\n}\n```\n\nWhen provisioned, the web app will use the role assignment during creation, so the role assignment must be created first.\n\nHow do you ensure the azurerm_role_assignment resource is created first?",
     "answers": [
       {
         "key": "A",
@@ -2003,7 +1999,7 @@
   },
   {
     "id": 84,
-    "question": "Your configuration defines the module block shown in the Exhibit space of this page.\n\nmodule \"production\"{\n  source = \"./modules/web_stack\"\n}\n\nThis module declares an output named hostnames.\nHow do you access the value of this output?",
+    "question": "Your configuration defines the module block shown in the Exhibit space of this page.\n\n```\nmodule \"production\"{\n  source = \"./modules/web_stack\"\n}\n```\n\nThis module declares an output named hostnames.\nHow do you access the value of this output?",
     "answers": [
       {
         "key": "A",
@@ -3371,7 +3367,7 @@
   },
   {
     "id": 137,
-    "question": "A module block is shown in the Exhibit space on this page.\n\nmodule \"vpc\"{\n  source = \"terraform-awsmodules/vpc/aws\"\n  version = \"~>4.0\"\n}\n\nThat module block limits the module version to major version 4.\nTrue or False?",
+    "question": "A module block is shown in the Exhibit space of this page.\n\n```\nmodule \"vpc\"{\n  source = \"terraform-awsmodules/vpc/aws\"\n  version = \"~>4.0\"\n}\n```\n\nThat module block limits the module version to major version 4.\nTrue or False?",
     "answers": [
       {
         "key": "A",
@@ -3541,7 +3537,7 @@
   },
   {
     "id": 144,
-    "question": "terraform apply is failing with the following error.\n\nError loading state: AccessDenied: Access Denied status code: 403, request id: 288766CE5CCA2440, host id: web.example.com\n\nWhat next step should you take to determine the root cause of the problem?",
+    "question": "terraform apply is failing with the following error.\n\n```\nError loading state: AccessDenied: Access Denied status code: 403, request id: 288766CE5CCA2440, host id: web.example.com\n```\n\nWhat next step should you take to determine the root cause of the problem?",
     "answers": [
       {
         "key": "A",
@@ -3961,7 +3957,7 @@
   },
   {
     "id": 159,
-    "question": "A module block is shown in the Exhibit space on this page.\n\nmodule \"consul\"{\n  source = \"hashicorp/consul/aws\"\n}\n\nWhen you use a module block to reference a module from the Terraform Registry such as the one in the example, how do you specify version 1.0.0 of the module?",
+    "question": "A module block is shown in the Exhibit space of this page.\n\n```\nmodule \"consul\"{\n  source = \"hashicorp/consul/aws\"\n}\n```\n\nWhen you use a module block to reference a module from the Terraform Registry such as the one in the example, how do you specify version 1.0.0 of the module?",
     "answers": [
       {
         "key": "A",
@@ -4151,7 +4147,7 @@
   },
   {
     "id": 166,
-    "question": "You are using a networking module in your Terraform configuration with the name \"my_network\". In your main configuration, you are trying to access the \"vnet_id\" attribute from this module with the following code:\n\nresource \"aws_instance\" \"example\"{\n  ami = \"ami-0c55b2a94c9b82a81\"\n  instance_type = \"t2.micro\"\n  subnet_id = module.my_network.vnet_id\n}\n\noutput \"net_id\"{\n  value = module.my_network.vnet_id\n}\n\nWhen you run \"terraform validate\", you encounter the following error:\n\nError: Reference to undeclared output value on main.tf line 12, in output \"net_id\":\n12: value = module.my_network.vnet_id\n\nWhat must you do to successfully retrieve the \"vnet_id\" value from your networking module?",
+    "question": "You are using a networking module in your Terraform configuration with the name \"my_network\". In your main configuration, you are trying to access the \"vnet_id\" attribute from this module with the following code:\n\n```\nresource \"aws_instance\" \"example\"{\n  ami = \"ami-0c55b2a94c9b82a81\"\n  instance_type = \"t2.micro\"\n  subnet_id = module.my_network.vnet_id\n}\n\noutput \"net_id\"{\n  value = module.my_network.vnet_id\n}\n```\n\nWhen you run \"terraform validate\", you encounter the following error:\n\n```\nError: Reference to undeclared output value on main.tf line 12, in output \"net_id\":\n12: value = module.my_network.vnet_id\n```\n\nWhat must you do to successfully retrieve the \"vnet_id\" value from your networking module?",
     "answers": [
       {
         "key": "A",
@@ -4237,7 +4233,7 @@
   },
   {
     "id": 169,
-    "question": "You decide to move a Terraform state file to Amazon S3 from another location. You write the code shown in the Exhibit space into a file called backend.tf.\n\nterraform{\n  backend \"s3\"{\n    bucket = \"my-tf-bucket\"\n    region = \"us-east-1\"\n  }\n}\n\nWhich command will migrate your current state file to the new S3 backend?",
+    "question": "You decide to move a Terraform state file to Amazon S3 from another location. You write the code shown in the Exhibit space into a file called backend.tf.\n\n```\nterraform{\n  backend \"s3\"{\n    bucket = \"my-tf-bucket\"\n    region = \"us-east-1\"\n  }\n}\n```\n\nWhich command will migrate your current state file to the new S3 backend?",
     "answers": [
       {
         "key": "A",

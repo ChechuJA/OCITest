@@ -186,11 +186,20 @@
 
 #### Q18. A resource block is shown in the Exhibit space of this page.
 
-- [ ] A. What is the provider for this resource?
-- [ ] B. main
-- [x] C. vpc
-- [ ] D. aws
-- [ ] E. test
+A resource block is shown in the Exhibit space of this page.
+
+```
+resource "aws_vpc" "main" {
+  name = "test"
+}
+```
+
+What is the provider for this resource?
+
+- [ ] A. main
+- [ ] B. vpc
+- [x] C. aws
+- [ ] D. test
 
 > **Explanation:** Exam Terraform Associate 004 topic 2 question 7 discussion - ExamTopics
 
@@ -269,10 +278,12 @@
 
 A variable block is shown in the Exhibit space of this page.
 
+```
 variable "tags"{
   description = "Metadata tags for resources"
   type = _____________
 }
+```
 
 You will use this variable as the value for the tags argument in several resources. The data format must be a set of key value pairs. Which type argument would you use?
 
@@ -572,6 +583,7 @@ How can you apply the desired changes? (Choose two.)
 
 The Exhibit section of this page shows part of a configuration you've been asked to update.
 
+```
 data "azurerm_resource_group" "example"{
   name = var.resource_group_name
 }
@@ -579,6 +591,7 @@ data "azurerm_resource_group" "example"{
 resource "azurerm_virtual_network" "example"{
   name = ____________
 }
+```
 
 The name of the Azure Virtual Network should be set to the name of the resource group followed by a dash and the word "vnet". Which expression fulfils this requirement?
 
@@ -606,10 +619,12 @@ The name of the Azure Virtual Network should be set to the name of the resource 
 
 A resource block is shown in the Exhibit space of this page.
 
+```
 resource "aws_instance" "web"{
   count = 2
   name = "terraform-${count.index}"
 }
+```
 
 How do you reference the name value of the second instance of this resource?
 
@@ -659,12 +674,14 @@ How do you reference the name value of the second instance of this resource?
 
 The Terraform configuration shown in the Exhibit space on this page will create a new AWS instance.
 
+```
 data "aws_instance" "web"{
   filter{
     name = "tag:Name"
     values = ["web"]
   }
 }
+```
 
 - [ ] A. True
 - [x] B. False
@@ -697,6 +714,7 @@ data "aws_instance" "web"{
 
 A data source is shown in the Exhibit space of this page.
 
+```
 data "aws_ami" "web"{
   most_recent = true
   owners = ["self"]
@@ -704,6 +722,7 @@ data "aws_ami" "web"{
     Name = "web-server"
   }
 }
+```
 
 How do you reference the id attribute of this data source?
 
@@ -720,9 +739,11 @@ How do you reference the id attribute of this data source?
 
 A resource block is shown in the Exhibit space of this page.
 
+```
 resource "kubernetes_namespace" "example"{
   name = "test"
 }
+```
 
 How would you reference the attribute name of this resource in HCL?
 
@@ -779,6 +800,26 @@ provider "aws"{
 #### Q65. Two resources blocks are shown in the Exhibit space on this page: azurerm_linux_web_app, and azurerm_role_assignment.
 
 Two resources blocks are shown in the Exhibit space on this page: azurerm_linux_web_app, and azurerm_role_assignment.
+
+```
+resource "azurerm_linux_web_app" "app"{
+  name = "example-app"
+  resource_group_name = azurerm_resource_group.rg.name
+  location = azurerm_resource_group.rg.location
+  service_plan_id = azurerm_service_plan.plan.id
+
+  identity{
+    type = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.app.id]
+  }
+}
+
+resource "azurerm_role_assignment" "kv_access"{
+  scope = azurerm_key_vault.kv.id
+  role_definition_name = "Key Vault Secrets User"
+  principal_id = azurerm_user_assigned_identity.identity.app.principal_id
+}
+```
 
 When provisioned, the web app will use the role assignment during creation, so the role assignment must be created first.
 
@@ -982,9 +1023,11 @@ How do you ensure the azurerm_role_assignment resource is created first?
 
 Your configuration defines the module block shown in the Exhibit space of this page.
 
+```
 module "production"{
   source = "./modules/web_stack"
 }
+```
 
 This module declares an output named hostnames.
 How do you access the value of this output?
@@ -1560,14 +1603,16 @@ How do you access the value of this output?
 
 ---
 
-#### Q137. A module block is shown in the Exhibit space on this page.
+#### Q137. A module block is shown in the Exhibit space of this page.
 
-A module block is shown in the Exhibit space on this page.
+A module block is shown in the Exhibit space of this page.
 
+```
 module "vpc"{
   source = "terraform-awsmodules/vpc/aws"
   version = "~>4.0"
 }
+```
 
 That module block limits the module version to major version 4.
 True or False?
@@ -1648,7 +1693,9 @@ True or False?
 
 terraform apply is failing with the following error.
 
+```
 Error loading state: AccessDenied: Access Denied status code: 403, request id: 288766CE5CCA2440, host id: web.example.com
+```
 
 What next step should you take to determine the root cause of the problem?
 
@@ -1822,13 +1869,15 @@ What next step should you take to determine the root cause of the problem?
 
 ---
 
-#### Q159. A module block is shown in the Exhibit space on this page.
+#### Q159. A module block is shown in the Exhibit space of this page.
 
-A module block is shown in the Exhibit space on this page.
+A module block is shown in the Exhibit space of this page.
 
+```
 module "consul"{
   source = "hashicorp/consul/aws"
 }
+```
 
 When you use a module block to reference a module from the Terraform Registry such as the one in the example, how do you specify version 1.0.0 of the module?
 
@@ -1913,6 +1962,7 @@ When you use a module block to reference a module from the Terraform Registry su
 
 You are using a networking module in your Terraform configuration with the name "my_network". In your main configuration, you are trying to access the "vnet_id" attribute from this module with the following code:
 
+```
 resource "aws_instance" "example"{
   ami = "ami-0c55b2a94c9b82a81"
   instance_type = "t2.micro"
@@ -1922,11 +1972,14 @@ resource "aws_instance" "example"{
 output "net_id"{
   value = module.my_network.vnet_id
 }
+```
 
 When you run "terraform validate", you encounter the following error:
 
+```
 Error: Reference to undeclared output value on main.tf line 12, in output "net_id":
 12: value = module.my_network.vnet_id
+```
 
 What must you do to successfully retrieve the "vnet_id" value from your networking module?
 
@@ -1967,12 +2020,14 @@ What must you do to successfully retrieve the "vnet_id" value from your networki
 
 You decide to move a Terraform state file to Amazon S3 from another location. You write the code shown in the Exhibit space into a file called backend.tf.
 
+```
 terraform{
   backend "s3"{
     bucket = "my-tf-bucket"
     region = "us-east-1"
   }
 }
+```
 
 Which command will migrate your current state file to the new S3 backend?
 
