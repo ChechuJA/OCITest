@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Centro de Estudio - OCITest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        
+        .stats-overview {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+            background: #f8f9fa;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-icon {
+            font-size: 2.5em;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            padding: 25px;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-icon {
+            font-size: 2.5em;
+        }
+        
+        .card-header-text {
+            flex: 1;
+        }
+        
+        .card-title {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+        
+        .card-code {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+        
+        .card-body {
+            padding: 20px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-meta {
+            color: #6c757d;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+        
+        .card-stats {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px 0;
+            border-top: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .card-stat {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .card-stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .card-stat-label {
+            font-size: 0.8em;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .card-footer {
+            padding: 0 25px 25px 25px;
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: scale(1.02);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        /* Card colors por provider */
+        .card.gh-300 {
+            border-top-color: #667eea;
+        }
+        
+        .card.gh-300 .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card.terraform {
+            border-top-color: #f5a623;
+        }
+        
+        .card.terraform .card-header {
+            background: linear-gradient(135deg, #f5a623 0%, #d97e39 100%);
+        }
+        
+        .card.vault {
+            border-top-color: #2c5275;
+        }
+        
+        .card.vault .card-header {
+            background: linear-gradient(135deg, #2c5275 0%, #1e3a4d 100%);
+        }
+        
+        .card.oci {
+            border-top-color: #f80000;
+        }
+        
+        .card.oci .card-header {
+            background: linear-gradient(135deg, #f80000 0%, #cc0000 100%);
+        }
+        
+        .card.mysql {
+            border-top-color: #00758f;
+        }
+        
+        .card.mysql .card-header {
+            background: linear-gradient(135deg, #00758f 0%, #005a6b 100%);
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.95em;
+        }
+        
+        .footer p {
+            margin: 10px 0;
+        }
+        
+        .quick-access {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+        
+        .quick-link:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Centro de Estudio OCITest</h1>
+            <div class="subtitle">Preguntas y Respuestas con Acceso Directo</div>
+            <div class="stats-overview">
+                <div class="stat">
+                    <div class="stat-value">13</div>
+                    <div class="stat-label">Exámenes Activos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1,144</div>
+                    <div class="stat-label">Preguntas Totales</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Proveedores</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- NUEVOS EXÁMENES -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon">⭐</span>
+                    <span>Exámenes Nuevos - Disponibles Ahora!</span>
+                </div>
+                <div class="cards-grid">
+                    <!-- Terraform 004 -->
+                    <div class="card terraform">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">Terraform 004</div>
+                                <div class="card-code">HashiCorp Associate</div>
+                            </div>
+                            <div class="card-icon">🏗️</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Nueva versión del examen de certificación Terraform</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">221</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                                <div class="card-stat">
+                                    <div class="card-stat-value">26</div>
+                                    <div class="card-stat-label">Multi-respuesta</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="Descargables/Terraform/004/terraform-lectura.html" target="_blank" class="btn btn-primary">📖 Ver Preguntas</a>
+                            <a href="Descargables/Terraform/004/terraform-preguntas-estudio.html" target="_blank" class="btn btn-secondary">📚 Estudio</a>
+                            <a href="index.html" class="btn btn-secondary">🎯 Quiz</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Vault -->
+                    <div class="card vault">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">Vault Associate</div>
+                                <div class="card-code">HashiCorp Certified</div>
+                            </div>
+                            <div class="card-icon">🔐</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Certificación oficial de HashiCorp Vault</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">86</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                                <div class="card-stat">
+                                    <div class="card-stat-value">15</div>
+                                    <div class="card-stat-label">Multi-respuesta</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="Descargables/Vault/vault-lectura.html" target="_blank" class="btn btn-primary">📖 Ver Preguntas</a>
+                            <a href="Descargables/Vault/vault-preguntas-estudio.html" target="_blank" class="btn btn-secondary">📚 Estudio</a>
+                            <a href="index.html" class="btn btn-secondary">🎯 Quiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GITHUB -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon">🐙</span>
+                    <span>GitHub Copilot</span>
+                </div>
+                <div class="cards-grid">
+                    <!-- GH-300 -->
+                    <div class="card gh-300">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">GH-300</div>
+                                <div class="card-code">GitHub Copilot Certification</div>
+                            </div>
+                            <div class="card-icon">🚀</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Certificación oficial de GitHub Copilot</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">129</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="Descargables/GH-300/gh300-lectura.html" target="_blank" class="btn btn-primary">📖 Ver Preguntas</a>
+                            <a href="index.html" class="btn btn-secondary">🎯 Quiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- HASHICORP -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon">🔧</span>
+                    <span>HashiCorp Terraform</span>
+                </div>
+                <div class="cards-grid">
+                    <!-- Terraform 003 -->
+                    <div class="card terraform">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">Terraform 003</div>
+                                <div class="card-code">Associate Certification</div>
+                            </div>
+                            <div class="card-icon">🏗️</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Versión anterior del examen Terraform</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">378</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="index.html" class="btn btn-primary">🎯 Quiz</a>
+                            <a href="Descargables/Terraform/003/terraform-questions.md" class="btn btn-secondary" download>📥 Descargar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- OCI -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon">☁️</span>
+                    <span>Oracle Cloud Infrastructure (OCI)</span>
+                </div>
+                <div class="cards-grid">
+                    <!-- OCI AI Foundations -->
+                    <div class="card oci">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">OCI AI Foundations</div>
+                                <div class="card-code">1Z0-1122-25</div>
+                            </div>
+                            <div class="card-icon">🤖</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Certificación Oracle AI Foundations</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">44</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="index.html" class="btn btn-primary">🎯 Quiz</a>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Vector Search -->
+                    <div class="card oci">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">AI Vector Search</div>
+                                <div class="card-code">1Z0-184-25</div>
+                            </div>
+                            <div class="card-icon">🔍</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Certificación Oracle AI Vector Search Professional</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">50</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="index.html" class="btn btn-primary">🎯 Quiz</a>
+                        </div>
+                    </div>
+                    
+                    <!-- OCI Foundations -->
+                    <div class="card oci">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">OCI Foundations</div>
+                                <div class="card-code">1Z0-1085-25</div>
+                            </div>
+                            <div class="card-icon">⚙️</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Certificación Oracle OCI Foundations</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">39</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="index.html" class="btn btn-primary">🎯 Quiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MYSQL -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon">🗄️</span>
+                    <span>MySQL</span>
+                </div>
+                <div class="cards-grid">
+                    <!-- MySQL Developer -->
+                    <div class="card mysql">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">MySQL Developer</div>
+                                <div class="card-code">1Z0-909</div>
+                            </div>
+                            <div class="card-icon">👨‍💻</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Certificación MySQL Database Developer</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">77</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="index.html" class="btn btn-primary">🎯 Quiz</a>
+                        </div>
+                    </div>
+                    
+                    <!-- MySQL Implementation -->
+                    <div class="card mysql">
+                        <div class="card-header">
+                            <div class="card-header-text">
+                                <div class="card-title">MySQL Implementation</div>
+                                <div class="card-code">1Z0-922</div>
+                            </div>
+                            <div class="card-icon">🔧</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">Certificación MySQL Implementation Associate</div>
+                            <div class="card-stats">
+                                <div class="card-stat">
+                                    <div class="card-stat-value">52</div>
+                                    <div class="card-stat-label">Preguntas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="index.html" class="btn btn-primary">🎯 Quiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ACCESO RÁPIDO -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon">⚡</span>
+                    <span>Acceso Rápido</span>
+                </div>
+                <div class="quick-access">
+                    <a href="index.html" class="quick-link">
+                        <span>🎯</span>
+                        <span>Quiz Principal</span>
+                        <span class="badge">13 exámenes</span>
+                    </a>
+                    <a href="Descargables/Terraform/004/terraform-lectura.html" class="quick-link">
+                        <span>🏗️</span>
+                        <span>Terraform 004 (Nuevo)</span>
+                        <span class="badge">221 Q</span>
+                    </a>
+                    <a href="Descargables/Vault/vault-lectura.html" class="quick-link">
+                        <span>🔐</span>
+                        <span>Vault (Nuevo)</span>
+                        <span class="badge">86 Q</span>
+                    </a>
+                    <a href="Descargables/GH-300/gh300-lectura.html" class="quick-link">
+                        <span>🚀</span>
+                        <span>GH-300 Preguntas</span>
+                        <span class="badge">129 Q</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>📚 Centro de Estudio OCITest</strong></p>
+            <p>13 exámenes | 1,144 preguntas | Todas las respuestas correctas visibles</p>
+            <p>Última actualización: <span id="currentDate"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar fecha actual
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>

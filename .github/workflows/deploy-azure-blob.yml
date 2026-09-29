@@ -1,0 +1,45 @@
+name: Deploy to Azure Blob Storage
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - '**.js'
+      - '**.css'
+      - '**.json'
+      - 'Descargables/**'
+      - '.github/workflows/deploy-azure-blob.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Upload files to Blob Storage
+        run: |
+          STORAGE_NAME="ociquiz6861"
+          CONTAINER="\$web"
+          STORAGE_KEY="${{ secrets.AZURE_STORAGE_KEY }}"
+          
+          # Upload core files
+          for file in index.html quiz.js exam-loader.js style.css exams-catalog.json terraform-lectura.html vault-lectura.html lectura-todas.html; do
+            if [ -f "$file" ]; then
+              echo "📤 Uploading $file..."
+              az storage blob upload --account-name $STORAGE_NAME --account-key $STORAGE_KEY --container-name "$CONTAINER" --name "$file" --file "$file" --overwrite
+            fi
+          done
+          
+          # Upload Descargables
+          echo "📁 Uploading Descargables/..."
+          find Descargables -type f \( -name "*.json" -o -name "*.md" -o -name "*.html" \) | while read file; do
+            echo "📤 Uploading $file..."
+            az storage blob upload --account-name $STORAGE_NAME --account-key $STORAGE_KEY --container-name "$CONTAINER" --name "$file" --file "$file" --overwrite
+          done
+      
+      - name: Verification
+        run: |
+          echo "✅ Deployment complete!"
+          echo "🌐 URL: https://ociquiz6861.z13.web.core.windows.net/"

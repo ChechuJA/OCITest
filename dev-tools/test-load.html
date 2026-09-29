@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Carga Externos</title>
+</head>
+<body>
+  <h1>Test de Carga de Exámenes Externos</h1>
+  <button id="testBtn">Cargar AI Oficial (1Z0-1122-25)</button>
+  <pre id="output"></pre>
+
+  <script>
+    const output = document.getElementById('output');
+    const testBtn = document.getElementById('testBtn');
+
+    testBtn.addEventListener('click', async () => {
+      output.textContent = 'Cargando...\n';
+      
+      try {
+        const path = 'Nuevos/Oracle Exam 1Z0-1122-25 Dump.md';
+        const response = await fetch(path);
+        
+        if (!response.ok) {
+          output.textContent += `ERROR: ${response.status} ${response.statusText}\n`;
+          return;
+        }
+        
+        const text = await response.text();
+        output.textContent += `✓ Cargado: ${text.length} caracteres\n\n`;
+        
+        // Parsear bloques
+        const blocks = text.split(/\n#### /).slice(1);
+        output.textContent += `✓ Bloques detectados: ${blocks.length}\n\n`;
+        
+        // Parsear primeras 3 preguntas
+        let parsed = 0;
+        for (let i = 0; i < Math.min(3, blocks.length); i++) {
+          const block = '#### ' + blocks[i].trim();
+          const lines = block.split(/\n/);
+          const qLine = lines[0].replace(/^####\s*Q\.?\s*/, '').trim();
+          
+          const opts = [];
+          let answerIndex = -1;
+          
+          lines.slice(1).forEach(l => {
+            const m = /^- \[(x| )\]\s*(.+)$/i.exec(l.trim());
+            if (m) {
+              const correct = m[1].toLowerCase() === 'x';
+              const optText = m[2].replace(/✅|\u2705/g, '').trim();
+              opts.push(optText);
+              if (correct) answerIndex = opts.length - 1;
+            }
+          });
+          
+          if (qLine && opts.length > 0 && answerIndex >= 0) {
+            parsed++;
+            output.textContent += `\nPregunta ${i + 1}:\n`;
+            output.textContent += `  Q: ${qLine.substring(0, 80)}...\n`;
+            output.textContent += `  Opciones: ${opts.length}\n`;
+            output.textContent += `  Correcta: ${String.fromCharCode(65 + answerIndex)}\n`;
+          }
+        }
+        
+        output.textContent += `\n✓ Parseadas correctamente: ${parsed} de 3\n`;
+        
+      } catch (error) {
+        output.textContent += `ERROR: ${error.message}\n${error.stack}\n`;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/Descargables/*", "/Exámenes/*", "*.{css,js,png,gif,ico,jpg,svg,json,md,html}"]
+  },
+  "routes": [
+    {
+      "route": "/Descargables/*",
+      "methods": ["GET"],
+      "statusCode": 200
+    },
+    {
+      "route": "/Exámenes/*",
+      "methods": ["GET"],
+      "statusCode": 200
+    }
+  ],
+  "mimeTypes": {
+    ".md": "text/markdown",
+    ".json": "application/json"
+  }
+}

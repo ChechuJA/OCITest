@@ -1,0 +1,2236 @@
+[
+  {
+    "id": 1,
+    "question": "The vault lease renew command increments the lease time from:",
+    "answers": [
+      {
+        "key": "A",
+        "text": "The current time"
+      },
+      {
+        "key": "B",
+        "text": "The end of the lease"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131219-exam-vault-associate-002-topic-1-question-2-discussion/"
+  },
+  {
+    "id": 2,
+    "question": "You have a 2GB Base64 binary large object (blob) that needs to be encrypted. Which of the following best describes the transit secrets engine?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "A data key encrypts the blob locally, and the same key decrypts the blob locally."
+      },
+      {
+        "key": "B",
+        "text": "To process such a large blob. Vault will temporarily store it in the storage backend."
+      },
+      {
+        "key": "C",
+        "text": "Vault will store the blob permanently. Be sure to run Vault on a compute optimized machine."
+      },
+      {
+        "key": "D",
+        "text": "The transit engine is not a good solution for binaries of this size."
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131215-exam-vault-associate-002-topic-1-question-4-discussion/"
+  },
+  {
+    "id": 3,
+    "question": "How would you describe the value of using the Vault transit secrets engine?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Vault has an API that can be programmatically consumed by applications"
+      },
+      {
+        "key": "B",
+        "text": "The transit secrets engine ensures encryption in-transit and at-rest is enforced enterprise wide"
+      },
+      {
+        "key": "C",
+        "text": "Encryption for application data is best handled by a storage system or database engine, while storing encryption keys in Vault"
+      },
+      {
+        "key": "D",
+        "text": "The transit secrets engine relieves the burden of proper encryption/decryption from application developers and pushes the burden onto the operators of Vault"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131220-exam-vault-associate-002-topic-1-question-5-discussion/"
+  },
+  {
+    "id": 4,
+    "question": "What is the Vault CLI command to query information about the token the client is currently using?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "vault lookup token"
+      },
+      {
+        "key": "B",
+        "text": "vault token lookup"
+      },
+      {
+        "key": "C",
+        "text": "vault lookup self"
+      },
+      {
+        "key": "D",
+        "text": "vault self lookup"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131221-exam-vault-associate-002-topic-1-question-6-discussion/"
+  },
+  {
+    "id": 5,
+    "question": "Which of the following is a machine-oriented Vault authentication backend?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Okta"
+      },
+      {
+        "key": "B",
+        "text": "AppRole"
+      },
+      {
+        "key": "C",
+        "text": "Transit"
+      },
+      {
+        "key": "D",
+        "text": "GitHub"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131222-exam-vault-associate-002-topic-1-question-7-discussion/"
+  },
+  {
+    "id": 6,
+    "question": "Security requirements demand that no secrets appear in the shell history. Which command does not meet this requirement?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "generate-password | vault kv put secret/password value=-"
+      },
+      {
+        "key": "B",
+        "text": "vault kv put secret/password value=itsasecret"
+      },
+      {
+        "key": "C",
+        "text": "vault kv put secret/password value=@data.txt"
+      },
+      {
+        "key": "D",
+        "text": "vault kv put secret/password value=$SECRET_VALUE"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": ""
+  },
+  {
+    "id": 7,
+    "question": "You can build a high availability Vault cluster with any storage backend.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131332-exam-vault-associate-002-topic-1-question-9-discussion/"
+  },
+  {
+    "id": 8,
+    "question": "What command creates a secret with the key \"my-password\" and the value \"53cr3t\" at path \"my-secrets\" within the KV secrets engine mounted at \"secret\"?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "vault kv put secret/my-secrets/my-password 53cr3t"
+      },
+      {
+        "key": "B",
+        "text": "vault kv write secret/my-secrets/my-password 53cr3t"
+      },
+      {
+        "key": "C",
+        "text": "vault kv write 53cr3t my-secrets/my-password"
+      },
+      {
+        "key": "D",
+        "text": "vault kv put secret/my-secrets my-password-53cr3t"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131333-exam-vault-associate-002-topic-1-question-10-discussion/"
+  },
+  {
+    "id": 9,
+    "question": "What can be used to limit the scope of a credential breach?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Storage of secrets in a distributed ledger"
+      },
+      {
+        "key": "B",
+        "text": "Enable audit logging"
+      },
+      {
+        "key": "C",
+        "text": "Use of a short-lived dynamic secrets"
+      },
+      {
+        "key": "D",
+        "text": "Sharing credentials between applications"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131319-exam-vault-associate-002-topic-1-question-11-discussion/"
+  },
+  {
+    "id": 10,
+    "question": "What environment variable overrides the CLI’s default Vault server address?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "VAULT_ADDR"
+      },
+      {
+        "key": "B",
+        "text": "VAULT_HTTP_ADDRESS"
+      },
+      {
+        "key": "C",
+        "text": "VAULT_ADDRESS"
+      },
+      {
+        "key": "D",
+        "text": "VAULT_HTTPS_ADDRESS"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131320-exam-vault-associate-002-topic-1-question-12-discussion/"
+  },
+  {
+    "id": 11,
+    "question": "Which of the following statements describe the CLI command below? $ vault login -method=ldap username=mitchellh",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Generates a token which is response wrapped"
+      },
+      {
+        "key": "B",
+        "text": "You will be prompted to enter the password"
+      },
+      {
+        "key": "C",
+        "text": "By default, the generated token is valid for 24 hours"
+      },
+      {
+        "key": "D",
+        "text": "Fails because the password is not provided"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131336-exam-vault-associate-002-topic-1-question-13-discussion/"
+  },
+  {
+    "id": 12,
+    "question": "The following three policies exist in Vault What do these policies allow an organization to do? app.hcl",
+    "answers": [
+      {
+        "key": "A",
+        "text": "callcenter.hcl"
+      },
+      {
+        "key": "B",
+        "text": "rewrap.hcl"
+      },
+      {
+        "key": "C",
+        "text": "Separates permissions allowed on actions associated with the transit secret engine"
+      },
+      {
+        "key": "D",
+        "text": "Nothing, as the minimum permissions to perform useful tasks are not present"
+      },
+      {
+        "key": "E",
+        "text": "Encrypt decrypt, and rewrap data using the transit engine all in one policy"
+      },
+      {
+        "key": "F",
+        "text": "Create a transit encryption key for encrypting, decrypting, and rewrapping encrypted data"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131341-exam-vault-associate-002-topic-1-question-14-discussion/"
+  },
+  {
+    "id": 13,
+    "question": "Your DevOps team would like to provision VMs in GCP via a CICD pipeline. They would like to integrate Vault to protect the credentials used by the tool. Which secrets engine would you recommend?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Google Cloud Secrets Engine"
+      },
+      {
+        "key": "B",
+        "text": "Identity secrets engine"
+      },
+      {
+        "key": "C",
+        "text": "Key/Value secrets engine version 2"
+      },
+      {
+        "key": "D",
+        "text": "SSH secrets engine"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131337-exam-vault-associate-002-topic-1-question-15-discussion/"
+  },
+  {
+    "id": 14,
+    "question": "Which of these is not a benefit of dynamic secrets?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Supports systems which do not natively provide a method of expiring credentials"
+      },
+      {
+        "key": "B",
+        "text": "Minimizes damage of credentials leaking"
+      },
+      {
+        "key": "C",
+        "text": "Ensures that administrators can see every password used"
+      },
+      {
+        "key": "D",
+        "text": "Replaces cumbersome password rotation tools and practices"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131339-exam-vault-associate-002-topic-1-question-16-discussion/"
+  },
+  {
+    "id": 15,
+    "question": "Which of the following cannot define the maximum time-to-live (TTL) for a token?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "By the authentication method"
+      },
+      {
+        "key": "B",
+        "text": "By the client system"
+      },
+      {
+        "key": "C",
+        "text": "By the mount endpoint configuration"
+      },
+      {
+        "key": "D",
+        "text": "A parent token TTL"
+      },
+      {
+        "key": "E",
+        "text": "System max TTL"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131374-exam-vault-associate-002-topic-1-question-17-discussion/"
+  },
+  {
+    "id": 16,
+    "question": "What are orphan tokens?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Orphan tokens are tokens with a use limit so you can set the number of uses when you create them"
+      },
+      {
+        "key": "B",
+        "text": "Orphan tokens are not children of their parent; therefore, orphan tokens do not expire when their parent does"
+      },
+      {
+        "key": "C",
+        "text": "Orphan tokens are tokens with no policies attached"
+      },
+      {
+        "key": "D",
+        "text": "Orphan tokens do not expire when their own max TTL is reached"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131342-exam-vault-associate-002-topic-1-question-18-discussion/"
+  },
+  {
+    "id": 17,
+    "question": "To give a role the ability to display or output all of the end points under the /secrets/apps/* end point it would need to have which capability set?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "update"
+      },
+      {
+        "key": "B",
+        "text": "read"
+      },
+      {
+        "key": "C",
+        "text": "sudo"
+      },
+      {
+        "key": "D",
+        "text": "list"
+      },
+      {
+        "key": "E",
+        "text": "None of the above"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131376-exam-vault-associate-002-topic-1-question-19-discussion/"
+  },
+  {
+    "id": 18,
+    "question": "When using Integrated Storage, which of the following should you do to recover from possible data loss?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Failover to a standby node"
+      },
+      {
+        "key": "B",
+        "text": "Use snapshot"
+      },
+      {
+        "key": "C",
+        "text": "Use audit logs"
+      },
+      {
+        "key": "D",
+        "text": "Use server logs"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131380-exam-vault-associate-002-topic-1-question-21-discussion/"
+  },
+  {
+    "id": 19,
+    "question": "How many Shamir’s key shares are required to unseal a Vault instance?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "All key shares"
+      },
+      {
+        "key": "B",
+        "text": "A quorum of key shares"
+      },
+      {
+        "key": "C",
+        "text": "One or more keys"
+      },
+      {
+        "key": "D",
+        "text": "The threshold number of key shares"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/127827-exam-vault-associate-002-topic-1-question-22-discussion/"
+  },
+  {
+    "id": 20,
+    "question": "Which of these are a benefit of using the Vault Agent?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Vault Agent allows for centralized configuration of application secrets engines"
+      },
+      {
+        "key": "B",
+        "text": "Vault Agent will auto-discover which authentication mechanism to use"
+      },
+      {
+        "key": "C",
+        "text": "Vault Agent will enforce minimum levels of encryption an application can use"
+      },
+      {
+        "key": "D",
+        "text": "Vault Agent will manage the lifecycle of cached tokens and leases automatically"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131389-exam-vault-associate-002-topic-1-question-23-discussion/"
+  },
+  {
+    "id": 21,
+    "question": "Which of the following describes usage of an identity group?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Limit the policies that would otherwise apply to an entity in the group"
+      },
+      {
+        "key": "B",
+        "text": "When they want to revoke the credentials for a whole set of entities simultaneously"
+      },
+      {
+        "key": "C",
+        "text": "Audit token usage"
+      },
+      {
+        "key": "D",
+        "text": "Consistently apply the same set of policies to a collection of entities"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131382-exam-vault-associate-002-topic-1-question-24-discussion/"
+  },
+  {
+    "id": 22,
+    "question": "Vault supports which type of configuration for source limited token?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Cloud-bound tokens"
+      },
+      {
+        "key": "B",
+        "text": "Domain-bound tokens"
+      },
+      {
+        "key": "C",
+        "text": "CIDR-bound tokens"
+      },
+      {
+        "key": "D",
+        "text": "Certificate-bound tokens"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131390-exam-vault-associate-002-topic-1-question-25-discussion/"
+  },
+  {
+    "id": 23,
+    "question": "Where does the Vault Agent store its cache?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "In a file encrypted using the Vault transit secret engine"
+      },
+      {
+        "key": "B",
+        "text": "In the Vault key/value store"
+      },
+      {
+        "key": "C",
+        "text": "In an unencrypted file"
+      },
+      {
+        "key": "D",
+        "text": "In memory"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131829-exam-vault-associate-002-topic-1-question-26-discussion/"
+  },
+  {
+    "id": 24,
+    "question": "Your organization has an initiative to reduce and ultimately remove the use of long lived X.509 certificates. Which secrets engine will best support this use case?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "PKI"
+      },
+      {
+        "key": "B",
+        "text": "Key/Value secrets engine version 2, with TTL defined"
+      },
+      {
+        "key": "C",
+        "text": "Cloud KMS"
+      },
+      {
+        "key": "D",
+        "text": "Transit"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131387-exam-vault-associate-002-topic-1-question-27-discussion/"
+  },
+  {
+    "id": 25,
+    "question": "When unsealing Vault each Shamir unseal key should be entered:",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sequentially from one system that all of the administrators are in front of"
+      },
+      {
+        "key": "B",
+        "text": "By different administrators each connecting from different computers"
+      },
+      {
+        "key": "C",
+        "text": "While encrypted with each administrators PGP key"
+      },
+      {
+        "key": "D",
+        "text": "At the command line in one single command"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131384-exam-vault-associate-002-topic-1-question-28-discussion/"
+  },
+  {
+    "id": 26,
+    "question": "As a best practice, the root token should be stored in which of the following ways?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Should be revoked and never stored after initial setup"
+      },
+      {
+        "key": "B",
+        "text": "Should be stored in configuration automation tooling"
+      },
+      {
+        "key": "C",
+        "text": "Should be stored in another password safe"
+      },
+      {
+        "key": "D",
+        "text": "Should be stored in Vault"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131400-exam-vault-associate-002-topic-1-question-29-discussion/"
+  },
+  {
+    "id": 27,
+    "question": "When creating a policy, an error was thrown: Which statement describes the fix for this issue?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Replace write with create in the capabilities list"
+      },
+      {
+        "key": "B",
+        "text": "You cannot have a wildcard (“*”) in the path"
+      },
+      {
+        "key": "C",
+        "text": "sudo is not a capability"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131402-exam-vault-associate-002-topic-1-question-30-discussion/"
+  },
+  {
+    "id": 28,
+    "question": "Where can you set the Vault seal configuration? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Cloud Provider KMS"
+      },
+      {
+        "key": "B",
+        "text": "Vault CLI"
+      },
+      {
+        "key": "C",
+        "text": "Vault configuration file"
+      },
+      {
+        "key": "D",
+        "text": "Environment variables"
+      },
+      {
+        "key": "E",
+        "text": "Vault API"
+      }
+    ],
+    "correctKeys": [
+      "C",
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131399-exam-vault-associate-002-topic-1-question-31-discussion/"
+  },
+  {
+    "id": 29,
+    "question": "Which of the following vault lease operations uses a lease_id as an argument? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "renew"
+      },
+      {
+        "key": "B",
+        "text": "revoke -prefix"
+      },
+      {
+        "key": "C",
+        "text": "create"
+      },
+      {
+        "key": "D",
+        "text": "describe"
+      },
+      {
+        "key": "E",
+        "text": "revoke"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "E"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131398-exam-vault-associate-002-topic-1-question-32-discussion/"
+  },
+  {
+    "id": 30,
+    "question": "An organization wants to authenticate an AWS EC2 virtual machine with Vault to access a dynamic database secret. The only authentication method which they can use in this case is AWS.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131416-exam-vault-associate-002-topic-1-question-33-discussion/"
+  },
+  {
+    "id": 31,
+    "question": "You are using Vault’s Transit secrets engine to encrypt your data. You want to reduce the amount of content encrypted with a single key in case the key gets compromised. How would you do this?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Use 4096-bit RSA key to encrypt the data"
+      },
+      {
+        "key": "B",
+        "text": "Upgrade to Vault Enterprise and integrate with HSM"
+      },
+      {
+        "key": "C",
+        "text": "Periodically re-key the Vault's unseal keys"
+      },
+      {
+        "key": "D",
+        "text": "Periodically rotate the encryption key"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131418-exam-vault-associate-002-topic-1-question-34-discussion/"
+  },
+  {
+    "id": 32,
+    "question": "What does the following policy do?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Grants access for each user to a KV folder which shares their id"
+      },
+      {
+        "key": "B",
+        "text": "Grants access to a special system entity folder"
+      },
+      {
+        "key": "C",
+        "text": "Allows a user to read data about the secret endpoint identity"
+      },
+      {
+        "key": "D",
+        "text": "Nothing, this is not a valid policy"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131830-exam-vault-associate-002-topic-1-question-35-discussion/"
+  },
+  {
+    "id": 33,
+    "question": "To make an authenticated request via the Vault HTTP API, which header would you use?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "The X-Vault-Token HTTP Header"
+      },
+      {
+        "key": "B",
+        "text": "The X-Vault-Request HTTP Header"
+      },
+      {
+        "key": "C",
+        "text": "The Content-Type HTTP Header"
+      },
+      {
+        "key": "D",
+        "text": "The X-Vault-Namespace HTTP Header"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131424-exam-vault-associate-002-topic-1-question-36-discussion/"
+  },
+  {
+    "id": 34,
+    "question": "Which of the following are replication methods available in Vault Enterprise? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Cluster sharding"
+      },
+      {
+        "key": "B",
+        "text": "Namespaces"
+      },
+      {
+        "key": "C",
+        "text": "Performance Replication"
+      },
+      {
+        "key": "D",
+        "text": "Disaster Recovery Replication"
+      }
+    ],
+    "correctKeys": [
+      "C",
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131428-exam-vault-associate-002-topic-1-question-37-discussion/"
+  },
+  {
+    "id": 35,
+    "question": "Use this screenshot to answer the question below: When are you shown these options in the GUI?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Enabling policies"
+      },
+      {
+        "key": "B",
+        "text": "Enabling authentication engines"
+      },
+      {
+        "key": "C",
+        "text": "Enabling secret engines"
+      },
+      {
+        "key": "D",
+        "text": "Enabling authentication methods"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131430-exam-vault-associate-002-topic-1-question-38-discussion/"
+  },
+  {
+    "id": 36,
+    "question": "Examine the command below. Output has been trimmed. Which of the following statements describe the command and its output?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Missing a default token policy"
+      },
+      {
+        "key": "B",
+        "text": "Generated token’s TTL is 60 hours"
+      },
+      {
+        "key": "C",
+        "text": "Generated token is an orphan token which can be renewed indefinitely"
+      },
+      {
+        "key": "D",
+        "text": "Configures the AppRole auth method with user specified role ID and secret ID"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131831-exam-vault-associate-002-topic-1-question-39-discussion/"
+  },
+  {
+    "id": 37,
+    "question": "The key/value v2 secrets engine is enabled at secret/. See the following policy: Which of the following operations are permitted by this policy? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "vault kv get secret/webapp1"
+      },
+      {
+        "key": "B",
+        "text": "vault kv put secret/webapp1 apikey-\"ABCDEFGHIDK123W\""
+      },
+      {
+        "key": "C",
+        "text": "vault kv metadata get secret/webapp1"
+      },
+      {
+        "key": "D",
+        "text": "vault kv delete secret/super-secret"
+      },
+      {
+        "key": "E",
+        "text": "vault kv list secret/super-secret"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131435-exam-vault-associate-002-topic-1-question-40-discussion/"
+  },
+  {
+    "id": 38,
+    "question": "You are performing a high number of authentications in a short amount of time. You're experiencing slow throughput for token generation. How would you solve this problem?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Increase the time-to-live on service tokens"
+      },
+      {
+        "key": "B",
+        "text": "Implement batch tokens"
+      },
+      {
+        "key": "C",
+        "text": "Establish a rate limit quota"
+      },
+      {
+        "key": "D",
+        "text": "Reduce the number of policies attached to the tokens"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131436-exam-vault-associate-002-topic-1-question-41-discussion/"
+  },
+  {
+    "id": 39,
+    "question": "When looking at Vault token details, which key helps you find the paths the token is able to access?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Meta"
+      },
+      {
+        "key": "B",
+        "text": "Path"
+      },
+      {
+        "key": "C",
+        "text": "Policies"
+      },
+      {
+        "key": "D",
+        "text": "Accessor"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131824-exam-vault-associate-002-topic-1-question-42-discussion/"
+  },
+  {
+    "id": 40,
+    "question": "A developer mistakenly committed code that contained AWS S3 credentials into a public repository. You have been tasked with revoking the AWS S3 credential that was in the code. This credential was created using Vault’s AWS secrets engine and the developer received the following output when requesting a credential from Vault. Which Vault command will revoke the lease and remove the credential from AWS?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "vault lease revoke aws/creds/s3-access/f3e92392-7d9c-09c8-c921-575d62fe80d8"
+      },
+      {
+        "key": "B",
+        "text": "vault lease revoke AKIAIOMQXTLW36DV7IEA"
+      },
+      {
+        "key": "C",
+        "text": "vault lease revoke f3e92392-7d9c-09c8-c921-575d62fe80d8"
+      },
+      {
+        "key": "D",
+        "text": "vault lease revoke access_key=AKIAIOWQXTLW36DV7IEA"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131437-exam-vault-associate-002-topic-1-question-43-discussion/"
+  },
+  {
+    "id": 41,
+    "question": "When an auth method is disabled, all users authenticated via that method lose access.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131438-exam-vault-associate-002-topic-1-question-44-discussion/"
+  },
+  {
+    "id": 42,
+    "question": "An authentication method should be selected for a use case based on:",
+    "answers": [
+      {
+        "key": "A",
+        "text": "The auth method that best establishes the identity of the client"
+      },
+      {
+        "key": "B",
+        "text": "The cloud provider for which the client is located on"
+      },
+      {
+        "key": "C",
+        "text": "The strongest available cryptographic hash for the use case"
+      },
+      {
+        "key": "D",
+        "text": "Compatibility with the secret engine which is to be used"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131444-exam-vault-associate-002-topic-1-question-45-discussion/"
+  },
+  {
+    "id": 43,
+    "question": "A web application uses Vault’s transit secrets engine to encrypt data in-transit. If an attacker intercepts the data in transit, which of the following statements are true? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "You can rotate the encryption key so that the attacker won't be able to decrypt the data"
+      },
+      {
+        "key": "B",
+        "text": "The keys can be rotated and min_decryption_version moved forward to ensure this data cannot be decrypted B. The Vault administrator would need to seal the Vault server immediately"
+      },
+      {
+        "key": "C",
+        "text": "Even if the attacker was able to access the raw data, they would only have encrypted bits (TLS in transit)"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/132399-exam-vault-associate-002-topic-1-question-46-discussion/"
+  },
+  {
+    "id": 44,
+    "question": "The Vault encryption key is stored in Vault’s backend storage.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/129730-exam-vault-associate-002-topic-1-question-47-discussion/"
+  },
+  {
+    "id": 45,
+    "question": "Which of the following statements describe the secrets engine in Vault? (Choose three.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Some secrets engines simply store and read data"
+      },
+      {
+        "key": "B",
+        "text": "Once enabled, you cannot disable the secrets engine"
+      },
+      {
+        "key": "C",
+        "text": "You can build your own custom secrets engine"
+      },
+      {
+        "key": "D",
+        "text": "Each secrets engine is isolated to its path"
+      },
+      {
+        "key": "E",
+        "text": "A secrets engine cannot be enabled at multiple paths"
+      }
+    ],
+    "correctKeys": [
+      "C",
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131445-exam-vault-associate-002-topic-1-question-48-discussion/"
+  },
+  {
+    "id": 46,
+    "question": "What is a benefit of response wrapping?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Log every use of a secret"
+      },
+      {
+        "key": "B",
+        "text": "Load balance secret generation across a Vault cluster"
+      },
+      {
+        "key": "C",
+        "text": "Provide error recovery to a secret so it is not corrupted in transit"
+      },
+      {
+        "key": "D",
+        "text": "Ensure that only a single party can ever unwrap the token and see what’s inside"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131448-exam-vault-associate-002-topic-1-question-49-discussion/"
+  },
+  {
+    "id": 47,
+    "question": "Which of the following describes the Vault’s auth method component?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "It verifies a client against an internal or external system, and generates a token with the appropriate policies attached"
+      },
+      {
+        "key": "B",
+        "text": "It verifies a client against an internal or external system, and generates a token with root policy"
+      },
+      {
+        "key": "C",
+        "text": "It is responsible for durable storage of client tokens"
+      },
+      {
+        "key": "D",
+        "text": "It dynamically generates a unique set of secrets with appropriate permissions attached"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131449-exam-vault-associate-002-topic-1-question-50-discussion/"
+  },
+  {
+    "id": 49,
+    "question": "Which of the following statements are true about Vault policies? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "The default policy can not be modified"
+      },
+      {
+        "key": "B",
+        "text": "You must use YAML to define policies"
+      },
+      {
+        "key": "C",
+        "text": "Policies provide a declarative way to grant or forbid access to certain paths and operations in Vault"
+      },
+      {
+        "key": "D",
+        "text": "Vault must be restarted in order for a policy change to take an effect"
+      },
+      {
+        "key": "E",
+        "text": "Policies deny by default (empty policy grants no permission)"
+      }
+    ],
+    "correctKeys": [
+      "C",
+      "E"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131451-exam-vault-associate-002-topic-1-question-52-discussion/"
+  },
+  {
+    "id": 50,
+    "question": "Use this screenshot to answer the question below: Where on this page would you click to view a secret located at secret/my-secret?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Principio del formulario"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131453-exam-vault-associate-002-topic-1-question-53-discussion/"
+  },
+  {
+    "id": 51,
+    "question": "An organization would like to use a scheduler to track & revoke access granted to a job (by Vault) at completion. What auth-associated Vault object should be tracked to enable this behavior?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Token accessor"
+      },
+      {
+        "key": "B",
+        "text": "Token ID"
+      },
+      {
+        "key": "C",
+        "text": "Lease ID"
+      },
+      {
+        "key": "D",
+        "text": "Authentication method"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131454-exam-vault-associate-002-topic-1-question-54-discussion/"
+  },
+  {
+    "id": 52,
+    "question": "Which statement describes the results of this command: $ vault secrets enable transit?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Enables the transit secrets engine at transit path"
+      },
+      {
+        "key": "B",
+        "text": "Requires a root token to execute the command successfully"
+      },
+      {
+        "key": "C",
+        "text": "Enables the transit secrets engine at secret path"
+      },
+      {
+        "key": "D",
+        "text": "Fails due to missing -path parameter"
+      },
+      {
+        "key": "E",
+        "text": "Fails because the transit secrets engine is enabled by default"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131455-exam-vault-associate-002-topic-1-question-55-discussion/"
+  },
+  {
+    "id": 53,
+    "question": "Running the second command in the GUI CU will succeed.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      },
+      {
+        "key": "C",
+        "text": "Final del formulario"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/132733-exam-vault-associate-002-topic-1-question-56-discussion/"
+  },
+  {
+    "id": 54,
+    "question": "Which of these options does not allow the creation of a root token?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "By using batch tokens"
+      },
+      {
+        "key": "B",
+        "text": "By using another root token"
+      },
+      {
+        "key": "C",
+        "text": "The initial root token generated at the vault operator init time"
+      },
+      {
+        "key": "D",
+        "text": "By using vault operator generate-root with the permission of a quorum of unseal key holders"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131456-exam-vault-associate-002-topic-1-question-57-discussion/"
+  },
+  {
+    "id": 55,
+    "question": "You manage two Vault dusters: “vaultduster1.acme.corp” and “vaultduster2.acme.corp”. You want to write a secret to the first Vaultcluster vaultcluster1.acme.corp and run vault kv put secret/foo value=‘bar’. The command times out and the error references the Vault cluster, “vaultcluster2.acme.corp”. You run the command again with the following address flag: vault kv put -address=‘https://vaultcluster1.acme.corp’ secret/foo value=‘bar’ The command completes successfully. You find that the terminal session defines the environment variable VAULT_ADDR=‘https://vaultcluster2.acxe.corp:8200’ Why was the second attempt successful?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Environment variables take precedence over flags"
+      },
+      {
+        "key": "B",
+        "text": "VAULT_CLUSTER_ADDR needs to be provided"
+      },
+      {
+        "key": "C",
+        "text": "Flags take precedence over environment variables"
+      },
+      {
+        "key": "D",
+        "text": "Vault listener is misconfigured"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131556-exam-vault-associate-002-topic-1-question-58-discussion/"
+  },
+  {
+    "id": 56,
+    "question": "The ‘alpha’ secrets are stored in the team-based paths using this convention: secret/<team_name>/alpha.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "For example, secret/team01/alpha and /secrets/team02/alpha. Which Vault policy would not allow reading paths with the word “beta” in them, such as secrets/team01/beta?"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131825-exam-vault-associate-002-topic-1-question-59-discussion/"
+  },
+  {
+    "id": 57,
+    "question": "Which statement describes the results of this command: vault kv list secret/test?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Check the status of a specific key/value secrets engine"
+      },
+      {
+        "key": "B",
+        "text": "List the existing key names at the “secret/test” path"
+      },
+      {
+        "key": "C",
+        "text": "Output all key/value secrets engines"
+      },
+      {
+        "key": "D",
+        "text": "Output all key names from all key/value secrets engine"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131447-exam-vault-associate-002-topic-1-question-60-discussion/"
+  },
+  {
+    "id": 58,
+    "question": "To encrypt your secret with the transit secrets engine, you must send the Base32-encoded plaintext to Vault.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131823-exam-vault-associate-002-topic-1-question-62-discussion/"
+  },
+  {
+    "id": 59,
+    "question": "Vault Agent supports which of the following? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Secrets Cachin"
+      },
+      {
+        "key": "B",
+        "text": "Local key/value store"
+      },
+      {
+        "key": "C",
+        "text": "Local replica of transit encryption key"
+      },
+      {
+        "key": "D",
+        "text": "Auto-unseal Vault"
+      },
+      {
+        "key": "E",
+        "text": "Auto authentication"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "E"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131559-exam-vault-associate-002-topic-1-question-63-discussion/"
+  },
+  {
+    "id": 60,
+    "question": "Which is not true of Vault tokens?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Vault tokens are the core method for authentication in Vault"
+      },
+      {
+        "key": "B",
+        "text": "Vault tokens are generated by every authentication method login"
+      },
+      {
+        "key": "C",
+        "text": "Vault tokens map to information including polices the token holder has, TTL and max usage, metadata, creation and last renewal time, and more"
+      },
+      {
+        "key": "D",
+        "text": "Vault tokens are required for every Vault call"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131562-exam-vault-associate-002-topic-1-question-64-discussion/"
+  },
+  {
+    "id": 61,
+    "question": "When using Integrated Storage, which of the following should you do to recover from possible data loss?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Use local storage"
+      },
+      {
+        "key": "B",
+        "text": "Enable audit device"
+      },
+      {
+        "key": "C",
+        "text": "Use snapshot"
+      },
+      {
+        "key": "D",
+        "text": "Use external storage"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/130406-exam-vault-associate-002-topic-1-question-65-discussion/"
+  },
+  {
+    "id": 62,
+    "question": "Which of the following is a reason to rekey a Vault cluster? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "A keyholder joins or leaves the organization"
+      },
+      {
+        "key": "B",
+        "text": "Adding additional Vault nodes to a cluster"
+      },
+      {
+        "key": "C",
+        "text": "The rook token is lost"
+      },
+      {
+        "key": "D",
+        "text": "A compliance mandate to rotate the master key at a regular interval"
+      },
+      {
+        "key": "E",
+        "text": "Upgrading Vault Community Edition to Vault Enterprise"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131561-exam-vault-associate-002-topic-1-question-66-discussion/"
+  },
+  {
+    "id": 63,
+    "question": "What information is required to revoke a Vault lease?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Secret ID"
+      },
+      {
+        "key": "B",
+        "text": "User ID"
+      },
+      {
+        "key": "C",
+        "text": "Lease ID"
+      },
+      {
+        "key": "D",
+        "text": "Token ID"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131563-exam-vault-associate-002-topic-1-question-67-discussion/"
+  },
+  {
+    "id": 64,
+    "question": "Use this screenshot to answer the question below: Which statement describes this AppRole auth method configuration?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Generates batch tokens with TTL set to 5 minutes"
+      },
+      {
+        "key": "B",
+        "text": "Generates multiple tokens with TTL set to 5 minutes"
+      },
+      {
+        "key": "C",
+        "text": "It is enabled at “App1” path"
+      },
+      {
+        "key": "D",
+        "text": "It is enabled at “auth_approle_f23dd79f” path"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131564-exam-vault-associate-002-topic-1-question-68-discussion/"
+  },
+  {
+    "id": 65,
+    "question": "What is a secret in the context of Vault?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "HTTP session token that provides authorization to Vault"
+      },
+      {
+        "key": "B",
+        "text": "Threshold of keys required to unseal the Vault"
+      },
+      {
+        "key": "C",
+        "text": "Anything stored or returned that contains confidential material"
+      },
+      {
+        "key": "D",
+        "text": "Engine responsible for logging all requests and responses"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131565-exam-vault-associate-002-topic-1-question-69-discussion/"
+  },
+  {
+    "id": 66,
+    "question": "What methods of authentication does Vault support? (Choose four.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "JWT/OIDC"
+      },
+      {
+        "key": "B",
+        "text": "AppRole"
+      },
+      {
+        "key": "C",
+        "text": "GitHub"
+      },
+      {
+        "key": "D",
+        "text": "MMSQL"
+      },
+      {
+        "key": "E",
+        "text": "PostgreSQL"
+      },
+      {
+        "key": "F",
+        "text": "Nomad"
+      },
+      {
+        "key": "G",
+        "text": "LDAP"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "B",
+      "C",
+      "G"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131566-exam-vault-associate-002-topic-1-question-70-discussion/"
+  },
+  {
+    "id": 67,
+    "question": "Vault Agent allows client-side caching of tokens and leases. If the agent is shut down, those tokens and leases cached will be revoked.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/132817-exam-vault-associate-002-topic-1-question-71-discussion/"
+  },
+  {
+    "id": 68,
+    "question": "Which kind of token can be renewed indefinitely?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Periodic token"
+      },
+      {
+        "key": "B",
+        "text": "Orphan token"
+      },
+      {
+        "key": "C",
+        "text": "Use-limit token"
+      },
+      {
+        "key": "D",
+        "text": "Root token"
+      },
+      {
+        "key": "E",
+        "text": "All of the above"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131567-exam-vault-associate-002-topic-1-question-72-discussion/"
+  },
+  {
+    "id": 69,
+    "question": "You can use a response-wrapping token more than once for as long as it has not expired.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131568-exam-vault-associate-002-topic-1-question-73-discussion/"
+  },
+  {
+    "id": 70,
+    "question": "Which statement describes the results of this command: $ vault secrets enable -version=2 kv (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Enables the secrets engine at path kv2/"
+      },
+      {
+        "key": "B",
+        "text": "The -version is an invalid flag"
+      },
+      {
+        "key": "C",
+        "text": "Enables the secrets engine at path kv/"
+      },
+      {
+        "key": "D",
+        "text": "Enables K/V v1 secrets engine"
+      },
+      {
+        "key": "E",
+        "text": "Enables K/V v2 secrets engine"
+      }
+    ],
+    "correctKeys": [
+      "C",
+      "E"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131570-exam-vault-associate-002-topic-1-question-74-discussion/"
+  },
+  {
+    "id": 71,
+    "question": "Which of these are names of the replication methods available in Vault Enterprise? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Disaster Recovery"
+      },
+      {
+        "key": "B",
+        "text": "Cluster sharping"
+      },
+      {
+        "key": "C",
+        "text": "Namespaces"
+      },
+      {
+        "key": "D",
+        "text": "Seal-Wrap"
+      },
+      {
+        "key": "E",
+        "text": "Performance"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "E"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131571-exam-vault-associate-002-topic-1-question-75-discussion/"
+  },
+  {
+    "id": 72,
+    "question": "What attributes are unique to batch tokens? (Choose three.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Cannot be renewed"
+      },
+      {
+        "key": "B",
+        "text": "Are not persisted"
+      },
+      {
+        "key": "C",
+        "text": "Can be periodic"
+      },
+      {
+        "key": "D",
+        "text": "Have a set time-to-live (TTL)"
+      },
+      {
+        "key": "E",
+        "text": "Are persisted"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131573-exam-vault-associate-002-topic-1-question-76-discussion/"
+  },
+  {
+    "id": 73,
+    "question": "You have manually created some usernames and passwords for a Microsoft SQL database on Azure, and need to store these credentials in Vault. What secrets engine should you use for this?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "MSSQL database secrets engine"
+      },
+      {
+        "key": "B",
+        "text": "Key/Value secrets engine version 2"
+      },
+      {
+        "key": "C",
+        "text": "Azure secrets engine"
+      },
+      {
+        "key": "D",
+        "text": "Transit engine"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131579-exam-vault-associate-002-topic-1-question-77-discussion/"
+  },
+  {
+    "id": 74,
+    "question": "To create a non-root token with time-to-live (TTL) set to 30 minutes but with no max TTL which flag would you use?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "-ttl=30n"
+      },
+      {
+        "key": "B",
+        "text": "-explicit-max-ttl=0"
+      },
+      {
+        "key": "C",
+        "text": "-orphan"
+      },
+      {
+        "key": "D",
+        "text": "None of the above"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131576-exam-vault-associate-002-topic-1-question-78-discussion/"
+  },
+  {
+    "id": 75,
+    "question": "A user successfully logs into Vault with the following cURL command: curl --request POST --data @payload.json http://127.0.0.1:8200/v1/auth/ldap/login/mitchellh The response will include what information?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "client_token and policies"
+      },
+      {
+        "key": "B",
+        "text": "access_key and policies"
+      },
+      {
+        "key": "C",
+        "text": "access_key and secrets available"
+      },
+      {
+        "key": "D",
+        "text": "client_token and secrets available"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/132822-exam-vault-associate-002-topic-1-question-79-discussion/"
+  },
+  {
+    "id": 76,
+    "question": "Which of the following statements are true about the default policy? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "It is one of the built-in policies"
+      },
+      {
+        "key": "B",
+        "text": "Provides a common set of permissions and is included on all tokens by default"
+      },
+      {
+        "key": "C",
+        "text": "Can not be modified or deleted"
+      },
+      {
+        "key": "D",
+        "text": "Gives a super admin permissions, similar to a root user on a Linux machine"
+      },
+      {
+        "key": "E",
+        "text": "Vault upgrade will overwrite any update you made to the default policy"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131574-exam-vault-associate-002-topic-1-question-80-discussion/"
+  },
+  {
+    "id": 77,
+    "question": "Why might an application be mapped to an identity entity?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "To prohibit Vault administrators from revoking tokens associated with that application"
+      },
+      {
+        "key": "B",
+        "text": "To get around cloud license limitations"
+      },
+      {
+        "key": "C",
+        "text": "To allow an application deployed with multiple authentication methods have a consistent set of policies"
+      },
+      {
+        "key": "D",
+        "text": "To allow the same application in one cloud to access already provisioned Vault tokens for that application in another cloud"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131581-exam-vault-associate-002-topic-1-question-81-discussion/"
+  },
+  {
+    "id": 78,
+    "question": "Unsealing a single Vault server in a cluster unseals all Vault servers in that cluster.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131582-exam-vault-associate-002-topic-1-question-82-discussion/"
+  },
+  {
+    "id": 79,
+    "question": "Which endpoint can be used to list all tokens?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "/kv/secrets"
+      },
+      {
+        "key": "B",
+        "text": "/auth/token/list"
+      },
+      {
+        "key": "C",
+        "text": "/secrets/kv"
+      },
+      {
+        "key": "D",
+        "text": "/auth/token/accessors"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131822-exam-vault-associate-002-topic-1-question-83-discussion/"
+  },
+  {
+    "id": 80,
+    "question": "The mechanism to associate an authentication method with access to specific secrets is by specifying a/an:",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Accessor"
+      },
+      {
+        "key": "B",
+        "text": "Token"
+      },
+      {
+        "key": "C",
+        "text": "Policy"
+      },
+      {
+        "key": "D",
+        "text": "Secret"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131583-exam-vault-associate-002-topic-1-question-84-discussion/"
+  },
+  {
+    "id": 81,
+    "question": "You are managing a Vault implementation that has been integrated with Azure SQL database to provide dynamic credentials. You have created a role that will provide database credentials for database administrators (DBAs) to use for managing their database in Azure SQL. A DBA has requested a new credential by issuing the following Vault CLI command:",
+    "answers": [
+      {
+        "key": "A",
+        "text": "vault read azuresql/creds/dba_access."
+      },
+      {
+        "key": "B",
+        "text": "The following output is returned: The DBA has completed their work and would like to proactively remove the credential now that their work is complete. Which of the following commands should the DBA execute?"
+      },
+      {
+        "key": "C",
+        "text": "vault delete azuresql/creds/dba_access"
+      },
+      {
+        "key": "D",
+        "text": "vault lease revoke v-token-dba_acccss-tr2t4x9pxvqlz8878s9s-1513446795"
+      },
+      {
+        "key": "E",
+        "text": "vault delete azuresql/creds/dba_access/2e5b1e0b-a081-c7el-5622-39f58e79a7l9"
+      },
+      {
+        "key": "F",
+        "text": "vault lease revoke azuresql/creds/dba_access/2e5b1e0b-a081-c7el-5622-39f58e79a719"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131821-exam-vault-associate-002-topic-1-question-85-discussion/"
+  },
+  {
+    "id": 82,
+    "question": "One of the benefits of using the Vault transit secrets engine is its ability to easily rotate encryption keys. Which of these is true regarding key rotation?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Vault automatically rotates the encryption key based on a set period"
+      },
+      {
+        "key": "B",
+        "text": "Vault can rotate encryption keys, but cannot enforce restrictions about the minimum encryption key version"
+      },
+      {
+        "key": "C",
+        "text": "Vault does not maintain the versioned keyring"
+      },
+      {
+        "key": "D",
+        "text": "Encryption keys can be rotated manually by a user, or by an automated process which invokes the key rotation API"
+      }
+    ],
+    "correctKeys": [
+      "D"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131820-exam-vault-associate-002-topic-1-question-86-discussion/"
+  },
+  {
+    "id": 83,
+    "question": "What is not a function provided by Vault’s transit secret engine?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Generating random bytes"
+      },
+      {
+        "key": "B",
+        "text": "Encrypting data"
+      },
+      {
+        "key": "C",
+        "text": "Storing ciphertext data"
+      },
+      {
+        "key": "D",
+        "text": "Verifying signed data"
+      },
+      {
+        "key": "E",
+        "text": "None of the above"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131819-exam-vault-associate-002-topic-1-question-87-discussion/"
+  },
+  {
+    "id": 85,
+    "question": "Which command will generate a new transit key?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "vault put transit/keys/my-key"
+      },
+      {
+        "key": "B",
+        "text": "vault create -f transit/keys/my-key"
+      },
+      {
+        "key": "C",
+        "text": "vault write -f transit/keys/my-key"
+      },
+      {
+        "key": "D",
+        "text": "vault create transit/keys/my-key"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131638-exam-vault-associate-002-topic-1-question-90-discussion/"
+  },
+  {
+    "id": 86,
+    "question": "Which of the following is the correct option to authenticate to Vault using a token using the CLI?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "A token can be used to authenticate to Vault through the API, not the CLI or the UI"
+      },
+      {
+        "key": "B",
+        "text": "vault login"
+      },
+      {
+        "key": "C",
+        "text": "vault <token>"
+      },
+      {
+        "key": "D",
+        "text": "A token cannot be used to authenticate to Vault"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131585-exam-vault-associate-002-topic-1-question-91-discussion/"
+  },
+  {
+    "id": 87,
+    "question": "A child token must be assigned the same or a subset the parent token’s policies.",
+    "answers": [
+      {
+        "key": "A",
+        "text": "True"
+      },
+      {
+        "key": "B",
+        "text": "False"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131817-exam-vault-associate-002-topic-1-question-92-discussion/"
+  },
+  {
+    "id": 88,
+    "question": "When enabling auto-unseal, how do you specify the seal type? (Choose two.)",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Set the VAULT_SEAL_TYPE environment variable"
+      },
+      {
+        "key": "B",
+        "text": "Use the /sys/seal endpoint on the Vault API"
+      },
+      {
+        "key": "C",
+        "text": "Create a seal block in the server configuration file"
+      },
+      {
+        "key": "D",
+        "text": "Configure in the storage block of the server configuration file"
+      },
+      {
+        "key": "E",
+        "text": "Use the vault operator command"
+      }
+    ],
+    "correctKeys": [
+      "A",
+      "C"
+    ],
+    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131639-exam-vault-associate-002-topic-1-question-93-discussion/"
+  }
+]

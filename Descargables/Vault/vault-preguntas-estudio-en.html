@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Associate - Study Questions (English)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c5275 0%, #1e3a4d 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3a4d 0%, #2c5275 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .language-selector {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: #2c5275;
+        }
+        
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .controls {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            border-bottom: 3px solid #2c5275;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #2c5275;
+            box-shadow: 0 0 8px rgba(44, 82, 117, 0.3);
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: #2c5275;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover {
+            background: #1e3a4d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .question-card {
+            background: white;
+            border-left: 5px solid #2c5275;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+        
+        .question-number {
+            display: inline-block;
+            background: #2c5275;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .option {
+            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .option.correct {
+            background: #c8e6c9;
+            padding: 10px;
+            border-left: 3px solid #4caf50;
+            border-radius: 4px;
+        }
+        
+        .option-key {
+            font-weight: bold;
+            min-width: 30px;
+            color: #2c3e50;
+        }
+        
+        .option-text {
+            color: #333;
+        }
+        
+        .explanation {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #1565c0;
+        }
+        
+        .stats {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            background: #2c5275;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #1e3a4d;
+            transform: translateY(-2px);
+        }
+        
+        .language-badge {
+            background: #4caf50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="language-selector">
+                <a href="#" class="lang-btn active">🇬🇧 EN</a>
+                <a href="vault-preguntas-estudio-es.html" class="lang-btn">🇪🇸 ES</a>
+            </div>
+            <h1>🔐 Vault Associate - Study Questions <span class="language-badge">ENGLISH</span></h1>
+            <p>All exam questions with correct answers highlighted</p>
+        </div>
+        
+        <div class="controls">
+            <input type="text" class="search-box" id="searchInput" placeholder="🔍 Search questions...">
+            <button class="filter-btn" onclick="filterByAnswer()">Filter</button>
+            <button class="filter-btn" onclick="resetFilters()">Clear</button>
+            <a href="vault-preguntas-estudio-es.html" class="filter-btn" style="text-decoration: none;">🇪🇸 Español</a>
+        </div>
+        
+        <div class="stats">
+            <p>Total questions: <strong id="totalQuestions">0</strong> | Displayed: <strong id="visibleQuestions">0</strong></p>
+        </div>
+        
+        <div class="content" id="questionsContainer"></div>
+        
+        <div class="nav-buttons">
+            <button class="btn" onclick="window.print()">🖨️ Print</button>
+            <button class="btn" onclick="window.history.back()">← Back</button>
+        </div>
+    </div>
+
+    <script>
+        let questionsData = [];
+        
+        fetch('/Descargables/Vault/vault-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                questionsData = data;
+                renderQuestions(questionsData);
+                updateStats();
+            })
+            .catch(error => {
+                console.error('Error loading questions:', error);
+                document.getElementById('questionsContainer').innerHTML = 
+                    '<div style="text-align: center; padding: 50px; color: #e74c3c;"><h2>⚠️ Error loading questions</h2></div>';
+            });
+        
+        function renderQuestions(questions) {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+            
+            questions.forEach((q) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `q-${q.id}`;
+                
+                let optionsHTML = '<div class="options">';
+                q.answers.forEach(answer => {
+                    const isCorrect = q.correctKeys.includes(answer.key);
+                    const correctClass = isCorrect ? 'correct' : '';
+                    optionsHTML += `
+                        <div class="option ${correctClass}">
+                            <span class="option-key">${answer.key}.</span>
+                            <span class="option-text">${answer.text}</span>
+                            ${isCorrect ? '<span style="margin-left: auto; color: #4caf50; font-weight: bold;">✓ Correct</span>' : ''}
+                        </div>
+                    `;
+                });
+                optionsHTML += '</div>';
+                
+                const explanationHTML = q.explanation ? 
+                    `<div class="explanation"><strong>Explanation:</strong> ${q.explanation}</div>` : '';
+                
+                card.innerHTML = `
+                    <span class="question-number">Question ${q.id}</span>
+                    <div class="question-text">${q.question}</div>
+                    ${optionsHTML}
+                    ${explanationHTML}
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+        
+        document.getElementById('searchInput').addEventListener('keyup', () => {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = questionsData.filter(q => 
+                q.question.toLowerCase().includes(searchTerm) ||
+                q.answers.some(a => a.text.toLowerCase().includes(searchTerm)) ||
+                (q.explanation && q.explanation.toLowerCase().includes(searchTerm))
+            );
+            renderQuestions(filtered);
+            updateStats();
+        });
+        
+        function filterByAnswer() {
+            const filtered = questionsData.filter(q => q.correctKeys.length > 1);
+            renderQuestions(filtered);
+            updateStats();
+        }
+        
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            renderQuestions(questionsData);
+            updateStats();
+        }
+        
+        function updateStats() {
+            document.getElementById('totalQuestions').textContent = questionsData.length;
+            const visible = document.querySelectorAll('.question-card').length;
+            document.getElementById('visibleQuestions').textContent = visible;
+        }
+    </script>
+</body>
+</html>
