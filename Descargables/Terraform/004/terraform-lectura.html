@@ -435,7 +435,7 @@
         const questionsData = [];
         
         // Cargar preguntas desde el JSON
-        fetch('/Descargables/Terraform/004/terraform-questions.json')
+        fetch('terraform-questions.json')
             .then(response => response.json())
             .then(data => {
                 questionsData.push(...data);

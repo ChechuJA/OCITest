@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz de Certificaciones</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Quiz de Certificaciones</h1>
+    <p>Selecciona el proveedor, examen y modo para comenzar.</p>
+    <nav class="top-nav">
+      <a href="Descargables/GH-300/gh300-lectura.html">📖 Preguntas y Material GH-300</a>
+      <a href="Descargables/GH-300/guia.html">📚 Guía de Estudio GH-300</a>
+    </nav>
+  </header>
+
+  <section id="controls">
+    <div class="control-group">
+      <label for="providerSelect">Proveedor:</label>
+      <select id="providerSelect">
+        <option value="">-- Seleccione un proveedor --</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="examSelect">Examen:</label>
+      <select id="examSelect" disabled>
+        <option value="">-- Primero seleccione un proveedor --</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="modeSelect">Modo:</label>
+      <select id="modeSelect">
+        <option value="random">Aleatorio</option>
+        <option value="sequential">Secuencial</option>
+        <option value="review">Repasar falladas previas</option>
+      </select>
+    </div>
+    <button id="startBtn">Comenzar</button>
+  </section>
+
+  <main id="quiz" aria-live="polite" hidden>
+    <div id="progressWrapper">
+      <div id="progressText"></div>
+      <div id="timeRemaining" title="Tiempo restante"></div>
+      <div class="progress-bar" aria-label="Progreso del quiz">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+    <div id="progress"></div>
+    <div id="questionContainer"></div>
+    <ul id="options" class="options"></ul>
+    <div id="feedback" class="feedback"></div>
+    <div class="actions">
+      <button id="skipBtn" title="Mostrar explicación y saltar">Ver explicación / Saltar</button>
+      <button id="nextBtn" disabled>Siguiente</button>
+    </div>
+  </main>
+
+  <section id="summary" hidden></section>
+
+  <footer>
+    <p>Resultados almacenados localmente. No se envían datos.</p>
+  </footer>
+  <script src="exam-loader.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>

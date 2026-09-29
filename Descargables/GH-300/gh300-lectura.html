@@ -458,7 +458,7 @@
         const questionsData = [];
         
         // Cargar preguntas desde el JSON
-        fetch('/Descargables/GH-300/gh300-questions.json')
+        fetch('gh300-questions.json')
             .then(response => response.json())
             .then(data => {
                 questionsData.push(...data);

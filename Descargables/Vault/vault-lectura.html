@@ -435,7 +435,7 @@
         const questionsData = [];
         
         // Cargar preguntas desde el JSON
-        fetch('/Descargables/Vault/vault-questions.json')
+        fetch('vault-questions.json')
             .then(response => response.json())
             .then(data => {
                 questionsData.push(...data);
