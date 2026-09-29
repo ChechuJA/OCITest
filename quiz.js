@@ -150,6 +150,59 @@ function formatCorrectAnswer(q) {
   return '';
 }
 
+function formatCorrectAnswerDetails(q) {
+  if (!q) return '';
+  const indices = Array.isArray(q.a) ? q.a : [q.a];
+  return indices
+    .filter(i => Number.isInteger(i) && q.o && q.o[i])
+    .map(i => `${String.fromCharCode(65 + i)}. ${q.o[i]}`)
+    .join(' | ');
+}
+
+function appendTextWithLinks(container, text) {
+  const value = String(text || '');
+  const urlPattern = /(https?:\/\/[^\s]+)/g;
+  let lastIndex = 0;
+
+  value.replace(urlPattern, (url, offset) => {
+    container.appendChild(document.createTextNode(value.slice(lastIndex, offset)));
+    const link = document.createElement('a');
+    link.href = url;
+    link.textContent = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    container.appendChild(link);
+    lastIndex = offset + url.length;
+    return url;
+  });
+
+  container.appendChild(document.createTextNode(value.slice(lastIndex)));
+}
+
+function showFeedback(message, q, includeExplanation) {
+  feedbackEl.replaceChildren();
+
+  const status = document.createElement('div');
+  status.className = 'feedback-status';
+  status.textContent = message;
+  feedbackEl.appendChild(status);
+
+  const answer = document.createElement('div');
+  answer.className = 'feedback-answer';
+  answer.textContent = `Respuesta correcta: ${formatCorrectAnswerDetails(q)}`;
+  feedbackEl.appendChild(answer);
+
+  if (includeExplanation && q.e) {
+    const explanation = document.createElement('div');
+    explanation.className = 'feedback-explanation';
+    const label = document.createElement('strong');
+    label.textContent = 'Explicación: ';
+    explanation.appendChild(label);
+    appendTextWithLinks(explanation, q.e);
+    feedbackEl.appendChild(explanation);
+  }
+}
+
 function getBank() {
   console.log('🔎 getBank llamado, externalBankOverride:', externalBankOverride ? externalBankOverride.length : 'null');
   
@@ -250,12 +303,12 @@ function selectOption(idx){
   nextBtn.disabled = false;
   if (idx === q.a){
     score++;
-    feedbackEl.textContent = `✔ Correcto, es la ${formatCorrectAnswer(q)}`;
-    feedbackEl.classList.add('correct');
+    feedbackEl.className = 'feedback correct';
+    showFeedback(`✔ Correcto, es la ${formatCorrectAnswer(q)}`, q, false);
   } else {
     wrong.push(q);
-    feedbackEl.textContent = `✘ Incorrecto. Correcta: ${formatCorrectAnswer(q)}\n${q.e}`;
-    feedbackEl.classList.add('incorrect');
+    feedbackEl.className = 'feedback incorrect';
+    showFeedback('✘ Incorrecto.', q, true);
   }
 }
 
@@ -265,8 +318,8 @@ skipBtn.addEventListener('click', ()=>{
   wrong.push(q); // contar como incorrecta
   answered = true;
   nextBtn.disabled = false;
-  feedbackEl.textContent = `Explicación: ${q.e} (Correcta: ${formatCorrectAnswer(q)})`;
   feedbackEl.className = 'feedback incorrect';
+  showFeedback('Explicación de la pregunta:', q, true);
   nextBtn.textContent = 'Siguiente';
 });
 
@@ -289,12 +342,12 @@ nextBtn.addEventListener('click', ()=>{
 
     if (isCorrect) {
       score++;
-      feedbackEl.textContent = `✔ Correcto, ${correct.length > 1 ? 'son las' : 'es la'} ${formatCorrectAnswer(q)}`;
-      feedbackEl.classList.add('correct');
+      feedbackEl.className = 'feedback correct';
+      showFeedback(`✔ Correcto, ${correct.length > 1 ? 'son las' : 'es la'} ${formatCorrectAnswer(q)}`, q, false);
     } else {
       wrong.push(q);
-      feedbackEl.textContent = `✘ Incorrecto. Correctas: ${formatCorrectAnswer(q)}\n${q.e}`;
-      feedbackEl.classList.add('incorrect');
+      feedbackEl.className = 'feedback incorrect';
+      showFeedback('✘ Incorrecto.', q, true);
     }
     return;
   }

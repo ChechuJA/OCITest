@@ -15,7 +15,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131219-exam-vault-associate-002-topic-1-question-2-discussion/"
+    "explanation": "When you renew a Vault lease using: vault lease renew <lease_id> the lease duration is extended from the time of renewal, not from the original expiration time. For example: Original lease: 1 hour 30 minutes have elapsed Renew for another 1 hour Result: New expiration is approximately 1 hour from now, not 1 hour after the original expiration time. This is why renewals are often performed periodically by Vault agents or applications before the lease expires\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131219-exam-vault-associate-002-topic-1-question-2-discussion/"
   },
   {
     "id": 2,
@@ -41,7 +41,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131215-exam-vault-associate-002-topic-1-question-4-discussion/"
+    "explanation": "The Vault Transit Secrets Engine is designed to perform cryptographic operations on relatively small amounts of data. It is not intended to encrypt very large payloads such as a 2 GB Base64 blob. The recommended pattern is envelope encryption: Generate a data encryption key (DEK) using the Transit engine. Encrypt the 2 GB blob locally using the DEK (for example, with AES-256). Store the encrypted blob wherever needed. Use Vault Transit to encrypt, decrypt, or manage the DEK. This approach avoids sending huge amounts of data through Vault and is the scalable design for large files and binaries. Why the others are incorrect: A. A data key encrypts the blob locally, and the same key decrypts the blob locally. ❌\nThis describes envelope encryption, but it does not describe the Transit engine itself as the best solution for directly processing a 2 GB blob. B. Vault will temporarily store it in the storage backend. ❌\nTransit does not temporarily store arbitrary blobs for encryption. C. Vault will store the blob permanently. ❌\nThe Transit engine does not store the data being encrypted.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131215-exam-vault-associate-002-topic-1-question-4-discussion/"
   },
   {
     "id": 3,
@@ -67,7 +67,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131220-exam-vault-associate-002-topic-1-question-5-discussion/"
+    "explanation": "The primary value of the Vault Transit Secrets Engine is that applications can send data to Vault for encryption, decryption, signing, and key management without handling cryptographic keys themselves. Benefits include: Centralized key management Consistent cryptographic controls Key rotation without application changes Reduced risk of developers implementing cryptography incorrectly Applications never need direct access to encryption keys Why the other options are less accurate: Vault has an API that can be programmatically consumed by applications ❌ This is true of Vault generally, but it does not specifically describe the value of the Transit Secrets Engine. The transit secrets engine ensures encryption in-transit and at-rest is enforced enterprise wide ❌ Transit provides cryptographic services, but it does not automatically enforce enterprise-wide encryption policies. Encryption for application data is best handled by a storage system or database engine, while storing encryption keys in Vault ❌ This describes a common pattern with external key management, but not the core purpose of the Transit Secrets Engine itself.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131220-exam-vault-associate-002-topic-1-question-5-discussion/"
   },
   {
     "id": 4,
@@ -93,7 +93,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131221-exam-vault-associate-002-topic-1-question-6-discussion/"
+    "explanation": "To view information about the token currently being used by the Vault CLI, the command is: vault token lookup This displays details such as: Token ID (if permitted) Policies TTL Creation time Renewable status Metadata You can also explicitly query the current token with: vault token lookup -self\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131221-exam-vault-associate-002-topic-1-question-6-discussion/"
   },
   {
     "id": 5,
@@ -119,7 +119,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131222-exam-vault-associate-002-topic-1-question-7-discussion/"
+    "explanation": "AppRole is a machine-oriented authentication method designed for applications, services, automation, CI/CD pipelines, and other non-human clients. Authentication is performed using a Role ID and Secret ID, making it well suited for machines and workloads. Why the others are incorrect: Okta ❌\nPrimarily a human-oriented authentication method for users. Transit ❌\nTransit is a Secrets Engine used for encryption, decryption, signing, and key management, not an authentication backend. GitHub ❌\nPrimarily used for authenticating human users through GitHub accounts and organizations.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131222-exam-vault-associate-002-topic-1-question-7-discussion/"
   },
   {
     "id": 6,
@@ -145,7 +145,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": ""
+    "explanation": "The requirement is that no secrets appear in shell history."
   },
   {
     "id": 7,
@@ -163,7 +163,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131332-exam-vault-associate-002-topic-1-question-9-discussion/"
+    "explanation": "Not every Vault storage backend supports High Availability (HA). Examples: ✅ Integrated Storage (Raft) supports HA. ✅ Consul supports HA. ❌ Some storage backends are intended for development, testing, or storage only and do not provide the coordination and leader election required for HA.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131332-exam-vault-associate-002-topic-1-question-9-discussion/"
   },
   {
     "id": 8,
@@ -189,7 +189,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131333-exam-vault-associate-002-topic-1-question-10-discussion/"
+    "explanation": "he correct syntax for creating a secret in the KV secrets engine is: vault kv put <path> key=value So for: Mount: secret Path: my-secrets Key: my-password Value: 53cr3t the command is: vault kv put secret/my-secrets my-password=53cr3t\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131333-exam-vault-associate-002-topic-1-question-10-discussion/"
   },
   {
     "id": 9,
@@ -215,7 +215,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131319-exam-vault-associate-002-topic-1-question-11-discussion/"
+    "explanation": "Vault's dynamic secrets are generated on demand and can be configured with short lease durations (TTLs). If a credential is compromised: The credential automatically expires after a short period. The window of opportunity for an attacker is minimized. Vault can revoke the credential and generate a new one as needed.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131319-exam-vault-associate-002-topic-1-question-11-discussion/"
   },
   {
     "id": 10,
@@ -241,7 +241,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131320-exam-vault-associate-002-topic-1-question-12-discussion/"
+    "explanation": "The Vault CLI uses the VAULT_ADDR environment variable to specify the address of the Vault server. If set, it overrides the default server address used by the CLI. export VAULT_ADDR=https://vault.example.com:8200 vault status\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131320-exam-vault-associate-002-topic-1-question-12-discussion/"
   },
   {
     "id": 11,
@@ -267,7 +267,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131336-exam-vault-associate-002-topic-1-question-13-discussion/"
+    "explanation": "The command: vault login -method=ldap username=mitchellh uses the LDAP authentication method and provides only the username. Since no password is supplied on the command line, Vault will interactively prompt for it: Password (will be hidden):\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131336-exam-vault-associate-002-topic-1-question-13-discussion/"
   },
   {
     "id": 12,
@@ -301,7 +301,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131341-exam-vault-associate-002-topic-1-question-14-discussion/"
+    "explanation": "app.hcl path \"transit/encrypt/my_app_key\" { capabilities = [\"update\"] } ` Allows a token to encrypt data using the transit key my_app_key.  callcenter.hcl path \"transit/decrypt/my_app_key\" { capabilities = [\"update\"] } Allows a token to decrypt data using the same key.  rewrap.hcl path \"transit/keys/my_app_key\" { capabilities = [\"read\"] } path \"transit/rewrap/my_app_key\" { capabilities = [\"update\"] } Allows: Reading metadata about the key Performing rewrap operations (re-encrypting ciphertext with the latest key version without exposing plaintext) Why A is correct These policies demonstrate separation of duties: One role can encrypt. Another role can decrypt. Another role can rewrap. This is a common Vault design pattern where different teams or applications receive only the permissions they require.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131341-exam-vault-associate-002-topic-1-question-14-discussion/"
   },
   {
     "id": 13,
@@ -327,7 +327,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131337-exam-vault-associate-002-topic-1-question-15-discussion/"
+    "explanation": "The Google Cloud Secrets Engine can: ✅ Generate dynamic GCP credentials on demand. ✅ Provide short-lived access instead of long-lived service account keys. ✅ Automatically revoke credentials when they expire. ✅ Reduce the risk associated with credential leakage in CI/CD systems. This aligns perfectly with the goal of protecting credentials used by automation tools. Why the other options are incorrect B. Identity secrets engine ❌\nThe Identity system manages entities, groups, and aliases. It does not generate GCP credentials. C. Key/Value secrets engine version 2 ❌\nKV v2 can store a static GCP service account key, but it does not dynamically generate or manage GCP credentials. SSH secrets engine ❌\nThe SSH secrets engine manages SSH access and certificates, not GCP API credentials.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131337-exam-vault-associate-002-topic-1-question-15-discussion/"
   },
   {
     "id": 14,
@@ -353,7 +353,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131339-exam-vault-associate-002-topic-1-question-16-discussion/"
+    "explanation": "Dynamic secrets are designed to: ✅ Support systems that do not natively expire credentials by issuing credentials with a lease and TTL. ✅ Minimize the impact of credential leakage because credentials are short-lived and can be revoked. ✅ Replace manual password rotation processes through automated credential generation and expiration. However: ❌ Dynamic secrets do not ensure administrators can see every password used. In fact, one of the advantages of Vault is that credentials can be generated on demand and used without administrators having to know or view the passwords.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131339-exam-vault-associate-002-topic-1-question-16-discussion/"
   },
   {
     "id": 15,
@@ -383,7 +383,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131374-exam-vault-associate-002-topic-1-question-17-discussion/"
+    "explanation": "The maximum TTL for a Vault token can be constrained by several Vault-side settings, including: ✅ Authentication method (auth mount tuning or role settings) ✅ Mount endpoint configuration ✅ Parent token TTL ✅ System max TTL However: ❌ The client system cannot define or override the token's maximum TTL. The client can request a TTL, but Vault ultimately enforces the limits configured on the server side.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131374-exam-vault-associate-002-topic-1-question-17-discussion/"
   },
   {
     "id": 16,
@@ -409,7 +409,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131342-exam-vault-associate-002-topic-1-question-18-discussion/"
+    "explanation": "In Vault, most tokens are child tokens of another token. If the parent token is revoked, all of its descendant tokens are revoked as well. An orphan token has no parent in the token hierarchy: ✅ It is not linked to a parent token. ✅ Revoking another token does not affect it. ✅ It remains valid until its own TTL expires or it is explicitly revoked.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131342-exam-vault-associate-002-topic-1-question-18-discussion/"
   },
   {
     "id": 17,
@@ -439,7 +439,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131376-exam-vault-associate-002-topic-1-question-19-discussion/"
+    "explanation": "In Vault, the list capability allows a user to enumerate or display the keys/endpoints under a path.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131376-exam-vault-associate-002-topic-1-question-19-discussion/"
   },
   {
     "id": 18,
@@ -465,7 +465,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131380-exam-vault-associate-002-topic-1-question-21-discussion/"
+    "explanation": "When using Vault Integrated Storage (Raft), the recommended mechanism to recover from potential data loss is to create and maintain Raft snapshots.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131380-exam-vault-associate-002-topic-1-question-21-discussion/"
   },
   {
     "id": 19,
@@ -491,7 +491,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/127827-exam-vault-associate-002-topic-1-question-22-discussion/"
+    "explanation": "With Shamir's Secret Sharing, Vault is configured with: A total number of key shares (n) A threshold (t) required to unseal Vault Example: vault operator init -key-shares=5 -key-threshold=3 This creates: 5 total unseal key shares 3 shares required to unseal In this case, any 3 of the 5 shares can unseal Vault.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/127827-exam-vault-associate-002-topic-1-question-22-discussion/"
   },
   {
     "id": 20,
@@ -517,7 +517,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131389-exam-vault-associate-002-topic-1-question-23-discussion/"
+    "explanation": "One of the primary benefits of Vault Agent is that it can: Automatically authenticate to Vault. Cache tokens, leases, and secrets. Automatically renew tokens and leases when possible. Obtain new credentials when existing ones expire. This significantly reduces the amount of Vault-specific logic that applications need to implement.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131389-exam-vault-associate-002-topic-1-question-23-discussion/"
   },
   {
     "id": 21,
@@ -543,7 +543,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131382-exam-vault-associate-002-topic-1-question-24-discussion/"
+    "explanation": "In Vault's Identity system, Identity Groups allow you to assign policies to a group rather than to individual entities.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131382-exam-vault-associate-002-topic-1-question-24-discussion/"
   },
   {
     "id": 22,
@@ -569,7 +569,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131390-exam-vault-associate-002-topic-1-question-25-discussion/"
+    "explanation": "Vault supports CIDR-bound tokens, which restrict a token's usage to requests originating from specific IP address ranges (CIDR blocks). Example: vault token create \\ -policy=my-policy \\ -bound-cidrs=\"10.0.0.0/8,192.168.1.0/24\" With this configuration, the token can only be used from those permitted network ranges.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131390-exam-vault-associate-002-topic-1-question-25-discussion/"
   },
   {
     "id": 23,
@@ -595,7 +595,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131829-exam-vault-associate-002-topic-1-question-26-discussion/"
+    "explanation": "The Vault Agent cache is designed to: Cache tokens Cache leases Cache secrets Reduce the number of requests to Vault By keeping the cache in memory: ✅ Sensitive data is not written to disk. ✅ Cached data is automatically lost when the agent stops or restarts. ✅ Security exposure is reduced compared to file-based caching.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131829-exam-vault-associate-002-topic-1-question-26-discussion/"
   },
   {
     "id": 24,
@@ -621,7 +621,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131387-exam-vault-associate-002-topic-1-question-27-discussion/"
+    "explanation": "If the goal is to reduce and eventually eliminate long-lived X.509 certificates, the PKI Secrets Engine is the best choice. Why PKI? The Vault PKI Secrets Engine can: ✅ Act as an internal Certificate Authority (CA) ✅ Issue short-lived X.509 certificates ✅ Automatically rotate certificates ✅ Revoke certificates ✅ Generate certificates on demand with very short TTLs (minutes or hours) This enables a move away from long-lived certificates toward ephemeral, automatically managed certificates, which is a common security best practice.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131387-exam-vault-associate-002-topic-1-question-27-discussion/"
   },
   {
     "id": 25,
@@ -647,7 +647,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131384-exam-vault-associate-002-topic-1-question-28-discussion/"
+    "explanation": "The purpose of Shamir's Secret Sharing is to distribute trust among multiple key holders. When Vault is sealed and requires multiple unseal keys: Each key holder should provide their own unseal key share. The shares do not need to be entered from the same machine. A common practice is for different administrators to connect independently and submit their portion of the unseal key.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131384-exam-vault-associate-002-topic-1-question-28-discussion/"
   },
   {
     "id": 26,
@@ -673,7 +673,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131400-exam-vault-associate-002-topic-1-question-29-discussion/"
+    "explanation": "HashiCorp's recommended security practice is: Use the initial root token only for bootstrap and initial configuration tasks. Create appropriate administrative policies and non-root admin tokens. Revoke the root token when it is no longer needed. Generate a new root token later using vault operator generate-root if an emergency requires it. Root tokens bypass normal policy controls and provide unrestricted access to Vault, so they should not be kept around for routine use.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131400-exam-vault-associate-002-topic-1-question-29-discussion/"
   },
   {
     "id": 27,
@@ -695,7 +695,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131402-exam-vault-associate-002-topic-1-question-30-discussion/"
+    "explanation": "The error message explicitly says: invalid capability \"write\" In Vault ACL policies, valid capabilities include: create read update delete list sudo patch deny There is no write capability. To allow writing secrets, Vault uses create (for new entries) and/or update (for modifying existing entries). For example: path \"secret/webapp/*\" { capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\", \"sudo\"] }\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131402-exam-vault-associate-002-topic-1-question-30-discussion/"
   },
   {
     "id": 28,
@@ -726,7 +726,7 @@
       "C",
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131399-exam-vault-associate-002-topic-1-question-31-discussion/"
+    "explanation": "Vault seal configuration is typically defined in the Vault configuration file using a seal stanza. HashiCorp documentation states that seal configuration is done through the Vault configuration file. Many seal parameters can also be supplied through environment variables, and when both are present, the environment variable value takes precedence over the configuration file value.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131399-exam-vault-associate-002-topic-1-question-31-discussion/"
   },
   {
     "id": 29,
@@ -757,7 +757,7 @@
       "A",
       "E"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131398-exam-vault-associate-002-topic-1-question-32-discussion/"
+    "explanation": "In HashiCorp Vault, a lease_id is used to manage leased secrets and credentials. vault lease renew <lease_id> → Requires a lease ID to renew an existing lease. ✅ vault lease revoke <lease_id> → Requires a lease ID to revoke a specific lease. ✅ vault lease revoke -prefix <path> → Uses a path/prefix, not a lease ID. ❌ create → Not a Vault lease operation that takes a lease ID. ❌ describe → Not a standard Vault lease operation that takes a lease ID. ❌\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131398-exam-vault-associate-002-topic-1-question-32-discussion/"
   },
   {
     "id": 30,
@@ -775,7 +775,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131416-exam-vault-associate-002-topic-1-question-33-discussion/"
+    "explanation": "An AWS EC2 instance does not have to use only the AWS authentication method to authenticate to Vault. While the AWS Auth Method is specifically designed for AWS workloads and is a common choice for EC2 instances, Vault supports multiple authentication methods, including: AWS Auth AppRole JWT/OIDC TLS Certificates (Cert Auth) Kubernetes Auth (for workloads running in EKS) Userpass and others An EC2 instance can authenticate using any method that is appropriate and accessible in the environment. Therefore, the statement that the only authentication method an AWS EC2 VM can use is AWS Auth is incorrect.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131416-exam-vault-associate-002-topic-1-question-33-discussion/"
   },
   {
     "id": 31,
@@ -801,7 +801,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131418-exam-vault-associate-002-topic-1-question-34-discussion/"
+    "explanation": "The Transit Secrets Engine supports key rotation, which creates a new version of the encryption key while retaining older versions to decrypt previously encrypted data. Rotating keys regularly: Reduces the amount of data encrypted with any single key version. Limits the impact if a key is ever compromised. Follows cryptographic key management best practices.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131418-exam-vault-associate-002-topic-1-question-34-discussion/"
   },
   {
     "id": 32,
@@ -827,7 +827,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131830-exam-vault-associate-002-topic-1-question-35-discussion/"
+    "explanation": "The identity.entity.id in the policy references the authenticating user.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131830-exam-vault-associate-002-topic-1-question-35-discussion/"
   },
   {
     "id": 33,
@@ -853,7 +853,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131424-exam-vault-associate-002-topic-1-question-36-discussion/"
+    "explanation": "To make an authenticated request to the Vault HTTP API, you pass the client's token in the X-Vault-Token header. Example: curl \\ --header \"X-Vault-Token: hvs.xxxxx\" \\ https://vault.example.com/v1/secret/data/myapp\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131424-exam-vault-associate-002-topic-1-question-36-discussion/"
   },
   {
     "id": 34,
@@ -880,7 +880,7 @@
       "C",
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131428-exam-vault-associate-002-topic-1-question-37-discussion/"
+    "explanation": "Vault Enterprise provides two primary replication modes: Performance Replication Used to scale reads across multiple Vault clusters. Secondary clusters can service read requests locally. Useful for geographically distributed deployments. Disaster Recovery (DR) Replication Provides a standby cluster for business continuity. Intended for failover if the primary cluster becomes unavailable.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131428-exam-vault-associate-002-topic-1-question-37-discussion/"
   },
   {
     "id": 35,
@@ -906,7 +906,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131430-exam-vault-associate-002-topic-1-question-38-discussion/"
+    "explanation": "The screenshot shows the Vault UI presenting options such as: KV PKI Certificates SSH Transit TOTP KMIP Active Directory AWS Azure Google Cloud Databases Consul Nomad RabbitMQ These are all Secrets Engines that can be enabled at a path within Vault. The screen appears when you select \"Enable new engine\" under the Secrets section of the Vault UI.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131430-exam-vault-associate-002-topic-1-question-38-discussion/"
   },
   {
     "id": 36,
@@ -932,7 +932,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131831-exam-vault-associate-002-topic-1-question-39-discussion/"
+    "explanation": "Let's analyze the output shown in the screenshot: token_duration 1m token_renewable false token_policies [\"shipping\"] policies [\"shipping\"] Why A is correct Normally, Vault tokens include the default policy unless it has been explicitly disabled for the role. You would typically see: policies [\"default\",\"shipping\"] However, the output shows only: [\"shipping\"] This indicates the token was issued without the default policy.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131831-exam-vault-associate-002-topic-1-question-39-discussion/"
   },
   {
     "id": 37,
@@ -963,7 +963,7 @@
       "A",
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131435-exam-vault-associate-002-topic-1-question-40-discussion/"
+    "explanation": "The KV Put and KV Get operations require the read, create, and update capabilities granted in the first part of the policy, so A & B are correct. Metadata is not one of the listed capabilities in the first section of the policy, so C is wrong. The deny in the second part of the policy prevents D & E.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131435-exam-vault-associate-002-topic-1-question-40-discussion/"
   },
   {
     "id": 38,
@@ -989,7 +989,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131436-exam-vault-associate-002-topic-1-question-41-discussion/"
+    "explanation": "If you're performing a very high number of authentications and experiencing slow throughput due to token creation, batch tokens are specifically designed to address this scenario. Why batch tokens help Batch tokens: ✅ Are not persisted in Vault's storage backend. ✅ Require much less overhead to create and validate. ✅ Scale better for high-volume authentication workloads. ✅ Are intended for machine-to-machine and high-throughput use cases. Because Vault doesn't need to write batch tokens to the token store, token issuance is significantly faster.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131436-exam-vault-associate-002-topic-1-question-41-discussion/"
   },
   {
     "id": 39,
@@ -1015,7 +1015,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131824-exam-vault-associate-002-topic-1-question-42-discussion/"
+    "explanation": "When you inspect a Vault token, the policies field shows which policies are attached to that token. Those policies define the paths and capabilities (read, create, update, delete, etc.) that the token can access.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131824-exam-vault-associate-002-topic-1-question-42-discussion/"
   },
   {
     "id": 40,
@@ -1041,7 +1041,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131437-exam-vault-associate-002-topic-1-question-43-discussion/"
+    "explanation": "From the screenshot, the important field is: lease_id = aws/creds/s3-access/f3e92392-7d9c-09c8-c921-575d62fe80d8 To revoke a dynamically generated AWS credential, Vault expects the Lease ID, not the AWS access key. The correct command is: vault lease revoke aws/creds/s3-access/f3e92392-7d9c-09c8-c921-575d62fe80d8 When the lease is revoked, Vault automatically revokes the corresponding AWS IAM credential that it created.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131437-exam-vault-associate-002-topic-1-question-43-discussion/"
   },
   {
     "id": 41,
@@ -1059,7 +1059,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131438-exam-vault-associate-002-topic-1-question-44-discussion/"
+    "explanation": "When an authentication method is disabled in Vault, the tokens that were issued through that auth method are revoked. For example, if you disable: vault auth disable ldap Vault revokes the tokens associated with that LDAP auth mount. As a result, users who authenticated through that specific auth method lose access because their tokens become invalid.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131438-exam-vault-associate-002-topic-1-question-44-discussion/"
   },
   {
     "id": 42,
@@ -1085,7 +1085,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131444-exam-vault-associate-002-topic-1-question-45-discussion/"
+    "explanation": "When selecting a Vault authentication method, the primary consideration is how the client can most reliably prove its identity. Examples: Kubernetes Auth for workloads running in Kubernetes. AppRole for applications and automation. LDAP/OIDC for human users. AWS IAM for applications running in AWS. Azure Auth for workloads running in Azure. The goal is to choose the method that best matches the client's identity source and trust model.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131444-exam-vault-associate-002-topic-1-question-45-discussion/"
   },
   {
     "id": 43,
@@ -1108,7 +1108,7 @@
       "A",
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/132399-exam-vault-associate-002-topic-1-question-46-discussion/"
+    "explanation": "Assuming the application uses the Transit Secrets Engine to encrypt data and an attacker intercepts the encrypted payload: ✅ A. You can rotate the encryption key so that the attacker won't be able to decrypt the data Transit keys are versioned and can be rotated. While rotation alone doesn't prevent Vault from decrypting older ciphertext (older key versions are retained), rotating the key is part of the response to a potential compromise. ✅ B. The keys can be rotated and min_decryption_version moved forward to ensure this data cannot be decrypted This is the stronger and fully correct statement. By: Rotating the key, and Setting min_decryption_version to a newer key version, Vault can prevent ciphertext encrypted with older key versions from being decrypted\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/132399-exam-vault-associate-002-topic-1-question-46-discussion/"
   },
   {
     "id": 44,
@@ -1126,7 +1126,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/129730-exam-vault-associate-002-topic-1-question-47-discussion/"
+    "explanation": "Vault protects data using an encryption key (data encryption key), but that key is not stored in plaintext in the storage backend. The storage backend (Integrated Storage, Consul, etc.) contains the encrypted data and encrypted key material. The encryption key is protected by the master key. The master key is derived from: Unseal keys (Shamir's Secret Sharing), or An Auto-Unseal mechanism (AWS KMS, Azure Key Vault, HSM, etc.). When Vault is sealed, it cannot access the encryption key until it is unsealed.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/129730-exam-vault-associate-002-topic-1-question-47-discussion/"
   },
   {
     "id": 45,
@@ -1157,7 +1157,7 @@
       "C",
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131445-exam-vault-associate-002-topic-1-question-48-discussion/"
+    "explanation": "✅ C. You can build your own custom secrets engine. Correct. Vault supports custom plugins, including custom secrets engines, allowing organizations to extend Vault functionality for proprietary systems or specialized use cases. ✅ D. Each secrets engine is isolated to its path. Correct. When enabled, a secrets engine is mounted at a specific path and operates independently of other mounts. Example: vault secrets enable -path=app1 kv-v2 vault secrets enable -path=app2 kv-v2  Results in: app1/ app2/ These are separate mounts with independent configuration and data.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131445-exam-vault-associate-002-topic-1-question-48-discussion/"
   },
   {
     "id": 46,
@@ -1183,7 +1183,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131448-exam-vault-associate-002-topic-1-question-49-discussion/"
+    "explanation": "Response Wrapping in HashiCorp Vault is a secure delivery mechanism that wraps sensitive data inside a single-use wrapping token. Key benefit: The secret itself is not sent directly. Only the recipient who possesses the wrapping token can unwrap it. Once unwrapped, the wrapping token is consumed and cannot be reused. This helps ensure the secret is only revealed once and to a single intended recipient.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131448-exam-vault-associate-002-topic-1-question-49-discussion/"
   },
   {
     "id": 47,
@@ -1209,7 +1209,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131449-exam-vault-associate-002-topic-1-question-50-discussion/"
+    "explanation": "A Vault authentication method (auth method) is responsible for: Verifying the identity of a client against an internal or external identity provider: LDAP OIDC/JWT GitHub Kubernetes AppRole AWS IAM Azure Issuing a Vault token upon successful authentication. Attaching the appropriate policies to that token, which determine what the client can access.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131449-exam-vault-associate-002-topic-1-question-50-discussion/"
   },
   {
     "id": 49,
@@ -1240,7 +1240,7 @@
       "C",
       "E"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131451-exam-vault-associate-002-topic-1-question-52-discussion/"
+    "explanation": "✅ C. Policies provide a declarative way to grant or forbid access to certain paths and operations in Vault Vault policies define which paths can be accessed and which capabilities are allowed (read, create, update, delete, list, etc.). Example: path \"secret/data/app/*\" { capabilities = [\"read\"] } `` This grants read access to the specified path.  ✅ E. Policies deny by default (empty policy grants no permission) Vault follows the principle of least privilege: If a policy does not explicitly grant access, access is denied. An empty policy provides no permissions.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131451-exam-vault-associate-002-topic-1-question-52-discussion/"
   },
   {
     "id": 50,
@@ -1254,7 +1254,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131453-exam-vault-associate-002-topic-1-question-53-discussion/"
+    "explanation": "Discussion: https://www.examtopics.com/discussions/hashicorp/view/131453-exam-vault-associate-002-topic-1-question-53-discussion/"
   },
   {
     "id": 51,
@@ -1280,7 +1280,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131454-exam-vault-associate-002-topic-1-question-54-discussion/"
+    "explanation": "If a scheduler needs to track a job's Vault access and revoke it when the job completes, the recommended object to store is the token accessor. Why? A token accessor: Uniquely identifies a Vault token. Can be safely stored and logged. Allows lookup, renewal, and revocation of the associated token. Does not grant access by itself (unlike the token ID). Example: vault token revoke -accessor <accessor>\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131454-exam-vault-associate-002-topic-1-question-54-discussion/"
   },
   {
     "id": 52,
@@ -1310,7 +1310,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131455-exam-vault-associate-002-topic-1-question-55-discussion/"
+    "explanation": "When you run: vault secrets enable transit Vault enables the Transit Secrets Engine and mounts it at the default path named after the engine type: transit/\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131455-exam-vault-associate-002-topic-1-question-55-discussion/"
   },
   {
     "id": 53,
@@ -1332,7 +1332,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/132733-exam-vault-associate-002-topic-1-question-56-discussion/"
+    "explanation": "This command will not work in the CI GUI, because as the screenshot shows, from the CU GUI only the commands read, kv-get, write, delete and list are allowed; the command is valid but must be executed from the OS terminal after login.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/132733-exam-vault-associate-002-topic-1-question-56-discussion/"
   },
   {
     "id": 54,
@@ -1358,7 +1358,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131456-exam-vault-associate-002-topic-1-question-57-discussion/"
+    "explanation": "A root token cannot be a batch token. Batch tokens are lightweight, non-persistent tokens and do not support the full set of features and privileges required for root access. The following methods can create a root token: ✅ B. By using another root token A root token can create additional root tokens. ✅ C. The initial root token generated at vault operator init time Vault generates an initial root token during initialization. ✅ D. By using vault operator generate-root with the permission of a quorum of unseal key holders This is the standard process for generating a new root token without an existing root token.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131456-exam-vault-associate-002-topic-1-question-57-discussion/"
   },
   {
     "id": 55,
@@ -1384,7 +1384,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131556-exam-vault-associate-002-topic-1-question-58-discussion/"
+    "explanation": "Here's what happened: Your shell had: VAULT_ADDR='https://vaultcluster2.acme.corp:8200' When you ran: vault kv put secret/foo value='bar' Vault used the address from VAULT_ADDR, so it attempted to connect to vaultcluster2.acme.corp, which is why the error referenced that cluster. When you ran: vault kv put \\ -address='https://vaultcluster1.acme.corp' \\ secret/foo value='bar' the -address flag explicitly told the CLI to use vaultcluster1.acme.corp instead of the value in VAULT_ADDR. In the Vault CLI, command-line flags override environment variables, so the second command connected to the correct cluster and succeeded. Why the other answers are incorrect A. Environment variables take precedence over flags ❌\nThe opposite is true. Flags override environment variables. B. VAULT_CLUSTER_ADDR needs to be provided ❌\nVAULT_CLUSTER_ADDR is used for Vault server cluster communication, not for directing CLI requests. D. Vault listener is misconfigured ❌\nThe successful second command indicates the listener configuration was fine; the issue was the address being used by the CLI.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131556-exam-vault-associate-002-topic-1-question-58-discussion/"
   },
   {
     "id": 56,
@@ -1398,7 +1398,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131825-exam-vault-associate-002-topic-1-question-59-discussion/"
+    "explanation": "The requirement is: Allow reading only paths that follow: secrets/team01/alpha secrets/team02/alpha secrets/<team_name>/alpha Do not allow reading paths such as: secrets/team01/beta secrets/team02/beta\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131825-exam-vault-associate-002-topic-1-question-59-discussion/"
   },
   {
     "id": 57,
@@ -1424,7 +1424,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131447-exam-vault-associate-002-topic-1-question-60-discussion/"
+    "explanation": "The command: vault kv list secret/test `` does not return secret values. Instead, it lists the keys (names) stored under the specified path. For example, if the following secrets exist: secret/test/app1 secret/test/app2 secret/test/database then: vault kv list secret/test might output: Keys ---- app1 app2 database\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131447-exam-vault-associate-002-topic-1-question-60-discussion/"
   },
   {
     "id": 58,
@@ -1442,7 +1442,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131823-exam-vault-associate-002-topic-1-question-62-discussion/"
+    "explanation": "All plaintext data must be base64-encoded. The reason for this requirement is that Vault does not require that the plaintext is \"text\". It could be a binary file such as a PDF or image. The easiest safe transport mechanism for this data as part of a JSON payload is to base64-encode it.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131823-exam-vault-associate-002-topic-1-question-62-discussion/"
   },
   {
     "id": 59,
@@ -1473,7 +1473,7 @@
       "A",
       "E"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131559-exam-vault-associate-002-topic-1-question-63-discussion/"
+    "explanation": "A. Secrets Caching Vault Agent supports client-side caching of: Tokens Leases Secrets This reduces the number of requests sent to the Vault server and can improve application performance. ✅ E. Auto Authentication Vault Agent can automatically authenticate using supported auth methods such as: AppRole Kubernetes AWS IAM Azure GCP JWT/OIDC After authenticating, it can automatically manage token renewal and make tokens available to applications.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131559-exam-vault-associate-002-topic-1-question-63-discussion/"
   },
   {
     "id": 60,
@@ -1499,7 +1499,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131562-exam-vault-associate-002-topic-1-question-64-discussion/"
+    "explanation": "This is the statement that is not true. Why? ✅ A. Vault tokens are the core method for authentication in Vault True. Vault uses tokens as the fundamental authorization mechanism. ✅ B. Vault tokens are generated by every authentication method login True. Authentication methods such as LDAP, AppRole, OIDC, GitHub, and Userpass ultimately return a Vault token upon successful authentication. ✅ C. Vault tokens map to information including policies, TTL, max usage, metadata, creation and renewal information True. Tokens carry associated metadata and policy information used for authorization. ❌ D. Vault tokens are required for every Vault call Not true. Some endpoints can be accessed without a token, for example: Health checks (/sys/health) Initialization (/sys/init) Unseal operations (/sys/unseal) Certain authentication endpoints (e.g., /auth/ldap/login/..., /auth/approle/login) Because there are valid Vault API calls that do not require a token, statement D is false.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131562-exam-vault-associate-002-topic-1-question-64-discussion/"
   },
   {
     "id": 61,
@@ -1525,7 +1525,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/130406-exam-vault-associate-002-topic-1-question-65-discussion/"
+    "explanation": "When using Vault Integrated Storage (Raft), the recommended way to protect against and recover from data loss is to create regular snapshots of the storage backend. Snapshots allow you to: Back up the entire Raft data store. Restore Vault to a known good state. Recover from accidental data loss, corruption, or disaster scenarios.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/130406-exam-vault-associate-002-topic-1-question-65-discussion/"
   },
   {
     "id": 62,
@@ -1556,7 +1556,7 @@
       "A",
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131561-exam-vault-associate-002-topic-1-question-66-discussion/"
+    "explanation": "✅ A. A keyholder joins or leaves the organization Vault uses unseal keys (Shamir key shares when auto-unseal is not used). If a person who holds an unseal key leaves the organization, or a new keyholder needs to be added, rekeying allows Vault to generate a new set of unseal key shares and redistribute them appropriately. ✅ D. A compliance mandate to rotate the master key at a regular interval Organizations may have security or regulatory requirements to periodically rotate key material. Rekeying is a common way to satisfy compliance requirements related to key management and keyholder changes.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131561-exam-vault-associate-002-topic-1-question-66-discussion/"
   },
   {
     "id": 63,
@@ -1582,7 +1582,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131563-exam-vault-associate-002-topic-1-question-67-discussion/"
+    "explanation": "To revoke a lease in HashiCorp Vault, you need the Lease ID associated with the secret. Example: vault lease revoke database/creds/my-role/abc123 or via the API: PUT /v1/sys/leases/revoke with: { \"lease_id\": \"database/creds/my-role/abc123\" }\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131563-exam-vault-associate-002-topic-1-question-67-discussion/"
   },
   {
     "id": 64,
@@ -1608,7 +1608,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131564-exam-vault-associate-002-topic-1-question-68-discussion/"
+    "explanation": "From the screenshot: Path: approle/ Description: App1 to authenticate with Vault Default Lease TTL: 300s = 5 minutes Token Type: batch\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131564-exam-vault-associate-002-topic-1-question-68-discussion/"
   },
   {
     "id": 65,
@@ -1634,7 +1634,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131565-exam-vault-associate-002-topic-1-question-69-discussion/"
+    "explanation": "In HashiCorp Vault, a secret is any sensitive or confidential information that Vault stores, generates, or returns, such as: Passwords API keys Database credentials Certificates Encryption keys Tokens\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131565-exam-vault-associate-002-topic-1-question-69-discussion/"
   },
   {
     "id": 66,
@@ -1675,7 +1675,7 @@
       "C",
       "G"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131566-exam-vault-associate-002-topic-1-question-70-discussion/"
+    "explanation": "HashiCorp Vault supports numerous authentication methods, including: ✅ A. JWT/OIDC ✅ B. AppRole ✅ C. GitHub ✅ G. LDAP Why these are correct JWT/OIDC: Used for authentication via OpenID Connect providers such as Azure AD (Microsoft Entra ID), Okta, GitHub, and others. AppRole: Machine-to-machine authentication method commonly used by applications and automation. GitHub: Allows users to authenticate using GitHub users and organizations. LDAP: Integrates with enterprise directory services such as Microsoft Active Directory via LDAP.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131566-exam-vault-associate-002-topic-1-question-70-discussion/"
   },
   {
     "id": 67,
@@ -1693,7 +1693,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/132817-exam-vault-associate-002-topic-1-question-71-discussion/"
+    "explanation": "In HashiCorp Vault, the Vault Agent is a tool that helps automate the obtaining and renewal of Vault access tokens. If the Vault Agent is stopped abruptly, tokens and leases that were granted by Vault will remain valid until they expire according to the configured time to live (TTL).\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/132817-exam-vault-associate-002-topic-1-question-71-discussion/"
   },
   {
     "id": 68,
@@ -1723,7 +1723,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131567-exam-vault-associate-002-topic-1-question-72-discussion/"
+    "explanation": "Periodic token (only token which can be renew indefinitely) Orphan token: Orphan tokens still expire when their own max TTL is reached. Use-limite token: Only indicates the number of times it can be used, but expires when it is due. Root Token: they are the only type of token within Vault that can be set to never expire without any renewal needed.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131567-exam-vault-associate-002-topic-1-question-72-discussion/"
   },
   {
     "id": 69,
@@ -1741,7 +1741,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131568-exam-vault-associate-002-topic-1-question-73-discussion/"
+    "explanation": "A response-wrapping token in HashiCorp Vault is single-use. When the wrapped secret is unwrapped: vault unwrap the wrapping token is immediately consumed and becomes invalid. It cannot be used again, even if its TTL has not expired. The TTL only defines how long the wrapping token remains valid before it is used. If it expires before being unwrapped, it can no longer be used.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131568-exam-vault-associate-002-topic-1-question-73-discussion/"
   },
   {
     "id": 70,
@@ -1772,7 +1772,7 @@
       "C",
       "E"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131570-exam-vault-associate-002-topic-1-question-74-discussion/"
+    "explanation": "Given the command: vault secrets enable -version=2 kv ✅ C. Enables the secrets engine at path kv/ When no -path parameter is specified, Vault mounts the secrets engine at the path named after the engine type, which in this case is: kv/ ✅ E. Enables K/V v2 secrets engine The flag: -version=2 tells Vault to enable the Key/Value Secrets Engine Version 2 (KV v2), which provides features such as: Versioned secrets Soft deletes Secret recovery Check-and-set (CAS)\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131570-exam-vault-associate-002-topic-1-question-74-discussion/"
   },
   {
     "id": 71,
@@ -1803,7 +1803,7 @@
       "A",
       "E"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131571-exam-vault-associate-002-topic-1-question-75-discussion/"
+    "explanation": "HashiCorp Vault Enterprise provides two replication modes: ✅ A. Disaster Recovery (DR) Replication Designed for business continuity and disaster recovery. Maintains a secondary cluster that can be promoted if the primary cluster becomes unavailable. ✅ E. Performance Replication Replicates data to secondary clusters that can serve read requests locally. Improves performance and reduces latency for geographically distributed deployments.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131571-exam-vault-associate-002-topic-1-question-75-discussion/"
   },
   {
     "id": 72,
@@ -1835,7 +1835,7 @@
       "B",
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131573-exam-vault-associate-002-topic-1-question-76-discussion/"
+    "explanation": "Batch tokens have several characteristics that distinguish them from service tokens: ✅ A. Cannot be renewed Batch tokens are non-renewable. Once their TTL expires, they become invalid and cannot be extended. ✅ B. Are not persisted Batch tokens are not stored in Vault's token store. This makes them lightweight and efficient for high-scale workloads. ✅ D. Have a set time-to-live (TTL) Batch tokens are issued with a fixed TTL and expire automatically when that TTL is reached.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131573-exam-vault-associate-002-topic-1-question-76-discussion/"
   },
   {
     "id": 73,
@@ -1861,7 +1861,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131579-exam-vault-associate-002-topic-1-question-77-discussion/"
+    "explanation": "Because the usernames and passwords have already been manually created, Vault only needs to store and retrieve those credentials. The KV v2 secrets engine is designed for storing static secrets such as: Database usernames and passwords API keys Certificates Connection strings Example: vault kv put secret/mssql-prod \\ username=dbadmin \\ password=MySecretPassword\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131579-exam-vault-associate-002-topic-1-question-77-discussion/"
   },
   {
     "id": 74,
@@ -1887,7 +1887,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131576-exam-vault-associate-002-topic-1-question-78-discussion/"
+    "explanation": "The question asks for a token with: TTL = 30 minutes No explicit maximum TTL When creating a token, setting: vault token create -ttl=30m -explicit-max-ttl=0 means: The token starts with a 30-minute TTL. -explicit-max-ttl=0 means no explicit max TTL is set on the token (it remains subject to the auth method and system limits).\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131576-exam-vault-associate-002-topic-1-question-78-discussion/"
   },
   {
     "id": 75,
@@ -1913,7 +1913,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/132822-exam-vault-associate-002-topic-1-question-79-discussion/"
+    "explanation": "When a user successfully authenticates via the LDAP auth method: curl --request POST \\ --data @payload.json \\ http://127.0.0.1:8200/v1/auth/ldap/login/mitchellh ` Vault returns an authentication response containing an auth object similar to: { \"auth\": { \"client_token\": \"hvs.xxxxx\", \"policies\": [ \"default\", \"developers\" ], \"lease_duration\": 2764800, \"renewable\": true } } The important fields include: ✅ client_token: The token issued after successful authentication. ✅ policies: The policies attached to the token, determining what the user can access.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/132822-exam-vault-associate-002-topic-1-question-79-discussion/"
   },
   {
     "id": 76,
@@ -1944,7 +1944,7 @@
       "A",
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131574-exam-vault-associate-002-topic-1-question-80-discussion/"
+    "explanation": "A. It is one of the built-in policies ✅ The default policy is a built-in Vault policy that exists automatically in every Vault deployment. B. Provides a common set of permissions and is included on all tokens by default ✅ The default policy grants basic capabilities such as token self-lookup and renewal operations, and it is attached to tokens by default unless explicitly disabled when creating the token.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131574-exam-vault-associate-002-topic-1-question-80-discussion/"
   },
   {
     "id": 77,
@@ -1970,7 +1970,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131581-exam-vault-associate-002-topic-1-question-81-discussion/"
+    "explanation": "HashiCorp Vault's Identity system lets you map multiple authentication methods (entities and aliases) to a single identity entity. This is useful when the same application authenticates in different ways, for example: AppRole in one environment Kubernetes Auth in another OIDC in development By associating all of these with the same identity entity, Vault can apply a consistent set of policies regardless of how the application authenticates.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131581-exam-vault-associate-002-topic-1-question-81-discussion/"
   },
   {
     "id": 78,
@@ -1988,7 +1988,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131582-exam-vault-associate-002-topic-1-question-82-discussion/"
+    "explanation": "HashiCorp Vault uses the \"unsealing\" process to unlock and access encrypted data in persistent storage. When Vault is configured as a cluster with multiple servers (nodes), it is generally required to perform the unsealing process on each of the nodes. The main reason for this is to provide an additional layer of security and resilience. In a clustered environment, Vault divides and distributes the unsealing keys among the nodes. Therefore, each node in the cluster must be independently unsealed in order for the system as a whole to access the encrypted data. In summary, in a HashiCorp Vault cluster, unsealing must generally be performed on all nodes to ensure proper access to encrypted secrets. This helps ensure availability and redundancy in case of failures on some nodes in the cluster\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131582-exam-vault-associate-002-topic-1-question-82-discussion/"
   },
   {
     "id": 79,
@@ -2014,7 +2014,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131822-exam-vault-associate-002-topic-1-question-83-discussion/"
+    "explanation": "In HashiCorp Vault, if you want to list all tokens, you use the token accessors endpoint: LIST /auth/token/accessors Or vault list auth/token/accessors\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131822-exam-vault-associate-002-topic-1-question-83-discussion/"
   },
   {
     "id": 80,
@@ -2040,7 +2040,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131583-exam-vault-associate-002-topic-1-question-84-discussion/"
+    "explanation": "In HashiCorp Vault, policies are the mechanism that connects an authentication method to access permissions on secrets. The flow is: A user authenticates via an auth method (LDAP, AppRole, Userpass, OIDC, etc.). Vault issues a token. The token has one or more policies attached. Those policies define which secret paths and capabilities (read, create, update, delete, list) are allowed. Example policy: path \"secret/data/team01/*\" { capabilities = [\"read\"] } This policy grants read access to secrets under secret/data/team01/.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131583-exam-vault-associate-002-topic-1-question-84-discussion/"
   },
   {
     "id": 81,
@@ -2074,7 +2074,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131821-exam-vault-associate-002-topic-1-question-85-discussion/"
+    "explanation": "Revoke and Lease Id are the 'keys'\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131821-exam-vault-associate-002-topic-1-question-85-discussion/"
   },
   {
     "id": 82,
@@ -2100,7 +2100,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131820-exam-vault-associate-002-topic-1-question-86-discussion/"
+    "explanation": "The Vault Transit Secrets Engine supports versioned encryption keys and allows key rotation without requiring re-encryption of existing data immediately. When a key is rotated: A new key version is created. New encryption operations use the latest key version. Older key versions are retained so Vault can still decrypt data encrypted with previous versions. Why the other options are incorrect A. Vault automatically rotates the encryption key based on a set period \nVault does not automatically rotate transit keys on a built-in schedule. Rotation must be triggered manually or by external automation. B. Vault can rotate encryption keys, but cannot enforce restrictions about the minimum encryption key version \nVault supports settings such as: min_encryption_version min_decryption_version These can restrict which key versions may be used. C. Vault does not maintain the versioned keyring \nVault explicitly maintains a versioned keyring for transit keys to support seamless key rotation.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131820-exam-vault-associate-002-topic-1-question-86-discussion/"
   },
   {
     "id": 83,
@@ -2130,7 +2130,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131819-exam-vault-associate-002-topic-1-question-87-discussion/"
+    "explanation": "The Transit Secrets Engine is often described as \"encryption as a service.\" It performs cryptographic operations but does not store the data being encrypted or the resulting ciphertext. Transit Engine functions include: ✅ Generating random bytes ✅ Encrypting data ✅ Decrypting data ✅ Signing data ✅ Verifying signed data ✅ Hashing data ✅ Key rotation What it does not do: ❌ Store ciphertext data Applications are responsible for storing the plaintext, ciphertext, and any associated metadata. Vault only manages the cryptographic keys and performs cryptographic operations.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131819-exam-vault-associate-002-topic-1-question-87-discussion/"
   },
   {
     "id": 85,
@@ -2156,7 +2156,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131638-exam-vault-associate-002-topic-1-question-90-discussion/"
+    "explanation": "To create a new key in the Vault Transit Secrets Engine, use: vault write -f transit/keys/my-key The -f flag tells Vault to invoke the endpoint without providing additional data. This command creates a new transit key named my-key. Why the others are incorrect A. vault put transit/keys/my-key ❌\nvault put is not a valid Vault CLI command. B. vault create -f transit/keys/my-key ❌\nvault create is not a valid command for creating transit keys. C. vault write -f transit/keys/my-key ✅\nCorrect command. D. vault create transit/keys/my-key ❌\nvault create is not the proper Vault CLI operation for this endpoint.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131638-exam-vault-associate-002-topic-1-question-90-discussion/"
   },
   {
     "id": 86,
@@ -2182,7 +2182,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131585-exam-vault-associate-002-topic-1-question-91-discussion/"
+    "explanation": "To authenticate to HashiCorp Vault using a token via the CLI, use: vault login <token> Example: vault login hvs.xxxxxxxxxxxxxxxxx You can also authenticate by setting the environment variable: export VAULT_TOKEN=hvs.xxxxxxxxxxxxxxxxx Why the other options are incorrect A. A token can be used to authenticate to Vault through the API, not the CLI or the UI ❌\nTokens can be used with the API, CLI, and UI. B. vault login ✅\nCorrect command for authenticating with a token. C. vault <token> ❌\nNot valid Vault CLI syntax. D. A token cannot be used to authenticate to Vault ❌\nTokens are one of the primary authentication mechanisms in Vault.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131585-exam-vault-associate-002-topic-1-question-91-discussion/"
   },
   {
     "id": 87,
@@ -2200,7 +2200,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131817-exam-vault-associate-002-topic-1-question-92-discussion/"
+    "explanation": "A child token must be assigned the same or subset of the parent's token policies.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131817-exam-vault-associate-002-topic-1-question-92-discussion/"
   },
   {
     "id": 88,
@@ -2231,6 +2231,6 @@
       "A",
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/131639-exam-vault-associate-002-topic-1-question-93-discussion/"
+    "explanation": "When configuring Auto Unseal in HashiCorp Vault, the seal type is specified through: ✅ A. Set the VAULT_SEAL_TYPE environment variable Vault supports specifying the seal type via environment variables in some deployment scenarios. ✅ C. Create a seal block in the server configuration file This is the most common configuration method. For example: seal \"awskms\" { region = \"eu-west-1\" kms_key_id = \"1234abcd-12ab-34cd-56ef-1234567890ab\" } or seal \"azurekeyvault\" { tenant_id = \"...\" vault_name = \"...\" key_name = \"...\" } Why the others are incorrect ❌ B. Use the /sys/seal endpoint on the Vault API This endpoint is used to seal Vault, not configure the seal type. ❌ D. Configure in the storage block of the server configuration file The storage block configures the storage backend (Raft, Consul, etc.), not Auto Unseal. ❌ E. Use the vault operator command Operator commands can initialize, unseal, or rotate keys, but they do not define the seal type.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/131639-exam-vault-associate-002-topic-1-question-93-discussion/"
   }
 ]

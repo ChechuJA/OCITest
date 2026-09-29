@@ -15,7 +15,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/385616-exam-terraform-associate-004-topic-1-question-1-discussion/"
+    "explanation": "Infrastructure as Code (IaC) is meant to be stored in version control systems (like Git) right alongside application code. This is actually one of its biggest strengths.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/385616-exam-terraform-associate-004-topic-1-question-1-discussion/"
   },
   {
     "id": 2,
@@ -33,7 +33,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/385617-exam-terraform-associate-004-topic-1-question-2-discussion/"
+    "explanation": "Discussion: https://www.examtopics.com/discussions/hashicorp/view/385617-exam-terraform-associate-004-topic-1-question-2-discussion/"
   },
   {
     "id": 3,
@@ -59,7 +59,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 1 question 3 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 1 question 3 discussion - ExamTopics"
   },
   {
     "id": 4,
@@ -85,7 +85,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 1 question 4 discussion - ExamTopics"
+    "explanation": "Immutable infrastructure means that instead of modifying existing servers, you replace them entirely with new, preconfigured ones. This approach removes a lot of the uncertainty and drift that comes from patching or updating systems in place.\n\nDiscussion: Exam Terraform Associate 004 topic 1 question 4 discussion - ExamTopics"
   },
   {
     "id": 5,
@@ -111,7 +111,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/385615-exam-terraform-associate-004-topic-1-question-5-discussion/"
+    "explanation": "Discussion: https://www.examtopics.com/discussions/hashicorp/view/385615-exam-terraform-associate-004-topic-1-question-5-discussion/"
   },
   {
     "id": 6,
@@ -137,7 +137,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/385614-exam-terraform-associate-004-topic-1-question-6-discussion/"
+    "explanation": "CloudFormation is an AWS-specific Infrastructure as Code service. It cannot deploy or manage resources in other cloud providers like Microsoft Azure or Google Cloud.\n\nDiscussion: https://www.examtopics.com/discussions/hashicorp/view/385614-exam-terraform-associate-004-topic-1-question-6-discussion/"
   },
   {
     "id": 7,
@@ -163,7 +163,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/385613-exam-terraform-associate-004-topic-1-question-7-discussion/"
+    "explanation": "Discussion: https://www.examtopics.com/discussions/hashicorp/view/385613-exam-terraform-associate-004-topic-1-question-7-discussion/"
   },
   {
     "id": 8,
@@ -194,7 +194,7 @@
       "A",
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 1 question 8 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 1 question 8 discussion - ExamTopics"
   },
   {
     "id": 9,
@@ -224,7 +224,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 1 question 9 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 1 question 9 discussion - ExamTopics"
   },
   {
     "id": 10,
@@ -250,7 +250,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 1 question 10 discussion - ExamTopics"
+    "explanation": "Only Infrastructure as Code (IaC) enables a workflow where teams can review proposed infrastructure changes before they are applied. This is possible because IaC tools (like Terraform, Pulumi, CloudFormation) generate a plan or diff that shows exactly what will change. Teams can then perform code review, security review, and compliance checks just like with application code.\n\nDiscussion: Exam Terraform Associate 004 topic 1 question 10 discussion - ExamTopics"
   },
   {
     "id": 11,
@@ -276,7 +276,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 1 question 11 discussion - ExamTopics"
+    "explanation": "Terraform deploys infrastructure through vendor-specific providers, which are plugins that know how to interact with each cloud provider’s APIs (AWS, Azure, GCP, etc.). Providers translate Terraform’s declarative configuration into the appropriate API calls.\n\nDiscussion: Exam Terraform Associate 004 topic 1 question 11 discussion - ExamTopics"
   },
   {
     "id": 12,
@@ -298,7 +298,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 1 discussion - ExamTopics"
+    "explanation": "Terraform’s defining feature is that it uses declarative, version-controlled configuration files to describe the desired state of infrastructure. Terraform then determines how to reach that state by planning and applying changes.\n\nDiscussion: Exam Terraform Associate 004 topic 2 question 1 discussion - ExamTopics"
   },
   {
     "id": 13,
@@ -324,7 +324,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 2 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 2 discussion - ExamTopics"
   },
   {
     "id": 14,
@@ -342,7 +342,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 3 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 3 discussion - ExamTopics"
   },
   {
     "id": 15,
@@ -374,7 +374,7 @@
       "C",
       "E"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 4 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 4 discussion - ExamTopics"
   },
   {
     "id": 16,
@@ -392,7 +392,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 5 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 5 discussion - ExamTopics"
   },
   {
     "id": 17,
@@ -418,7 +418,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 6 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 6 discussion - ExamTopics"
   },
   {
     "id": 18,
@@ -462,7 +462,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 8 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 8 discussion - ExamTopics"
   },
   {
     "id": 20,
@@ -480,7 +480,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 9 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 9 discussion - ExamTopics"
   },
   {
     "id": 21,
@@ -506,7 +506,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 10 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 10 discussion - ExamTopics"
   },
   {
     "id": 22,
@@ -524,7 +524,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 11 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 11 discussion - ExamTopics"
   },
   {
     "id": 23,
@@ -542,7 +542,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 12 discussion - ExamTopics"
+    "explanation": "Terraform must run terraform init before it can use a newly-defined backend (or any backend changes). Initialization downloads the backend plugin, configures it, and prepares the working directory. Without initialization, Terraform has no way to interact with that backend.\n\nDiscussion: Exam Terraform Associate 004 topic 2 question 12 discussion - ExamTopics"
   },
   {
     "id": 24,
@@ -568,7 +568,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 13 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 13 discussion - ExamTopics"
   },
   {
     "id": 25,
@@ -594,7 +594,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 14 discussion - ExamTopics"
+    "explanation": "The hidden .terraform directory (created automatically by terraform init) is Terraform’s local cache for providers and modules.\n\nDiscussion: Exam Terraform Associate 004 topic 2 question 14 discussion - ExamTopics"
   },
   {
     "id": 26,
@@ -646,7 +646,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 2 question 16 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 16 discussion - ExamTopics"
   },
   {
     "id": 28,
@@ -664,7 +664,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 1 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 1 discussion - ExamTopics"
   },
   {
     "id": 29,
@@ -690,7 +690,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 2 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 2 discussion - ExamTopics"
   },
   {
     "id": 30,
@@ -716,7 +716,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 3 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 3 discussion - ExamTopics"
   },
   {
     "id": 31,
@@ -747,7 +747,7 @@
       "A",
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 4 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 4 discussion - ExamTopics"
   },
   {
     "id": 32,
@@ -765,7 +765,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 5 discussion - ExamTopics"
+    "explanation": "terraform apply always refreshes the state before creating the final plan. Running terraform plan does not lock in the execution plan. If your teammate manually changes the infrastructure after you run plan but before you run apply, Terraform will detect those changes during the next refresh phase.\n\nDiscussion: Exam Terraform Associate 004 topic 3 question 5 discussion - ExamTopics"
   },
   {
     "id": 33,
@@ -791,7 +791,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 6 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 6 discussion - ExamTopics"
   },
   {
     "id": 34,
@@ -817,7 +817,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 7 discussion - ExamTopics"
+    "explanation": "terraform validate is offline/static validation. It checks that your Terraform configuration is: syntactically valid (HCL is well-formed) internally consistent (references, types, required arguments where possible) But it does not contact cloud providers and does not attempt authentication. So it cannot detect “Access Denied” / missing credentials / insufficient permissions until Terraform actually tries to interact with the provider during terraform plan (or apply).\n\nDiscussion: Exam Terraform Associate 004 topic 3 question 7 discussion - ExamTopics"
   },
   {
     "id": 35,
@@ -835,7 +835,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 8 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 8 discussion - ExamTopics"
   },
   {
     "id": 36,
@@ -853,7 +853,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 9 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 9 discussion - ExamTopics"
   },
   {
     "id": 37,
@@ -879,7 +879,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 10 discussion - ExamTopics"
+    "explanation": "terraform plan -out=tfplan:  This tells Terraform to generate a plan and write it to a file named tfplan. Why the others are incorrect -generate-config-out This flag is used for config generation mode, not for saving a plan. -target This narrows the plan to a specific resource; it does not save a plan file. -var-file This loads variable definitions; again, it does not save a plan file.\n\nDiscussion: Exam Terraform Associate 004 topic 3 question 10 discussion - ExamTopics"
   },
   {
     "id": 38,
@@ -910,7 +910,7 @@
       "A",
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 11 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 11 discussion - ExamTopics"
   },
   {
     "id": 39,
@@ -936,7 +936,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 12 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 12 discussion - ExamTopics"
   },
   {
     "id": 40,
@@ -962,7 +962,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 13 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 13 discussion - ExamTopics"
   },
   {
     "id": 41,
@@ -988,7 +988,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 14 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 14 discussion - ExamTopics"
   },
   {
     "id": 42,
@@ -1019,7 +1019,7 @@
       "A",
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 15 discussion - ExamTopics"
+    "explanation": "A. Generate a new execution plan file with terraform plan, and apply the new plan. A saved plan becomes invalid if the state changes. Terraform requires a fresh plan that matches the current state before applying. B. Run terraform apply without the saved execution plan. Running terraform apply without specifying a plan forces Terraform to: Refresh the state Recalculate the plan Prompt you to approve the changes This bypasses the stale plan entirely.\n\nDiscussion: Exam Terraform Associate 004 topic 3 question 15 discussion - ExamTopics"
   },
   {
     "id": 43,
@@ -1046,7 +1046,7 @@
       "B",
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 16 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 16 discussion - ExamTopics"
   },
   {
     "id": 44,
@@ -1072,7 +1072,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 17 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 17 discussion - ExamTopics"
   },
   {
     "id": 45,
@@ -1090,7 +1090,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 18 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 18 discussion - ExamTopics"
   },
   {
     "id": 46,
@@ -1116,7 +1116,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 19 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 19 discussion - ExamTopics"
   },
   {
     "id": 47,
@@ -1134,7 +1134,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 20 discussion - ExamTopics"
+    "explanation": "terraform validate checks the syntax and internal consistency of your Terraform configuration files. It verifies that the files are syntactically valid and that references (variables, resources, providers) are well-formed, but it does not check whether resources can actually be created or whether credentials are valid.\n\nDiscussion: Exam Terraform Associate 004 topic 3 question 20 discussion - ExamTopics"
   },
   {
     "id": 48,
@@ -1160,7 +1160,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 21 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 21 discussion - ExamTopics"
   },
   {
     "id": 49,
@@ -1186,7 +1186,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 22 discussion - ExamTopics"
+    "explanation": "terraform apply -replace=RESOURCE tells Terraform: “On the next apply, destroy this resource and recreate it, even if nothing in the configuration has changed.” This is useful when a resource is in a bad state, drifted, or needs to be cycled for maintenance.\n\nDiscussion: Exam Terraform Associate 004 topic 3 question 22 discussion - ExamTopics"
   },
   {
     "id": 50,
@@ -1212,7 +1212,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 3 question 23 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 3 question 23 discussion - ExamTopics"
   },
   {
     "id": 51,
@@ -1238,7 +1238,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 1 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 1 discussion - ExamTopics"
   },
   {
     "id": 52,
@@ -1256,7 +1256,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "https://www.examtopics.com/discussions/hashicorp/view/385073-exam-terraform-associate-004-topic-4-question-2-discussion/"
+    "explanation": "Discussion: https://www.examtopics.com/discussions/hashicorp/view/385073-exam-terraform-associate-004-topic-4-question-2-discussion/"
   },
   {
     "id": 53,
@@ -1308,7 +1308,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 4 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 4 discussion - ExamTopics"
   },
   {
     "id": 55,
@@ -1360,7 +1360,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 6 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 6 discussion - ExamTopics"
   },
   {
     "id": 57,
@@ -1386,7 +1386,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 7 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 7 discussion - ExamTopics"
   },
   {
     "id": 58,
@@ -1412,7 +1412,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 8 discussion - ExamTopics"
+    "explanation": "When Terraform determines that a change requires a replacement (destroy + recreate), adding this lifecycle rule tells Terraform to: Create the new resource first, and only destroy the old one after the replacement is ready. That typically minimizes (or can even eliminate) downtime compared to the default behaviour, which often destroys first and then creates.\n\nDiscussion: Exam Terraform Associate 004 topic 4 question 8 discussion - ExamTopics"
   },
   {
     "id": 59,
@@ -1430,7 +1430,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 9 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 9 discussion - ExamTopics"
   },
   {
     "id": 60,
@@ -1456,7 +1456,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 10 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 10 discussion - ExamTopics"
   },
   {
     "id": 61,
@@ -1474,7 +1474,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 11 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 11 discussion - ExamTopics"
   },
   {
     "id": 62,
@@ -1552,7 +1552,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 14 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 14 discussion - ExamTopics"
   },
   {
     "id": 65,
@@ -1578,7 +1578,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 15 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 15 discussion - ExamTopics"
   },
   {
     "id": 66,
@@ -1596,7 +1596,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 16 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 16 discussion - ExamTopics"
   },
   {
     "id": 67,
@@ -1622,7 +1622,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 17 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 17 discussion - ExamTopics"
   },
   {
     "id": 68,
@@ -1652,7 +1652,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 19 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 19 discussion - ExamTopics"
   },
   {
     "id": 69,
@@ -1678,7 +1678,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 20 discussion - ExamTopics"
+    "explanation": "A validation block inside a variable is exactly how you enforce custom rules on variable values in Terraform. If the value doesn’t meet your conditions, Terraform will fail early with your custom error message.\n\nDiscussion: Exam Terraform Associate 004 topic 4 question 20 discussion - ExamTopics"
   },
   {
     "id": 70,
@@ -1696,7 +1696,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 21 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 21 discussion - ExamTopics"
   },
   {
     "id": 71,
@@ -1722,7 +1722,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 4 question 22 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 4 question 22 discussion - ExamTopics"
   },
   {
     "id": 72,
@@ -1748,7 +1748,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 1 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 1 discussion - ExamTopics"
   },
   {
     "id": 73,
@@ -1766,7 +1766,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 2 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 2 discussion - ExamTopics"
   },
   {
     "id": 74,
@@ -1784,7 +1784,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 3 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 3 discussion - ExamTopics"
   },
   {
     "id": 75,
@@ -1802,7 +1802,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 4 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 4 discussion - ExamTopics"
   },
   {
     "id": 76,
@@ -1828,7 +1828,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 5 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 5 discussion - ExamTopics"
   },
   {
     "id": 77,
@@ -1846,7 +1846,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 6 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 6 discussion - ExamTopics"
   },
   {
     "id": 78,
@@ -1864,7 +1864,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "ExamHeist"
+    "explanation": "Discussion: ExamHeist"
   },
   {
     "id": 79,
@@ -1898,7 +1898,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 8 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 8 discussion - ExamTopics"
   },
   {
     "id": 80,
@@ -1912,7 +1912,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 9 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 9 discussion - ExamTopics"
   },
   {
     "id": 81,
@@ -1938,7 +1938,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 10 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 10 discussion - ExamTopics"
   },
   {
     "id": 82,
@@ -1965,7 +1965,7 @@
       "B",
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 11 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 11 discussion - ExamTopics"
   },
   {
     "id": 83,
@@ -1995,7 +1995,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 12 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 12 discussion - ExamTopics"
   },
   {
     "id": 84,
@@ -2073,7 +2073,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 2 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 2 discussion - ExamTopics"
   },
   {
     "id": 87,
@@ -2091,7 +2091,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 3 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 3 discussion - ExamTopics"
   },
   {
     "id": 88,
@@ -2122,7 +2122,7 @@
       "B",
       "E"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 4 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 4 discussion - ExamTopics"
   },
   {
     "id": 89,
@@ -2149,7 +2149,7 @@
       "A",
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 5 discussion - ExamTopics"
+    "explanation": "Add a cloud block inside the terraform block: This is used when storing state in Terraform Cloud or Terraform Enterprise. Add a backend block inside the terraform block: This is used for all other remote backends (S3, Azure Storage, GCS, Consul, etc.).\n\nDiscussion: Exam Terraform Associate 004 topic 6 question 5 discussion - ExamTopics"
   },
   {
     "id": 90,
@@ -2175,7 +2175,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 6 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 6 discussion - ExamTopics"
   },
   {
     "id": 91,
@@ -2201,7 +2201,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 7 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 7 discussion - ExamTopics"
   },
   {
     "id": 92,
@@ -2219,7 +2219,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 8 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 8 discussion - ExamTopics"
   },
   {
     "id": 94,
@@ -2245,7 +2245,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 10 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 10 discussion - ExamTopics"
   },
   {
     "id": 95,
@@ -2271,7 +2271,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 11 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 11 discussion - ExamTopics"
   },
   {
     "id": 96,
@@ -2302,7 +2302,7 @@
       "B",
       "E"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 12 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 12 discussion - ExamTopics"
   },
   {
     "id": 97,
@@ -2320,7 +2320,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 13 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 13 discussion - ExamTopics"
   },
   {
     "id": 98,
@@ -2346,7 +2346,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 14 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 14 discussion - ExamTopics"
   },
   {
     "id": 99,
@@ -2372,7 +2372,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 15 discussion - ExamTopics"
+    "explanation": "State locking is a safety mechanism used by many remote backends (like S3 with DynamoDB, Terraform Cloud, Consul, etc.) to prevent concurrent operations from corrupting the Terraform state.\n\nDiscussion: Exam Terraform Associate 004 topic 6 question 15 discussion - ExamTopics"
   },
   {
     "id": 100,
@@ -2398,7 +2398,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 16 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 16 discussion - ExamTopics"
   },
   {
     "id": 101,
@@ -2424,7 +2424,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 17 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 17 discussion - ExamTopics"
   },
   {
     "id": 102,
@@ -2442,7 +2442,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 18 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 18 discussion - ExamTopics"
   },
   {
     "id": 103,
@@ -2468,7 +2468,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 19 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 19 discussion - ExamTopics"
   },
   {
     "id": 104,
@@ -2494,7 +2494,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 20 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 20 discussion - ExamTopics"
   },
   {
     "id": 105,
@@ -2520,7 +2520,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 21 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 21 discussion - ExamTopics"
   },
   {
     "id": 106,
@@ -2546,7 +2546,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 22 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 22 discussion - ExamTopics"
   },
   {
     "id": 107,
@@ -2573,7 +2573,7 @@
       "A",
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 23 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 23 discussion - ExamTopics"
   },
   {
     "id": 108,
@@ -2599,7 +2599,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 24 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 6 question 24 discussion - ExamTopics"
   },
   {
     "id": 109,
@@ -2617,7 +2617,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 1 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 7 question 1 discussion - ExamTopics"
   },
   {
     "id": 110,
@@ -2643,7 +2643,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 2 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 7 question 2 discussion - ExamTopics"
   },
   {
     "id": 111,
@@ -2669,7 +2669,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 3 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 7 question 3 discussion - ExamTopics"
   },
   {
     "id": 112,
@@ -2695,7 +2695,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 4 discussion - ExamTopics"
+    "explanation": "When you manually destroy infrastructure outside of Terraform, the Terraform state becomes out of sync with reality. The best practice is to update your configuration so Terraform understands that the resource should no longer exist.\n\nDiscussion: Exam Terraform Associate 004 topic 7 question 4 discussion - ExamTopics"
   },
   {
     "id": 113,
@@ -2713,7 +2713,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 5 discussion - ExamTopics"
+    "explanation": "Use the check block to validate your infrastructure outside of the typical resource lifecycle. Terraform executes the check block as the last step of plan or apply operation, after Terraform has planned or provisioned your infrastructure. When a check block's assertion fails, Terraform reports a warning and continues executing the current operation.\n\nDiscussion: Exam Terraform Associate 004 topic 7 question 5 discussion - ExamTopics"
   },
   {
     "id": 114,
@@ -2739,7 +2739,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 6 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 7 question 6 discussion - ExamTopics"
   },
   {
     "id": 115,
@@ -2765,7 +2765,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 7 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 7 question 7 discussion - ExamTopics"
   },
   {
     "id": 116,
@@ -2791,7 +2791,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 8 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 7 question 8 discussion - ExamTopics"
   },
   {
     "id": 117,
@@ -2817,7 +2817,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 7 question 9 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 7 question 9 discussion - ExamTopics"
   },
   {
     "id": 118,
@@ -2847,7 +2847,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 1 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 8 question 1 discussion - ExamTopics"
   },
   {
     "id": 119,
@@ -2878,7 +2878,7 @@
       "A",
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 2 discussion - ExamTopics"
+    "explanation": "HCP Terraform’s health assessments evaluate the overall condition of a workspace, and two of the key checks it performs are: Sentinel policy checks: HCP Terraform runs Sentinel policies as part of its governance workflow. These policies can enforce rules such as naming standards, cost controls, or security requirements. Failing policies are surfaced in the health assessment. Resource drift detection: HCP Terraform can detect when real-world infrastructure has drifted from what Terraform expects. This is a core part of assessing workspace health.\n\nDiscussion: Exam Terraform Associate 004 topic 8 question 2 discussion - ExamTopics"
   },
   {
     "id": 120,
@@ -2904,7 +2904,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 3 discussion - ExamTopics"
+    "explanation": "Run triggers allow you to automatically start a run in one workspace (your compute workspace) whenever another workspace (your networking workspace) completes an apply. This is perfect when one workspace depends on outputs from another.\n\nDiscussion: Exam Terraform Associate 004 topic 8 question 3 discussion - ExamTopics"
   },
   {
     "id": 121,
@@ -2922,7 +2922,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 4 discussion - ExamTopics"
+    "explanation": "Terraform allows only one cloud block in a configuration. You cannot connect a single workspace to both HCP Terraform and Terraform Enterprise at the same time.\n\nDiscussion: Exam Terraform Associate 004 topic 8 question 4 discussion - ExamTopics"
   },
   {
     "id": 122,
@@ -2944,7 +2944,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 5 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 8 question 5 discussion - ExamTopics"
   },
   {
     "id": 123,
@@ -2999,7 +2999,7 @@
       "D",
       "E"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 6 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 8 question 6 discussion - ExamTopics"
   },
   {
     "id": 124,
@@ -3031,7 +3031,7 @@
       "C",
       "E"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 7 discussion - ExamTopics"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 8 question 7 discussion - ExamTopics"
   },
   {
     "id": 125,
@@ -3057,7 +3057,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 8 discussion - ExamTopics"
+    "explanation": "This statement is false because HCP Terraform workspaces are not switched using the local CLI. Instead, each workspace in HCP Terraform is its own isolated environment in the cloud, and you select or trigger runs through: The HCP Terraform UI VCS integrations API calls CLI-driven runs that target a specific workspace There is no concept of “switching” workspaces locally the way you do with terraform workspace in CLI-driven Terraform.\n\nDiscussion: Exam Terraform Associate 004 topic 8 question 8 discussion - ExamTopics"
   },
   {
     "id": 126,
@@ -3083,7 +3083,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 9 discussion - ExamTopics"
+    "explanation": "A cloud block configures Terraform to use HCP Terraform or Terraform Enterprise as its backend. This not only stores state remotely but also enables remote operations, meaning: Plans and applies run in HCP Terraform/TFE No local state file No need for local credentials Full audit logs, RBAC, and policy enforcement Remote backends like S3 only store state; they do not provide remote execution.\n\nDiscussion: Exam Terraform Associate 004 topic 8 question 9 discussion - ExamTopics"
   },
   {
     "id": 127,
@@ -3119,7 +3119,7 @@
       "E",
       "F"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 8 question 10 discussion - ExamTopics"
+    "explanation": "B. Remote execution of Terraform operations: HCP Terraform runs plans and applies remotely on its own infrastructure. Community Edition runs everything locally. E. State versions and run history: HCP Terraform keeps a full history of runs, including logs, diffs, and state snapshots. Community Edition only keeps a single local state file unless you manually configure a backend. F. Store Terraform and environment variables in variable sets: HCP Terraform lets you create variable sets that can be shared across multiple workspaces. Community Edition has no such feature.\n\nDiscussion: Exam Terraform Associate 004 topic 8 question 10 discussion - ExamTopics"
   },
   {
     "id": 128,
@@ -3150,7 +3150,7 @@
       "A",
       "C"
     ],
-    "explanation": "EXAMHEIST - 129"
+    "explanation": "A: A precondition in a resource block must pass for Terraform to create the resource. Terraform evaluates the precondition before creating the resource. If the precondition fails, the resource is not created. C: When a resource has a count meta-argument, Terraform evaluates the precondition for each instance. If a resource uses count, Terraform evaluates the precondition separately for each instance. Incorrect: B: A precondition cannot reference attributes of another resource that are only known after apply. Incorrect. Preconditions can reference such attributes, but if the value is unknown during planning, Terraform defers evaluation until apply. D: If a resource's postcondition block fails, Terraform still creates the resources that depend on it. If a postcondition fails, Terraform marks the resource as failed, and dependent resources are not created. E: A resource can either have a precondition or a postcondition block, but not both. A resource can have both precondition and postcondition blocks defined.\n\nDiscussion: EXAMHEIST - 129"
   },
   {
     "id": 129,
@@ -3176,7 +3176,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST - 130"
+    "explanation": "Terraform uses declarative configuration files to define the desired state of infrastructure, enabling version control, consistency, and repeatability.\n\nDiscussion: EXAMHEIST - 130"
   },
   {
     "id": 130,
@@ -3202,7 +3202,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST - 132"
+    "explanation": "terraform destroy: Incorrect. This command directly triggers destruction of managed infrastructure. All of these will trigger terraform destroy: Incorrect. Not all listed commands correctly trigger destroy. terraform plan destroy: Correct. This is not valid syntax. The correct flag would be terraform plan -destroy. terraform destroy-auto-approve: Incorrect. While written incorrectly, the valid command terraform destroy -auto-approve does trigger destroy.\n\nDiscussion: EXAMHEIST - 132"
   },
   {
     "id": 131,
@@ -3228,7 +3228,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST - 133"
+    "explanation": "Discussion: EXAMHEIST - 133"
   },
   {
     "id": 132,
@@ -3254,7 +3254,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST - 141"
+    "explanation": "Discussion: EXAMHEIST - 141"
   },
   {
     "id": 133,
@@ -3281,7 +3281,7 @@
       "C",
       "D"
     ],
-    "explanation": "EXAMHEIST - 145"
+    "explanation": "Discussion: EXAMHEIST - 145"
   },
   {
     "id": 134,
@@ -3311,7 +3311,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST - 147"
+    "explanation": "To capture all debug-level and verbose process logs, you set: TF_LOG=TRACE This ensures Terraform generates detailed logging at the TRACE level, which includes debug messages and internal operations. Combined with TF_LOG_PATH, the logs will be written to the specified file.\n\nDiscussion: EXAMHEIST - 147"
   },
   {
     "id": 135,
@@ -3341,7 +3341,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST - 158"
+    "explanation": "Discussion: EXAMHEIST - 158"
   },
   {
     "id": 136,
@@ -3363,7 +3363,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST - 159"
+    "explanation": "Discussion: EXAMHEIST - 159"
   },
   {
     "id": 137,
@@ -3411,7 +3411,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST - 163"
+    "explanation": "Discussion: EXAMHEIST - 163"
   },
   {
     "id": 139,
@@ -3429,7 +3429,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST - 164"
+    "explanation": "Splat doesn't work for 'for_each*\n\nDiscussion: EXAMHEIST - 164"
   },
   {
     "id": 140,
@@ -3455,7 +3455,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST – 165"
+    "explanation": "The .terraform.lock.hcl file locks provider versions for your working directory. This ensures consistent behaviour across runs, so Terraform uses the same provider version for all resources, even when you add new resources. The version constraint in your configuration (required_providers) defines which versions are allowed but Terraform will prioritize the version in the lock file if it satisfies the constraint. Terraform does not check the state file to pick a provider version—the state only tracks infrastructure resources. It does not automatically use the latest provider version unless you explicitly run terraform init -upgrade and the new version satisfies the constraints.\n\nDiscussion: EXAMHEIST – 165"
   },
   {
     "id": 141,
@@ -3473,7 +3473,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST – 166"
+    "explanation": "Not all standard Terraform backends (i.e. local) support state locking or remote operations (plan, apply, destroy).\n\nDiscussion: EXAMHEIST – 166"
   },
   {
     "id": 142,
@@ -3503,7 +3503,7 @@
     "correctKeys": [
       "E"
     ],
-    "explanation": "EXAMHEIST – 168"
+    "explanation": "You can optionally add type, default, or description, but they are not mandatory.\n\nDiscussion: EXAMHEIST – 168"
   },
   {
     "id": 143,
@@ -3533,7 +3533,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST – 169"
+    "explanation": "Run Terraform with debug logs to get more detailed output TF_LOG=DEBUG terraform apply\n\nDiscussion: EXAMHEIST – 169"
   },
   {
     "id": 144,
@@ -3585,7 +3585,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST – 171"
+    "explanation": "Discussion: EXAMHEIST – 171"
   },
   {
     "id": 146,
@@ -3611,7 +3611,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST – 172"
+    "explanation": "State locking ensures that: Only one Terraform process can modify the state at a time. It prevents race conditions and corruption of the state file. If a lock is in place, other runs will wait or fail until the lock is released\n\nDiscussion: EXAMHEIST – 172"
   },
   {
     "id": 147,
@@ -3642,7 +3642,7 @@
       "C",
       "D"
     ],
-    "explanation": "EXAMHEIST – 175"
+    "explanation": "To see all resources that Terraform will delete, you can use either of these commands: terraform plan -destroy shows the plan of destruction and asks for confirmation before proceeding. terraform destroy also outputs the plan with confirmation before executing the deletion. You should not use terraform state rm because it removes resources from the state file without destroying them.\n\nDiscussion: EXAMHEIST – 175"
   },
   {
     "id": 148,
@@ -3668,7 +3668,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST – 176"
+    "explanation": "Discussion: EXAMHEIST – 176"
   },
   {
     "id": 149,
@@ -3698,7 +3698,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST – 177"
+    "explanation": "The terraform state list command lists all resources that are managed by Terraform in the current state file. The terraform state show command shows the attributes of a single resource in the state file. By using these two commands, you can compare the VM IDs in your list with the ones in the state file and identify which one is managed by Terraform.\n\nDiscussion: EXAMHEIST – 177"
   },
   {
     "id": 150,
@@ -3724,7 +3724,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-178"
+    "explanation": "terraform refresh (or refresh-only mode in newer versions) is used to update the state file with the real-world infrastructure without changing resources.\n\nDiscussion: EXAMHEIST-178"
   },
   {
     "id": 151,
@@ -3762,7 +3762,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-179"
+    "explanation": "This is the method for sharing Terraform configurations that fulfills the following criteria: Keeps the configurations confidential within your organization Supports Terraform’s semantic version constraints Provides a browsable directory\n\nDiscussion: EXAMHEIST-179"
   },
   {
     "id": 152,
@@ -3784,7 +3784,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-180"
+    "explanation": "Discussion: EXAMHEIST-180"
   },
   {
     "id": 153,
@@ -3810,7 +3810,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-181"
+    "explanation": "terraform plan -refresh-only (or equivalently terraform apply -refresh-only) tells Terraform to refresh the state file by reconciling it with the actual infrastructure, without proposing or applying any changes. This command always updates the state file with any changes that might have been made outside of Terraform (manual edits, console changes, etc.).\n\nDiscussion: EXAMHEIST-181"
   },
   {
     "id": 154,
@@ -3836,7 +3836,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-182"
+    "explanation": "To tell Terraform to stop managing a specific resource without destroying it, you can use the terraform state rm command. This command will remove the resource from the Terraform state, which means that Terraform will no longer track or update the corresponding remote object. However, the object will still exist in the remote system, and you can later use terraform import to start managing it again in a different configuration or workspace. The syntax for this command is terraform state rm, where rm stands for remove, followed by the identifier of the resource instance to remove. For example: terraform state rm aws_instance.ubuntu[1] will remove the second instance of aws_instance.ubuntu named ubuntu from the state.\n\nDiscussion: EXAMHEIST-182"
   },
   {
     "id": 155,
@@ -3866,7 +3866,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-184"
+    "explanation": "Terraform does not automatically print child module outputs.\n\nDiscussion: EXAMHEIST-184"
   },
   {
     "id": 156,
@@ -3897,7 +3897,7 @@
       "B",
       "C"
     ],
-    "explanation": "EXAMHEIST-185"
+    "explanation": "Write Terraform configuration that describes each existing VM you want to manage (resource type, name, required arguments). This configuration must exist in your root module before importing. Run terraform import for each existing VM to map the real resource into the Terraform state under the resource address you declared in the config.\n\nDiscussion: EXAMHEIST-185"
   },
   {
     "id": 157,
@@ -3923,7 +3923,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-187"
+    "explanation": "This is where the Terraform local backend stores its state, by default, unless you specify a different file name or location in your configuration. The local backend is the simplest backend type that stores the state file on your local disk.\n\nDiscussion: EXAMHEIST-187"
   },
   {
     "id": 158,
@@ -3953,7 +3953,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-188"
+    "explanation": "Modules published in the Terraform Registry do support versioning and Terraform lets you pin a specific version directly in the module block.  Why the other options don’t work A — Incorrect. Registry modules absolutely support versioning. B — Incorrect. ?ref= is used for Git sources, not Registry modules. D — Incorrect. Registry modules do not default to version 1.0.0; they default to the latest version unless specified.\n\nDiscussion: EXAMHEIST-188"
   },
   {
     "id": 159,
@@ -4005,7 +4005,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-190"
+    "explanation": "file(): Reads the contents of a local file and returns it as a string. Perfect for importing the contents of id_rsa.pub (your public SSH key). templatefile(): Used to render a template file with variables, not for simply reading raw contents. fileset(): Returns a list of file names that match a pattern in a given directory, not file contents. filebase64(): Reads a file and returns its contents as a Base64-encoded string, which is useful for binary files but not needed for plain text like a public key.\n\nDiscussion: EXAMHEIST-190"
   },
   {
     "id": 161,
@@ -4031,7 +4031,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-191"
+    "explanation": "Discussion: EXAMHEIST-191"
   },
   {
     "id": 162,
@@ -4057,7 +4057,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-192"
+    "explanation": "map: A collection of key/value pairs. Keys are strings, and values can be any type. Perfect when you need to associate values with specific identifiers. tuple: An ordered sequence of elements of potentially different types, accessed by index. list: An ordered sequence of elements of the same type, accessed by index. set: An unordered collection of unique elements of the same type, without duplicates.\n\nDiscussion: EXAMHEIST-192"
   },
   {
     "id": 163,
@@ -4083,7 +4083,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-193"
+    "explanation": "A Terraform backend determines how and where state is stored and loaded. This matters whenever Terraform needs to read or write state, which happens during: terraform apply → Reads the current state to plan changes and then updates the state after applying. terraform destroy → Reads the state to know what resources exist and updates it after destroying them. So, both commands interact with the backend to load and update state.\n\nDiscussion: EXAMHEIST-193"
   },
   {
     "id": 164,
@@ -4109,7 +4109,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-195"
+    "explanation": "This is a core benefit of Terraform's plugin-based architecture. Terraform providers are essentially plugins that extend Terraform's capabilities to interact with various APIs (cloud providers, SaaS services, custom internal systems). If a provider doesn't exist for a specific API you need to manage, you can absolutely write your own custom provider using Go. This is a powerful extensibility feature.\n\nDiscussion: EXAMHEIST-195"
   },
   {
     "id": 165,
@@ -4143,7 +4143,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-196"
+    "explanation": "To correctly access the `vnet_id` from the networking module, you need to define `vnet_id` as an output within the networking module's configuration. This makes the value available for use in other parts of your Terraform code, using the syntax `module.my_network.vnet_id`.\n\nDiscussion: EXAMHEIST-196"
   },
   {
     "id": 166,
@@ -4199,7 +4199,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-200"
+    "explanation": "Discussion: EXAMHEIST-200"
   },
   {
     "id": 168,
@@ -4229,7 +4229,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-202"
+    "explanation": "When you add or change a backend (e.g., moving state to Amazon S3 via backend.tf), terraform init initializes the working directory and the backend. If an existing local state file is present, terraform init will detect the change and prompt to migrate the current state to the new S3 backend. You can also run it non-interactively with: terraform init -migrate-state\n\nDiscussion: EXAMHEIST-202"
   },
   {
     "id": 169,
@@ -4273,7 +4273,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-208"
+    "explanation": "Discussion: EXAMHEIST-208"
   },
   {
     "id": 171,
@@ -4299,7 +4299,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-210"
+    "explanation": "Discussion: EXAMHEIST-210"
   },
   {
     "id": 172,
@@ -4329,7 +4329,7 @@
     "correctKeys": [
       "E"
     ],
-    "explanation": "EXAMHEIST-211"
+    "explanation": "All of the statements are true of Terraform providers. Terraform providers are plugins that enable Terraform to interact with various APIs and services. Anyone can write a Terraform provider, either as an individual or as part of a community. HashiCorp maintains some providers, such as the AWS, Azure, and Google Cloud providers. Cloud providers and infrastructure vendors can also write, maintain, or collaborate on Terraform providers, such as VMware, Oracle, and Alibaba Cloud providers.\n\nDiscussion: EXAMHEIST-211"
   },
   {
     "id": 173,
@@ -4347,7 +4347,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-212"
+    "explanation": "HashiCorp Configuration Language (HCL) does not support user-defined functions. You can only use the built-in functions that are provided by the language. The built-in functions allow you to perform various operations and transformations on values within expressions. The general syntax for function calls is a function name followed by comma-separated arguments in parentheses, such as sum(1, 2, 3). You can find the documentation for all of the available built-in functions in the Terraform Registry under the Packer Documentation, depending on which tool you are using.\n\nDiscussion: EXAMHEIST-212"
   },
   {
     "id": 174,
@@ -4379,7 +4379,7 @@
       "D",
       "E"
     ],
-    "explanation": "EXAMHEIST-215"
+    "explanation": "Sentinel is a policy-as-code framework that allows you to define and enforce rules on your Terraform configurations, states, and plans. Some benefits of using Sentinel with Terraform Cloud/Terraform Enterprise are: You can restrict specific resource configurations, such as disallowing the use of CIDR 0.0.0.0/0, which would open your network to the entire internet. Policies as code can enforce security best practices, such as requiring encryption, authentication, or compliance standards. You can enforce a list of approved AWS AMIs, which are pre-configured images that contain the operating system and software you need to run your applications.\n\nDiscussion: EXAMHEIST-215"
   },
   {
     "id": 175,
@@ -4405,7 +4405,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-216"
+    "explanation": "Secure variable storage → Not unique to HCP Terraform. You can store sensitive variables locally with CLI (though less secure), and HCP Terraform adds encryption and team access controls, but secure variable handling exists in both. Support for multiple cloud providers → Available in both CLI and HCP Terraform. Terraform is provider-agnostic. Dry runs with terraform plan → Available in both CLI and HCP Terraform. terraform plan is a core CLI feature. Using one workspace’s state as a data source for another → This is a remote state data source feature that is only available in HCP Terraform (and Terraform Cloud/Enterprise). It allows one workspace to directly consume outputs from another workspace’s state, enabling cross-workspace dependencies.\n\nDiscussion: EXAMHEIST-216"
   },
   {
     "id": 176,
@@ -4436,7 +4436,7 @@
       "B",
       "C"
     ],
-    "explanation": "EXAMHEIST-217"
+    "explanation": "Provisioning new infrastructure with Terraform follows a workflow, but only certain steps are strictly required to create resources: B. terraform init Initializes the working directory. Downloads provider plugins and sets up the backend. Must be run before any other commands in a new or changed configuration. C. terraform apply Actually provisions (creates/updates/destroys) infrastructure based on your configuration and state. This is the step that makes changes in the real world.\n\nDiscussion: EXAMHEIST-217"
   },
   {
     "id": 177,
@@ -4458,7 +4458,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-218"
+    "explanation": "The required_providers block is used to specify the provider versions that the configuration can work with. The version argument accepts a version constraint string, which must be enclosed in double quotes. The version constraint string can use operators such as >=, <=, etc., to specify the minimum, maximum, or exact version of the provider. For example, version = \"~> 3.1\" means that the configuration can work with any provider version that is 3.1 or higher.\n\nDiscussion: EXAMHEIST-218"
   },
   {
     "id": 178,
@@ -4484,7 +4484,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-219"
+    "explanation": "Discussion: EXAMHEIST-219"
   },
   {
     "id": 179,
@@ -4506,7 +4506,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-221"
+    "explanation": "This is not a valid backend for Terraform, as it does not support locking or versioning of state files. The other options are valid backends that can store state files in a central location.\n\nDiscussion: EXAMHEIST-221"
   },
   {
     "id": 180,
@@ -4533,7 +4533,7 @@
       "C",
       "D"
     ],
-    "explanation": "EXAMHEIST-222"
+    "explanation": "C and D are correct. terraform import <resource_address> <resource_id>\n\nDiscussion: EXAMHEIST-222"
   },
   {
     "id": 181,
@@ -4559,7 +4559,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-223"
+    "explanation": "Terraform can load providers from: Plugins directory → Yes, Terraform looks in the local .terraform/plugins directory for provider binaries. Provider plugin cache → Yes, Terraform maintains a plugin cache to avoid redownloading providers. Official HashiCorp distribution on releases.hashicorp.com → Yes, Terraform automatically downloads providers from the official registry/distribution. Source code →  No. Terraform cannot load a provider directly from source code. Providers must be compiled into binaries before Terraform can use them.\n\nDiscussion: EXAMHEIST-223"
   },
   {
     "id": 182,
@@ -4585,7 +4585,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-225"
+    "explanation": "terraform validate reports configuration consistency errors such as declaring a resource identifier more than once. This means the same resource type and name combination is used for multiple resource blocks, which is invalid in Terraform.\nIt does not report errors related to module versions, state differences, or formatting issues like spaces and tabs.\n\nDiscussion: EXAMHEIST-225"
   },
   {
     "id": 183,
@@ -4603,7 +4603,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-228"
+    "explanation": "In HCP Terraform/Terraform Cloud, speculative plan runs (also called plan-only runs) occur automatically when you open a pull request (PR) or propose changes in your linked version control system (VCS), not when you merge or commit changes. Speculative plans are designed to show what would happen if the proposed changes were applied, without actually applying them. When you merge changes, Terraform Cloud typically triggers a real plan and apply run (depending on workspace settings), not a speculative plan.\n\nDiscussion: EXAMHEIST-228"
   },
   {
     "id": 184,
@@ -4629,7 +4629,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-230"
+    "explanation": "The best way to automatically and proactively enforce the security control that new AWS S3 buckets must be private and encrypted at rest is with a Sentinel policy, which runs before every apply. Sentinel is a policy-as-code framework that allows you to define and enforce logic-based policies for your infrastructure. Terraform Cloud supports Sentinel policies for all operations and can run them before any Terraform plan or apply operation. You can write a Sentinel policy that checks the configuration of the S3 buckets and ensures that they have the proper settings for privacy and encryption and then assign the policy to your Terraform Cloud organization or workspace. This way, Terraform Cloud will prevent any changes that violate the policy from being applied.\n\nDiscussion: EXAMHEIST-230"
   },
   {
     "id": 185,
@@ -4655,7 +4655,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-231"
+    "explanation": "Terraform uses backends to store state. If you don’t use the default local backend, you can configure a remote backend in the terraform block of your configuration. Examples of remote backends: HCP Terraform / Terraform Cloud AWS S3 Azure Storage Google Cloud Storage This configuration is done in your .tf files, not in .terraformrc.\n\nDiscussion: EXAMHEIST-231"
   },
   {
     "id": 186,
@@ -4681,7 +4681,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-232"
+    "explanation": "Modules do not need to be publicly accessible. They can be local or private, stored in version control systems, or shared within an organization.\n\nDiscussion: EXAMHEIST-232"
   },
   {
     "id": 187,
@@ -4707,7 +4707,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-235"
+    "explanation": "Infrastructure as Code (IaC) is all about defining and provisioning infrastructure programmatically, using code instead of manually configuring hardware or cloud resources. This enables automation, repeatability, version control, and consistency across environments. Here’s why the other options are incorrect: Defining a vendor-agnostic API → Not a core IaC goal. Some IaC tools are multi-cloud, but vendor-agnostic APIs are not the purpose of IaC. Write once, run anywhere → This applies more to application portability (e.g., Java or containers), not IaC. A pipeline process to test and deliver software → That describes CI/CD, not IaC (though IaC often integrates with pipelines).\n\nDiscussion: EXAMHEIST-235"
   },
   {
     "id": 188,
@@ -4737,7 +4737,7 @@
     "correctKeys": [
       "E"
     ],
-    "explanation": "EXAMHEIST-235"
+    "explanation": "This is the backend that the Terraform CLI uses by default, unless you specify a different backend in your configuration. The local backend stores the state file in a local file named terraform.tfstate, which can be used to track and manage the state of your infrastructure.\n\nDiscussion: EXAMHEIST-235"
   },
   {
     "id": 189,
@@ -4755,7 +4755,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-237"
+    "explanation": "You must initialize your working directory before running terraform validate, as it will ensure that all the required plugins and modules are installed and configured properly. If you skip this step, you may encounter errors or inconsistencies when validating your configuration files.\n\nDiscussion: EXAMHEIST-237"
   },
   {
     "id": 190,
@@ -4781,7 +4781,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-238"
+    "explanation": "Terraform automatically creates or updates the dependency lock file each time you run the terraform init command.\n\nDiscussion: EXAMHEIST-238"
   },
   {
     "id": 191,
@@ -4807,7 +4807,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-241"
+    "explanation": "The command that makes your code more human-readable is terraform fmt. This command is used to rewrite Terraform configuration files to a canonical format and style, following the Terraform language style conventions and other minor adjustments for readability. The command is optional, opinionated, and has no customization options, but it is recommended to ensure consistency of style across different Terraform codebases. Consistency can help your team understand the code more quickly and easily, making the use of Terraform linting important. You can run this command on your configuration files before committing them to source control or as part of your CI/CD pipeline.\n\nDiscussion: EXAMHEIST-241"
   },
   {
     "id": 192,
@@ -4833,7 +4833,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "EXAMHEIST-242"
+    "explanation": "AWS CloudFormation is a service specifically designed for provisioning AWS resources. If the organization decides to expand into Azure and deploy new infrastructure using the existing codebase, the DevOps team will face a challenge, as CloudFormation does not support Azure or other cloud provider.\n\nDiscussion: EXAMHEIST-242"
   },
   {
     "id": 193,
@@ -4869,7 +4869,7 @@
       "D",
       "E"
     ],
-    "explanation": "EXAMHEIST-244"
+    "explanation": "When the Terraform state file is locked, it means Terraform is preventing concurrent modifications to the state to avoid corruption. During this lock: Forbidden actions (require state access): terraform destroy → Needs to read and update state to remove resources. terraform apply → Needs to read and update state to apply changes. terraform plan → Refreshes and compares state with configuration, so it requires access to the locked state. Allowed actions (do not require state access): terraform fmt → Only formats configuration files; does not touch state. terraform state list → Reads state but does not require exclusive lock. terraform validate → Validates configuration syntax; does not use state.\n\nDiscussion: EXAMHEIST-244"
   },
   {
     "id": 194,
@@ -4895,7 +4895,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-245"
+    "explanation": "This is the command that you would use to access all the attributes and details of a resource managed by Terraform, by providing the resource address as an argument. For example: terraform state show aws_instance.example\n\nDiscussion: EXAMHEIST-245"
   },
   {
     "id": 195,
@@ -4913,7 +4913,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-246"
+    "explanation": "Terraform providers are not part of the Terraform core binary. Instead: Terraform Core: Handles the execution plan, state management, and dependency graph. Providers: Are separate plugins that Terraform uses to interact with specific APIs (e.g., AWS, Azure, GCP). They are downloaded dynamically when you run terraform init. This modular approach allows Terraform to support many platforms without bloating the core binary.\n\nDiscussion: EXAMHEIST-246"
   },
   {
     "id": 196,
@@ -4931,7 +4931,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-248"
+    "explanation": "Discussion: EXAMHEIST-248"
   },
   {
     "id": 197,
@@ -4957,7 +4957,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-251"
+    "explanation": "Discussion: EXAMHEIST-251"
   },
   {
     "id": 198,
@@ -4984,7 +4984,7 @@
       "A",
       "D"
     ],
-    "explanation": "EXAMHEIST-252"
+    "explanation": "A: When end-users must submit tickets for infrastructure changes, it introduces manual steps and delays. D: As demand grows, the number of tickets increases, creating bottlenecks and limiting scalability. Options B and C do not inherently slow down provisioning; they provide audit trails and resource catalogues, which can improve governance and usability.\n\nDiscussion: EXAMHEIST-252"
   },
   {
     "id": 199,
@@ -5010,7 +5010,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-254"
+    "explanation": "Using environment variables for authentication prevents credentials from being stored in the state file, which is a best practice for security.\n\nDiscussion: EXAMHEIST-254"
   },
   {
     "id": 200,
@@ -5036,7 +5036,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-255"
+    "explanation": "C. Understanding API interactions with a hosted service → Providers know how to talk to the APIs of the services they manage. D. Managing resources and data sources based on an API → Providers define resources and data sources that map to API objects. B. Managing actions to take based on resource differences → Providers implement CRUD (create, read, update, delete) logic so Terraform can reconcile differences between state and configuration\n\nDiscussion: EXAMHEIST-255"
   },
   {
     "id": 201,
@@ -5054,7 +5054,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-257"
+    "explanation": "The Terraform Registry allows any user to publish and share modules. Published modules support versioning, automatically generate documentation, allow browsing version histories, show examples and READMEs, and more. Public modules are managed via Git and GitHub, and publishing a module takes only a few minutes. Once a module is published, releasing a new version of a module is as simple as pushing a properly formed Git tag.\n\nDiscussion: EXAMHEIST-257"
   },
   {
     "id": 202,
@@ -5084,7 +5084,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-258"
+    "explanation": "The public Terraform Module Registry automatically exposes all the information about published modules, including required input variables, optional input variables and default values, and outputs. This helps users to understand how to use and configure the modules.\n\nDiscussion: EXAMHEIST-258"
   },
   {
     "id": 203,
@@ -5102,7 +5102,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-259"
+    "explanation": "In Terraform, a cloud block defines how Terraform connects to Terraform Cloud or HCP Terraform, but it is not restricted to a single workspace. A single cloud block can: Be used across multiple configurations Point to different workspaces if the workspace name is overridden via CLI or environment variables Be reused in different modules or projects\n\nDiscussion: EXAMHEIST-259"
   },
   {
     "id": 204,
@@ -5129,7 +5129,7 @@
       "C",
       "D"
     ],
-    "explanation": "EXAMHEIST-261"
+    "explanation": "These are features of Terraform Cloud, which is a hosted service that provides a web-based UI, remote state storage, remote operations, collaboration features, and more for managing your Terraform infrastructure.\n\nDiscussion: EXAMHEIST-261"
   },
   {
     "id": 205,
@@ -5155,7 +5155,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-263"
+    "explanation": "Infrastructure as Code (IaC) focuses on defining and managing infrastructure through code, enabling automation, consistency, and repeatability. The key principles include: Self-describing infrastructure: The code clearly defines the desired state of the infrastructure. Idempotence: Applying the same configuration multiple times results in the same state without unintended changes. Versioned infrastructure: Infrastructure definitions are stored in version control systems, allowing tracking and rollback. Golden images, on the other hand, refer to pre-configured machine images used for deployments. While they can be part of a deployment strategy, they are not a core principle of IaC because IaC emphasizes dynamic configuration through code rather than relying on static images.\n\nDiscussion: EXAMHEIST-263"
   },
   {
     "id": 206,
@@ -5181,7 +5181,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-264"
+    "explanation": "A. Terraform will not make any changes to the load balancer and will update the state file to reflect the manual change.\n\nDiscussion: EXAMHEIST-264"
   },
   {
     "id": 207,
@@ -5208,7 +5208,7 @@
       "C",
       "D"
     ],
-    "explanation": "EXAMHEIST-265"
+    "explanation": "C. When you change a Terraform‑managed resource via the Azure Cloud Console, Terraform updates the state file to reflect the change during the next plan or apply. D. Changing resources via the Azure Cloud Console does not update current state file.\n\nDiscussion: EXAMHEIST-265"
   },
   {
     "id": 208,
@@ -5226,7 +5226,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-266"
+    "explanation": "Terraform interacts with external systems via providers. If your service has proprietary APIs and no existing Terraform provider, you’ll need to build a custom Terraform provider that implements CRUD operations for your resources (e.g., users) and translates Terraform configurations into API calls.\n\nDiscussion: EXAMHEIST-266"
   },
   {
     "id": 209,
@@ -5256,7 +5256,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-267"
+    "explanation": "Discussion: EXAMHEIST-267"
   },
   {
     "id": 210,
@@ -5286,7 +5286,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-268"
+    "explanation": "This is the variable type that you could use for this input, as it can store multiple attributes of different types within a single value. The other options are either invalid or incorrect for this use case.\n\nDiscussion: EXAMHEIST-268"
   },
   {
     "id": 211,
@@ -5304,7 +5304,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-270"
+    "explanation": "Terraform validate does not confirm that your infrastructure matches the Terraform state file. It only checks whether the configuration files in a directory are syntactically valid and internally consistent. To confirm that your infrastructure matches the Terraform state file, you need to use terraform plan or terraform apply with the -refresh-only option.\n\nDiscussion: EXAMHEIST-270"
   },
   {
     "id": 212,
@@ -5322,7 +5322,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-273"
+    "explanation": "The terraform_remote_state data source is used to access state stored in remote backends (such as S3, Azure Blob Storage, GCS, or Terraform Cloud/Enterprise). It is not supported for the local backend. If your state is stored locally (terraform.tfstate), you cannot use terraform_remote_state to read it. To access values from local state, you would typically reference outputs directly within the same configuration or workspace.\n\nDiscussion: EXAMHEIST-273"
   },
   {
     "id": 213,
@@ -5348,7 +5348,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-275"
+    "explanation": "Discussion: EXAMHEIST-275"
   },
   {
     "id": 214,
@@ -5378,7 +5378,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-276"
+    "explanation": "terraform import is designed for one very specific job: Take infrastructure that already exists in the real world and bring it under Terraform management by adding it to the state file\n\nDiscussion: EXAMHEIST-276"
   },
   {
     "id": 215,
@@ -5404,7 +5404,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-277"
+    "explanation": "This is one disadvantage of using dynamic blocks in Terraform, as they can introduce complexity and reduce readability of the configuration. The other options are either advantages or incorrect statements.\n\nDiscussion: EXAMHEIST-277"
   },
   {
     "id": 216,
@@ -5422,7 +5422,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-279"
+    "explanation": "Terraform does store variable and output descriptions in the state file. This is intentional—Terraform keeps metadata (including descriptions) so that tools and future runs can understand the meaning of values stored in state.\n\nDiscussion: EXAMHEIST-279"
   },
   {
     "id": 217,
@@ -5448,7 +5448,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-280"
+    "explanation": "The code specifies a version constraint that requires any version of the AWS provider greater than or equal to 3.0 but less than 4.0.\n\nDiscussion: EXAMHEIST-280"
   },
   {
     "id": 218,
@@ -5474,7 +5474,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-281"
+    "explanation": "This is how you specify a module’s version when publishing it to the public Terraform Module Registry, as it uses the tags from your version control system (such as GitHub or GitLab) to identify module versions. You need to use semantic versioning for your tags, such as v1.0.0.\n\nDiscussion: EXAMHEIST-281"
   },
   {
     "id": 219,
@@ -5500,7 +5500,7 @@
     "correctKeys": [
       "B"
     ],
-    "explanation": "EXAMHEIST-284"
+    "explanation": "The default \"local\" Terraform backend stores the state file in a local file named terraform.tfstate, which can be used to track and manage the state of your infrastructure.\n\nDiscussion: EXAMHEIST-284"
   },
   {
     "id": 220,
@@ -5526,7 +5526,7 @@
     "correctKeys": [
       "A"
     ],
-    "explanation": "EXAMHEIST-285"
+    "explanation": "Discussion: EXAMHEIST-285"
   },
   {
     "id": 221,
@@ -5556,7 +5556,7 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-286"
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 2 question 7 discussion - ExamTopics"
   },
   {
     "id": 222,
@@ -5582,6 +5582,6 @@
     "correctKeys": [
       "D"
     ],
-    "explanation": "EXAMHEIST-292"
+    "explanation": "terraform validate checks only the syntax and internal consistency of your Terraform configuration files. It does not: Care about whether you use tabs or spaces (A). Terraform accepts both. Check whether variables have values (B). That’s validated at plan/apply time, not during validate. Compare the state file with real infrastructure (C). That happens during terraform plan or terraform refresh.\n\nDiscussion: EXAMHEIST-292"
   }
 ]

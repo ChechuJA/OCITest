@@ -34,6 +34,8 @@ ul.options li:hover {background:#eef6ff; border-color:#1768ac;}
 .feedback {min-height:2rem; font-weight:600;}
 .feedback.correct {color:#0a7a3d;}
 .feedback.incorrect {color:#c0392b;}
+.feedback-answer, .feedback-explanation {margin-top:.35rem; font-weight:400; white-space:pre-wrap;}
+.feedback-explanation a {color:inherit; font-weight:600; overflow-wrap:anywhere;}
 .actions {display:flex; gap:.75rem;}
 #questionContainer .extended-block {background:#ffffff; border:1px solid #cddbe7; padding:.9rem 1rem; border-radius:8px; margin-bottom:.75rem; font-size:.9rem; line-height:1.4; box-shadow:0 2px 6px rgba(0,0,0,.05);}
 #questionContainer .extended-block h3.ext-heading {margin-top:0; font-size:1rem; color:#143d59;}
