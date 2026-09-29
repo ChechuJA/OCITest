@@ -40,6 +40,15 @@
         <option value="review">Repasar falladas previas</option>
       </select>
     </div>
+    <div id="sequentialRange" class="control-group" hidden>
+      <label for="rangeStart">Rango de preguntas:</label>
+      <div class="range-inputs">
+        <input id="rangeStart" type="number" min="1" value="1" aria-label="Primera pregunta" />
+        <span aria-hidden="true">a</span>
+        <input id="rangeEnd" type="number" min="1" placeholder="final" aria-label="Última pregunta" />
+      </div>
+      <small>Deja “final” vacío para continuar hasta la última.</small>
+    </div>
     <button id="startBtn">Comenzar</button>
   </section>
 

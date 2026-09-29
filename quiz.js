@@ -84,6 +84,9 @@ const QUESTIONS_OPTIONAL = [
 
 const bankSelect = document.getElementById('bankSelect');
 const modeSelect = document.getElementById('modeSelect');
+const sequentialRangeEl = document.getElementById('sequentialRange');
+const rangeStartEl = document.getElementById('rangeStart');
+const rangeEndEl = document.getElementById('rangeEnd');
 const startBtn = document.getElementById('startBtn');
 const quizEl = document.getElementById('quiz');
 const progressEl = document.getElementById('progress');
@@ -106,6 +109,23 @@ let answered = false;
 let totalTimeSeconds = 7200; // 2 horas
 let remainingSeconds = totalTimeSeconds;
 let timerInterval = null;
+
+function updateSequentialRangeVisibility() {
+  sequentialRangeEl.hidden = modeSelect.value !== 'sequential';
+}
+
+function getSequentialRange(bankLength) {
+  const start = Number.parseInt(rangeStartEl.value, 10);
+  const endValue = rangeEndEl.value.trim();
+  const end = endValue ? Number.parseInt(endValue, 10) : bankLength;
+
+  if (!Number.isInteger(start) || start < 1 || !Number.isInteger(end) || end < start || end > bankLength) {
+    alert(`El rango debe estar entre 1 y ${bankLength}, y la primera pregunta no puede ser posterior a la última.`);
+    return null;
+  }
+
+  return { start, end };
+}
 
 // Si se selecciona un examen externo, este array sustituye a los bancos integrados.
 let externalBankOverride = null;
@@ -161,6 +181,11 @@ function startQuiz() {
   }
   order = [...currentBank];
   if (mode === 'random') shuffle(order);
+  if (mode === 'sequential') {
+    const range = getSequentialRange(order.length);
+    if (!range) return;
+    order = order.slice(range.start - 1, range.end);
+  }
   currentIndex = 0;
   // Reiniciar timer
   clearInterval(timerInterval);
@@ -321,6 +346,8 @@ function finishQuiz(){
 // Accesibilidad teclado para opciones (ya son botones)
 // Foco inicial al iniciar
 startBtn.focus();
+modeSelect.addEventListener('change', updateSequentialRangeVisibility);
+updateSequentialRangeVisibility();
 
 function startTimer(){
   updateTimerDisplay();
