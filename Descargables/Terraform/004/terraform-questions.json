@@ -1482,19 +1482,19 @@
     "answers": [
       {
         "key": "A",
-        "text": "How do you reference the id attribute of this data source?"
-      },
-      {
-        "key": "B",
         "text": "data.aws_ami.web.id"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "web.id"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "aws_ami.web.id"
+      },
+      {
+        "key": "D",
+        "text": "data.web.id"
       }
     ],
     "correctKeys": [
@@ -1508,19 +1508,19 @@
     "answers": [
       {
         "key": "A",
-        "text": "How would you reference the attribute name of this resource in HCL?"
-      },
-      {
-        "key": "B",
         "text": "resource.kubernetes_namespace.example.name"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "data.kubernetes_namespace.name"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "kubernetes_namespace.example.name"
+      },
+      {
+        "key": "D",
+        "text": "kubernetes_namespace.test.name"
       }
     ],
     "correctKeys": [

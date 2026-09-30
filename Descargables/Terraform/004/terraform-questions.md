@@ -726,10 +726,10 @@ data "aws_ami" "web"{
 
 How do you reference the id attribute of this data source?
 
-- [x] A. How do you reference the id attribute of this data source?
-- [ ] B. data.aws_ami.web.id
-- [ ] C. web.id
-- [ ] D. aws_ami.web.id
+- [x] A. data.aws_ami.web.id
+- [ ] B. web.id
+- [ ] C. aws_ami.web.id
+- [ ] D. data.web.id
 
 > **Explanation:** Exam Terraform Associate 004 topic 4 question 12 discussion - ExamTopics
 
@@ -747,10 +747,10 @@ resource "kubernetes_namespace" "example"{
 
 How would you reference the attribute name of this resource in HCL?
 
-- [ ] A. How would you reference the attribute name of this resource in HCL?
-- [ ] B. resource.kubernetes_namespace.example.name
-- [x] C. data.kubernetes_namespace.name
-- [ ] D. kubernetes_namespace.example.name
+- [ ] A. resource.kubernetes_namespace.example.name
+- [ ] B. data.kubernetes_namespace.name
+- [x] C. kubernetes_namespace.example.name
+- [ ] D. kubernetes_namespace.test.name
 
 > **Explanation:** Exam Terraform Associate 004 topic 4 question 13 discussion - ExamTopics
 
