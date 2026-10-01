@@ -92,6 +92,11 @@ const quizEl = document.getElementById('quiz');
 const progressEl = document.getElementById('progress');
 const progressTextEl = document.getElementById('progressText');
 const progressFillEl = document.getElementById('progressFill');
+const resultTextEl = document.getElementById('resultText');
+const resultBarEl = document.getElementById('resultBar');
+const resultCorrectEl = document.getElementById('resultCorrect');
+const resultIncorrectEl = document.getElementById('resultIncorrect');
+const resultRemainingEl = document.getElementById('resultRemaining');
 const timeRemainingEl = document.getElementById('timeRemaining');
 const questionContainer = document.getElementById('questionContainer');
 const optionsEl = document.getElementById('options');
@@ -106,6 +111,9 @@ let order = [];
 let score = 0;
 let wrong = [];
 let answered = false;
+let resultByQuestion = [];
+let resultQuestionCount = 0;
+let resultRequiredCorrect = 0;
 let totalTimeSeconds = 7200; // 2 horas
 let remainingSeconds = totalTimeSeconds;
 let timerInterval = null;
@@ -239,6 +247,9 @@ function startQuiz() {
     if (!range) return;
     order = order.slice(range.start - 1, range.end);
   }
+  resultByQuestion = [];
+  resultQuestionCount = Math.min(180, order.length);
+  resultRequiredCorrect = Math.ceil(resultQuestionCount * 0.8);
   currentIndex = 0;
   // Reiniciar timer
   clearInterval(timerInterval);
@@ -306,10 +317,7 @@ function renderCurrent() {
   multiSelectedIndices = [];
   nextBtn.textContent = isMulti ? 'Comprobar' : 'Siguiente';
   progressEl.textContent = '';
-  const answeredCount = currentIndex; // antes de responder actual
-  const percent = ((answeredCount / order.length) * 100).toFixed(1);
-  progressTextEl.textContent = `Progreso: ${answeredCount}/${order.length} (${percent}%)`;
-  progressFillEl.style.width = `${percent}%`;
+  updateResultProgress();
   renderQuestionContent(questionContainer, q.id, q.q);
   optionsEl.innerHTML = '';
   q.o.forEach((opt,idx)=>{
@@ -333,6 +341,41 @@ function renderCurrent() {
   });
   feedbackEl.className = 'feedback';
   feedbackEl.textContent = '';
+}
+
+function updateResultProgress() {
+  const results = resultByQuestion.slice(0, resultQuestionCount);
+  const answeredCount = results.filter(result => typeof result === 'boolean').length;
+  const correctCount = results.filter(result => result === true).length;
+  const incorrectCount = answeredCount - correctCount;
+  const unansweredCount = resultQuestionCount - answeredCount;
+  const accuracy = answeredCount ? ((correctCount / answeredCount) * 100).toFixed(1) : '0.0';
+  const correctWidth = resultQuestionCount ? (correctCount / resultQuestionCount) * 100 : 0;
+  const incorrectWidth = resultQuestionCount ? (incorrectCount / resultQuestionCount) * 100 : 0;
+  const remainingWidth = resultQuestionCount ? (unansweredCount / resultQuestionCount) * 100 : 0;
+  const targetPercent = resultQuestionCount ? ((resultRequiredCorrect / resultQuestionCount) * 100).toFixed(0) : 0;
+  const examAnsweredCount = currentIndex + (answered ? 1 : 0);
+  const examPercent = order.length ? ((examAnsweredCount / order.length) * 100).toFixed(1) : '0.0';
+  const correctLabel = `${correctCount} ${correctCount === 1 ? 'acierto' : 'aciertos'}`;
+  const incorrectLabel = `${incorrectCount} ${incorrectCount === 1 ? 'fallo' : 'fallos'}`;
+
+  progressTextEl.textContent = `Progreso: ${examAnsweredCount}/${order.length} (${examPercent}%)`;
+  progressFillEl.style.width = `${examPercent}%`;
+  resultCorrectEl.style.width = `${correctWidth}%`;
+  resultIncorrectEl.style.width = `${incorrectWidth}%`;
+  resultRemainingEl.style.width = `${remainingWidth}%`;
+  resultTextEl.textContent = `Meta: ${resultRequiredCorrect} aciertos de ${resultQuestionCount} (${targetPercent}%). Primeras ${resultQuestionCount}: ${answeredCount}/${resultQuestionCount} contestadas; ${correctLabel} (${accuracy}%), ${incorrectLabel}.`;
+  resultBarEl.setAttribute('aria-label', `${correctCount} correctas, ${incorrectCount} falladas y ${unansweredCount} sin responder de ${resultQuestionCount}; objetivo ${resultRequiredCorrect} aciertos.`);
+}
+
+function recordOutcome(q, isCorrect) {
+  resultByQuestion[currentIndex] = isCorrect;
+  if (isCorrect) {
+    score++;
+  } else {
+    wrong.push(q);
+  }
+  updateResultProgress();
 }
 
 function selectOption(idx){
@@ -360,11 +403,11 @@ function selectOption(idx){
   answered = true;
   nextBtn.disabled = false;
   if (idx === q.a){
-    score++;
+    recordOutcome(q, true);
     feedbackEl.className = 'feedback correct';
     showFeedback(`✔ Correcto, es la ${formatCorrectAnswer(q)}`, q, false);
   } else {
-    wrong.push(q);
+    recordOutcome(q, false);
     feedbackEl.className = 'feedback incorrect';
     showFeedback('✘ Incorrecto.', q, true);
   }
@@ -373,8 +416,8 @@ function selectOption(idx){
 skipBtn.addEventListener('click', ()=>{
   if (answered) return; // si ya respondió no se salta
   const q = order[currentIndex];
-  wrong.push(q); // contar como incorrecta
   answered = true;
+  recordOutcome(q, false); // contar como incorrecta
   nextBtn.disabled = false;
   feedbackEl.className = 'feedback incorrect';
   showFeedback('Explicación de la pregunta:', q, true);
@@ -399,11 +442,11 @@ nextBtn.addEventListener('click', ()=>{
     });
 
     if (isCorrect) {
-      score++;
+      recordOutcome(q, true);
       feedbackEl.className = 'feedback correct';
       showFeedback(`✔ Correcto, ${correct.length > 1 ? 'son las' : 'es la'} ${formatCorrectAnswer(q)}`, q, false);
     } else {
-      wrong.push(q);
+      recordOutcome(q, false);
       feedbackEl.className = 'feedback incorrect';
       showFeedback('✘ Incorrecto.', q, true);
     }
