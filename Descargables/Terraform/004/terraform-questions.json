@@ -198,27 +198,23 @@
   },
   {
     "id": 9,
-    "question": "Your team often uses API calls to create and manage cloud infrastructure.",
+    "question": "Your team often uses API calls to create and manage cloud infrastructure. In what ways does Terraform differ from conventional infrastructure management approaches?",
     "answers": [
       {
         "key": "A",
-        "text": "In what ways does Terraform differ from conventional infrastructure management approaches?"
+        "text": "Terraform replaces cloud provider APIs with its own protocols, enabling automated\ndeployments."
       },
       {
         "key": "B",
-        "text": "Terraform replaces cloud provider APIs with its own protocols, enabling automated deployments."
+        "text": "Terraform describes infrastructure with version-controlled, repeatable configurations that\nspecify the desired state."
       },
       {
         "key": "C",
-        "text": "Terraform describes infrastructure with version-controlled, repeatable configurations that specify the desired state."
+        "text": "Terraform is merely a wrapper for cloud provider APIs, so there is little to no difference in\ncalling the API directly."
       },
       {
         "key": "D",
-        "text": "Terraform is merely a wrapper for cloud provider APIs, so there is little to no difference in calling the API directly."
-      },
-      {
-        "key": "E",
-        "text": "Terraform enforces infrastructure through imperative scripts to ensure tasks are completed in the proper order."
+        "text": "Terraform enforces infrastructure through imperative scripts to ensure tasks are completed\nin the proper order."
       }
     ],
     "correctKeys": [
@@ -773,19 +769,19 @@
     "answers": [
       {
         "key": "A",
-        "text": "1. Write Terraform configuration. 2. Run terraform apply to create infrastructure. 3. Use terraform validate to confirm Terraform deployed resources correctly."
+        "text": "1. Write Terraform configuration.\n2. Run terraform apply to create infrastructure.\n3. Use terraform validate to confirm Terraform deployed resources correctly."
       },
       {
         "key": "B",
-        "text": "1. Write Terraform configuration. 2. Run terraform init to initialize the working directory or workspace. 3. Run terraform apply."
+        "text": "1. Write Terraform configuration.\n2. Run terraform init to initialize the working directory or workspace.\n3. Run terraform apply."
       },
       {
         "key": "C",
-        "text": "1. Write Terraform configuration. 2. Run terraform plan to initialize the working directory or workspace. 3. Run terraform apply to create the infrastructure."
+        "text": "1. Write Terraform configuration.\n2. Run terraform plan to initialize the working directory or workspace.\n3. Run terraform apply to create the infrastructure."
       },
       {
         "key": "D",
-        "text": "1. Write Terraform configuration. 2. Run terraform show to view proposed changes. 3. Run terraform apply to create new infrastructure."
+        "text": "1. Write Terraform configuration.\n2. Run terraform show to view proposed changes.\n3. Run terraform apply to create new infrastructure."
       }
     ],
     "correctKeys": [
@@ -799,19 +795,19 @@
     "answers": [
       {
         "key": "A",
-        "text": "The working directory was not initialized, so the cloud provider plugin wasn’t available to use when running the terraform validate command."
+        "text": "The working directory was not initialized, so the cloud provider plugin wasn’t available to\nuse when running the terraform validate command."
       },
       {
         "key": "B",
-        "text": "The remote backend wasn’t configured, so terraform validate couldn’t load the state and detect the missing credentials."
+        "text": "The remote backend wasn’t configured, so terraform validate couldn’t load the state and\ndetect the missing credentials."
       },
       {
         "key": "C",
-        "text": "terraform validate only checks if a configuration is syntactically correct and internally consistent, and does not communicate with providers."
+        "text": "terraform validate only checks if a configuration is syntactically correct and internally\nconsistent, and does not communicate with providers."
       },
       {
         "key": "D",
-        "text": "Variables are only applied and validated during a terraform plan, so validate assumed defaults and returned the success message."
+        "text": "Variables are only applied and validated during a terraform plan, so validate assumed\ndefaults and returned the success message."
       }
     ],
     "correctKeys": [
@@ -895,7 +891,7 @@
       },
       {
         "key": "C",
-        "text": "Depending on provider specification, Terraform may need to destroy and recreate your infrastructure resources."
+        "text": "Depending on provider specification, Terraform may need to destroy and recreate your\ninfrastructure resources."
       },
       {
         "key": "D",
@@ -903,7 +899,7 @@
       },
       {
         "key": "E",
-        "text": "By default, it does not refresh your state file to reflect the current infrastructure configuration."
+        "text": "By default, it does not refresh your state file to reflect the current infrastructure\nconfiguration."
       }
     ],
     "correctKeys": [
@@ -944,19 +940,19 @@
     "answers": [
       {
         "key": "A",
-        "text": "The directory contains plugins and modules that Terraform downloads during initialization, along with other important information."
+        "text": "The directory contains plugins and modules that Terraform downloads during initialization,\nalong with other important information."
       },
       {
         "key": "B",
-        "text": "The directory contains the provide credentials and the .tfvars files to prevent them from being committed to version control by accident."
+        "text": "The directory contains the provide credentials and the .tfvars files to prevent them from\nbeing committed to version control by accident."
       },
       {
         "key": "C",
-        "text": "The directory is where Terraform creates and maintains the state file to track the underlying resources it creates and manages."
+        "text": "The directory is where Terraform creates and maintains the state file to track the underlying\nresources it creates and manages."
       },
       {
         "key": "D",
-        "text": "The directory is used to convert, and store Terraform configuration files into API calls to communicate with the targeted platform."
+        "text": "The directory is used to convert, and store Terraform configuration files into API calls to\ncommunicate with the targeted platform."
       }
     ],
     "correctKeys": [
@@ -970,11 +966,11 @@
     "answers": [
       {
         "key": "A",
-        "text": "Validates your expectations against the execution plan without permanently modifying state."
+        "text": "Validates your expectations against the execution plan without permanently modifying\nstate."
       },
       {
         "key": "B",
-        "text": "Reconciles Terraform’s state against deploys resources and permanently modifies state using the current status of deployed resources."
+        "text": "Reconciles Terraform’s state against deploys resources and permanently modifies state\nusing the current status of deployed resources."
       },
       {
         "key": "C",
@@ -992,7 +988,7 @@
   },
   {
     "id": 42,
-    "question": "You have a saved execution plan containing desired changes for infrastructure managed by Terraform. After running the command terraform apply my.tfplan, you receive the error shown in the Exhibit space on this page.\n\nError: Saved plan is stale\n\nThe given plan file can no longer be applied because the state was changed by another operation after the plan was created.\n\nHow can you apply the desired changes? (Choose two.)",
+    "question": "You have a saved execution plan containing desired changes for infrastructure managed by Terraform. After running the command terraform apply my.tfplan, you receive the error shown in the Exhibit space on this page.\n\n```text\nError: Saved plan is stale\n\nThe given plan file can no longer be applied because the state was changed by another operation after the plan was created.\n```\n\nHow can you apply the desired changes? (Choose two.)",
     "answers": [
       {
         "key": "A",
@@ -1194,15 +1190,15 @@
     "answers": [
       {
         "key": "A",
-        "text": "Terraform builds a resource graph based on your configuration and your state file (if present)."
+        "text": "Terraform builds a resource graph based on your configuration and your state file (if\npresent)."
       },
       {
         "key": "B",
-        "text": "Terraform requires resources in your configuration be listed in the order they will be created to determine dependencies."
+        "text": "Terraform requires resources in your configuration be listed in the order they will be created\nto determine dependencies."
       },
       {
         "key": "C",
-        "text": "Terraform requires all dependencies between resources be specified using the depends_on parameter."
+        "text": "Terraform requires all dependencies between resources be specified using the\ndepends_on parameter."
       },
       {
         "key": "D",
@@ -1316,19 +1312,23 @@
     "answers": [
       {
         "key": "A",
-        "text": "How do you reference the name value of the second instance of this resource?"
-      },
-      {
-        "key": "B",
         "text": "aws_instance.web.*.name"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "aws_instance.web[2].name"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "element(aws_instance.web, 2)"
+      },
+      {
+        "key": "D",
+        "text": "aws_instance.web[1].name"
+      },
+      {
+        "key": "E",
+        "text": "aws_instance.web[1]"
       }
     ],
     "correctKeys": [
@@ -1530,23 +1530,23 @@
   },
   {
     "id": 64,
-    "question": "You need to deploy resources into two different regions in the same Terraform configuration using the block in the Exhibit space on this page.\n\nprovider \"aws\"{\n  region = \"us-east-1\"\n}\n\nprovider \"aws\"{\n  region = \"us-west-2\"\n}\n\nWhat do you need to add to the provider configuration to deploy the resource to the us-west-2 AWS region?",
+    "question": "You need to deploy resources into two different regions in the same Terraform configuration using the block in the Exhibit space on this page.\n\n```hcl\nprovider \"aws\" {\n  region = \"us-east-1\"\n}\n\nprovider \"aws\" {\n  region = \"us-west-2\"\n}\n```\n\nWhat do you need to add to the provider configuration to deploy the resource to the us-west-2 AWS region?",
     "answers": [
       {
         "key": "A",
-        "text": "resource \"aws_instance\" \"example-us-west-2\"{\n  ami = data.aws_ami.ubuntu.id\n  instance_type = \"t3.micro\"\n}"
+        "text": "resource “aws_instance” “example-us-west-2” {\nami = data.aws_ami.ubuntu.id\ninstance_type = “t3.micro”\n}"
       },
       {
         "key": "B",
-        "text": "provider \"aws\"{\n  region = \"us-east-1\"\n}\n\nprovider \"aws\" \"west\"{\n  region = \"us-west-2\"\n}"
+        "text": "provider “aws” {\nregion = “us-east-1”\n}\nprovider “aws” “west” {\nregion = “us-west-2”\n}"
       },
       {
         "key": "C",
-        "text": "provider \"aws_west\"{\n  region = \"us-west-2\"\n}"
+        "text": "provider “aws_west” {\nregion = “us-west-2”\n}"
       },
       {
         "key": "D",
-        "text": "provider \"aws\"{\n  region = \"us-east-1\"\n}\n\nprovider \"aws\"{\n  alias = \"west\"\n  region = \"us-west-2\"\n}"
+        "text": "provider “aws” {\nregion = “us-east-1”\n}\nprovider “aws” {\nalias = “west”\nregion = “us-west-2”\n}"
       }
     ],
     "correctKeys": [
@@ -1626,26 +1626,22 @@
   },
   {
     "id": 68,
-    "question": "Part of a configuration is shown in the Exhibit space of this page.",
+    "question": "Part of a configuration is shown in the Exhibit space of this page.\n\n```hcl\ndata \"vsphere_datacenter\" \"dc\" {}\n\nresource \"vsphere_folder\" \"parent\" {\n  path = \"Production\"\n  type = \"vm\"\n  datacenter_id = ____________________\n}\n```\n\nYou want to pass the id of the vsphere_datacenter data source to the datacenter_id argument of the vsphere_folder resource. Which reference would you use?",
     "answers": [
       {
         "key": "A",
-        "text": "You want to pass the id of the vsphere_datacenter data source to the datacenter_id argument of the vsphere_folder resource. Which reference would you use?"
-      },
-      {
-        "key": "B",
         "text": "data.vsphere_datacenter.dc"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "data.vsphere_datacenter.dc.id"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "vsphere_datacenter.dc.id"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "data.dc.id"
       }
     ],
@@ -1868,30 +1864,22 @@
   },
   {
     "id": 79,
-    "question": "You are updating a child module with the resource block shown in the Exhibit space on this page.",
+    "question": "You are updating a child module with the resource block shown in the Exhibit space on this page.\n\n```hcl\nresource \"aws_instance\" \"example\" {\n  ami = \"ami-0a123456789abcdef\"\n  instance_type = \"t3.micro\"\n}\n```\n\nThe public_ip attribute of the resource needs to be accessible to the parent module. How do you meet this requirement?",
     "answers": [
       {
         "key": "A",
-        "text": "The public_ip attribute of the resource needs to be accessible to the parent module."
-      },
-      {
-        "key": "B",
-        "text": "How do you meet this requirement?"
-      },
-      {
-        "key": "C",
         "text": "Add a data source to the parent module."
       },
       {
-        "key": "D",
+        "key": "B",
         "text": "Create a local value in the child module."
       },
       {
-        "key": "E",
+        "key": "C",
         "text": "Add an import block to the parent module."
       },
       {
-        "key": "F",
+        "key": "D",
         "text": "Create an output in the child module."
       }
     ],
@@ -1902,11 +1890,23 @@
   },
   {
     "id": 80,
-    "question": "Your configuration defines the module block shown in the Exhibit space on this page. The web_stack module accepts an input variable named servers.",
+    "question": "Your configuration defines the module block shown in the Exhibit space on this page. The web_stack module accepts an input variable named servers.\n\n```hcl\nmodule \"web_stack\" {\n  source = \"./modules/web_stack\"\n}\n```\n\nWhich of the following changes to the module block sets the servers variable to the value of \"3\"?",
     "answers": [
       {
         "key": "A",
-        "text": "Which of the following changes to the module block sets the servers variable to the value of “3”?"
+        "text": "module “web_stack” {\nsource = “./modules/web_stack”\nservers = 3\n}"
+      },
+      {
+        "key": "B",
+        "text": "module “web_stack” {\nsource = “./modules/web_stack”\ninputs.servers = 3\n}"
+      },
+      {
+        "key": "C",
+        "text": "module “web_stack” {\nsource = “./modules/web_stack”\ninputs = {\nservers = 3\n}"
+      },
+      {
+        "key": "D",
+        "text": "module “web_stack” {\nsource = “./modules/web_stack”\nvar.servers = 3\n}"
       }
     ],
     "correctKeys": [
@@ -1969,26 +1969,22 @@
   },
   {
     "id": 83,
-    "question": "Your configuration defines the module block shown in the Exhibit space on this page.",
+    "question": "Your configuration defines the module block shown in the Exhibit space on this page.\n\n```hcl\nmodule \"production\" {\n  source = \"./modules/web_stack\"\n}\n```\n\nThis module declares an output named hostnames. How do you access the value of this output?",
     "answers": [
       {
         "key": "A",
-        "text": "This module declares an output named hostnames. How do you access the value of this output?"
-      },
-      {
-        "key": "B",
         "text": "production.hostnames"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "module.production.hostnames"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "web_stack.hostnames"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "module.web_stack.hostnames"
       }
     ],
@@ -2000,32 +1996,6 @@
   {
     "id": 84,
     "question": "Your configuration defines the module block shown in the Exhibit space of this page.\n\n```\nmodule \"production\"{\n  source = \"./modules/web_stack\"\n}\n```\n\nThis module declares an output named hostnames.\nHow do you access the value of this output?",
-    "answers": [
-      {
-        "key": "A",
-        "text": "production.hostnames"
-      },
-      {
-        "key": "B",
-        "text": "module.production.hostnames"
-      },
-      {
-        "key": "C",
-        "text": "web_stack.hostnames"
-      },
-      {
-        "key": "D",
-        "text": "module.web_stack.hostnames"
-      }
-    ],
-    "correctKeys": [
-      "B"
-    ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 13 discussion - ExamTopics"
-  },
-  {
-    "id": 85,
-    "question": "Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?",
     "answers": [
       {
         "key": "A",
@@ -2042,6 +2012,32 @@
       {
         "key": "D",
         "text": "version"
+      }
+    ],
+    "correctKeys": [
+      "C"
+    ],
+    "explanation": "Exam Terraform Associate 004 topic 5 question 13 discussion - ExamTopics"
+  },
+  {
+    "id": 85,
+    "question": "Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Change the value of the count argument on the resource."
+      },
+      {
+        "key": "B",
+        "text": "Remove the resource block from your configuration."
+      },
+      {
+        "key": "C",
+        "text": "Run terraform state rm aws_instance.ubuntu[1]."
+      },
+      {
+        "key": "D",
+        "text": "Use a moved block."
       }
     ],
     "correctKeys": [
@@ -2099,7 +2095,7 @@
     "answers": [
       {
         "key": "A",
-        "text": "Eliminates the need to manage credentials when deploying infrastructure to multiple cloud providers."
+        "text": "Eliminates the need to manage credentials when deploying infrastructure to multiple cloud\nproviders."
       },
       {
         "key": "B",
@@ -2328,7 +2324,7 @@
     "answers": [
       {
         "key": "A",
-        "text": "Add moved blocks to your configuration to let Terraform know the new resource addresses for the affected resources."
+        "text": "Add moved blocks to your configuration to let Terraform know the new resource addresses\nfor the affected resources."
       },
       {
         "key": "B",
@@ -2336,7 +2332,7 @@
       },
       {
         "key": "C",
-        "text": "Run the terraform console command to edit your workspace’s state and update the resource names."
+        "text": "Run the terraform console command to edit your workspace’s state and update the\nresource names."
       },
       {
         "key": "D",
@@ -2532,11 +2528,11 @@
       },
       {
         "key": "B",
-        "text": "Run terraform state list to find the name of the resource, then terraform state show to find the attributes including public IP address."
+        "text": "Run terraform state list to find the name of the resource, then terraform state show to\nfind the attributes including public IP address."
       },
       {
         "key": "C",
-        "text": "In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file."
+        "text": "In a new folder, use the terraform_remote_state data source to load in the state file, then\nwrite an output for each resource that you find the state file."
       },
       {
         "key": "D",
@@ -2807,11 +2803,11 @@
       },
       {
         "key": "C",
-        "text": "The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy and select the newly-created VM."
+        "text": "The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy\nand select the newly-created VM."
       },
       {
         "key": "D",
-        "text": "Delete the VM using the cloud provider console, and execute terraform apply to apply the changes to the Terraform state file."
+        "text": "Delete the VM using the cloud provider console, and execute terraform apply to apply the\nchanges to the Terraform state file."
       }
     ],
     "correctKeys": [
@@ -2952,47 +2948,23 @@
     "answers": [
       {
         "key": "A",
-        "text": "The example-compute workspace uses data from output values configured in the example-network workspace, and must be deployed afterward."
+        "text": "A health check configured on the example-compute workspace to create a plan when\nHCP Terraform applies changes to the example-network workspace."
       },
       {
         "key": "B",
-        "text": "Currently, this is a manual process:"
+        "text": "A run trigger configured on the example-network workspace to automatically plan\nchanges to the example-compute workspace after every apply."
       },
       {
         "key": "C",
-        "text": "An operator deploys changes to the example-network workspace."
+        "text": "A health check configured on the example-network workspace to create a plan on the\nexample-compute workspace when HCP Terraform applies changes to it."
       },
       {
         "key": "D",
-        "text": "They manually copy the output values from the example-network workspace to input variables configured for the example-compute workspace."
+        "text": "A run trigger configured on the example-compute workspace to automatically plan\nchanges after HCP Terraform applies changes to the example-network workspace."
       },
       {
         "key": "E",
-        "text": "They deploy the example-compute workspace."
-      },
-      {
-        "key": "F",
-        "text": "Which HCP Terraform features can you use to automate this process? (Choose two.)"
-      },
-      {
-        "key": "G",
-        "text": "A health check configured on the example-compute workspace to create a plan when HCP Terraform applies changes to the example-network workspace."
-      },
-      {
-        "key": "H",
-        "text": "A run trigger configured on the example-network workspace to automatically plan changes to the example-compute workspace after every apply."
-      },
-      {
-        "key": "I",
-        "text": "A health check configured on the example-network workspace to create a plan on the example-compute workspace when HCP Terraform applies changes to it."
-      },
-      {
-        "key": "J",
-        "text": "A run trigger configured on the example-compute workspace to automatically plan changes after HCP Terraform applies changes to the example-network workspace."
-      },
-      {
-        "key": "K",
-        "text": "A tfe_outputs data source configured in the example-compute workspace to automatically load output values from the example-network workspace."
+        "text": "A tfe_outputs data source configured in the example-compute workspace to\nautomatically load output values from the example-network workspace."
       }
     ],
     "correctKeys": [
@@ -3077,7 +3049,7 @@
       },
       {
         "key": "D",
-        "text": "Using the cloud block enables remote operations on infrastructure managed by HCP Terraform or Terraform Enterprise."
+        "text": "Using the cloud block enables remote operations on infrastructure managed by HCP\nTerraform or Terraform Enterprise."
       }
     ],
     "correctKeys": [
@@ -3131,15 +3103,15 @@
       },
       {
         "key": "B",
-        "text": "A precondition cannot reference attributes of another resource that are only known after apply"
+        "text": "A precondition cannot reference attributes of another resource that are only known after\napply"
       },
       {
         "key": "C",
-        "text": "When a resource has a count meta-argument, Terraform evaluates the precondition for each instance."
+        "text": "When a resource has a count meta-argument, Terraform evaluates the precondition for\neach instance."
       },
       {
         "key": "D",
-        "text": "If a resource's postcondition block fails, Terraform still creates the resources that depend on it."
+        "text": "If a resource's postcondition block fails, Terraform still creates the resources that depend\non it."
       },
       {
         "key": "E",
@@ -3158,19 +3130,19 @@
     "answers": [
       {
         "key": "A",
-        "text": "Terraform replaces cloud provider APIs with its own protocols, enabling automated deployments."
+        "text": "Terraform replaces cloud provider APIs with its own protocols, enabling automated\ndeployments."
       },
       {
         "key": "B",
-        "text": "Terraform describes infrastructure with version-controlled, repeatable configurations that specify the desired state."
+        "text": "Terraform describes infrastructure with version-controlled, repeatable configurations that\nspecify the desired state."
       },
       {
         "key": "C",
-        "text": "Terraform enforces infrastructure through imperative scripts to ensure tasks are completed in the proper order."
+        "text": "Terraform enforces infrastructure through imperative scripts to ensure tasks are completed\nin the proper order."
       },
       {
         "key": "D",
-        "text": "Terraform is merely a wrapper for cloud provider APIs, so there is little to no difference in calling the API directly."
+        "text": "Terraform is merely a wrapper for cloud provider APIs, so there is little to no difference in\ncalling the API directly."
       }
     ],
     "correctKeys": [
@@ -3214,7 +3186,7 @@
       },
       {
         "key": "B",
-        "text": "After you run terraform plan, so you can validate that your state file is consistent with your infrastructure."
+        "text": "After you run terraform plan, so you can validate that your state file is consistent with your\ninfrastructure."
       },
       {
         "key": "C",
@@ -3289,22 +3261,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "Which action should you take?"
-      },
-      {
-        "key": "B",
         "text": "Run the terraform output command."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Add a log argument to the terraform block."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Update the Terraform CLI configuration file."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Set the TF LOG environment variable to TRACE."
       }
     ],
@@ -3319,22 +3287,14 @@
     "answers": [
       {
         "key": "A",
-        "text": "When running terraform plan, Terraform wants to destroy and recreate the resources."
-      },
-      {
-        "key": "B",
-        "text": "What should you add to the configuration to preserve the existing resources?"
-      },
-      {
-        "key": "C",
         "text": "Add a depends_on argument to each resource you move."
       },
       {
-        "key": "D",
+        "key": "B",
         "text": "Add moved blocks for each resource."
       },
       {
-        "key": "E",
+        "key": "C",
         "text": "Add lifecycle prevent_destroy = true to each of the resources."
       }
     ],
@@ -3345,18 +3305,14 @@
   },
   {
     "id": 136,
-    "question": "A module block is shown in the Exhibit space on this page.",
+    "question": "A module block is shown in the Exhibit space on this page.\n\n```hcl\nmodule \"vpc\" {\n  source = \"terraform-awsmodules/vpc/aws\"\n  version = \"~>4.0\"\n}\n```\n\nThat module block limits the module version to major version 4.",
     "answers": [
       {
         "key": "A",
-        "text": "That module block limits the module version to major version 4."
-      },
-      {
-        "key": "B",
         "text": "True"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "False"
       }
     ],
@@ -3371,15 +3327,23 @@
     "answers": [
       {
         "key": "A",
-        "text": "True"
+        "text": "Significant changes should be expected since moving resources between files can trigger a\ndestroy/replacement."
       },
       {
         "key": "B",
-        "text": "False"
+        "text": "No impact since Terraform reads all .tf files as a single configuration when executing a\nterraform plan."
+      },
+      {
+        "key": "C",
+        "text": "Only minor impacts since Terraform parses the main.tf file first, which could change the\norder in which resources are created."
+      },
+      {
+        "key": "D",
+        "text": "The terraform plan will fail since variable and provider blocks must appear before resource\nblocks."
       }
     ],
     "correctKeys": [
-      "A"
+      "B"
     ],
     "explanation": "EXAMHEIST - 161"
   },
@@ -3389,22 +3353,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "How can you protect that data?"
-      },
-      {
-        "key": "B",
         "text": "Delete the state file every time you run Terraform."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Store the state in an encrypted backend."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Always store your secrets in a secrets.tfvars file."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Edit your state file to scrub out the sensitive data."
       }
     ],
@@ -3437,7 +3397,7 @@
     "answers": [
       {
         "key": "A",
-        "text": "Terraform will use the latest version of the provider for the new resource and the version recorded in the lock file to manage existing resources."
+        "text": "Terraform will use the latest version of the provider for the new resource and the version\nrecorded in the lock file to manage existing resources."
       },
       {
         "key": "B",
@@ -3449,7 +3409,7 @@
       },
       {
         "key": "D",
-        "text": "Terraform will use the latest version of the provider available at the time you provision your new resource."
+        "text": "Terraform will use the latest version of the provider available at the time you provision your\nnew resource."
       }
     ],
     "correctKeys": [
@@ -3511,22 +3471,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "What next step should you take to determine the root cause of the problem?"
-      },
-      {
-        "key": "B",
         "text": "Run terraform login to reauthenticate with the provider."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Review /var/log/terraform.log for error messages."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Review syslog for Terraform error messages."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Set TF_LOG=DEBUG."
       }
     ],
@@ -3541,19 +3497,19 @@
     "answers": [
       {
         "key": "A",
-        "text": "Run terraform login to reauthenticate with the provider."
+        "text": "terraform show"
       },
       {
         "key": "B",
-        "text": "Review /var/log/terraform.log for error messages."
+        "text": "terraform init"
       },
       {
         "key": "C",
-        "text": "Review syslog for Terraform error messages."
+        "text": "terraform fmt"
       },
       {
         "key": "D",
-        "text": "Set TF_LOG=DEBUG."
+        "text": "terraform validate"
       }
     ],
     "correctKeys": [
@@ -3567,7 +3523,7 @@
     "answers": [
       {
         "key": "A",
-        "text": "It can execute Terraform runs on dedicated infrastructure in HCP Terraform/Terraform Cloud."
+        "text": "It can execute Terraform runs on dedicated infrastructure in HCP Terraform/Terraform\nCloud."
       },
       {
         "key": "B",
@@ -3619,22 +3575,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "Which command should you use to show all of the resources that will be deleted? Choose two correct answers."
-      },
-      {
-        "key": "B",
         "text": "Run terraform state rm *"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Run terraform show -destroy"
       },
       {
-        "key": "D",
-        "text": "Run terraform destroy. This will first output all the resource that will be deleted before prompting for approval"
+        "key": "C",
+        "text": "Run terraform destroy. This will first output all the resource that will be deleted before\nprompting for approval"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Run terraform plan -destroy"
       }
     ],
@@ -3676,22 +3628,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "Which of the following methods could you use to discover which instance Terraform manages?"
+        "text": "Run terraform state rm on both VMs, then terraform apply to recreate the correct one that\nwill be managed by Terraform."
       },
       {
         "key": "B",
-        "text": "Run terraform state rm on both VMs, then terraform apply to recreate the correct one that will be managed by Terraform."
+        "text": "Run terraform state list to find the names of all VMs, then run terraform state show for\neach of them to find which VM ID that Terraform manages."
       },
       {
         "key": "C",
-        "text": "Run terraform state list to find the names of all VMs, then run terraform state show for each of them to find which VM ID that Terraform manages."
+        "text": "Run a terraform apply -refresh to identify the virtual machine IDs that are already\nmanaged by Terraform."
       },
       {
         "key": "D",
-        "text": "Run a terraform apply -refresh to identify the virtual machine IDs that are already managed by Terraform."
-      },
-      {
-        "key": "E",
         "text": "Modify the Terraform configuration to add an import block for both of the virtual machines."
       }
     ],
@@ -3732,30 +3680,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "Keeps the configurations confidential within your organization"
-      },
-      {
-        "key": "B",
-        "text": "Supports Terraform’s semantic version constraints"
-      },
-      {
-        "key": "C",
-        "text": "Provides a browsable directory of your modules"
-      },
-      {
-        "key": "D",
         "text": "A Subfolder within a workspace"
       },
       {
-        "key": "E",
+        "key": "B",
         "text": "A Git repository containing your modules"
       },
       {
-        "key": "F",
+        "key": "C",
         "text": "HCP Terraform/Terraform Cloud private registry"
       },
       {
-        "key": "G",
+        "key": "D",
         "text": "Public Terraform module registry"
       }
     ],
@@ -3774,7 +3710,7 @@
       },
       {
         "key": "B",
-        "text": "Running terraform destroy from the correct directory and then typing yes when prompted in the CLI."
+        "text": "Running terraform destroy from the correct directory and then typing yes when prompted\nin the CLI."
       },
       {
         "key": "C",
@@ -3844,22 +3780,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "How can you ensure that Terraform will print out this value when you run Terraform CLI commands such as terraform apply?"
-      },
-      {
-        "key": "B",
         "text": "Nothing. Terraform will automatically print out all output values from child modules."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Nothing. Terraform cannot use output values from child modules."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Declare a new output in your root configuration that references the module’s output."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "None of the above."
       }
     ],
@@ -3874,22 +3806,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "What are the two things you must do to achieve this? (Choose two)"
-      },
-      {
-        "key": "B",
         "text": "Provision new VMs using Terraform with the same VM names."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Use the terraform import command for the existing VMs."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Write Terraform configuration for the existing VMs."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Run the terraform import-gcp command."
       }
     ],
@@ -3927,27 +3855,23 @@
   },
   {
     "id": 158,
-    "question": "A module block is shown in the Exhibit space of this page.",
+    "question": "A module block is shown in the Exhibit space of this page.\n\n```hcl\nmodule \"consul\" {\n  source = \"hashicorp/consul/aws\"\n}\n```\n\nWhen you use a module block to reference a module from the Terraform Registry such as the one in the example, how do you specify version 1.0.0 of the module?",
     "answers": [
       {
         "key": "A",
-        "text": "When you use a module block to reference a module from the Terraform Registry such as the one in the example, how do you specify version 1.0.0 of the module?"
-      },
-      {
-        "key": "B",
         "text": "You cannot. Modules stored on the public Terraform Registry do not support versioning."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Append ?ref=v1.0.0 argument to the source path."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Add a version = \"1.0.0\" attribute to the module block."
       },
       {
-        "key": "E",
-        "text": "Nothing. Modules stored on the public Terraform module Registry always default to version 1.0.0."
+        "key": "D",
+        "text": "Nothing. Modules stored on the public Terraform module Registry always default to version\n1.0.0."
       }
     ],
     "correctKeys": [
@@ -3961,23 +3885,15 @@
     "answers": [
       {
         "key": "A",
-        "text": "You cannot. Modules stored on the public Terraform Registry do not support versioning."
+        "text": "True"
       },
       {
         "key": "B",
-        "text": "Append ?ref=v1.0.0 argument to the source path."
-      },
-      {
-        "key": "C",
-        "text": "Add a version = \"1.0.0\" attribute to the module block."
-      },
-      {
-        "key": "D",
-        "text": "Nothing. Modules stored on the public Terraform module Registry always default to version 1.0.0."
+        "text": "False"
       }
     ],
     "correctKeys": [
-      "C"
+      "B"
     ],
     "explanation": "EXAMHEIST-189"
   },
@@ -4117,26 +4033,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "When you run `terraform validate`, you encounter the following error:"
-      },
-      {
-        "key": "B",
-        "text": "What must you do to successfully retrieve the `vnet_id` value from your networking module?"
-      },
-      {
-        "key": "C",
         "text": "Define the attribute `vnet_id` as a variable in the networking module."
       },
       {
-        "key": "D",
+        "key": "B",
         "text": "Change the referenced value to `module.my_network.outputs.vnet_id`"
       },
       {
-        "key": "E",
+        "key": "C",
         "text": "Define the attribute `vnet_id` as an output in the networking module."
       },
       {
-        "key": "F",
+        "key": "D",
         "text": "Change the referenced value to `my_network.outputs.vnet_id`"
       }
     ],
@@ -4151,23 +4059,23 @@
     "answers": [
       {
         "key": "A",
-        "text": "Define the attribute \"vnet_id\" as a variable in the networking module."
+        "text": "The data source block"
       },
       {
         "key": "B",
-        "text": "Change the referenced value to \"module.my_network.outputs.vnet_id\"."
+        "text": "The terraform block"
       },
       {
         "key": "C",
-        "text": "Define the attribute \"vnet_id\" as an output in the networking module."
+        "text": "The provider block"
       },
       {
         "key": "D",
-        "text": "Change the referenced value to \"my_network.outputs.vnet_id\"."
+        "text": "The resource block\nresource \"aws_instance\" \"example\" {\nami = \"ami-0c55b2a94c9b82a81\"\ninstance_type = \"t2.micro\"\nsubnet_id =module.my_network.vnet_id\n}\noutput: \"net_id\" {\nvalue = module.my_network. vnet_id\n}"
       }
     ],
     "correctKeys": [
-      "C"
+      "B"
     ],
     "explanation": "EXAMHEIST-197"
   },
@@ -4177,22 +4085,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "How should they ensure the code satisfies conventions?"
-      },
-      {
-        "key": "B",
         "text": "Use terraform fmt."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Terraform automatically formats configuration on terraform apply."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Run terraform validate prior to executing terraform plan or terraform apply."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Replace all tabs with spaces."
       }
     ],
@@ -4203,26 +4107,22 @@
   },
   {
     "id": 168,
-    "question": "You decide to move a Terraform state file to Amazon S3 from another location. You write the code shown in the Exhibit space into a file called backend.tf.",
+    "question": "You decide to move a Terraform state file to Amazon S3 from another location. You write the code shown in the Exhibit space into a file called backend.tf.\n\n```hcl\nterraform {\n  backend \"s3\" {\n    bucket = \"my-tf-bucket\"\n    region = \"us-east-1\"\n  }\n}\n```\n\nWhich command will migrate your current state file to the new S3 backend?",
     "answers": [
       {
         "key": "A",
-        "text": "Which command will migrate your current state file to the new S3 backend?"
-      },
-      {
-        "key": "B",
         "text": "terraform refresh"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "terraform init"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform push"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "terraform state"
       }
     ],
@@ -4237,23 +4137,27 @@
     "answers": [
       {
         "key": "A",
-        "text": "terraform refresh"
+        "text": "Make the change via the public cloud API endpoint"
       },
       {
         "key": "B",
-        "text": "terraform init"
+        "text": "Clone the repository containing your infrastructure code and then run the code"
       },
       {
         "key": "C",
-        "text": "terraform push"
+        "text": "Use the public cloud console to make the change after a database record has been\napproved"
       },
       {
         "key": "D",
-        "text": "terraform state"
+        "text": "Make the change programmatically via the public cloud CLI"
+      },
+      {
+        "key": "E",
+        "text": "Submit a pull request and wait for an approved merge of the proposed changes."
       }
     ],
     "correctKeys": [
-      "B"
+      "E"
     ],
     "explanation": "EXAMHEIST-207"
   },
@@ -4319,7 +4223,7 @@
       },
       {
         "key": "D",
-        "text": "Cloud providers and infrastructure vendors can write, maintain, or collaborate on Terraform providers"
+        "text": "Cloud providers and infrastructure vendors can write, maintain, or collaborate on Terraform\nproviders"
       },
       {
         "key": "E",
@@ -4359,7 +4263,7 @@
       },
       {
         "key": "B",
-        "text": "You can restrict specific resource configurations, such as disallowing the use of CIDR=0.0.0.0/0."
+        "text": "You can restrict specific resource configurations, such as disallowing the use of\nCIDR=0.0.0.0/0."
       },
       {
         "key": "C",
@@ -4615,7 +4519,7 @@
       },
       {
         "key": "B",
-        "text": "By adding variables to each HCP Terraform/Terraform Cloud workspace to ensure these settings are always enabled"
+        "text": "By adding variables to each HCP Terraform/Terraform Cloud workspace to ensure these\nsettings are always enabled"
       },
       {
         "key": "C",
@@ -4645,11 +4549,11 @@
       },
       {
         "key": "C",
-        "text": "In a remote location configured in the .terraformrc file, such as HCP Terraform or a cloud storage system."
+        "text": "In a remote location configured in the .terraformrc file, such as HCP Terraform or a cloud\nstorage system."
       },
       {
         "key": "D",
-        "text": "In a remote location configured in the terraform block, such as HCP Terraform or a cloud storage system."
+        "text": "In a remote location configured in the terraform block, such as HCP Terraform or a cloud\nstorage system."
       }
     ],
     "correctKeys": [
@@ -4815,7 +4719,7 @@
     "answers": [
       {
         "key": "A",
-        "text": "The team is asked to build a reusable code base that can deploy resources into any AWS region"
+        "text": "The team is asked to build a reusable code base that can deploy resources into any AWS\nregion"
       },
       {
         "key": "B",
@@ -4823,11 +4727,11 @@
       },
       {
         "key": "C",
-        "text": "The organization decides to expand into Azure and wishes to deploy new infrastructure using their existing codebase"
+        "text": "The organization decides to expand into Azure and wishes to deploy new infrastructure\nusing their existing codebase"
       },
       {
         "key": "D",
-        "text": "The DevOps team is tasked with automating a manual, web console-based provisioning process"
+        "text": "The DevOps team is tasked with automating a manual, web console-based provisioning\nprocess"
       }
     ],
     "correctKeys": [
@@ -4939,23 +4843,15 @@
     "answers": [
       {
         "key": "A",
-        "text": "local"
+        "text": "True"
       },
       {
         "key": "B",
-        "text": "data"
-      },
-      {
-        "key": "C",
-        "text": "resource"
-      },
-      {
-        "key": "D",
-        "text": "provider"
+        "text": "False"
       }
     ],
     "correctKeys": [
-      "B"
+      "A"
     ],
     "explanation": "Discussion: EXAMHEIST-251"
   },
@@ -4977,7 +4873,7 @@
       },
       {
         "key": "D",
-        "text": "The more resources your organization needs, the more tickets your infrastructure team has to process."
+        "text": "The more resources your organization needs, the more tickets your infrastructure team has\nto process."
       }
     ],
     "correctKeys": [
@@ -5163,7 +5059,7 @@
     "answers": [
       {
         "key": "A",
-        "text": "Terraform will not make any changes to the load balancer and will update the state file to reflect the manual change."
+        "text": "Terraform will not make any changes to the load balancer and will update the state file to\nreflect the manual change."
       },
       {
         "key": "B",
@@ -5189,15 +5085,15 @@
     "answers": [
       {
         "key": "A",
-        "text": "Changing resources via the Azure Cloud Console records the change in the current state file."
+        "text": "Changing resources via the Azure Cloud Console records the change in the current state\nfile."
       },
       {
         "key": "B",
-        "text": "When you change a resource via the Azure Cloud Console. Terraform records the changes in a new state file."
+        "text": "When you change a resource via the Azure Cloud Console. Terraform records the changes\nin a new state file."
       },
       {
         "key": "C",
-        "text": "When you change a Terraform-managed resource via the Azure Cloud Console. Terraform updates the state file to reflect the change during the next plan or apply."
+        "text": "When you change a Terraform-managed resource via the Azure Cloud Console. Terraform\nupdates the state file to reflect the change during the next plan or apply."
       },
       {
         "key": "D",
@@ -5220,7 +5116,7 @@
       },
       {
         "key": "B",
-        "text": "Develop and publish a customer provider to interact with the service using its proprietary APIs."
+        "text": "Develop and publish a customer provider to interact with the service using its proprietary\nAPIs."
       }
     ],
     "correctKeys": [
@@ -5234,22 +5130,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "Which Terraform command should you run first?"
-      },
-      {
-        "key": "B",
         "text": "terraform apply"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "terraform plan"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "terraform show"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "terraform init"
       }
     ],
@@ -5264,22 +5156,18 @@
     "answers": [
       {
         "key": "A",
-        "text": "Which variable type could you use for this input?"
-      },
-      {
-        "key": "B",
         "text": "List"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Object"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Map"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Terraform does not support complex input variables of different types"
       }
     ],

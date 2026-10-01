@@ -1,8 +1,3 @@
-# Terraform Associate Certification (004) - Question Bank
-
-**Total Questions:** 221
-**Last Updated:** 2025-12-29
-
 #### Q1. IaC (Infrastructure as Code) can be stored in a version control system along with application code.
 
 - [x] A. True
@@ -90,14 +85,34 @@
 
 #### Q9. Your team often uses API calls to create and manage cloud infrastructure.
 
-- [ ] A. In what ways does Terraform differ from conventional infrastructure management approaches?
-- [x] B. Terraform replaces cloud provider APIs with its own protocols, enabling automated deployments.
-- [ ] C. Terraform describes infrastructure with version-controlled, repeatable configurations that specify the desired state.
-- [ ] D. Terraform is merely a wrapper for cloud provider APIs, so there is little to no difference in calling the API directly.
-- [ ] E. Terraform enforces infrastructure through imperative scripts to ensure tasks are completed in the proper order.
+Your team often uses API calls to create and manage cloud infrastructure. In what ways does Terraform differ from conventional infrastructure management approaches?
 
-> **Explanation:** Exam Terraform Associate 004 topic 1 question 9 discussion - ExamTopics
+- [ ] A.
 
+  ```hcl
+  Terraform replaces cloud provider APIs with its own protocols, enabling automated
+  deployments.
+  ```
+- [x] B.
+
+  ```hcl
+  Terraform describes infrastructure with version-controlled, repeatable configurations that
+  specify the desired state.
+  ```
+- [ ] C.
+
+  ```hcl
+  Terraform is merely a wrapper for cloud provider APIs, so there is little to no difference in
+  calling the API directly.
+  ```
+- [ ] D.
+
+  ```hcl
+  Terraform enforces infrastructure through imperative scripts to ensure tasks are completed
+  in the proper order.
+  ```
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 1 question 9 discussion - ExamTopics
 ---
 
 #### Q10. Which of these workflows is only enabled by the use of Infrastructure as Code?
@@ -361,24 +376,72 @@ You will use this variable as the value for the tags argument in several resourc
 
 #### Q33. Which is the correct workflow for deploying new infrastructure with Terraform?
 
-- [ ] A. 1. Write Terraform configuration. 2. Run terraform apply to create infrastructure. 3. Use terraform validate to confirm Terraform deployed resources correctly.
-- [x] B. 1. Write Terraform configuration. 2. Run terraform init to initialize the working directory or workspace. 3. Run terraform apply.
-- [ ] C. 1. Write Terraform configuration. 2. Run terraform plan to initialize the working directory or workspace. 3. Run terraform apply to create the infrastructure.
-- [ ] D. 1. Write Terraform configuration. 2. Run terraform show to view proposed changes. 3. Run terraform apply to create new infrastructure.
+Which is the correct workflow for deploying new infrastructure with Terraform?
 
-> **Explanation:** Exam Terraform Associate 004 topic 3 question 6 discussion - ExamTopics
+- [ ] A.
 
+  ```hcl
+  1. Write Terraform configuration.
+  2. Run terraform apply to create infrastructure.
+  3. Use terraform validate to confirm Terraform deployed resources correctly.
+  ```
+- [x] B.
+
+  ```hcl
+  1. Write Terraform configuration.
+  2. Run terraform init to initialize the working directory or workspace.
+  3. Run terraform apply.
+  ```
+- [ ] C.
+
+  ```hcl
+  1. Write Terraform configuration.
+  2. Run terraform plan to initialize the working directory or workspace.
+  3. Run terraform apply to create the infrastructure.
+  ```
+- [ ] D.
+
+  ```hcl
+  1. Write Terraform configuration.
+  2. Run terraform show to view proposed changes.
+  3. Run terraform apply to create new infrastructure.
+  ```
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 3 question 6 discussion - ExamTopics
 ---
 
 #### Q34. After creating a new Terraform configuration, your config passes terraform validate but gives an “Access Denied” error from the cloud provider when running terraform plan. Why didn’t validate catch this issue?
 
-- [ ] A. The working directory was not initialized, so the cloud provider plugin wasn’t available to use when running the terraform validate command.
-- [ ] B. The remote backend wasn’t configured, so terraform validate couldn’t load the state and detect the missing credentials.
-- [x] C. terraform validate only checks if a configuration is syntactically correct and internally consistent, and does not communicate with providers.
-- [ ] D. Variables are only applied and validated during a terraform plan, so validate assumed defaults and returned the success message.
+After creating a new Terraform configuration, your config passes terraform validate but gives an “Access Denied” error from the cloud provider when running terraform plan. Why didn’t validate catch this issue?
 
-> **Explanation:** Exam Terraform Associate 004 topic 3 question 7 discussion - ExamTopics
+- [ ] A.
 
+  ```hcl
+  The working directory was not initialized, so the cloud provider plugin wasn’t available to
+  use when running the terraform validate command.
+  ```
+- [ ] B.
+
+  ```hcl
+  The remote backend wasn’t configured, so terraform validate couldn’t load the state and
+  detect the missing credentials.
+  ```
+- [x] C.
+
+  ```hcl
+  terraform validate only checks if a configuration is syntactically correct and internally
+  consistent, and does not communicate with providers.
+  ```
+- [ ] D.
+
+  ```hcl
+  Variables are only applied and validated during a terraform plan, so validate assumed
+  defaults and returned the success message.
+  ```
+
+> **Explanation:** terraform validate is offline/static validation. It checks that your Terraform configuration is: syntactically valid (HCL is well-formed) internally consistent (references, types, required arguments where possible) But it does not contact cloud providers and does not attempt authentication. So it cannot detect “Access Denied” / missing credentials / insufficient permissions until Terraform actually tries to interact with the provider during terraform plan (or apply).
+>
+> Discussion: Exam Terraform Associate 004 topic 3 question 7 discussion - ExamTopics
 ---
 
 #### Q35. Only the user that generated a terraform plan may apply it.
@@ -412,14 +475,25 @@ You will use this variable as the value for the tags argument in several resourc
 
 #### Q38. Which is true about terraform apply? (Choose two.)
 
+Which is true about terraform apply? (Choose two.)
+
 - [x] A. It only operates on infrastructure defined in the current working directory or workspace.
 - [ ] B. You cannot target specific resources for the operation.
-- [x] C. Depending on provider specification, Terraform may need to destroy and recreate your infrastructure resources.
+- [x] C.
+
+  ```hcl
+  Depending on provider specification, Terraform may need to destroy and recreate your
+  infrastructure resources.
+  ```
 - [ ] D. You must pass the output of a terraform plan command to it.
-- [ ] E. By default, it does not refresh your state file to reflect the current infrastructure configuration.
+- [ ] E.
 
-> **Explanation:** Exam Terraform Associate 004 topic 3 question 11 discussion - ExamTopics
+  ```hcl
+  By default, it does not refresh your state file to reflect the current infrastructure
+  configuration.
+  ```
 
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 3 question 11 discussion - ExamTopics
 ---
 
 #### Q39. Which syntax check returns an error when you run terraform validate?
@@ -435,33 +509,67 @@ You will use this variable as the value for the tags argument in several resourc
 
 #### Q40. What is the purpose of the .terraform directory in a Terraform workspace?
 
-- [x] A. The directory contains plugins and modules that Terraform downloads during initialization, along with other important information.
-- [ ] B. The directory contains the provide credentials and the .tfvars files to prevent them from being committed to version control by accident.
-- [ ] C. The directory is where Terraform creates and maintains the state file to track the underlying resources it creates and manages.
-- [ ] D. The directory is used to convert, and store Terraform configuration files into API calls to communicate with the targeted platform.
+What is the purpose of the .terraform directory in a Terraform workspace?
 
-> **Explanation:** Exam Terraform Associate 004 topic 3 question 13 discussion - ExamTopics
+- [x] A.
 
+  ```hcl
+  The directory contains plugins and modules that Terraform downloads during initialization,
+  along with other important information.
+  ```
+- [ ] B.
+
+  ```hcl
+  The directory contains the provide credentials and the .tfvars files to prevent them from
+  being committed to version control by accident.
+  ```
+- [ ] C.
+
+  ```hcl
+  The directory is where Terraform creates and maintains the state file to track the underlying
+  resources it creates and manages.
+  ```
+- [ ] D.
+
+  ```hcl
+  The directory is used to convert, and store Terraform configuration files into API calls to
+  communicate with the targeted platform.
+  ```
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 3 question 13 discussion - ExamTopics
 ---
 
 #### Q41. How can terraform plan aid in the development process?
 
-- [x] A. Validates your expectations against the execution plan without permanently modifying state.
-- [ ] B. Reconciles Terraform’s state against deploys resources and permanently modifies state using the current status of deployed resources.
+How can terraform plan aid in the development process?
+
+- [x] A.
+
+  ```hcl
+  Validates your expectations against the execution plan without permanently modifying
+  state.
+  ```
+- [ ] B.
+
+  ```hcl
+  Reconciles Terraform’s state against deploys resources and permanently modifies state
+  using the current status of deployed resources.
+  ```
 - [ ] C. Initializes your working directory containing your Terraform configuration files.
 - [ ] D. Formats your Terraform configuration files.
 
-> **Explanation:** Exam Terraform Associate 004 topic 3 question 14 discussion - ExamTopics
-
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 3 question 14 discussion - ExamTopics
 ---
 
 #### Q42. You have a saved execution plan containing desired changes for infrastructure managed by Terraform. After running the command terraform apply my.tfplan, you receive the error shown in the Exhibit space on this page.
 
 You have a saved execution plan containing desired changes for infrastructure managed by Terraform. After running the command terraform apply my.tfplan, you receive the error shown in the Exhibit space on this page.
 
+```text
 Error: Saved plan is stale
 
 The given plan file can no longer be applied because the state was changed by another operation after the plan was created.
+```
 
 How can you apply the desired changes? (Choose two.)
 
@@ -471,8 +579,9 @@ How can you apply the desired changes? (Choose two.)
 - [ ] D. Force the apply command by adding the flag -lock=false.
 - [ ] E. Update the current plan file using the terraform state push command.
 
-> **Explanation:** Exam Terraform Associate 004 topic 3 question 15 discussion - ExamTopics
-
+> **Explanation:** A. Generate a new execution plan file with terraform plan, and apply the new plan. A saved plan becomes invalid if the state changes. Terraform requires a fresh plan that matches the current state before applying. B. Run terraform apply without the saved execution plan. Running terraform apply without specifying a plan forces Terraform to: Refresh the state Recalculate the plan Prompt you to approve the changes This bypasses the stale plan entirely.
+>
+> Discussion: Exam Terraform Associate 004 topic 3 question 15 discussion - ExamTopics
 ---
 
 #### Q43. Which of these can you do with terraform plan? (Choose two.)
@@ -550,13 +659,29 @@ How can you apply the desired changes? (Choose two.)
 
 #### Q50. How does Terraform determine dependencies between resources when it creates an execution plan?
 
-- [x] A. Terraform builds a resource graph based on your configuration and your state file (if present).
-- [ ] B. Terraform requires resources in your configuration be listed in the order they will be created to determine dependencies.
-- [ ] C. Terraform requires all dependencies between resources be specified using the depends_on parameter.
+How does Terraform determine dependencies between resources when it creates an execution plan?
+
+- [x] A.
+
+  ```hcl
+  Terraform builds a resource graph based on your configuration and your state file (if
+  present).
+  ```
+- [ ] B.
+
+  ```hcl
+  Terraform requires resources in your configuration be listed in the order they will be created
+  to determine dependencies.
+  ```
+- [ ] C.
+
+  ```hcl
+  Terraform requires all dependencies between resources be specified using the
+  depends_on parameter.
+  ```
 - [ ] D. Terraform requires resource dependencies be defined as modules and sourced in order.
 
-> **Explanation:** Exam Terraform Associate 004 topic 3 question 23 discussion - ExamTopics
-
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 3 question 23 discussion - ExamTopics
 ---
 
 #### Q51. Which of the following arguments are required when declaring a Terraform output?
@@ -628,13 +753,13 @@ resource "aws_instance" "web"{
 
 How do you reference the name value of the second instance of this resource?
 
-- [ ] A. How do you reference the name value of the second instance of this resource?
-- [ ] B. aws_instance.web.*.name
-- [ ] C. aws_instance.web[2].name
-- [x] D. element(aws_instance.web, 2)
+- [ ] A. aws_instance.web.*.name
+- [ ] B. aws_instance.web[2].name
+- [ ] C. element(aws_instance.web, 2)
+- [x] D. aws_instance.web[1].name
+- [ ] E. aws_instance.web[1]
 
 > **Explanation:** https://www.examtopics.com/discussions/hashicorp/view/385580-exam-terraform-associate-004-topic-4-question-5-discussion/
-
 ---
 
 #### Q56. When using multiple configurations of the same Terraform provider, what meta-argument must you include in any non-default provider configurations?
@@ -760,41 +885,56 @@ How would you reference the attribute name of this resource in HCL?
 
 You need to deploy resources into two different regions in the same Terraform configuration using the block in the Exhibit space on this page.
 
-provider "aws"{
+```hcl
+provider "aws" {
   region = "us-east-1"
 }
 
-provider "aws"{
+provider "aws" {
   region = "us-west-2"
 }
+```
 
 What do you need to add to the provider configuration to deploy the resource to the us-west-2 AWS region?
 
-- [ ] A. resource "aws_instance" "example-us-west-2"{
+- [ ] A.
+
+  ```hcl
+  resource “aws_instance” “example-us-west-2” {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
-}
-- [ ] B. provider "aws"{
-  region = "us-east-1"
-}
+  instance_type = “t3.micro”
+  }
+  ```
+- [ ] B.
 
-provider "aws" "west"{
-  region = "us-west-2"
-}
-- [ ] C. provider "aws_west"{
-  region = "us-west-2"
-}
-- [x] D. provider "aws"{
-  region = "us-east-1"
-}
+  ```hcl
+  provider “aws” {
+  region = “us-east-1”
+  }
+  provider “aws” “west” {
+  region = “us-west-2”
+  }
+  ```
+- [ ] C.
 
-provider "aws"{
-  alias = "west"
-  region = "us-west-2"
-}
+  ```hcl
+  provider “aws_west” {
+  region = “us-west-2”
+  }
+  ```
+- [x] D.
 
-> **Explanation:** Exam Terraform Associate 004 topic 4 question 14 discussion - ExamTopics
+  ```hcl
+  provider “aws” {
+  region = “us-east-1”
+  }
+  provider “aws” {
+  alias = “west”
+  region = “us-west-2”
+  }
+  ```
 
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 4 question 14 discussion - ExamTopics
 ---
 
 #### Q65. Two resources blocks are shown in the Exhibit space on this page: azurerm_linux_web_app, and azurerm_role_assignment.
@@ -856,14 +996,26 @@ How do you ensure the azurerm_role_assignment resource is created first?
 
 #### Q68. Part of a configuration is shown in the Exhibit space of this page.
 
-- [ ] A. You want to pass the id of the vsphere_datacenter data source to the datacenter_id argument of the vsphere_folder resource. Which reference would you use?
-- [x] B. data.vsphere_datacenter.dc
-- [ ] C. data.vsphere_datacenter.dc.id
-- [ ] D. vsphere_datacenter.dc.id
-- [ ] E. data.dc.id
+Part of a configuration is shown in the Exhibit space of this page.
 
-> **Explanation:** Exam Terraform Associate 004 topic 4 question 19 discussion - ExamTopics
+```hcl
+data "vsphere_datacenter" "dc" {}
 
+resource "vsphere_folder" "parent" {
+  path = "Production"
+  type = "vm"
+  datacenter_id = ____________________
+}
+```
+
+You want to pass the id of the vsphere_datacenter data source to the datacenter_id argument of the vsphere_folder resource. Which reference would you use?
+
+- [ ] A. data.vsphere_datacenter.dc
+- [x] B. data.vsphere_datacenter.dc.id
+- [ ] C. vsphere_datacenter.dc.id
+- [ ] D. data.dc.id
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 4 question 19 discussion - ExamTopics
 ---
 
 #### Q69. Your Terraform configuration declares a variable, you want to enforce that its value meets your specific requirements, and you want to block the Terraform operation if it does not. What should you add to your configuration?
@@ -966,23 +1118,72 @@ How do you ensure the azurerm_role_assignment resource is created first?
 
 #### Q79. You are updating a child module with the resource block shown in the Exhibit space on this page.
 
-- [ ] A. The public_ip attribute of the resource needs to be accessible to the parent module.
-- [ ] B. How do you meet this requirement?
-- [ ] C. Add a data source to the parent module.
-- [x] D. Create a local value in the child module.
-- [ ] E. Add an import block to the parent module.
-- [ ] F. Create an output in the child module.
+You are updating a child module with the resource block shown in the Exhibit space on this page.
 
-> **Explanation:** Exam Terraform Associate 004 topic 5 question 8 discussion - ExamTopics
+```hcl
+resource "aws_instance" "example" {
+  ami = "ami-0a123456789abcdef"
+  instance_type = "t3.micro"
+}
+```
 
+The public_ip attribute of the resource needs to be accessible to the parent module. How do you meet this requirement?
+
+- [ ] A. Add a data source to the parent module.
+- [ ] B. Create a local value in the child module.
+- [ ] C. Add an import block to the parent module.
+- [x] D. Create an output in the child module.
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 5 question 8 discussion - ExamTopics
 ---
 
 #### Q80. Your configuration defines the module block shown in the Exhibit space on this page. The web_stack module accepts an input variable named servers.
 
-- [x] A. Which of the following changes to the module block sets the servers variable to the value of “3”?
+Your configuration defines the module block shown in the Exhibit space on this page. The web_stack module accepts an input variable named servers.
 
-> **Explanation:** Exam Terraform Associate 004 topic 5 question 9 discussion - ExamTopics
+```hcl
+module "web_stack" {
+  source = "./modules/web_stack"
+}
+```
 
+Which of the following changes to the module block sets the servers variable to the value of "3"?
+
+- [x] A.
+
+  ```hcl
+  module “web_stack” {
+  source = “./modules/web_stack”
+  servers = 3
+  }
+  ```
+- [ ] B.
+
+  ```hcl
+  module “web_stack” {
+  source = “./modules/web_stack”
+  inputs.servers = 3
+  }
+  ```
+- [ ] C.
+
+  ```hcl
+  module “web_stack” {
+  source = “./modules/web_stack”
+  inputs = {
+  servers = 3
+  }
+  ```
+- [ ] D.
+
+  ```hcl
+  module “web_stack” {
+  source = “./modules/web_stack”
+  var.servers = 3
+  }
+  ```
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 5 question 9 discussion - ExamTopics
 ---
 
 #### Q81. Your team is using a version 3.1.4 of a module from the public Terraform Registry, and they’re worried about possible breaking changes in future versions of the module. Which version argument should you add to the module block to prevent newer versions from being used?
@@ -1009,14 +1210,22 @@ How do you ensure the azurerm_role_assignment resource is created first?
 
 #### Q83. Your configuration defines the module block shown in the Exhibit space on this page.
 
-- [ ] A. This module declares an output named hostnames. How do you access the value of this output?
-- [x] B. production.hostnames
-- [ ] C. module.production.hostnames
-- [ ] D. web_stack.hostnames
-- [ ] E. module.web_stack.hostnames
+Your configuration defines the module block shown in the Exhibit space on this page.
 
-> **Explanation:** Exam Terraform Associate 004 topic 5 question 12 discussion - ExamTopics
+```hcl
+module "production" {
+  source = "./modules/web_stack"
+}
+```
 
+This module declares an output named hostnames. How do you access the value of this output?
+
+- [ ] A. production.hostnames
+- [x] B. module.production.hostnames
+- [ ] C. web_stack.hostnames
+- [ ] D. module.web_stack.hostnames
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 5 question 12 discussion - ExamTopics
 ---
 
 #### Q84. Your configuration defines the module block shown in the Exhibit space of this page.
@@ -1032,24 +1241,24 @@ module "production"{
 This module declares an output named hostnames.
 How do you access the value of this output?
 
-- [ ] A. production.hostnames
-- [x] B. module.production.hostnames
-- [ ] C. web_stack.hostnames
-- [ ] D. module.web_stack.hostnames
-
-> **Explanation:** Exam Terraform Associate 004 topic 5 question 13 discussion - ExamTopics
-
----
-
-#### Q85. Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?
-
 - [ ] A. count
 - [ ] B. lifecycle
 - [x] C. source
 - [ ] D. version
 
-> **Explanation:** Exam Terraform Associate 004 topic 6 question 1 discussion - ExamTopics
+> **Explanation:** Exam Terraform Associate 004 topic 5 question 13 discussion - ExamTopics
+---
 
+#### Q85. Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?
+
+Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?
+
+- [ ] A. Change the value of the count argument on the resource.
+- [ ] B. Remove the resource block from your configuration.
+- [x] C. Run terraform state rm aws_instance.ubuntu[1].
+- [ ] D. Use a moved block.
+
+> **Explanation:** Exam Terraform Associate 004 topic 6 question 1 discussion - ExamTopics
 ---
 
 #### Q86. When you run terraform apply -refresh-only, which of the following is not consulted by Terraform to update the state file?
@@ -1074,14 +1283,20 @@ How do you access the value of this output?
 
 #### Q88. Which are benefits of migrating from a local state backend to a remote backend? (Choose two.)
 
-- [ ] A. Eliminates the need to manage credentials when deploying infrastructure to multiple cloud providers.
+Which are benefits of migrating from a local state backend to a remote backend? (Choose two.)
+
+- [ ] A.
+
+  ```hcl
+  Eliminates the need to manage credentials when deploying infrastructure to multiple cloud
+  providers.
+  ```
 - [x] B. State locking that allows multiple team members to safely work on the same infrastructure.
 - [ ] C. Faster plans and apply execution because the state is cached locally on the cloud provider.
 - [ ] D. Guarantees that configuration drift cannot occur for the managed infrastructure.
 - [x] E. The ability to enable server-side encryption at rest
 
-> **Explanation:** Exam Terraform Associate 004 topic 6 question 4 discussion - ExamTopics
-
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 6 question 4 discussion - ExamTopics
 ---
 
 #### Q89. How can you configure a Terraform workspace to store its state remotely? (Choose two.)
@@ -1171,13 +1386,24 @@ How do you access the value of this output?
 
 #### Q98. You’ve just finished refactoring part of your Terraform workspace’s configuration to use a module to manage some of your resources. When you plan your changes, you notice that Terraform will destroy and recreate the affected resources. Doing so could cause unintended downtime in the application your workspace manages. What supported approach should you take to complete the refactor without destroying and recreating your resources?
 
-- [x] A. Add moved blocks to your configuration to let Terraform know the new resource addresses for the affected resources.
+You’ve just finished refactoring part of your Terraform workspace’s configuration to use a module to manage some of your resources. When you plan your changes, you notice that Terraform will destroy and recreate the affected resources. Doing so could cause unintended downtime in the application your workspace manages. What supported approach should you take to complete the refactor without destroying and recreating your resources?
+
+- [x] A.
+
+  ```hcl
+  Add moved blocks to your configuration to let Terraform know the new resource addresses
+  for the affected resources.
+  ```
 - [ ] B. Open your cloud provider’s console and rename the effected resources.
-- [ ] C. Run the terraform console command to edit your workspace’s state and update the resource names.
+- [ ] C.
+
+  ```hcl
+  Run the terraform console command to edit your workspace’s state and update the
+  resource names.
+  ```
 - [ ] D. Manually edit your terraform.tfstate file and update the resource names.
 
-> **Explanation:** Exam Terraform Associate 004 topic 6 question 14 discussion - ExamTopics
-
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 6 question 14 discussion - ExamTopics
 ---
 
 #### Q99. What is the purpose of state locking in a remote backend?
@@ -1257,13 +1483,24 @@ How do you access the value of this output?
 
 #### Q106. You have successfully deployed an application that includes a resource with a public IP address. Due to a configuration oversight, no outputs were defined. Using the Terraform CLI, how can you find the IP address of the resource that was deployed with minimum disruption to the application?
 
+You have successfully deployed an application that includes a resource with a public IP address. Due to a configuration oversight, no outputs were defined. Using the Terraform CLI, how can you find the IP address of the resource that was deployed with minimum disruption to the application?
+
 - [ ] A. Run terraform destroy then terraform apply and look for the IP address in stdout.
-- [x] B. Run terraform state list to find the name of the resource, then terraform state show to find the attributes including public IP address.
-- [ ] C. In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file.
+- [x] B.
+
+  ```hcl
+  Run terraform state list to find the name of the resource, then terraform state show to
+  find the attributes including public IP address.
+  ```
+- [ ] C.
+
+  ```hcl
+  In a new folder, use the terraform_remote_state data source to load in the state file, then
+  write an output for each resource that you find the state file.
+  ```
 - [ ] D. Run terraform output ip_address to view the result.
 
-> **Explanation:** Exam Terraform Associate 004 topic 6 question 22 discussion - ExamTopics
-
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 6 question 22 discussion - ExamTopics
 ---
 
 #### Q107. It is _________ to change the Terraform backend from the default local backend to a different one after performing your first terraform apply.
@@ -1374,13 +1611,24 @@ How do you access the value of this output?
 
 #### Q117. You have never used Terraform before and would like to test it out using a shared team account for a cloud provider. The shared team account already contains 15 VMs (virtual machines). You develop a new Terraform configuration containing one VM, perform terraform apply, and see that your VM was created successfully. How do you delete the newly-created VM with Terraform?
 
+You have never used Terraform before and would like to test it out using a shared team account for a cloud provider. The shared team account already contains 15 VMs (virtual machines). You develop a new Terraform configuration containing one VM, perform terraform apply, and see that your VM was created successfully. How do you delete the newly-created VM with Terraform?
+
 - [ ] A. Delete the Terraform state file and execute terraform apply.
 - [x] B. The Terraform state file only contains one new VM. Execute terraform destroy.
-- [ ] C. The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy and select the newly-created VM.
-- [ ] D. Delete the VM using the cloud provider console, and execute terraform apply to apply the changes to the Terraform state file.
+- [ ] C.
 
-> **Explanation:** Exam Terraform Associate 004 topic 7 question 9 discussion - ExamTopics
+  ```hcl
+  The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy
+  and select the newly-created VM.
+  ```
+- [ ] D.
 
+  ```hcl
+  Delete the VM using the cloud provider console, and execute terraform apply to apply the
+  changes to the Terraform state file.
+  ```
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 7 question 9 discussion - ExamTopics
 ---
 
 #### Q118. Your team uses HCP Terraform to manage your infrastructure. You need to make a change to an infrastructure stack running in a public cloud. Which pattern follows Infrastructure as Code best practices for making a change?
@@ -1439,20 +1687,40 @@ How do you access the value of this output?
 
 #### Q123. You are responsible for a set of infrastructure which is managed by two workspaces: example-network and example-compute.
 
-- [ ] A. The example-compute workspace uses data from output values configured in the example-network workspace, and must be deployed afterward.
-- [ ] B. Currently, this is a manual process:
-- [ ] C. An operator deploys changes to the example-network workspace.
-- [x] D. They manually copy the output values from the example-network workspace to input variables configured for the example-compute workspace.
-- [x] E. They deploy the example-compute workspace.
-- [ ] F. Which HCP Terraform features can you use to automate this process? (Choose two.)
-- [ ] G. A health check configured on the example-compute workspace to create a plan when HCP Terraform applies changes to the example-network workspace.
-- [ ] H. A run trigger configured on the example-network workspace to automatically plan changes to the example-compute workspace after every apply.
-- [ ] I. A health check configured on the example-network workspace to create a plan on the example-compute workspace when HCP Terraform applies changes to it.
-- [ ] J. A run trigger configured on the example-compute workspace to automatically plan changes after HCP Terraform applies changes to the example-network workspace.
-- [ ] K. A tfe_outputs data source configured in the example-compute workspace to automatically load output values from the example-network workspace.
+You are responsible for a set of infrastructure which is managed by two workspaces: example-network and example-compute.
 
-> **Explanation:** Exam Terraform Associate 004 topic 8 question 6 discussion - ExamTopics
+- [ ] A.
 
+  ```hcl
+  A health check configured on the example-compute workspace to create a plan when
+  HCP Terraform applies changes to the example-network workspace.
+  ```
+- [ ] B.
+
+  ```hcl
+  A run trigger configured on the example-network workspace to automatically plan
+  changes to the example-compute workspace after every apply.
+  ```
+- [ ] C.
+
+  ```hcl
+  A health check configured on the example-network workspace to create a plan on the
+  example-compute workspace when HCP Terraform applies changes to it.
+  ```
+- [x] D.
+
+  ```hcl
+  A run trigger configured on the example-compute workspace to automatically plan
+  changes after HCP Terraform applies changes to the example-network workspace.
+  ```
+- [x] E.
+
+  ```hcl
+  A tfe_outputs data source configured in the example-compute workspace to
+  automatically load output values from the example-network workspace.
+  ```
+
+> **Explanation:** Discussion: Exam Terraform Associate 004 topic 8 question 6 discussion - ExamTopics
 ---
 
 #### Q124. Where does HashiCorp recommend you store API tokens and other secrets within your team’s Terraform workspaces? (Choose three.)
@@ -1480,13 +1748,21 @@ How do you access the value of this output?
 
 #### Q126. How does an HCP Terraform integration using the cloud block differ from remote backends, such as S3?
 
+How does an HCP Terraform integration using the cloud block differ from remote backends, such as S3?
+
 - [ ] A. Using the cloud block automatically encrypts state files at rest and in transit.
 - [ ] B. Using the cloud block requires using Terraform Enterprise.
 - [ ] C. The cloud block supports multiple backends simultaneously.
-- [x] D. Using the cloud block enables remote operations on infrastructure managed by HCP Terraform or Terraform Enterprise.
+- [x] D.
 
-> **Explanation:** Exam Terraform Associate 004 topic 8 question 9 discussion - ExamTopics
+  ```hcl
+  Using the cloud block enables remote operations on infrastructure managed by HCP
+  Terraform or Terraform Enterprise.
+  ```
 
+> **Explanation:** A cloud block configures Terraform to use HCP Terraform or Terraform Enterprise as its backend. This not only stores state remotely but also enables remote operations, meaning: Plans and applies run in HCP Terraform/TFE No local state file No need for local credentials Full audit logs, RBAC, and policy enforcement Remote backends like S3 only store state; they do not provide remote execution.
+>
+> Discussion: Exam Terraform Associate 004 topic 8 question 9 discussion - ExamTopics
 ---
 
 #### Q127. Which features do HCP Terraform workspaces provide that are not available in Terraform Community Edition? (Choose three.)
@@ -1504,25 +1780,66 @@ How do you access the value of this output?
 
 #### Q128. Which statements are true? (Choose Two)
 
+Which statements are true? (Choose Two)
+
 - [x] A. A precondition in a resource block must pass for Terraform to create the resource.
-- [ ] B. A precondition cannot reference attributes of another resource that are only known after apply
-- [x] C. When a resource has a count meta-argument, Terraform evaluates the precondition for each instance.
-- [ ] D. If a resource's postcondition block fails, Terraform still creates the resources that depend on it.
+- [ ] B.
+
+  ```hcl
+  A precondition cannot reference attributes of another resource that are only known after
+  apply
+  ```
+- [x] C.
+
+  ```hcl
+  When a resource has a count meta-argument, Terraform evaluates the precondition for
+  each instance.
+  ```
+- [ ] D.
+
+  ```hcl
+  If a resource's postcondition block fails, Terraform still creates the resources that depend
+  on it.
+  ```
 - [ ] E. A resource can either have a precondition or a postcondition block, but not both.
 
-> **Explanation:** EXAMHEIST - 129
-
+> **Explanation:** A: A precondition in a resource block must pass for Terraform to create the resource. Terraform evaluates the precondition before creating the resource. If the precondition fails, the resource is not created. C: When a resource has a count meta-argument, Terraform evaluates the precondition for each instance. If a resource uses count, Terraform evaluates the precondition separately for each instance. Incorrect: B: A precondition cannot reference attributes of another resource that are only known after apply. Incorrect. Preconditions can reference such attributes, but if the value is unknown during planning, Terraform defers evaluation until apply. D: If a resource's postcondition block fails, Terraform still creates the resources that depend on it. If a postcondition fails, Terraform marks the resource as failed, and dependent resources are not created. E: A resource can either have a precondition or a postcondition block, but not both. A resource can have both precondition and postcondition blocks defined.
+>
+> Discussion: EXAMHEIST - 129
 ---
 
 #### Q129. Your team often uses API calls to create and manage cloud Infrastructure. In what ways does Terraform differ from conventional Infrastructure management approaches?
 
-- [ ] A. Terraform replaces cloud provider APIs with its own protocols, enabling automated deployments.
-- [x] B. Terraform describes infrastructure with version-controlled, repeatable configurations that specify the desired state.
-- [ ] C. Terraform enforces infrastructure through imperative scripts to ensure tasks are completed in the proper order.
-- [ ] D. Terraform is merely a wrapper for cloud provider APIs, so there is little to no difference in calling the API directly.
+Your team often uses API calls to create and manage cloud Infrastructure. In what ways does Terraform differ from conventional Infrastructure management approaches?
 
-> **Explanation:** EXAMHEIST - 130
+- [ ] A.
 
+  ```hcl
+  Terraform replaces cloud provider APIs with its own protocols, enabling automated
+  deployments.
+  ```
+- [x] B.
+
+  ```hcl
+  Terraform describes infrastructure with version-controlled, repeatable configurations that
+  specify the desired state.
+  ```
+- [ ] C.
+
+  ```hcl
+  Terraform enforces infrastructure through imperative scripts to ensure tasks are completed
+  in the proper order.
+  ```
+- [ ] D.
+
+  ```hcl
+  Terraform is merely a wrapper for cloud provider APIs, so there is little to no difference in
+  calling the API directly.
+  ```
+
+> **Explanation:** Terraform uses declarative configuration files to define the desired state of infrastructure, enabling version control, consistency, and repeatability.
+>
+> Discussion: EXAMHEIST - 130
 ---
 
 #### Q130. Which of the following is not a way to trigger terraform destroy ?
@@ -1538,13 +1855,19 @@ How do you access the value of this output?
 
 #### Q131. You are making changes to existing Terraform code to add some new infrastructure. When is the best time to run terraform validate?
 
+You are making changes to existing Terraform code to add some new infrastructure. When is the best time to run terraform validate?
+
 - [ ] A. After you run terraform apply, so you can validate your Infrastructure.
-- [ ] B. After you run terraform plan, so you can validate that your state file is consistent with your infrastructure.
+- [ ] B.
+
+  ```hcl
+  After you run terraform plan, so you can validate that your state file is consistent with your
+  infrastructure.
+  ```
 - [ ] C. Before you run terraform apply, so you can validate your provider credentials.
 - [x] D. Before you run terraform plan, so you can validate your code syntax.
 
-> **Explanation:** EXAMHEIST - 133
-
+> **Explanation:** Discussion: EXAMHEIST - 133
 ---
 
 #### Q132. You've updated your Terraform configuration, and you need to preview the proposed changes to your infrastructure. Which command should you run?
@@ -1571,36 +1894,46 @@ How do you access the value of this output?
 
 #### Q134. You have set the TF_LOG_PATH environment variable for Terraform, and you would like to ensure the logs contain all debug-level messages and verbose process logs.
 
-- [ ] A. Which action should you take?
-- [ ] B. Run the terraform output command.
-- [ ] C. Add a log argument to the terraform block.
-- [x] D. Update the Terraform CLI configuration file.
-- [ ] E. Set the TF LOG environment variable to TRACE.
+You have set the TF_LOG_PATH environment variable for Terraform, and you would like to ensure the logs contain all debug-level messages and verbose process logs.
 
-> **Explanation:** EXAMHEIST - 147
+- [ ] A. Run the terraform output command.
+- [ ] B. Add a log argument to the terraform block.
+- [ ] C. Update the Terraform CLI configuration file.
+- [x] D. Set the TF LOG environment variable to TRACE.
 
+> **Explanation:** To capture all debug-level and verbose process logs, you set: TF_LOG=TRACE This ensures Terraform generates detailed logging at the TRACE level, which includes debug messages and internal operations. Combined with TF_LOG_PATH, the logs will be written to the specified file.
+>
+> Discussion: EXAMHEIST - 147
 ---
 
 #### Q135. You're refactoring your Terraform configuration and have moved resources from one large module to multiple smaller ones.
 
-- [ ] A. When running terraform plan, Terraform wants to destroy and recreate the resources.
-- [x] B. What should you add to the configuration to preserve the existing resources?
-- [ ] C. Add a depends_on argument to each resource you move.
-- [ ] D. Add moved blocks for each resource.
-- [ ] E. Add lifecycle prevent_destroy = true to each of the resources.
+You're refactoring your Terraform configuration and have moved resources from one large module to multiple smaller ones.
 
-> **Explanation:** EXAMHEIST - 158
+- [ ] A. Add a depends_on argument to each resource you move.
+- [x] B. Add moved blocks for each resource.
+- [ ] C. Add lifecycle prevent_destroy = true to each of the resources.
 
+> **Explanation:** Discussion: EXAMHEIST - 158
 ---
 
 #### Q136. A module block is shown in the Exhibit space on this page.
 
-- [x] A. That module block limits the module version to major version 4.
-- [ ] B. True
-- [ ] C. False
+A module block is shown in the Exhibit space on this page.
 
-> **Explanation:** EXAMHEIST - 159
+```hcl
+module "vpc" {
+  source = "terraform-awsmodules/vpc/aws"
+  version = "~>4.0"
+}
+```
 
+That module block limits the module version to major version 4.
+
+- [x] A. True
+- [ ] B. False
+
+> **Explanation:** Discussion: EXAMHEIST - 159
 ---
 
 #### Q137. A module block is shown in the Exhibit space of this page.
@@ -1617,23 +1950,44 @@ module "vpc"{
 That module block limits the module version to major version 4.
 True or False?
 
-- [x] A. True
-- [ ] B. False
+- [ ] A.
+
+  ```hcl
+  Significant changes should be expected since moving resources between files can trigger a
+  destroy/replacement.
+  ```
+- [x] B.
+
+  ```hcl
+  No impact since Terraform reads all .tf files as a single configuration when executing a
+  terraform plan.
+  ```
+- [ ] C.
+
+  ```hcl
+  Only minor impacts since Terraform parses the main.tf file first, which could change the
+  order in which resources are created.
+  ```
+- [ ] D.
+
+  ```hcl
+  The terraform plan will fail since variable and provider blocks must appear before resource
+  blocks.
+  ```
 
 > **Explanation:** EXAMHEIST - 161
-
 ---
 
 #### Q138. Your security team scanned some Terraform workspaces and found secrets stored in plaintext in state files.
 
-- [ ] A. How can you protect that data?
-- [x] B. Delete the state file every time you run Terraform.
-- [ ] C. Store the state in an encrypted backend.
-- [ ] D. Always store your secrets in a secrets.tfvars file.
-- [ ] E. Edit your state file to scrub out the sensitive data.
+Your security team scanned some Terraform workspaces and found secrets stored in plaintext in state files.
 
-> **Explanation:** EXAMHEIST - 163
+- [ ] A. Delete the state file every time you run Terraform.
+- [x] B. Store the state in an encrypted backend.
+- [ ] C. Always store your secrets in a secrets.tfvars file.
+- [ ] D. Edit your state file to scrub out the sensitive data.
 
+> **Explanation:** Discussion: EXAMHEIST - 163
 ---
 
 #### Q139. You can reference a resource created with for_each using a splat ( * ) expression.
@@ -1647,13 +2001,26 @@ True or False?
 
 #### Q140. You add a new resource to an existing Terraform configuration, but do not update the version constraint in the configuration. The existing and new resources use the same provider. The working directory contains a .terraform.lock.hcl file. How will Terraform choose which version of the provider to use?
 
-- [ ] A. Terraform will use the latest version of the provider for the new resource and the version recorded in the lock file to manage existing resources.
+You add a new resource to an existing Terraform configuration, but do not update the version constraint in the configuration. The existing and new resources use the same provider. The working directory contains a .terraform.lock.hcl file. How will Terraform choose which version of the provider to use?
+
+- [ ] A.
+
+  ```hcl
+  Terraform will use the latest version of the provider for the new resource and the version
+  recorded in the lock file to manage existing resources.
+  ```
 - [x] B. Terraform will use the version recorded in your lock file.
 - [ ] C. Terraform will check your state file to determine the provider version to use.
-- [ ] D. Terraform will use the latest version of the provider available at the time you provision your new resource.
+- [ ] D.
 
-> **Explanation:** EXAMHEIST – 165
+  ```hcl
+  Terraform will use the latest version of the provider available at the time you provision your
+  new resource.
+  ```
 
+> **Explanation:** The .terraform.lock.hcl file locks provider versions for your working directory. This ensures consistent behaviour across runs, so Terraform uses the same provider version for all resources, even when you add new resources. The version constraint in your configuration (required_providers) defines which versions are allowed but Terraform will prioritize the version in the lock file if it satisfies the constraint. Terraform does not check the state file to pick a provider version—the state only tracks infrastructure resources. It does not automatically use the latest provider version unless you explicitly run terraform init -upgrade and the new version satisfies the constraints.
+>
+> Discussion: EXAMHEIST – 165
 ---
 
 #### Q141. All standard backend types support state storage, locking, and remote operations like plan, apply, and destroy.
@@ -1679,14 +2046,16 @@ True or False?
 
 #### Q143. terraform apply is failing with the following error.
 
-- [ ] A. What next step should you take to determine the root cause of the problem?
-- [ ] B. Run terraform login to reauthenticate with the provider.
-- [ ] C. Review /var/log/terraform.log for error messages.
-- [x] D. Review syslog for Terraform error messages.
-- [ ] E. Set TF_LOG=DEBUG.
+terraform apply is failing with the following error.
 
-> **Explanation:** EXAMHEIST – 169
+- [ ] A. Run terraform login to reauthenticate with the provider.
+- [ ] B. Review /var/log/terraform.log for error messages.
+- [ ] C. Review syslog for Terraform error messages.
+- [x] D. Set TF_LOG=DEBUG.
 
+> **Explanation:** Run Terraform with debug logs to get more detailed output TF_LOG=DEBUG terraform apply
+>
+> Discussion: EXAMHEIST – 169
 ---
 
 #### Q144. terraform apply is failing with the following error.
@@ -1699,24 +2068,29 @@ Error loading state: AccessDenied: Access Denied status code: 403, request id: 2
 
 What next step should you take to determine the root cause of the problem?
 
-- [ ] A. Run terraform login to reauthenticate with the provider.
-- [ ] B. Review /var/log/terraform.log for error messages.
-- [ ] C. Review syslog for Terraform error messages.
-- [x] D. Set TF_LOG=DEBUG.
+- [ ] A. terraform show
+- [ ] B. terraform init
+- [ ] C. terraform fmt
+- [x] D. terraform validate
 
 > **Explanation:** EXAMHEIST – 170
-
 ---
 
 #### Q145. How does the HCP Terraform/Terraform Cloud integration differ from backends such as S3, Consul, etc.?
 
-- [x] A. It can execute Terraform runs on dedicated infrastructure in HCP Terraform/Terraform Cloud.
+How does the HCP Terraform/Terraform Cloud integration differ from backends such as S3, Consul, etc.?
+
+- [x] A.
+
+  ```hcl
+  It can execute Terraform runs on dedicated infrastructure in HCP Terraform/Terraform
+  Cloud.
+  ```
 - [ ] B. It doesn’t show the output of a terraform apply locally.
 - [ ] C. It is only available to paying customers.
 - [ ] D. All of the above.
 
-> **Explanation:** EXAMHEIST – 171
-
+> **Explanation:** Discussion: EXAMHEIST – 171
 ---
 
 #### Q146. Which of these actions will prevent two Terraform runs from changing the same state file at the same time?
@@ -1732,14 +2106,21 @@ What next step should you take to determine the root cause of the problem?
 
 #### Q147. You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that Terraform will delete.
 
-- [ ] A. Which command should you use to show all of the resources that will be deleted? Choose two correct answers.
-- [ ] B. Run terraform state rm *
-- [x] C. Run terraform show -destroy
-- [x] D. Run terraform destroy. This will first output all the resource that will be deleted before prompting for approval
-- [ ] E. Run terraform plan -destroy
+You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that Terraform will delete.
 
-> **Explanation:** EXAMHEIST – 175
+- [ ] A. Run terraform state rm *
+- [ ] B. Run terraform show -destroy
+- [x] C.
 
+  ```hcl
+  Run terraform destroy. This will first output all the resource that will be deleted before
+  prompting for approval
+  ```
+- [x] D. Run terraform plan -destroy
+
+> **Explanation:** To see all resources that Terraform will delete, you can use either of these commands: terraform plan -destroy shows the plan of destruction and asks for confirmation before proceeding. terraform destroy also outputs the plan with confirmation before executing the deletion. You should not use terraform state rm because it removes resources from the state file without destroying them.
+>
+> Discussion: EXAMHEIST – 175
 ---
 
 #### Q148. You created infrastructure outside the Terraform workflow that you now want to manage using Terraform. Which command brings the infrastructure into Terraform state?
@@ -1755,14 +2136,31 @@ What next step should you take to determine the root cause of the problem?
 
 #### Q149. A developer launched a VM (virtual machine) outside of the Terraform workflow and ended up with two servers with the same name. They don’t know which VM Terraform manages but do have a list of all active VM IDs.
 
-- [ ] A. Which of the following methods could you use to discover which instance Terraform manages?
-- [x] B. Run terraform state rm on both VMs, then terraform apply to recreate the correct one that will be managed by Terraform.
-- [ ] C. Run terraform state list to find the names of all VMs, then run terraform state show for each of them to find which VM ID that Terraform manages.
-- [ ] D. Run a terraform apply -refresh to identify the virtual machine IDs that are already managed by Terraform.
-- [ ] E. Modify the Terraform configuration to add an import block for both of the virtual machines.
+A developer launched a VM (virtual machine) outside of the Terraform workflow and ended up with two servers with the same name. They don’t know which VM Terraform manages but do have a list of all active VM IDs.
 
-> **Explanation:** EXAMHEIST – 177
+- [ ] A.
 
+  ```hcl
+  Run terraform state rm on both VMs, then terraform apply to recreate the correct one that
+  will be managed by Terraform.
+  ```
+- [x] B.
+
+  ```hcl
+  Run terraform state list to find the names of all VMs, then run terraform state show for
+  each of them to find which VM ID that Terraform manages.
+  ```
+- [ ] C.
+
+  ```hcl
+  Run a terraform apply -refresh to identify the virtual machine IDs that are already
+  managed by Terraform.
+  ```
+- [ ] D. Modify the Terraform configuration to add an import block for both of the virtual machines.
+
+> **Explanation:** The terraform state list command lists all resources that are managed by Terraform in the current state file. The terraform state show command shows the attributes of a single resource in the state file. By using these two commands, you can compare the VM IDs in your list with the ones in the state file and identify which one is managed by Terraform.
+>
+> Discussion: EXAMHEIST – 177
 ---
 
 #### Q150. When do you need to explicitly execute Terraform in refresh-only mode?
@@ -1778,26 +2176,32 @@ What next step should you take to determine the root cause of the problem?
 
 #### Q151. Which method for sharing Terraform configurations fulfills the following criteria:
 
-- [ ] A. Keeps the configurations confidential within your organization
-- [ ] B. Supports Terraform’s semantic version constraints
-- [x] C. Provides a browsable directory of your modules
-- [ ] D. A Subfolder within a workspace
-- [ ] E. A Git repository containing your modules
-- [ ] F. HCP Terraform/Terraform Cloud private registry
-- [ ] G. Public Terraform module registry
+Which method for sharing Terraform configurations fulfills the following criteria:
 
-> **Explanation:** EXAMHEIST-179
+- [ ] A. A Subfolder within a workspace
+- [ ] B. A Git repository containing your modules
+- [x] C. HCP Terraform/Terraform Cloud private registry
+- [ ] D. Public Terraform module registry
 
+> **Explanation:** This is the method for sharing Terraform configurations that fulfills the following criteria: Keeps the configurations confidential within your organization Supports Terraform’s semantic version constraints Provides a browsable directory
+>
+> Discussion: EXAMHEIST-179
 ---
 
 #### Q152. Which of the following is not a way to trigger terraform destroy?
 
+Which of the following is not a way to trigger terraform destroy?
+
 - [x] A. Passing --destroy at the end of a plan request.
-- [ ] B. Running terraform destroy from the correct directory and then typing yes when prompted in the CLI.
+- [ ] B.
+
+  ```hcl
+  Running terraform destroy from the correct directory and then typing yes when prompted
+  in the CLI.
+  ```
 - [ ] C. Using the destroy command with auto-approve.
 
-> **Explanation:** EXAMHEIST-180
-
+> **Explanation:** Discussion: EXAMHEIST-180
 ---
 
 #### Q153. What Terraform command always causes a state file to be updated with changes that might have been made outside of Terraform?
@@ -1824,26 +2228,30 @@ What next step should you take to determine the root cause of the problem?
 
 #### Q155. You are writing Terraform configuration that calls a child module. This child module declares an output value.
 
-- [ ] A. How can you ensure that Terraform will print out this value when you run Terraform CLI commands such as terraform apply?
-- [ ] B. Nothing. Terraform will automatically print out all output values from child modules.
-- [x] C. Nothing. Terraform cannot use output values from child modules.
-- [ ] D. Declare a new output in your root configuration that references the module’s output.
-- [ ] E. None of the above.
+You are writing Terraform configuration that calls a child module. This child module declares an output value.
 
-> **Explanation:** EXAMHEIST-184
+- [ ] A. Nothing. Terraform will automatically print out all output values from child modules.
+- [ ] B. Nothing. Terraform cannot use output values from child modules.
+- [x] C. Declare a new output in your root configuration that references the module’s output.
+- [ ] D. None of the above.
 
+> **Explanation:** Terraform does not automatically print child module outputs.
+>
+> Discussion: EXAMHEIST-184
 ---
 
 #### Q156. You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead.
 
-- [ ] A. What are the two things you must do to achieve this? (Choose two)
-- [x] B. Provision new VMs using Terraform with the same VM names.
-- [x] C. Use the terraform import command for the existing VMs.
-- [ ] D. Write Terraform configuration for the existing VMs.
-- [ ] E. Run the terraform import-gcp command.
+You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead.
 
-> **Explanation:** EXAMHEIST-185
+- [ ] A. Provision new VMs using Terraform with the same VM names.
+- [x] B. Use the terraform import command for the existing VMs.
+- [x] C. Write Terraform configuration for the existing VMs.
+- [ ] D. Run the terraform import-gcp command.
 
+> **Explanation:** Write Terraform configuration that describes each existing VM you want to manage (resource type, name, required arguments). This configuration must exist in your root module before importing. Run terraform import for each existing VM to map the real resource into the Terraform state under the resource address you declared in the config.
+>
+> Discussion: EXAMHEIST-185
 ---
 
 #### Q157. Where does the Terraform local backend store its state?
@@ -1859,14 +2267,29 @@ What next step should you take to determine the root cause of the problem?
 
 #### Q158. A module block is shown in the Exhibit space of this page.
 
-- [ ] A. When you use a module block to reference a module from the Terraform Registry such as the one in the example, how do you specify version 1.0.0 of the module?
-- [ ] B. You cannot. Modules stored on the public Terraform Registry do not support versioning.
-- [x] C. Append ?ref=v1.0.0 argument to the source path.
-- [ ] D. Add a version = "1.0.0" attribute to the module block.
-- [ ] E. Nothing. Modules stored on the public Terraform module Registry always default to version 1.0.0.
+A module block is shown in the Exhibit space of this page.
 
-> **Explanation:** EXAMHEIST-188
+```hcl
+module "consul" {
+  source = "hashicorp/consul/aws"
+}
+```
 
+When you use a module block to reference a module from the Terraform Registry such as the one in the example, how do you specify version 1.0.0 of the module?
+
+- [ ] A. You cannot. Modules stored on the public Terraform Registry do not support versioning.
+- [ ] B. Append ?ref=v1.0.0 argument to the source path.
+- [x] C. Add a version = "1.0.0" attribute to the module block.
+- [ ] D.
+
+  ```hcl
+  Nothing. Modules stored on the public Terraform module Registry always default to version
+  1.0.0.
+  ```
+
+> **Explanation:** Modules published in the Terraform Registry do support versioning and Terraform lets you pin a specific version directly in the module block.  Why the other options don’t work A — Incorrect. Registry modules absolutely support versioning. B — Incorrect. ?ref= is used for Git sources, not Registry modules. D — Incorrect. Registry modules do not default to version 1.0.0; they default to the latest version unless specified.
+>
+> Discussion: EXAMHEIST-188
 ---
 
 #### Q159. A module block is shown in the Exhibit space of this page.
@@ -1881,13 +2304,10 @@ module "consul"{
 
 When you use a module block to reference a module from the Terraform Registry such as the one in the example, how do you specify version 1.0.0 of the module?
 
-- [ ] A. You cannot. Modules stored on the public Terraform Registry do not support versioning.
-- [ ] B. Append ?ref=v1.0.0 argument to the source path.
-- [x] C. Add a version = "1.0.0" attribute to the module block.
-- [ ] D. Nothing. Modules stored on the public Terraform module Registry always default to version 1.0.0.
+- [ ] A. True
+- [x] B. False
 
 > **Explanation:** EXAMHEIST-189
-
 ---
 
 #### Q160. You’re writing a Terraform configuration that needs to read input from a local file called id_rsa.pub. Which built-in Terraform function can you use to import the file’s contents as a string?
@@ -1947,15 +2367,16 @@ When you use a module block to reference a module from the Terraform Registry su
 
 #### Q165. You are using a networking module in your Terraform configuration with the name `my_network`. In your main configuration, you are trying to access the `vnet_id` attribute from this module with the following code:
 
-- [ ] A. When you run `terraform validate`, you encounter the following error:
-- [ ] B. What must you do to successfully retrieve the `vnet_id` value from your networking module?
-- [x] C. Define the attribute `vnet_id` as a variable in the networking module.
-- [ ] D. Change the referenced value to `module.my_network.outputs.vnet_id`
-- [ ] E. Define the attribute `vnet_id` as an output in the networking module.
-- [ ] F. Change the referenced value to `my_network.outputs.vnet_id`
+You are using a networking module in your Terraform configuration with the name `my_network`. In your main configuration, you are trying to access the `vnet_id` attribute from this module with the following code:
 
-> **Explanation:** EXAMHEIST-196
+- [ ] A. Define the attribute `vnet_id` as a variable in the networking module.
+- [ ] B. Change the referenced value to `module.my_network.outputs.vnet_id`
+- [x] C. Define the attribute `vnet_id` as an output in the networking module.
+- [ ] D. Change the referenced value to `my_network.outputs.vnet_id`
 
+> **Explanation:** To correctly access the `vnet_id` from the networking module, you need to define `vnet_id` as an output within the networking module's configuration. This makes the value available for use in other parts of your Terraform code, using the syntax `module.my_network.vnet_id`.
+>
+> Discussion: EXAMHEIST-196
 ---
 
 #### Q166. You are using a networking module in your Terraform configuration with the name "my_network". In your main configuration, you are trying to access the "vnet_id" attribute from this module with the following code:
@@ -1983,37 +2404,61 @@ Error: Reference to undeclared output value on main.tf line 12, in output "net_i
 
 What must you do to successfully retrieve the "vnet_id" value from your networking module?
 
-- [ ] A. Define the attribute "vnet_id" as a variable in the networking module.
-- [ ] B. Change the referenced value to "module.my_network.outputs.vnet_id".
-- [x] C. Define the attribute "vnet_id" as an output in the networking module.
-- [ ] D. Change the referenced value to "my_network.outputs.vnet_id".
+- [ ] A. The data source block
+- [x] B. The terraform block
+- [ ] C. The provider block
+- [ ] D.
+
+  ```hcl
+  The resource block
+  resource "aws_instance" "example" {
+  ami = "ami-0c55b2a94c9b82a81"
+  instance_type = "t2.micro"
+  subnet_id =module.my_network.vnet_id
+  }
+  output: "net_id" {
+  value = module.my_network. vnet_id
+  }
+  ```
 
 > **Explanation:** EXAMHEIST-197
-
 ---
 
 #### Q167. Multiple team members are collaborating on infrastructure using Terraform and want to format their Terraform code following standard Terraform style convention.
 
-- [x] A. How should they ensure the code satisfies conventions?
-- [ ] B. Use terraform fmt.
-- [ ] C. Terraform automatically formats configuration on terraform apply.
-- [ ] D. Run terraform validate prior to executing terraform plan or terraform apply.
-- [ ] E. Replace all tabs with spaces.
+Multiple team members are collaborating on infrastructure using Terraform and want to format their Terraform code following standard Terraform style convention.
 
-> **Explanation:** EXAMHEIST-200
+- [x] A. Use terraform fmt.
+- [ ] B. Terraform automatically formats configuration on terraform apply.
+- [ ] C. Run terraform validate prior to executing terraform plan or terraform apply.
+- [ ] D. Replace all tabs with spaces.
 
+> **Explanation:** Discussion: EXAMHEIST-200
 ---
 
 #### Q168. You decide to move a Terraform state file to Amazon S3 from another location. You write the code shown in the Exhibit space into a file called backend.tf.
 
-- [ ] A. Which command will migrate your current state file to the new S3 backend?
-- [x] B. terraform refresh
-- [ ] C. terraform init
-- [ ] D. terraform push
-- [ ] E. terraform state
+You decide to move a Terraform state file to Amazon S3 from another location. You write the code shown in the Exhibit space into a file called backend.tf.
 
-> **Explanation:** EXAMHEIST-202
+```hcl
+terraform {
+  backend "s3" {
+    bucket = "my-tf-bucket"
+    region = "us-east-1"
+  }
+}
+```
 
+Which command will migrate your current state file to the new S3 backend?
+
+- [ ] A. terraform refresh
+- [x] B. terraform init
+- [ ] C. terraform push
+- [ ] D. terraform state
+
+> **Explanation:** When you add or change a backend (e.g., moving state to Amazon S3 via backend.tf), terraform init initializes the working directory and the backend. If an existing local state file is present, terraform init will detect the change and prompt to migrate the current state to the new S3 backend. You can also run it non-interactively with: terraform init -migrate-state
+>
+> Discussion: EXAMHEIST-202
 ---
 
 #### Q169. You decide to move a Terraform state file to Amazon S3 from another location. You write the code shown in the Exhibit space into a file called backend.tf.
@@ -2031,13 +2476,18 @@ terraform{
 
 Which command will migrate your current state file to the new S3 backend?
 
-- [ ] A. terraform refresh
-- [x] B. terraform init
-- [ ] C. terraform push
-- [ ] D. terraform state
+- [ ] A. Make the change via the public cloud API endpoint
+- [ ] B. Clone the repository containing your infrastructure code and then run the code
+- [ ] C.
+
+  ```hcl
+  Use the public cloud console to make the change after a database record has been
+  approved
+  ```
+- [ ] D. Make the change programmatically via the public cloud CLI
+- [x] E. Submit a pull request and wait for an approved merge of the proposed changes.
 
 > **Explanation:** EXAMHEIST-207
-
 ---
 
 #### Q170. terraform validate uses provider APIs to verify your infrastructure settings.
@@ -2062,14 +2512,22 @@ Which command will migrate your current state file to the new S3 backend?
 
 #### Q172. Which of the following is not true of Terraform providers?
 
+Which of the following is not true of Terraform providers?
+
 - [ ] A. An individual person can write a Terraform Provider
 - [ ] B. A community of users can maintain a provider
 - [ ] C. HashiCorp maintains some providers
-- [ ] D. Cloud providers and infrastructure vendors can write, maintain, or collaborate on Terraform providers
+- [ ] D.
+
+  ```hcl
+  Cloud providers and infrastructure vendors can write, maintain, or collaborate on Terraform
+  providers
+  ```
 - [x] E. None of the above
 
-> **Explanation:** EXAMHEIST-211
-
+> **Explanation:** All of the statements are true of Terraform providers. Terraform providers are plugins that enable Terraform to interact with various APIs and services. Anyone can write a Terraform provider, either as an individual or as part of a community. HashiCorp maintains some providers, such as the AWS, Azure, and Google Cloud providers. Cloud providers and infrastructure vendors can also write, maintain, or collaborate on Terraform providers, such as VMware, Oracle, and Alibaba Cloud providers.
+>
+> Discussion: EXAMHEIST-211
 ---
 
 #### Q173. HashiCorp Configuration Language (HCL) supports user-defined functions.
@@ -2083,14 +2541,22 @@ Which command will migrate your current state file to the new S3 backend?
 
 #### Q174. Which of these are benefits of using Sentinel with HCP Terraform/Terraform Cloud? (Choose three.)
 
+Which of these are benefits of using Sentinel with HCP Terraform/Terraform Cloud? (Choose three.)
+
 - [ ] A. You can check out and check in cloud access keys.
-- [x] B. You can restrict specific resource configurations, such as disallowing the use of CIDR=0.0.0.0/0.
+- [x] B.
+
+  ```hcl
+  You can restrict specific resource configurations, such as disallowing the use of
+  CIDR=0.0.0.0/0.
+  ```
 - [ ] C. Sentinel Policies can be written in HashiCorp Configuration Language (HCL).
 - [x] D. You can enforce a list of approved AWS AMIs.
 - [x] E. Policy-as-code can enforce security best practices.
 
-> **Explanation:** EXAMHEIST-215
-
+> **Explanation:** Sentinel is a policy-as-code framework that allows you to define and enforce rules on your Terraform configurations, states, and plans. Some benefits of using Sentinel with Terraform Cloud/Terraform Enterprise are: You can restrict specific resource configurations, such as disallowing the use of CIDR 0.0.0.0/0, which would open your network to the entire internet. Policies as code can enforce security best practices, such as requiring encryption, authentication, or compliance standards. You can enforce a list of approved AWS AMIs, which are pre-configured images that contain the operating system and software you need to run your applications.
+>
+> Discussion: EXAMHEIST-215
 ---
 
 #### Q175. Which of the following is available only in HCP Terraform workspaces and not in Terraform CLI?
@@ -2191,24 +2657,45 @@ Which command will migrate your current state file to the new S3 backend?
 
 #### Q184. Your risk management organization requires that new AWS S3 buckets must be private, and their contents must be encrypted at rest. How can HCP Terraform/Terraform Cloud automatically and proactively enforce this security control?
 
+Your risk management organization requires that new AWS S3 buckets must be private, and their contents must be encrypted at rest. How can HCP Terraform/Terraform Cloud automatically and proactively enforce this security control?
+
 - [ ] A. Auditing cloud storage buckets with a vulnerability scanning tool
-- [ ] B. By adding variables to each HCP Terraform/Terraform Cloud workspace to ensure these settings are always enabled
+- [ ] B.
+
+  ```hcl
+  By adding variables to each HCP Terraform/Terraform Cloud workspace to ensure these
+  settings are always enabled
+  ```
 - [ ] C. With an S3 module with proper settings for buckets
 - [x] D. With a Sentinel policy, which runs before every apply
 
-> **Explanation:** EXAMHEIST-230
-
+> **Explanation:** The best way to automatically and proactively enforce the security control that new AWS S3 buckets must be private and encrypted at rest is with a Sentinel policy, which runs before every apply. Sentinel is a policy-as-code framework that allows you to define and enforce logic-based policies for your infrastructure. Terraform Cloud supports Sentinel policies for all operations and can run them before any Terraform plan or apply operation. You can write a Sentinel policy that checks the configuration of the S3 buckets and ensures that they have the proper settings for privacy and encryption and then assign the policy to your Terraform Cloud organization or workspace. This way, Terraform Cloud will prevent any changes that violate the policy from being applied.
+>
+> Discussion: EXAMHEIST-230
 ---
 
 #### Q185. If you don’t use the local Terraform backend, where else can Terraform save resource state?
 
+If you don’t use the local Terraform backend, where else can Terraform save resource state?
+
 - [ ] A. In an environment variable.
 - [ ] B. In memory.
-- [ ] C. In a remote location configured in the .terraformrc file, such as HCP Terraform or a cloud storage system.
-- [x] D. In a remote location configured in the terraform block, such as HCP Terraform or a cloud storage system.
+- [ ] C.
 
-> **Explanation:** EXAMHEIST-231
+  ```hcl
+  In a remote location configured in the .terraformrc file, such as HCP Terraform or a cloud
+  storage system.
+  ```
+- [x] D.
 
+  ```hcl
+  In a remote location configured in the terraform block, such as HCP Terraform or a cloud
+  storage system.
+  ```
+
+> **Explanation:** Terraform uses backends to store state. If you don’t use the default local backend, you can configure a remote backend in the terraform block of your configuration. Examples of remote backends: HCP Terraform / Terraform Cloud AWS S3 Azure Storage Google Cloud Storage This configuration is done in your .tf files, not in .terraformrc.
+>
+> Discussion: EXAMHEIST-231
 ---
 
 #### Q186. Which of the following statements about Terraform modules is not true?
@@ -2278,13 +2765,31 @@ Which command will migrate your current state file to the new S3 backend?
 
 #### Q192. If a DevOps team adopts AWS CloudFormation as their standardized method for provisioning public cloud resources, which of the following scenarios poses a challenge for this team?
 
-- [ ] A. The team is asked to build a reusable code base that can deploy resources into any AWS region
+If a DevOps team adopts AWS CloudFormation as their standardized method for provisioning public cloud resources, which of the following scenarios poses a challenge for this team?
+
+- [ ] A.
+
+  ```hcl
+  The team is asked to build a reusable code base that can deploy resources into any AWS
+  region
+  ```
 - [ ] B. The team is asked to manage a new application stack built on AWS-native services
-- [x] C. The organization decides to expand into Azure and wishes to deploy new infrastructure using their existing codebase
-- [ ] D. The DevOps team is tasked with automating a manual, web console-based provisioning process
+- [x] C.
 
-> **Explanation:** EXAMHEIST-242
+  ```hcl
+  The organization decides to expand into Azure and wishes to deploy new infrastructure
+  using their existing codebase
+  ```
+- [ ] D.
 
+  ```hcl
+  The DevOps team is tasked with automating a manual, web console-based provisioning
+  process
+  ```
+
+> **Explanation:** AWS CloudFormation is a service specifically designed for provisioning AWS resources. If the organization decides to expand into Azure and deploy new infrastructure using the existing codebase, the DevOps team will face a challenge, as CloudFormation does not support Azure or other cloud provider.
+>
+> Discussion: EXAMHEIST-242
 ---
 
 #### Q193. Which of these actions are forbidden when the Terraform state file is locked? (Choose three.)
@@ -2331,24 +2836,31 @@ Which command will migrate your current state file to the new S3 backend?
 
 #### Q197. Which type of block fetches or computes information for use elsewhere in a Terraform configuration?
 
-- [ ] A. local
-- [x] B. data
-- [ ] C. resource
-- [ ] D. provider
+Which type of block fetches or computes information for use elsewhere in a Terraform configuration?
 
-> **Explanation:** EXAMHEIST-251
+- [x] A. True
+- [ ] B. False
 
+> **Explanation:** Discussion: EXAMHEIST-251
 ---
 
 #### Q198. How can a ticket-based system slow down infrastructure provisioning and limit the ability to scale? (Choose two.)
 
+How can a ticket-based system slow down infrastructure provisioning and limit the ability to scale? (Choose two.)
+
 - [x] A. End-users have to request infrastructure changes
 - [ ] B. Ticket-based systems generate a full audit trail of the request and fulfillment process
 - [ ] C. Users can access a catalog of approved resources from a drop-down list in a request form
-- [x] D. The more resources your organization needs, the more tickets your infrastructure team has to process.
+- [x] D.
 
-> **Explanation:** EXAMHEIST-252
+  ```hcl
+  The more resources your organization needs, the more tickets your infrastructure team has
+  to process.
+  ```
 
+> **Explanation:** A: When end-users must submit tickets for infrastructure changes, it introduces manual steps and delays. D: As demand grows, the number of tickets increases, creating bottlenecks and limiting scalability. Options B and C do not inherently slow down provisioning; they provide audit trails and resource catalogues, which can improve governance and usability.
+>
+> Discussion: EXAMHEIST-252
 ---
 
 #### Q199. Which provider authentication method prevents credentials from being stored in the state file?
@@ -2427,57 +2939,93 @@ Which command will migrate your current state file to the new S3 backend?
 
 #### Q206. You use a Cloud provider account that is shared with other team members. You previously used Terraform to create a load balancer that listens on port 80. After some application changes, you updated the Terraform code to change the port to 443. You run terraform plan and see that the execution plan shows the port changing from 80 to 443 like you intended, and step away to grab some coffee. In the meantime, another team member manually changes the load balancer port to 443 through the Cloud provider console before you get back to your desk. What will happen when you run terraform apply upon returning to your desk?
 
-- [x] A. Terraform will not make any changes to the load balancer and will update the state file to reflect the manual change.
+You use a Cloud provider account that is shared with other team members. You previously used Terraform to create a load balancer that listens on port 80. After some application changes, you updated the Terraform code to change the port to 443. You run terraform plan and see that the execution plan shows the port changing from 80 to 443 like you intended, and step away to grab some coffee. In the meantime, another team member manually changes the load balancer port to 443 through the Cloud provider console before you get back to your desk. What will happen when you run terraform apply upon returning to your desk?
+
+- [x] A.
+
+  ```hcl
+  Terraform will not make any changes to the load balancer and will update the state file to
+  reflect the manual change.
+  ```
 - [ ] B. Terraform will fail with an error because the state file is no longer accurate.
 - [ ] C. Terraform will change the load balancer port to 80 and then change it back to 443.
 - [ ] D. Terraform will recreate the load balancer.
 
-> **Explanation:** EXAMHEIST-264
-
+> **Explanation:** A. Terraform will not make any changes to the load balancer and will update the state file to reflect the manual change.
+>
+> Discussion: EXAMHEIST-264
 ---
 
 #### Q207. When using Terraform to deploy resources into Azure, which scenarios are true regarding state files? (Choose two)
 
-- [ ] A. Changing resources via the Azure Cloud Console records the change in the current state file.
-- [ ] B. When you change a resource via the Azure Cloud Console. Terraform records the changes in a new state file.
-- [x] C. When you change a Terraform-managed resource via the Azure Cloud Console. Terraform updates the state file to reflect the change during the next plan or apply.
+When using Terraform to deploy resources into Azure, which scenarios are true regarding state files? (Choose two)
+
+- [ ] A.
+
+  ```hcl
+  Changing resources via the Azure Cloud Console records the change in the current state
+  file.
+  ```
+- [ ] B.
+
+  ```hcl
+  When you change a resource via the Azure Cloud Console. Terraform records the changes
+  in a new state file.
+  ```
+- [x] C.
+
+  ```hcl
+  When you change a Terraform-managed resource via the Azure Cloud Console. Terraform
+  updates the state file to reflect the change during the next plan or apply.
+  ```
 - [x] D. Changing resources via the Azure Cloud Console does not update current state file.
 
-> **Explanation:** EXAMHEIST-265
-
+> **Explanation:** C. When you change a Terraform‑managed resource via the Azure Cloud Console, Terraform updates the state file to reflect the change during the next plan or apply. D. Changing resources via the Azure Cloud Console does not update current state file.
+>
+> Discussion: EXAMHEIST-265
 ---
 
 #### Q208. You have developed a new cloud-based service that uses proprietary APIs and want to use Terraform to create, manage, and delete users from the service. How can Terraform interact with the service?
 
+You have developed a new cloud-based service that uses proprietary APIs and want to use Terraform to create, manage, and delete users from the service. How can Terraform interact with the service?
+
 - [ ] A. Terraform can manage users for any service that is hosted on a public cloud provider.
-- [x] B. Develop and publish a customer provider to interact with the service using its proprietary APIs.
+- [x] B.
 
-> **Explanation:** EXAMHEIST-266
+  ```hcl
+  Develop and publish a customer provider to interact with the service using its proprietary
+  APIs.
+  ```
 
+> **Explanation:** Terraform interacts with external systems via providers. If your service has proprietary APIs and no existing Terraform provider, you’ll need to build a custom Terraform provider that implements CRUD operations for your resources (e.g., users) and translates Terraform configurations into API calls.
+>
+> Discussion: EXAMHEIST-266
 ---
 
 #### Q209. You have just developed a new Terraform configuration for two virtual machines with a cloud provider. You would like to create the infrastructure for the first time.
 
-- [ ] A. Which Terraform command should you run first?
-- [ ] B. terraform apply
-- [ ] C. terraform plan
-- [x] D. terraform show
-- [ ] E. terraform init
+You have just developed a new Terraform configuration for two virtual machines with a cloud provider. You would like to create the infrastructure for the first time.
 
-> **Explanation:** EXAMHEIST-267
+- [ ] A. terraform apply
+- [ ] B. terraform plan
+- [ ] C. terraform show
+- [x] D. terraform init
 
+> **Explanation:** Discussion: EXAMHEIST-267
 ---
 
 #### Q210. You want to define a single input variable to capture configuration values for a server. The values must represent memory as a number, and the server name as a string.
 
-- [ ] A. Which variable type could you use for this input?
-- [x] B. List
-- [ ] C. Object
-- [ ] D. Map
-- [ ] E. Terraform does not support complex input variables of different types
+You want to define a single input variable to capture configuration values for a server. The values must represent memory as a number, and the server name as a string.
 
-> **Explanation:** EXAMHEIST-268
+- [ ] A. List
+- [x] B. Object
+- [ ] C. Map
+- [ ] D. Terraform does not support complex input variables of different types
 
+> **Explanation:** This is the variable type that you could use for this input, as it can store multiple attributes of different types within a single value. The other options are either invalid or incorrect for this use case.
+>
+> Discussion: EXAMHEIST-268
 ---
 
 #### Q211. terraform validate confirms that your infrastructure matches the Terraform state file.

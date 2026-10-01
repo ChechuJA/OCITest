@@ -251,6 +251,53 @@ function startQuiz() {
 
 function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()* (i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}}
 
+function renderQuestionContent(container, questionId, question) {
+  container.replaceChildren();
+
+  const number = document.createElement('span');
+  number.className = 'question-number';
+  number.textContent = `Q${questionId}`;
+  container.appendChild(number);
+
+  const appendText = (text) => {
+    text.split(/\n\s*\n/).forEach((paragraph) => {
+      const content = paragraph.trim();
+      if (!content) return;
+
+      const element = document.createElement('p');
+      element.className = 'question-copy';
+      element.textContent = content;
+      container.appendChild(element);
+    });
+  };
+
+  const codeBlockPattern = /```([\w-]*)[ \t]*\r?\n([\s\S]*?)```/g;
+  let currentIndex = 0;
+  let match;
+
+  while ((match = codeBlockPattern.exec(question)) !== null) {
+    appendText(question.slice(currentIndex, match.index));
+
+    const exhibit = document.createElement('figure');
+    exhibit.className = 'question-exhibit';
+
+    const caption = document.createElement('figcaption');
+    caption.textContent = 'EXHIBIT';
+
+    const pre = document.createElement('pre');
+    const code = document.createElement('code');
+    if (match[1]) code.className = `language-${match[1]}`;
+    code.textContent = match[2].replace(/\r?\n$/, '');
+
+    pre.appendChild(code);
+    exhibit.append(caption, pre);
+    container.appendChild(exhibit);
+    currentIndex = codeBlockPattern.lastIndex;
+  }
+
+  appendText(question.slice(currentIndex));
+}
+
 function renderCurrent() {
   nextBtn.disabled = true;
   answered = false;
@@ -263,12 +310,23 @@ function renderCurrent() {
   const percent = ((answeredCount / order.length) * 100).toFixed(1);
   progressTextEl.textContent = `Progreso: ${answeredCount}/${order.length} (${percent}%)`;
   progressFillEl.style.width = `${percent}%`;
-  questionContainer.textContent = `Q${q.id}: ${q.q}`;
+  renderQuestionContent(questionContainer, q.id, q.q);
   optionsEl.innerHTML = '';
   q.o.forEach((opt,idx)=>{
     const li = document.createElement('li');
     const btn = document.createElement('button');
-    btn.textContent = `${String.fromCharCode(65+idx)}. ${opt}`;
+    const key = document.createElement('span');
+    key.className = 'option-key';
+    key.textContent = `${String.fromCharCode(65+idx)}.`;
+    btn.appendChild(key);
+    if (opt.includes('\n')) {
+      const code = document.createElement('code');
+      code.className = 'option-code';
+      code.textContent = opt;
+      btn.appendChild(code);
+    } else {
+      btn.appendChild(document.createTextNode(` ${opt}`));
+    }
     btn.addEventListener('click', ()=> selectOption(idx));
     li.appendChild(btn);
     optionsEl.appendChild(li);
