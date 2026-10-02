@@ -129,6 +129,66 @@
       "provider": "HashiCorp",
       "category": "DevOps",
       "description": "HashiCorp Certified: Vault Associate certification"
+    },
+    {
+      "id": "microsoft-pl-200",
+      "title": "Microsoft Power Platform Functional Consultant",
+      "code": "PL-200",
+      "file": "Descargables/Microsoft/PL-200/pl200-questions.json",
+      "questions": 268,
+      "provider": "Microsoft",
+      "category": "Business Applications",
+      "description": "Microsoft Power Platform Functional Consultant certification exam",
+      "sections": [
+        {
+          "id": "qa",
+          "title": "Q&A",
+          "file": "Descargables/Microsoft/PL-200/pl-200-qa.json",
+          "questions": 185
+        },
+        {
+          "id": "multi",
+          "title": "Multi",
+          "file": "Descargables/Microsoft/PL-200/pl-200-multi.json",
+          "questions": 36
+        },
+        {
+          "id": "cases",
+          "title": "Casos de uso (Cases)",
+          "file": "Descargables/Microsoft/PL-200/pl-200-cases.json",
+          "questions": 47
+        }
+      ]
+    },
+    {
+      "id": "microsoft-ab-100",
+      "title": "Microsoft AB-100",
+      "code": "AB-100",
+      "file": "Descargables/Microsoft/AB-100/ab100-questions.json",
+      "questions": 111,
+      "provider": "Microsoft",
+      "category": "Business Applications",
+      "description": "Microsoft AB-100 certification exam",
+      "sections": [
+        {
+          "id": "qa",
+          "title": "Q&A",
+          "file": "Descargables/Microsoft/AB-100/ab-100-qa.json",
+          "questions": 85
+        },
+        {
+          "id": "multi",
+          "title": "Multi",
+          "file": "Descargables/Microsoft/AB-100/ab-100-multi.json",
+          "questions": 10
+        },
+        {
+          "id": "cases",
+          "title": "Casos de uso (Cases)",
+          "file": "Descargables/Microsoft/AB-100/ab-100-cases.json",
+          "questions": 16
+        }
+      ]
     }
   ],
   "categories": [
@@ -151,12 +211,17 @@
       "id": "DevOps",
       "name": "DevOps",
       "description": "CI/CD, automation, and developer workflows"
+    },
+    {
+      "id": "Business Applications",
+      "name": "Business Applications",
+      "description": "Power Platform and business application solutions"
     }
   ],
   "metadata": {
     "version": "1.1.0",
-    "totalExams": 13,
-    "totalQuestions": 1144,
-    "lastUpdated": "2026-09-28"
+    "totalExams": 15,
+    "totalQuestions": 1523,
+    "lastUpdated": "2026-10-02"
   }
 }

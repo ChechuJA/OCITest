@@ -1,0 +1,642 @@
+[
+  {
+    "id": "01-1",
+    "question": "MULTI 01, propuesta 1:\nYou administer the Microsoft 365 and Power Platform environments for Contoso, Ltd. The company has\na model-driven app that is used to track customer interactions with employees. The app uses standard\ntable types for customers. A user named Elisabeth Rice signs in to the app by using the following sign in\nname: Elisabeth.Rice@contoso.com.\nAfter marriage, Elisabeth changes her legal name to Elisabeth Mueller.\nYou need to update the sign in name for the user without losing any application history.\n\nSolution: Change Elizabeth's username in the user record for the app.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "A. Yes\nB. No\nDynamics 365 and Dataverse, a user's sign-in name is synchronized from Microsoft Entra ID (Azure AD).\nYou do not change the sign-in name directly in the app's user record.\nTo preserve all ownership, history, activities, and audit records:\n1. Change the user's name and User Principal Name (UPN) in Microsoft Entra ID / Microsoft\n365.\n2. Synchronization updates the corresponding Dynamics 365 user record.\n3. The same user account is retained, so application history remains intact.\nChanging the username in the Dynamics 365 app user record itself is not the correct method for\nchanging the sign-in identity.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=1",
+    "ungraded": true
+  },
+  {
+    "id": "01-2",
+    "question": "MULTI 01, propuesta 2:\nYou administer the Microsoft 365 and Power Platform environments for Contoso, Ltd. The company has\na model-driven app that is used to track customer interactions with employees. The app uses standard\ntable types for customers. A user named Elisabeth Rice signs in to the app by using the following sign in\nname: Elisabeth.Rice@contoso.com.\nAfter marriage, Elisabeth changes her legal name to Elisabeth Mueller.\nYou need to update the sign in name for the user without losing any application history.\n\nSolution: Ask the Microsoft 365 administrator to sign in to the admin portal and change the\nusername.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "A. Yes\nB. No\nDynamics 365 and Dataverse, user accounts are linked to Microsoft Entra ID (Azure AD) / Microsoft 365\nidentities. To change a user's sign-in name (UPN) while preserving ownership, activities, audit history,\nand record associations:\n1. A Microsoft 365 administrator changes the user's username (UPN) in the Microsoft 365\nAdmin Center.\n2. The change synchronizes to Dynamics 365.\n3. The user continues to use the same underlying account, so all application history is retained.\nFor example:\n• Before: Elisabeth.Rice@contoso.com\n• After: Elisabeth.Mueller@contoso.com\nThe Dynamics 365 user record remains associated with the same identity, preserving all historical data.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=1",
+    "ungraded": true
+  },
+  {
+    "id": "01-3",
+    "question": "MULTI 01, propuesta 3:\nYou administer the Microsoft 365 and Power Platform environments for Contoso, Ltd. The company has\na model-driven app that is used to track customer interactions with employees. The app uses standard\ntable types for customers. A user named Elisabeth Rice signs in to the app by using the following sign in\nname: Elisabeth.Rice@contoso.com.\nAfter marriage, Elisabeth changes her legal name to Elisabeth Mueller.\nYou need to update the sign in name for the user without losing any application history.\n\nSolution: Delete the user account in the Power Platform admin portal and recreate the account\nby using the new name.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "A. Yes\nB. No\nThe goal is to:\n• Update the user's sign-in name from Elisabeth.Rice@contoso.com to\nElisabeth.Mueller@contoso.com.\n• Preserve all application history, including:\no Record ownership\no Activities\no Audit history\no Assignments\no Relationships\nDeleting the user account and recreating it would create a new identity in Microsoft Entra ID (Azure AD)\nand Dataverse. The new account would not be associated with the original user's history and ownership\nrecords.\nThe correct approach is to change the username (UPN) in Microsoft 365 / Microsoft Entra ID, which\nkeeps the same user identity and preserves all history.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=2",
+    "ungraded": true
+  },
+  {
+    "id": "01-4",
+    "question": "MULTI 01, propuesta 4:\nYou administer the Microsoft 365 and Power Platform environments for Contoso, Ltd. The company has\na model-driven app that is used to track customer interactions with employees. The app uses standard\ntable types for customers. A user named Elisabeth Rice signs in to the app by using the following sign in\nname: Elisabeth.Rice@contoso.com.\nAfter marriage, Elisabeth changes her legal name to Elisabeth Mueller.\nYou need to update the sign in name for the user without losing any application history.\n\nSolution: From Dynamics 365 Settings, select Email Configuration. In the active mailbox for the\nuser, update the name.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "C. Yes\nD. No\nThe proposed solution does not meet the goal.\nChanging information in Dynamics 365 Settings → Email Configuration → Mailbox only affects the\nmailbox configuration used for email synchronization. It does not change the user's sign-in name (User\nPrincipal Name/UPN) in Microsoft Entra ID (Azure AD) or Dynamics 365.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=2"
+  },
+  {
+    "id": "02-1",
+    "question": "MULTI 02, propuesta 1:\nOn a Contact record, a user creates a Note record that contains the word running.\nOne week later, the user reports that they cannot find the Contact record associated with the Note\nrecord.\nYou need to find the Note record.\n\nSolution: Use Categorized Search to search for the word run.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nCategorized Search does not perform stemming or linguistic matching in a way that guarantees that\nsearching for \"run\" will return records containing \"running\".\nTo find the Note record reliably, the user should search for the actual indexed term \"running\" (or use\nRelevance Search/Dataverse Search configured for Notes).\nBecause the note contains the word \"running\", searching for \"run\" with Categorized Search is not\nguaranteed to return the Note record.\nTherefore, the proposed solution does not meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=3"
+  },
+  {
+    "id": "02-2",
+    "question": "MULTI 02, propuesta 2:\nOn a Contact record, a user creates a Note record that contains the word running.\nOne week later, the user reports that they cannot find the Contact record associated with the Note\nrecord.\nYou need to find the Note record.\n\nSolution: Use Relevance Search to search for the word run.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "A. Yes\nB. No\nRelevance Search (now Dataverse Search) uses Azure Cognitive Search technology and supports\nlinguistic analysis, including:\n• Word stemming\n• Inflectional forms\n• Relevance ranking\nBecause the Note contains the word: running\na search for: run\ncan return results containing related word forms such as running, runs, and ran.\nTherefore, using Relevance Search to search for \"run\" can locate the Note record and,\nconsequently, the associated Contact record.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=3",
+    "ungraded": true
+  },
+  {
+    "id": "02-3",
+    "question": "MULTI 02, propuesta 3:\nOn a Contact record, a user creates a Note record that contains the word running.\nOne week later, the user reports that they cannot find the Contact record associated with the Note\nrecord.\nYou need to find the Note record.\n\nSolution: Use Quick Find search on the Notes list to search for the word run.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nQuick Find performs keyword matching but does not support the linguistic analysis and stemming\ncapabilities of Relevance Search (Dataverse Search).\nThe Note contains the word: running\nThe proposed search term is: run\nQuick Find does not automatically treat run and running as equivalent terms. Therefore, searching for\nrun is not guaranteed to find a Note that contains running.\nTo reliably find the Note, you would need to:\n• Search for running using Quick Find, or\n• Use Relevance Search, which supports word stemming and related word forms.\nTherefore, the solution does not meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=3"
+  },
+  {
+    "id": "02-4",
+    "question": "MULTI 02, propuesta 4:\nOn a Contact record, a user creates a Note record that contains the word running.\nOne week later, the user reports that they cannot find the Contact record associated with the Note\nrecord.\nYou need to find the Note record.\n\nSolution: Use Dataverse Search to search for the word run.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "A. Yes\nB. No\nDataverse Search (formerly Relevance Search) supports linguistic search and word stemming.\nStemming allows the search engine to match variations of a word based on its root.\nFor example:\n• Stored word: running\n• Search term: run\nDataverse Search can return records containing running, runs, or ran when searching for run.\nSince Notes (annotations) are searchable by Dataverse Search, searching for run can locate the Note\ncontaining running, which in turn helps identify the associated Contact record.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=4",
+    "ungraded": true
+  },
+  {
+    "id": "03-1",
+    "question": "MULTI 03, propuesta 1:\nA company uses Dataverse. The company plans to store and manage documents and data in the\nenvironment.\nThe company requires a solution that minimizes Dataverse storage consumption.\nYou need to recommend a solution.\n\nSolution: Configure SharePoint on-premises integration..\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nConfiguring SharePoint integration with Dataverse is the correct approach to minimize\nDataverse storage consumption because documents are stored in SharePoint while only\nmetadata and links are stored in Dataverse.\nHowever, the solution specifies SharePoint on-premises integration. Dataverse supports\ndocument management integration with SharePoint Online, and the recommended approach\nfor minimizing storage in Power Platform environments is to store documents in SharePoint\nOnline rather than in Dataverse file storage.\nTherefore, the proposed solution does not meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=4"
+  },
+  {
+    "id": "03-2",
+    "question": "MULTI 03, propuesta 2:\nA company uses Dataverse. The company plans to store and manage documents and data in the\nenvironment.\nThe company requires a solution that minimizes Dataverse storage consumption.\nYou need to recommend a solution.\n\nSolution: Enable attachments for a table..\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nEnabling attachments for a Dataverse table stores the attached files in Dataverse file storage, which\nincreases Dataverse storage consumption rather than minimizing it.\nThe requirement is:\n\"Store and manage documents and data while minimizing Dataverse storage consumption.\"\nThe recommended approach would be to integrate Dataverse with SharePoint document\nmanagement, where documents are stored in SharePoint and only references are maintained in\nDataverse.\nTherefore:\n• Documents can be stored as attachments.\n• Storage consumption is not minimized.\n• The solution does not meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=5"
+  },
+  {
+    "id": "03-3",
+    "question": "MULTI 03, propuesta 3:\nA company uses Dataverse. The company plans to store and manage documents and data in the\nenvironment.\nThe company requires a solution that minimizes Dataverse storage consumption.\nYou need to recommend a solution.\n\nSolution: Configure SharePoint Online integration.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "A. Yes\nB. No\nConfiguring SharePoint Online integration is the recommended approach when a company needs to\nstore and manage documents while minimizing Dataverse storage consumption.\nWith SharePoint integration:\n• Documents are stored in SharePoint Online instead of Dataverse file storage.\n• Dataverse stores only references/links to the documents.\n• Users can manage documents directly from model-driven apps.\n• SharePoint storage is typically more cost-effective for document management.\nTherefore, configuring SharePoint Online integration meets the goal of minimizing Dataverse storage\nusage\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=5"
+  },
+  {
+    "id": "03-4",
+    "question": "MULTI 03, propuesta 4:\nA company uses Dataverse. The company plans to store and manage documents and data in the\nenvironment.\nThe company requires a solution that minimizes Dataverse storage consumption.\nYou need to recommend a solution.\n\nSolution: Add a File column to a table.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "C. Yes\nD. No\nA File column stores files directly in Dataverse file storage. While it provides a convenient way\nto associate documents with records, it increases Dataverse storage consumption.\nThe requirement is to:\nMinimize Dataverse storage consumption.\nThe recommended approach is SharePoint Online integration, where documents are stored in\nSharePoint and only linked to Dataverse records.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=6",
+    "ungraded": true
+  },
+  {
+    "id": "04-1",
+    "question": "MULTI 04, propuesta 1:\nA company uses a Dataverse environment. The environment is accessed from canvas and model-driven\napps.\nThe Dataverse environment contains a table that has the following columns:\n• Name\n• Company\n• Contacted On\nThe company requires that the table not contain any duplicate rows when users create data in the\nenvironment.\nYou need to implement a solution that meets the requirement.\n\nSolution: Create an alternate key for the columns.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "A. Yes\nB. No\nAn alternate key in Dataverse enforces uniqueness across one or more columns. By creating an\nalternate key using the columns:\n• Name\n• Company\n• Contacted On\nDataverse will prevent users from creating another row with the same combination of values in\nthose columns.\nSince the requirement is that the table must not contain duplicate rows, an alternate key is an\nappropriate solution because it enforces uniqueness at the database level for all apps accessing\nDataverse (both canvas apps and model-driven apps).\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=7",
+    "ungraded": true
+  },
+  {
+    "id": "04-2",
+    "question": "MULTI 04, propuesta 2:\nA company uses a Dataverse environment. The environment is accessed from canvas and model-driven\napps.\nThe Dataverse environment contains a table that has the following columns:\n• Name\n• Company\n• Contacted On\nThe company requires that the table not contain any duplicate rows when users create data in the\nenvironment.\nYou need to implement a solution that meets the requirement.\n\nSolution: Create an alternate key for the columns.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nA Power Fx formula can be used to validate data or provide logic within an app, but it does not\nenforce uniqueness at the Dataverse table level across all ways data can be be created or\nupdated.\nThe requirement is:\n\"The table must not contain any duplicate rows when users create data in the environment.\"\nTo guarantee uniqueness in Dataverse, you should use an alternate key or duplicate detection\nrules. A Power Fx formula only works within the specific app where it is implemented and does\nnot prevent duplicates coming from other apps, imports, workflows, or APIs.\nTherefore, creating a Power Fx formula does not fully meet the requirement.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=7"
+  },
+  {
+    "id": "04-3",
+    "question": "MULTI 04, propuesta 3:\nA company uses a Dataverse environment. The environment is accessed from canvas and model-driven\napps.\nThe Dataverse environment contains a table that has the following columns:\n• Name\n• Company\n• Contacted On\nThe company requires that the table not contain any duplicate rows when users create data in the\nenvironment.\nYou need to implement a solution that meets the requirement.\n\nSolution: Create a duplicate detection rule for the columns.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nA duplicate detection rule can identify potential duplicates and warn users, but it does not\nguarantee that duplicates will never be created.\nThe requirement states:\n\"The table must not contain any duplicate rows.\"\nTo enforce uniqueness at the database level, you should use an alternate key. Alternate keys\nprevent duplicate records from being created with the same key values, regardless of whether\nthe data is entered through a canvas app, model-driven app, import, or API.\nDuplicate detection rules:\n• Detect duplicate records.\n• Can warn users during create/update/import operations.\n• Do not enforce uniqueness in all scenarios.\n• Do not guarantee that duplicates cannot exist.\nTherefore, the solution does not meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=8"
+  },
+  {
+    "id": "04-4",
+    "question": "MULTI 04, propuesta 4:\nA company uses a Dataverse environment. The environment is accessed from canvas and model-driven\napps.\nThe Dataverse environment contains a table that has the following columns:\n• Name\n• Company\n• Contacted On\nThe company requires that the table not contain any duplicate rows when users create data in the\nenvironment.\nYou need to implement a solution that meets the requirement.\n\nSolution: Create a business rule for the columns.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nA business rule can validate data, show error messages, set field values, or enforce field\nrequirements within Dataverse forms and apps. However, it does not enforce uniqueness across\nrecords in a table.\nThe requirement is:\n\"The table must not contain any duplicate rows when users create data in the environment.\"\nA business rule cannot reliably prevent duplicate records from being created, especially through\ndifferent entry methods (canvas apps, model-driven apps, imports, APIs, flows, etc.).\nTo guarantee no duplicates, you should use an alternate key, which enforces uniqueness at the\nDataverse database level..\nTherefore, the solution does not meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=8"
+  },
+  {
+    "id": "05-1",
+    "question": "MULTI 05, propuesta 1:\nYou are building a Power Pages site for a supermarket chain.\nThe company plans to have the managers of individual stores use the site. Managers will authenticate\non the site each week by using their corporate identity to update stock information for their store.\nManagers must be able to add and update stock information for their store only.\nYou need to configure the site security.\n\nSolution: Configure table permissions.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "C. Yes\nD. No\nTable permissions are the correct security mechanism in Power Pages for controlling access to\nDataverse data.\nIn this scenario, managers must:\n• Authenticate using their corporate identity.\n• Add stock information.\n• Update stock information.\n• Access only the records for their own store.\nBy configuring table permissions (with the appropriate access type such as Contact, Account,\nor a relationship-based permission), you can grant Create and Write privileges while restricting\neach manager to only the records associated with their store.\nTherefore, the solution meets the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=9"
+  },
+  {
+    "id": "05-2",
+    "question": "MULTI 05, propuesta 2:\nYou are building a Power Pages site for a supermarket chain.\nThe company plans to have the managers of individual stores use the site. Managers will authenticate\non the site each week by using their corporate identity to update stock information for their store.\nManagers must be able to add and update stock information for their store only.\nYou need to configure the site security.\n\nSolution: Use local authentication.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nThe scenario states that managers must authenticate using their corporate identity. In Power\nPages, this requires an external identity provider such as Microsoft Entra ID (Azure AD), not\nlocal authentication.\nLocal authentication:\n• Uses username/password accounts stored for the website.\n• Does not authenticate users with their corporate identity.\n• Does not provide record-level access control by itself.\nTo meet the requirements, you would need:\n1. Corporate authentication (for example, Microsoft Entra ID).\n2. Table permissions to restrict managers so they can add and update stock information\nonly for their own store.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=9"
+  },
+  {
+    "id": "05-3",
+    "question": "MULTI 05, propuesta 3:\nYou are building a Power Pages site for a supermarket chain.\nThe company plans to have the managers of individual stores use the site. Managers will authenticate\non the site each week by using their corporate identity to update stock information for their store.\nManagers must be able to add and update stock information for their store only.\nYou need to configure the site security.\n\nSolution: Use Microsoft Entra ID authentication.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nUsing Microsoft Entra ID authentication satisfies only one requirement:\n• Managers authenticate using their corporate identity.\nHowever, it does not by itself ensure that managers can:\n• Add and update stock information.\n• Access only their own store's records.\nTo enforce record-level access in Power Pages, you must configure table permissions (and\nappropriate web roles/relationships).\nSince Microsoft Entra ID authentication alone does not provide the required authorization and\ndata access restrictions, the solution does not fully meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=10"
+  },
+  {
+    "id": "05-4",
+    "question": "MULTI 05, propuesta 4:\nYou are building a Power Pages site for a supermarket chain.\nThe company plans to have the managers of individual stores use the site. Managers will authenticate\non the site each week by using their corporate identity to update stock information for their store.\nManagers must be able to add and update stock information for their store only.\nYou need to configure the site security.\n\nSolution: Configure page permissions.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nPage permissions control access to web pages in a Power Pages site, but they do not control\naccess to Dataverse records.\nThe requirement is that managers must:\n• Sign in with their corporate identity.\n• Add and update stock information.\n• Access only the stock information for their own store.\nTo achieve record-level security, you must use table permissions (often together with web roles\nand Entra ID authentication).\nTherefore, configuring page permissions alone does not meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=10"
+  },
+  {
+    "id": "06-1",
+    "question": "MULTI 06, propuesta 1:\nSupport agents use a model-driven app while working on customer cases.\nAgents currently switch between multiple systems to locate help content. The need to switch systems\nmakes it difficult to find relevant information.\nYou need to provide an efficient way to display contextual knowledge directly within the case form\nwithout requiring the agent to refresh the record.\n\nSolution: Call an instant flow to update article information on the Dataverse record..\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nThe requirement is to:\n• Display contextual knowledge directly within the case form.\n• Avoid requiring the agent to refresh the record.\n• Help agents find relevant information without switching systems.\nCalling an instant flow to update article information on a Dataverse record does not satisfy the\nrequirement because:\n• The flow updates data in the background, but the form would typically need to be\nrefreshed to display the updated information.\n• It does not provide an embedded, contextual knowledge experience within the form.\nA better approach would be to use capabilities such as:\n• Knowledge articles integrated into Customer Service\n• Knowledge search control\n• A custom page or embedded component that displays knowledge content dynamically\nwithin the form\nTherefore, the proposed solution does not meet the goal\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=11"
+  },
+  {
+    "id": "06-2",
+    "question": "MULTI 06, propuesta 2:\nSupport agents use a model-driven app while working on customer cases.\nAgents currently switch between multiple systems to locate help content. The need to switch systems\nmakes it difficult to find relevant information.\nYou need to provide an efficient way to display contextual knowledge directly within the case form\nwithout requiring the agent to refresh the record.\n\nSolution: Add a custom page that has a knowledge article lookup and link it by using a navigation\nbutton in the app..\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "C. Yes\nD. No\nThe requirement is to:\n• Display contextual knowledge directly within the case form.\n• Avoid requiring the agent to refresh the record.\n• Reduce switching between systems.\nA custom page linked from a navigation button does provide access to knowledge articles,\nbut it does not display the knowledge directly within the case form. The agent must navigate\naway from the form (or open another page), which does not fully satisfy the requirement for\ncontextual information embedded in the case experience.\nA better solution would be to embed the knowledge experience directly in the form (for example,\nusing a side pane or embedded component that displays contextual knowledge based on the\ncurrent case).\nTherefore, the proposed solution does not meet the goal\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=12"
+  },
+  {
+    "id": "06-3",
+    "question": "MULTI 06, propuesta 3:\nSupport agents use a model-driven app while working on customer cases.\nAgents currently switch between multiple systems to locate help content. The need to switch systems\nmakes it difficult to find relevant information.\nYou need to provide an efficient way to display contextual knowledge directly within the case form\nwithout requiring the agent to refresh the record.\n\nSolution: In the case form, embed a canvas app that dynamically displays knowledge articles\nbased on the case category.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "A. Yes\nB. No\nThe requirement is to:\n• Display contextual knowledge directly within the case form.\n• Avoid switching to other systems.\n• Avoid requiring the agent to refresh the record.\nBy embedding a canvas app in the case form, you can:\n• Pass the current case information (such as case category) to the canvas app.\n• Dynamically retrieve and display relevant knowledge articles.\n• Show the information directly within the form.\n• Update the displayed content without requiring the user to refresh the case record.\nThis provides an integrated and contextual user experience that meets the stated requirements\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=12"
+  },
+  {
+    "id": "06-4",
+    "question": "MULTI 06, propuesta 4:\nSupport agents use a model-driven app while working on customer cases.\nAgents currently switch between multiple systems to locate help content. The need to switch systems\nmakes it difficult to find relevant information.\nYou need to provide an efficient way to display contextual knowledge directly within the case form\nwithout requiring the agent to refresh the record.\n\nSolution: In the case form, add a subgrid that points to a custom table storing external article\nlinks.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "C. Yes\nD. No\nThe requirement is to provide:\n• Contextual knowledge directly within the case form\n• An efficient experience for agents\n• No need to refresh the record\n• Reduced switching between systems\nA subgrid that displays records from a custom table containing external article links can show\nrelated links, but it does not dynamically display contextual knowledge articles based on the\ncurrent case. Agents would still need to open the links and navigate elsewhere to read the\ncontent.\nTherefore, this solution does not fully meet the goal of displaying contextual knowledge directly\nwithin the case form.\nThe better solution remains:\nEmbed a canvas app that dynamically displays knowledge articles based on the case\ncategory.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=13"
+  },
+  {
+    "id": "07-1",
+    "question": "MULTI 07, propuesta 1:\nA company uses a model-driven app.\nThe company needs to automatically update the Status column in real time.\nYou need to configure this feature.\n\nSolution: Create a flow that has an Update item action.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nThe requirement is to update the Status column in real time.\nA Power Automate cloud flow with an Update item action runs asynchronously after the triggering\nevent occurs. It cannot guarantee real-time processing before the record is saved or immediately during\nthe transaction.\nTo achieve real-time updates in a model-driven app, you would typically use:\n• A real-time classic workflow\n• A business rule (if the logic is simple enough)\n• A plug-in (if custom code is allowed)\nTherefore, creating a cloud flow with an Update item action does not meet the requirement for real-\ntime updates.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=14"
+  },
+  {
+    "id": "07-2",
+    "question": "MULTI 07, propuesta 2:\nA company uses a model-driven app.\nThe company needs to automatically update the Status column in real time.\nYou need to configure this feature.\n\nSolution: Create a workflow that has an Update Record step.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "A. Yes\nB. No\nA workflow with an Update Record step can be configured as a real-time (synchronous) classic\nworkflow in a model-driven app.\nBecause the requirement is to automatically update the Status column in real time, a real-time\nworkflow can:\n• Run immediately when the triggering event occurs.\n• Update the record using the Update Record step.\n• Apply the change as part of the transaction.\nTherefore, the proposed solution does meet the goal\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=14"
+  },
+  {
+    "id": "07-3",
+    "question": "MULTI 07, propuesta 3:\nA company uses a model-driven app.\nThe company needs to automatically update the Status column in real time.\nYou need to configure this feature.\n\nSolution: Create a flow that has an Update a row action.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nThe requirement is to automatically update the Status column in real time.\nA flow with an \"Update a row\" action refers to a Power Automate cloud flow using the Dataverse\nconnector. Cloud flows run asynchronously and do not execute in real time as part of the Dataverse\ntransaction.\nTherefore, although the flow can update the Status column, it does not satisfy the requirement for a\nreal-time update.\nTo achieve real-time behavior, you would typically use:\n• A real-time classic workflow\n• A business rule (for simple logic)\n• A plug-in (for more complex logic).\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=14"
+  },
+  {
+    "id": "07-4",
+    "question": "MULTI 07, propuesta 4:\nA company uses a model-driven app.\nThe company needs to automatically update the Status column in real time.\nYou need to configure this feature.\n\nSolution: Create a workflow that has a Change Status step.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "A. Yes\nB. No\nThe requirement is to automatically update the Status column in real time.\nA real-time workflow can include a Change Status step, which is specifically designed to change the\nstatus of a record immediately as part of the workflow execution.\nBecause the workflow can be configured to run synchronously (real time), the status update occurs\nimmediately when the triggering event happens.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=15",
+    "ungraded": true
+  },
+  {
+    "id": "08-1",
+    "question": "MULTI 08, propuesta 1:\nYou are creating Power Virtual Agents chatbot that captures demographic information about customers.\nThe chatbot must determine the group a customer belongs to based on their age. The age groups are:\n• 0 - 17\n• 18 - 25\n• 26 - 35\n• 36 - 55\n• 55 - 100\nYou need to configure the chatbot to ask a question that can be used to determine the correct age\ngroup.\n\nSolution: Use age for Identify in the question and then add branches for each group that use\nconditional logic.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "A. Yes\nB. No\nIn Power Virtual Agents, you can:\n1. Ask the user for their age and store it in a variable (for example, Age).\n2. Use conditional branches to evaluate the age ranges:\n• 0–17\n• 18–25\n• 26–35\n• 36–55\n• 55–100\n3. Route the conversation based on the matching condition.\nUsing Age as the identified value in the question and then adding conditional logic branches for each\nage range is a valid approach and meets the requirement.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=16"
+  },
+  {
+    "id": "08-2",
+    "question": "MULTI 08, propuesta 2:\nYou are creating Power Virtual Agents chatbot that captures demographic information about customers.\nThe chatbot must determine the group a customer belongs to based on their age. The age groups are:\n• 0 - 17\n• 18 - 25\n• 26 - 35\n• 36 - 55\n• 55 - 100\nYou need to configure the chatbot to ask a question that can be used to determine the correct age\ngroup.\n\nSolution: Use Date and time for Identify in the question and then add branches that use\nconditional logic to determine the age group.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nThe requirement is to determine a customer's age group based on their age:\n• 0–17\n• 18–25\n• 26–35\n• 36–55\n• 55–100\nThe proposed solution uses Date and time for Identify and then conditional logic.\nThis does not meet the goal because the chatbot needs to capture either:\n• The customer's age directly (Number), or\n• The customer's birth date and then calculate the age.\nUsing Date and time alone does not inherently provide the customer's age and is not the appropriate\nentity type for determining age groups in this scenario.\nA correct approach would be to:\n1. Ask for the customer's age (Number).\n2. Use conditional branches to place the customer into the appropriate age group.\nTherefore, the proposed solution does not meet the goal\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=16"
+  },
+  {
+    "id": "08-3",
+    "question": "MULTI 08, propuesta 3:\nYou are creating Power Virtual Agents chatbot that captures demographic information about customers.\nThe chatbot must determine the group a customer belongs to based on their age. The age groups are:\n• 0 - 17\n• 18 - 25\n• 26 - 35\n• 36 - 55\n• 55 - 100\nYou need to configure the chatbot to ask a question that can be used to determine the correct age\ngroup.\n\nSolution: Use multiple choice options for Identify in the question and create options that\nrepresent each of the age groups.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "A. Yes\nB. No\nThe requirement is for the chatbot to determine which age group a customer belongs to.\nUsing a question with Multiple choice options such as:\n• 0–17\n• 18–25\n• 26–35\n• 36–55\n• 55–100\nallows the user to directly select their age group. The chatbot can then use the selected option without\nneeding additional calculations or conditional logic.\nTherefore, the solution does meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=17"
+  },
+  {
+    "id": "08-4",
+    "question": "MULTI 08, propuesta 4:\nYou are creating Power Virtual Agents chatbot that captures demographic information about customers.\nThe chatbot must determine the group a customer belongs to based on their age. The age groups are:\n• 0 - 17\n• 18 - 25\n• 26 - 35\n• 36 - 55\n• 55 - 100\nYou need to configure the chatbot to ask a question that can be used to determine the correct age\ngroup.\n\nSolution: Create a custom Age group entity and synonyms for each individual age in the\ncorresponding item. Use Age group for Identify in the question.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "A. Yes\nB. No\nA custom entity named Age Group can be created with values such as:\n• 0–17\n• 18–25\n• 26–35\n• 36–55\n• 55–100\nBy adding synonyms for each entity value (for example, mapping ages 18 through 25 to the \"18–25\"\ngroup), Power Virtual Agents can recognize an age entered by the user and match it to the correct age\ngroup.\nThen, using Age Group for Identify in the question allows the chatbot to determine the appropriate\ngroup.\nTherefore, the solution meets the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=17"
+  },
+  {
+    "id": "09-1",
+    "question": "MULTI 09, propuesta 1:\nThe sales team at a software company wants to attach a large number of supporting documents to\ncustomer records, but management does not want to incur the cost of additional storage.\nThe company does not have any Office 365 application integrations enabled.\nYou need to recommend a storage solution that keeps storage costs low..\n\nSolution: Enable Outlook integration.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nIn Enabling Outlook integration does not provide a low-cost document storage solution for attaching\nlarge numbers of supporting documents to customer records. Outlook integration is used primarily for\nemail tracking, synchronization, and accessing Dynamics 365 data from Outlook.\nTo store a large volume of documents while minimizing Dataverse storage consumption and cost, the\nrecommended solution is typically to integrate with SharePoint. Documents are stored in SharePoint\nrather than in Dataverse, which significantly reduces Dataverse storage requirements.\nSince the proposed solution only enables Outlook integration and does not address document storage\ncosts:\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=18"
+  },
+  {
+    "id": "09-2",
+    "question": "MULTI 09, propuesta 2:\nThe sales team at a software company wants to attach a large number of supporting documents to\ncustomer records, but management does not want to incur the cost of additional storage.\nThe company does not have any Office 365 application integrations enabled.\nYou need to recommend a storage solution that keeps storage costs low..\n\nSolution: Enable server-based SharePoint integration..\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "A. Yes\nB. No\nServer-based SharePoint integration is the recommended solution when users need to store a large\nnumber of documents related to Dataverse/Dynamics 365 records while minimizing storage costs.\nBenefits include:\n• Documents are stored in SharePoint rather than consuming expensive Dataverse\ndatabase/file storage.\n• Documents remain linked to customer records (Accounts, Contacts, Opportunities, etc.).\n• Users can access and manage documents directly from within Dynamics 365/Dataverse.\n• It provides a scalable and cost-effective document management solution.\nSince the goal is to attach many supporting documents while keeping storage costs low, enabling\nserver-based SharePoint integration meets the requirement.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=18"
+  },
+  {
+    "id": "09-3",
+    "question": "MULTI 09, propuesta 3:\nThe sales team at a software company wants to attach a large number of supporting documents to\ncustomer records, but management does not want to incur the cost of additional storage.\nThe company does not have any Office 365 application integrations enabled.\nYou need to recommend a storage solution that keeps storage costs low..\n\nSolution: Enable OneNote integration.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nOneNote integration is designed for capturing and organizing notes related to records in Dynamics\n365/Dataverse. It is not intended as a document management solution for storing large numbers of\nsupporting documents.\nThe requirement is to:\n• Attach a large number of documents to customer records.\n• Keep storage costs low.\nThe recommended solution for this scenario is server-based SharePoint integration, because\ndocuments are stored in SharePoint rather than consuming Dataverse storage.\nTherefore, enabling OneNote integration does not meet the goal\n.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=19"
+  },
+  {
+    "id": "09-4",
+    "question": "MULTI 09, propuesta 4:\nThe sales team at a software company wants to attach a large number of supporting documents to\ncustomer records, but management does not want to incur the cost of additional storage.\nThe company does not have any Office 365 application integrations enabled.\nYou need to recommend a storage solution that keeps storage costs low..\n\nSolution: Enable OneDrive for Business.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nOneDrive for Business is intended for personal or team file storage and collaboration, but it is not the\nrecommended document management integration for Dynamics 365/Dataverse customer records.\nThe requirement is to:\n• Attach a large number of supporting documents to customer records.\n• Keep storage costs low.\n• Provide an integrated document management solution linked to records.\nThe correct solution is server-based SharePoint integration, which stores documents in SharePoint\nwhile maintaining links to Dataverse/Dynamics 365 records.\nTherefore, enabling OneDrive for Business does not meet the goal.\n\nFuente: Descargables/Microsoft/PL-200/PL-200-MULTI.pdf#page=19"
+  }
+]

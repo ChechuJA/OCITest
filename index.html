@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Quiz de Certificaciones</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20261002" />
 </head>
 <body>
   <header>
@@ -30,6 +30,12 @@
       <label for="examSelect">Examen:</label>
       <select id="examSelect" disabled>
         <option value="">-- Primero seleccione un proveedor --</option>
+      </select>
+    </div>
+    <div id="sectionGroup" class="control-group" hidden>
+      <label for="sectionSelect">Apartado:</label>
+      <select id="sectionSelect" disabled>
+        <option value="">-- Primero seleccione un examen --</option>
       </select>
     </div>
     <div class="control-group">
@@ -81,7 +87,7 @@
   <footer>
     <p>Resultados almacenados localmente. No se envían datos.</p>
   </footer>
-  <script src="exam-loader.js"></script>
-  <script src="quiz.js"></script>
+  <script src="exam-loader.js?v=20261002"></script>
+  <script src="quiz.js?v=20261002"></script>
 </body>
 </html>

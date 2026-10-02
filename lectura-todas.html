@@ -325,6 +325,48 @@
             font-weight: bold;
             margin-left: auto;
         }
+
+        .materials-table-wrap {
+            overflow-x: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .materials-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 620px;
+        }
+
+        .materials-table th,
+        .materials-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        .materials-table th {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .materials-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .materials-table a {
+            color: #245c73;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 600px) {
+            .materials-table th,
+            .materials-table td {
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -334,15 +376,15 @@
             <div class="subtitle">Preguntas y Respuestas con Acceso Directo</div>
             <div class="stats-overview">
                 <div class="stat">
-                    <div class="stat-value">13</div>
+                    <div class="stat-value">15</div>
                     <div class="stat-label">Exámenes Activos</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">1,144</div>
+                    <div class="stat-value">1,523</div>
                     <div class="stat-label">Preguntas Totales</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">5</div>
+                    <div class="stat-value">4</div>
                     <div class="stat-label">Proveedores</div>
                 </div>
             </div>
@@ -613,6 +655,92 @@
                 </div>
             </div>
             
+            <!-- MATERIAL ORIGINAL -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon">📦</span>
+                    <span>Material original descargable</span>
+                </div>
+                <div class="materials-table-wrap">
+                    <table class="materials-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Proveedor</th>
+                                <th scope="col">Examen</th>
+                                <th scope="col">Archivo descargable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Microsoft</td>
+                                <td>AB-100</td>
+                                <td><a href="Descargables/Microsoft/AB-100/AB-100%20Q%26A.pdf" download>AB-100 Q&amp;A.pdf</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft</td>
+                                <td>AB-100</td>
+                                <td><a href="Descargables/Microsoft/AB-100/AB-100-CASES.pdf" download>AB-100-CASES.pdf</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft</td>
+                                <td>AB-100</td>
+                                <td><a href="Descargables/Microsoft/AB-100/AB-100-MULTI.pdf" download>AB-100-MULTI.pdf</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft</td>
+                                <td>AB-100</td>
+                                <td><a href="Descargables/Microsoft/AB-100/AB-100%201.zip" download>AB-100 1.zip</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft</td>
+                                <td>PL-200</td>
+                                <td><a href="Descargables/Microsoft/PL-200/PL-200%20Q%26A.pdf" download>PL-200 Q&amp;A.pdf</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft</td>
+                                <td>PL-200</td>
+                                <td><a href="Descargables/Microsoft/PL-200/PL-200-MULTI.pdf" download>PL-200-MULTI.pdf</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft</td>
+                                <td>PL-200</td>
+                                <td><a href="Descargables/Microsoft/PL-200/PL-200-CASES.pdf" download>PL-200-CASES.pdf</a></td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft</td>
+                                <td>PL-200</td>
+                                <td><a href="Descargables/Microsoft/PL-200/PL-200%20Q%26A.zip" download>PL-200 Q&amp;A.zip</a></td>
+                            </tr>
+                            <tr>
+                                <td>HashiCorp</td>
+                                <td>Terraform Associate 003</td>
+                                <td><a href="Descargables/Terraform/003/source/HASHICORP%20TERRAFORM.docx" download>HASHICORP TERRAFORM.docx</a></td>
+                            </tr>
+                            <tr>
+                                <td>HashiCorp</td>
+                                <td>Terraform Associate 004</td>
+                                <td><a href="Descargables/Terraform/004/source/HASHICORP%20TERRAFORM%20-%20004.pdf" download>HASHICORP TERRAFORM - 004.pdf</a></td>
+                            </tr>
+                            <tr>
+                                <td>HashiCorp</td>
+                                <td>Terraform Associate 004</td>
+                                <td><a href="Descargables/Terraform/004/source/HASHICORP%20TERRAFORM%20-%20004.docx" download>HASHICORP TERRAFORM - 004.docx</a></td>
+                            </tr>
+                            <tr>
+                                <td>HashiCorp</td>
+                                <td>Vault Associate</td>
+                                <td><a href="Descargables/Vault/source/Vault%20002%201.docx" download>Vault 002 1.docx</a></td>
+                            </tr>
+                            <tr>
+                                <td>Oracle</td>
+                                <td>MySQL Implementation Associate (1Z0-922)</td>
+                                <td><a href="Otros%20examenes/MySQL%20Implementation%20Associate%20(1Z0-922)/MySQL%208.4%20Essentials.pdf" download>MySQL 8.4 Essentials.pdf</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <!-- ACCESO RÁPIDO -->
             <div class="section">
                 <div class="section-title">
@@ -623,7 +751,7 @@
                     <a href="index.html" class="quick-link">
                         <span>🎯</span>
                         <span>Quiz Principal</span>
-                        <span class="badge">13 exámenes</span>
+                        <span class="badge">15 exámenes</span>
                     </a>
                     <a href="Descargables/Terraform/004/terraform-lectura.html" class="quick-link">
                         <span>🏗️</span>
@@ -646,7 +774,7 @@
         
         <div class="footer">
             <p><strong>📚 Centro de Estudio OCITest</strong></p>
-            <p>13 exámenes | 1,144 preguntas | Todas las respuestas correctas visibles</p>
+            <p>15 exámenes | 1,523 preguntas | Todas las respuestas correctas visibles</p>
             <p>Última actualización: <span id="currentDate"></span></p>
         </div>
     </div>

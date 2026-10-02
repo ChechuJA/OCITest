@@ -120,12 +120,13 @@ function parseJsonExam(jsonData) {
                 q: questionText,
                 o: options,
                 a,
+                ungraded: Boolean(item && item.ungraded) || correctIndices.length === 0,
                 e: (item && typeof item.explanation === 'string' && item.explanation.trim())
                     ? item.explanation.trim()
                     : 'Sin explicación disponible'
             };
         })
-        .filter(q => q.q && Array.isArray(q.o) && q.o.length);
+        .filter(q => q.q && Array.isArray(q.o) && (q.o.length || q.ungraded));
 }
 
 /**

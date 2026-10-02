@@ -1,0 +1,180 @@
+[
+  {
+    "id": "01-1",
+    "question": "MULTI 01, propuesta 1:\nA company uses Microsoft 365 and Dynamics 365.\nYou need to recommend a solution to automatically summarize email threads, generate suggested\nreplies in Microsoft Outlook, and provide meeting preparation summaries that include relevant\ncustomer relationship management (CRM) data.\n\nSolution: You recommend Microsoft 365 Copilot for Sales.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nMicrosoft 365 Copilot for Sales does enhance Outlook with CRM-aware insights, but the scenario\nrequires automatic email thread summaries, suggested replies, and meeting preparation summaries\nthat include Dynamics 365 CRM data. The correct solution for those capabilities is Copilot for Microsoft\n365 with Sales Copilot (formerly Viva Sales). Sales Copilot is an add-on that enriches Copilot for\nMicrosoft 365 with CRM context — but by itself, it does not provide the full Outlook and meeting-prep\ngenerative AI experience. So recommending only Microsoft 365 Copilot for Sales does not meet the\ngoal.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=1"
+  },
+  {
+    "id": "01-2",
+    "question": "MULTI 01, propuesta 2:\nA company uses Microsoft 365 and Dynamics 365.\nYou need to recommend a solution to automatically summarize email threads, generate suggested\nreplies in Microsoft Outlook, and provide meeting preparation summaries that include relevant\ncustomer relationship management (CRM) data.\n\nSolution: You recommend a classic Microsoft Dataverse workflow.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nA classic Microsoft Dataverse workflow cannot meet the goal because: - It does not generate AI-based\nemail summaries - It does not create suggested replies in Outlook - It does not produce meeting\npreparation summaries enriched with Dynamics 365 CRM data - It is a legacy automation engine focused\non record updates, notifications, and simple logic — not generative AI The required capabilities come\nfrom Copilot for Microsoft 365 combined with Sales Copilot, not from Dataverse workflows.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=1"
+  },
+  {
+    "id": "01-3",
+    "question": "MULTI 01, propuesta 3:\nA company uses Microsoft 365 and Dynamics 365.\nYou need to recommend a solution to automatically summarize email threads, generate suggested\nreplies in Microsoft Outlook, and provide meeting preparation summaries that include relevant\ncustomer relationship management (CRM) data.\n\nSolution: You recommend a Microsoft 365 Copilot agent template.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nAgent templates are designed for building custom task-oriented agents (e.g., workflow automation,\ndomain-specific copilots). They do not provide: - Automatic email thread summarization in Outlook -\nSuggested replies in Outlook - Meeting preparation summaries enriched with Dynamics 365 CRM data\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=1"
+  },
+  {
+    "id": "02-1",
+    "question": "MULTI 02, propuesta 1:\nA company has a Microsoft Dynamics 365 Sales environment that has Microsoft Copilot enabled.\nYou need to customize Copilot by tailoring how opportunity summaries are generated or how they are\npresented to users.\n\nSolution: You add fields to the opportunity summary.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nAdding fields to the opportunity entity does not customize how Copilot generates or presents\nopportunity summaries. Copilot’s opportunity summaries are controlled through Copilot Studio (custom\nprompts, plugins, grounding data, etc.), not by modifying Dynamics 365 fields. Adding fields only\nchanges the data model — it does not change Copilot’s summarization behavior.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=2"
+  },
+  {
+    "id": "02-2",
+    "question": "MULTI 02, propuesta 2:\nA company has a Microsoft Dynamics 365 Sales environment that has Microsoft Copilot enabled.\nYou need to customize Copilot by tailoring how opportunity summaries are generated or how they are\npresented to users.\n\nSolution: You build Microsoft Power Automate flows to trigger customized Copilot summaries.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nPower Automate flows cannot customize how Copilot generates or presents opportunity summaries in\nDynamics 365 Sales. Flows can automate notifications, data updates, or downstream actions, but they\ndo not modify Copilot’s summarization logic, prompt structure, or presentation layer. To customize\nCopilot summaries, you must use Copilot Studio—specifically custom prompts, plugins, or grounding\ndata—not Power Automate.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=2"
+  },
+  {
+    "id": "02-3",
+    "question": "MULTI 02, propuesta 3:\nA company has a Microsoft Dynamics 365 Sales environment that has Microsoft Copilot enabled.\nYou need to customize Copilot by tailoring how opportunity summaries are generated or how they are\npresented to users.\n\nSolution: You configure AI Builder lead scoring models to influence opportunity summaries.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "C. Yes\nD. No\nConfiguring AI Builder lead scoring models does not influence how Copilot generates or presents\nopportunity summaries in Dynamics 365 Sales. Lead scoring affects qualification insights for leads, not: -\nCopilot’s summarization prompts - The structure or content of opportunity summaries - How Copilot\ninterprets or presents opportunity data To customize Copilot summaries, you must adjust Copilot Studio\ncustom prompts or Copilot grounding data, not AI Builder models.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=2",
+    "ungraded": true
+  },
+  {
+    "id": "02-4",
+    "question": "MULTI 02, propuesta 4:\nA company has a Microsoft Dynamics 365 Sales environment that has Microsoft Copilot enabled.\nYou need to customize Copilot by tailoring how opportunity summaries are generated or how they are\npresented to users.\n\nSolution: You add the opportunity summary widget to the Opportunity form..\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nExplanation\nAdding the opportunity summary widget to the Opportunity form only surfaces Copilot’s existing\nsummary—it does not customize: - how Copilot generates the summary - what data Copilot includes -\nhow the summary is structured or phrased It’s a UI placement action, not a customization of Copilot\nbehavior. To actually tailor summaries, you must modify Copilot Studio prompts or Copilot grounding\ndata.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=2"
+  },
+  {
+    "id": "03-1",
+    "question": "MULTI 03, propuesta 1:\nYou A company has a team that analyzes its customers by using a manual process.\nYou are designing an AI-based agent to automate and improve the process.\nYou need to recommend on which platform to build the agent. The solution must meet the following\nrequirements:\n• Use generative AI to answer common questions.\n• Provide analytics to review AI performance.\n• Identify customer demographics.\n• Minimize custom development.\n\nSolution: You recommend GitHub Copilot..\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "A. Yes\nB. No\nCorrect answer: B. No Why? GitHub Copilot is a developer productivity tool. It helps write code,\ngenerate functions, and accelerate software development.\nIt does not meet the requirements of this scenario.\nRequirements vs. GitHub Copilot\n• Use generative AI to answer common questions No: GitHub Copilot does not build\nconversational agents or customer-facing AI.\n• Provide analytics to review AI performance No: GitHub Copilot has no analytics for agent\ninteractions, usage, or performance.\n• Identify customer demographics : No GitHub Copilot cannot analyze customer data or build\nbusiness workflows.\n• Minimize custom development: No GitHub Copilot requires more custom development, not less.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=3"
+  },
+  {
+    "id": "03-2",
+    "question": "MULTI 03, propuesta 2:\nYou A company has a team that analyzes its customers by using a manual process.\nYou are designing an AI-based agent to automate and improve the process.\nYou need to recommend on which platform to build the agent. The solution must meet the following\nrequirements:\n• Use generative AI to answer common questions.\n• Provide analytics to review AI performance.\n• Identify customer demographics.\n• Minimize custom development.\n\nSolution: You recommend Microsoft Security Copilot.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [],
+    "explanation": "A. Yes\nB. No\nMicrosoft Security Copilot is designed for cybersecurity operations, not for building\ncustomer-analysis agents or business-facing AI workflows.\n• Use generative AI to answer common questions No: Security Copilot answers security-related\nquestions (incidents, threats, alerts). It is not a platform for customer-facing Q&A or business\nprocess automation.\n• Provide analytics to review AI performance No. It provides security investigation analytics, not\nagent performance analytics.\n• Identify customer demographics No Security Copilot cannot analyze customer data or\ndemographics.\n• Minimize custom development No. It is not a low-code/no-code agent-building platform.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=4",
+    "ungraded": true
+  },
+  {
+    "id": "03-3",
+    "question": "MULTI 03, propuesta 3:\nYou A company has a team that analyzes its customers by using a manual process.\nYou are designing an AI-based agent to automate and improve the process.\nYou need to recommend on which platform to build the agent. The solution must meet the following\nrequirements:\n• Use generative AI to answer common questions.\n• Provide analytics to review AI performance.\n• Identify customer demographics.\n• Minimize custom development.\n\nSolution: You recommend Microsoft Copilot Studio.\n¿Cumple el objetivo?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "Sí"
+      },
+      {
+        "key": "B",
+        "text": "No"
+      }
+    ],
+    "correctKeys": [
+      "A"
+    ],
+    "explanation": "A. Yes\nB. No\nRecommending Microsoft Copilot Studio does meet the goal.\n• Use generative AI to answer common questions: Yes — Copilot Studio builds generative AI\nagents using GPT models, orchestration, and knowledge sources.\n• Provide analytics to review AI performance: Yes — Copilot Studio includes built-in analytics\ndashboards.\n• Identify customer demographics: Yes — Copilot Studio can connect. This allows the agent to\nretrieve and analyze customer demographic data with minimal custom code.\n• Minimize custom development :Yes — Copilot Studio is a low-code/no-code platform designed\nfor business AI agents.\n\nFuente: Descargables/Microsoft/AB-100/AB-100-MULTI.pdf#page=4"
+  }
+]

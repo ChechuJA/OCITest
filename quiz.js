@@ -112,6 +112,7 @@ let score = 0;
 let wrong = [];
 let answered = false;
 let resultByQuestion = [];
+let resultQuestionIndices = [];
 let resultQuestionCount = 0;
 let resultRequiredCorrect = 0;
 let totalTimeSeconds = 7200; // 2 horas
@@ -144,7 +145,7 @@ let currentRun = { source: 'builtin', externalFile: null };
 let multiSelectedIndices = [];
 
 function isMultiAnswerQuestion(q) {
-  return q && Array.isArray(q.a);
+  return q && Array.isArray(q.a) && q.a.length > 0;
 }
 
 function formatCorrectAnswer(q) {
@@ -169,7 +170,7 @@ function formatCorrectAnswerDetails(q) {
 
 function appendTextWithLinks(container, text) {
   const value = String(text || '');
-  const urlPattern = /(https?:\/\/[^\s]+)/g;
+  const urlPattern = /(https?:\/\/[^\s]+|Descargables\/[A-Za-z0-9%._/-]+\.pdf(?:#page=\d+)?)/g;
   let lastIndex = 0;
 
   value.replace(urlPattern, (url, offset) => {
@@ -197,7 +198,9 @@ function showFeedback(message, q, includeExplanation) {
 
   const answer = document.createElement('div');
   answer.className = 'feedback-answer';
-  answer.textContent = `Respuesta correcta: ${formatCorrectAnswerDetails(q)}`;
+  answer.textContent = q.ungraded
+    ? 'El documento no proporciona una clave verificable; esta pregunta no se puntúa.'
+    : `Respuesta correcta: ${formatCorrectAnswerDetails(q)}`;
   feedbackEl.appendChild(answer);
 
   if (includeExplanation && q.e) {
@@ -248,7 +251,11 @@ function startQuiz() {
     order = order.slice(range.start - 1, range.end);
   }
   resultByQuestion = [];
-  resultQuestionCount = Math.min(180, order.length);
+  resultQuestionIndices = order
+    .map((question, index) => question.ungraded ? -1 : index)
+    .filter(index => index >= 0)
+    .slice(0, 180);
+  resultQuestionCount = resultQuestionIndices.length;
   resultRequiredCorrect = Math.ceil(resultQuestionCount * 0.8);
   currentIndex = 0;
   // Reiniciar timer
@@ -339,12 +346,23 @@ function renderCurrent() {
     li.appendChild(btn);
     optionsEl.appendChild(li);
   });
+  if (q.ungraded && q.o.length === 0) {
+    const notice = document.createElement('li');
+    notice.textContent = 'Este PDF no contiene opciones legibles para esta pregunta.';
+    optionsEl.appendChild(notice);
+    answered = true;
+    nextBtn.textContent = 'Continuar';
+    nextBtn.disabled = false;
+    feedbackEl.className = 'feedback';
+    showFeedback('Pregunta conservada sin puntuar. Consulta la explicación y el PDF original.', q, true);
+    return;
+  }
   feedbackEl.className = 'feedback';
   feedbackEl.textContent = '';
 }
 
 function updateResultProgress() {
-  const results = resultByQuestion.slice(0, resultQuestionCount);
+  const results = resultQuestionIndices.map(index => resultByQuestion[index]);
   const answeredCount = results.filter(result => typeof result === 'boolean').length;
   const correctCount = results.filter(result => result === true).length;
   const incorrectCount = answeredCount - correctCount;
@@ -382,6 +400,17 @@ function selectOption(idx){
   if (answered) return;
   const q = order[currentIndex];
 
+  if (q.ungraded) {
+    answered = true;
+    nextBtn.disabled = false;
+    Array.from(optionsEl.querySelectorAll('button')).forEach(buttonEl => {
+      buttonEl.disabled = true;
+    });
+    feedbackEl.className = 'feedback';
+    showFeedback('Sin puntuar: el documento no proporciona una clave verificable.', q, true);
+    return;
+  }
+
   // Preguntas con múltiples respuestas correctas: permitir selección múltiple
   if (isMultiAnswerQuestion(q)) {
     const exists = multiSelectedIndices.includes(idx);
@@ -414,13 +443,13 @@ function selectOption(idx){
 }
 
 skipBtn.addEventListener('click', ()=>{
-  if (answered) return; // si ya respondió no se salta
   const q = order[currentIndex];
+  if (answered && !q.ungraded) return; // si ya respondió no se salta
   answered = true;
-  recordOutcome(q, false); // contar como incorrecta
+  if (!q.ungraded) recordOutcome(q, false); // contar como incorrecta
   nextBtn.disabled = false;
-  feedbackEl.className = 'feedback incorrect';
-  showFeedback('Explicación de la pregunta:', q, true);
+  feedbackEl.className = q.ungraded ? 'feedback' : 'feedback incorrect';
+  showFeedback(q.ungraded ? 'Pregunta sin puntuar:' : 'Explicación de la pregunta:', q, true);
   nextBtn.textContent = 'Siguiente';
 });
 
@@ -465,11 +494,15 @@ nextBtn.addEventListener('click', ()=>{
 function finishQuiz(){
   quizEl.hidden = true;
   summaryEl.hidden = false;
-  const total = order.length;
-  const pct = ((score/total)*100).toFixed(1);
+  const total = order.filter(question => !question.ungraded).length;
+  const ungradedTotal = order.length - total;
+  const pct = total ? ((score/total)*100).toFixed(1) : '0.0';
   clearInterval(timerInterval);
   summaryEl.innerHTML = `<h2>Resumen</h2>
     <p>Puntuación: <strong>${score}/${total}</strong> (${pct}%).</p>`;
+  if (ungradedTotal) {
+    summaryEl.innerHTML += `<p>${ungradedTotal} preguntas sin puntuar porque el PDF no proporciona una clave verificable.</p>`;
+  }
   if (wrong.length){
     const ids = wrong.map(q=>q.id);
     // Importante: no sobrescribir el repaso integrado con IDs de exámenes externos
@@ -488,7 +521,9 @@ function finishQuiz(){
     if (currentRun.source === 'builtin') {
       localStorage.setItem('lastWrongIds', '[]');
     }
-    summaryEl.innerHTML += '<p>¡Perfecto! Sin errores.</p>';
+    summaryEl.innerHTML += total
+      ? '<p>¡Perfecto! Sin errores.</p>'
+      : '<p>Este apartado no contiene preguntas con clave puntuable.</p>';
   }
   summaryEl.innerHTML += '<p><button id="restartBtn">Reiniciar</button></p>';
   document.getElementById('restartBtn').addEventListener('click', ()=>{
@@ -540,6 +575,8 @@ let examsCatalog = null;
 let examsLoaded = new Map();
 const providerSelectEl = document.getElementById('providerSelect');
 const examSelectEl = document.getElementById('examSelect');
+const sectionGroupEl = document.getElementById('sectionGroup');
+const sectionSelectEl = document.getElementById('sectionSelect');
 
 // Cargar catálogo al iniciar
 async function initializeExamsCatalog() {
@@ -578,6 +615,8 @@ providerSelectEl.addEventListener('change', () => {
   if (!provider) {
     examSelectEl.disabled = true;
     examSelectEl.innerHTML = '<option value="">-- Primero seleccione un proveedor --</option>';
+    sectionGroupEl.hidden = true;
+    sectionSelectEl.disabled = true;
     return;
   }
   
@@ -595,6 +634,8 @@ providerSelectEl.addEventListener('change', () => {
   
   examSelectEl.disabled = false;
   examSelectEl.innerHTML = '<option value="">-- Seleccione un examen --</option>';
+  sectionGroupEl.hidden = true;
+  sectionSelectEl.disabled = true;
   
   exams.forEach(exam => {
     const option = document.createElement('option');
@@ -614,22 +655,46 @@ providerSelectEl.addEventListener('change', () => {
   console.log('📂 Proveedor seleccionado:', provider, '→', exams.length, 'exámenes disponibles');
 });
 
+examSelectEl.addEventListener('change', () => {
+  const selectedExam = (examsCatalog.exams || []).find(exam => exam.file === examSelectEl.value);
+  const sections = selectedExam && Array.isArray(selectedExam.sections) ? selectedExam.sections : [];
+
+  sectionSelectEl.innerHTML = '<option value="">-- Seleccione un apartado --</option>';
+  sectionGroupEl.hidden = sections.length === 0;
+  sectionSelectEl.disabled = sections.length === 0;
+
+  sections.forEach(section => {
+    const option = document.createElement('option');
+    option.value = section.id;
+    option.textContent = `${section.title} — ${section.questions} preguntas`;
+    sectionSelectEl.appendChild(option);
+  });
+});
+
 // Modificar startQuiz para cargar desde catálogo
 const originalStartQuiz = startQuiz;
 startQuiz = async function() {
-  const selectedFile = examSelectEl.value;
-  console.log('🔍 startQuiz invocado, archivo:', selectedFile);
+  const examFile = examSelectEl.value;
+  console.log('🔍 startQuiz invocado, examen:', examFile);
   
-  if (!selectedFile) {
+  if (!examFile) {
     alert('Por favor selecciona un examen');
     return;
   }
   
-  const selectedExam = (examsCatalog.exams || []).find(e => e.file === selectedFile);
+  const selectedExam = (examsCatalog.exams || []).find(e => e.file === examFile);
   if (!selectedExam) {
     alert('Examen no encontrado en el catálogo');
     return;
   }
+
+  const sections = Array.isArray(selectedExam.sections) ? selectedExam.sections : [];
+  const selectedSection = sections.find(section => section.id === sectionSelectEl.value);
+  if (sections.length && !selectedSection) {
+    alert('Por favor selecciona un apartado del examen');
+    return;
+  }
+  const selectedFile = selectedSection ? selectedSection.file : examFile;
   
   if (selectedExam.questions === 0) {
     alert('Este examen está pendiente de importar. Pásame el Word/JSON y lo integro sin inventar preguntas.');
