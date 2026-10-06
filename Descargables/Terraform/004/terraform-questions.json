@@ -1995,7 +1995,33 @@
   },
   {
     "id": 84,
-    "question": "Your configuration defines the module block shown in the Exhibit space of this page.\n\n```\nmodule \"production\"{\n  source = \"./modules/web_stack\"\n}\n```\n\nThis module declares an output named hostnames.\nHow do you access the value of this output?",
+    "question": "Your configuration defines the module block shown in the Exhibit space of this page.\n\n```hcl\nmodule \"production\" {\n  source = \"./modules/web_stack\"\n}\n```\n\nThis module declares an output named hostnames. How do you access the value of this output?",
+    "answers": [
+      {
+        "key": "A",
+        "text": "production.hostnames"
+      },
+      {
+        "key": "B",
+        "text": "module.production.hostnames"
+      },
+      {
+        "key": "C",
+        "text": "web_stack.hostnames"
+      },
+      {
+        "key": "D",
+        "text": "module.web_stack.hostnames"
+      }
+    ],
+    "correctKeys": [
+      "B"
+    ],
+    "explanation": "Discussion: Exam Terraform Associate 004 topic 5 question 12 discussion - ExamTopics (https://www.examtopics.com/discussions/hashicorp/view/402408-exam-terraform-associate-004-topic-5-question-12-discussion/)"
+  },
+  {
+    "id": 85,
+    "question": "Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?",
     "answers": [
       {
         "key": "A",
@@ -2017,33 +2043,7 @@
     "correctKeys": [
       "C"
     ],
-    "explanation": "Exam Terraform Associate 004 topic 5 question 13 discussion - ExamTopics"
-  },
-  {
-    "id": 85,
-    "question": "Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?",
-    "answers": [
-      {
-        "key": "A",
-        "text": "Change the value of the count argument on the resource."
-      },
-      {
-        "key": "B",
-        "text": "Remove the resource block from your configuration."
-      },
-      {
-        "key": "C",
-        "text": "Run terraform state rm aws_instance.ubuntu[1]."
-      },
-      {
-        "key": "D",
-        "text": "Use a moved block."
-      }
-    ],
-    "correctKeys": [
-      "C"
-    ],
-    "explanation": "Exam Terraform Associate 004 topic 6 question 1 discussion - ExamTopics"
+    "explanation": "Terraform lets you prevent module updates during terraform init or terraform get by pinning the module source. When the source argument points to an exact version, commit, or archive, Terraform will not update it unless you explicitly change the source value.\n\nExample:\n\n```hcl\nmodule \"network\" {\n  source = \"git::https://github.com/myorg/network-module.git?ref=v1.2.3\"\n}\n```\n\nBecause the ref is fixed, Terraform will not fetch newer commits.\n\nWhy the other options don't work:\n- count controls how many instances of a module or resource to create, not updates.\n- lifecycle only applies to resources, not modules.\n- version only applies to registry modules, and even then Terraform may still check for updates unless the version is pinned.\n\nDiscussion: Exam Terraform Associate 004 topic 5 question 13 discussion - ExamTopics (https://www.examtopics.com/discussions/hashicorp/view/402409-exam-terraform-associate-004-topic-5-question-13-discussion/)"
   },
   {
     "id": 86,

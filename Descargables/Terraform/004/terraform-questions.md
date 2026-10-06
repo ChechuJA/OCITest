@@ -1232,33 +1232,47 @@ This module declares an output named hostnames. How do you access the value of t
 
 Your configuration defines the module block shown in the Exhibit space of this page.
 
-```
-module "production"{
+```hcl
+module "production" {
   source = "./modules/web_stack"
 }
 ```
 
-This module declares an output named hostnames.
-How do you access the value of this output?
+This module declares an output named hostnames. How do you access the value of this output?
 
-- [ ] A. count
-- [ ] B. lifecycle
-- [x] C. source
-- [ ] D. version
+- [ ] A. production.hostnames
+- [x] B. module.production.hostnames
+- [ ] C. web_stack.hostnames
+- [ ] D. module.web_stack.hostnames
 
-> **Explanation:** Exam Terraform Associate 004 topic 5 question 13 discussion - ExamTopics
+> **Explanation:** Discussion: [Exam Terraform Associate 004 topic 5 question 12 discussion - ExamTopics](https://www.examtopics.com/discussions/hashicorp/view/402408-exam-terraform-associate-004-topic-5-question-12-discussion/)
 ---
 
 #### Q85. Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?
 
 Which argument can you set on a module block to prevent Terraform from updating the module's configuration during an init or get operation?
 
-- [ ] A. Change the value of the count argument on the resource.
-- [ ] B. Remove the resource block from your configuration.
-- [x] C. Run terraform state rm aws_instance.ubuntu[1].
-- [ ] D. Use a moved block.
+- [ ] A. count
+- [ ] B. lifecycle
+- [x] C. source
+- [ ] D. version
 
-> **Explanation:** Exam Terraform Associate 004 topic 6 question 1 discussion - ExamTopics
+> **Explanation:** Terraform lets you prevent module updates during `terraform init` or `terraform get` by pinning the module source. When the `source` argument points to an exact version, commit, or archive, Terraform will not update it unless you explicitly change the source value.
+
+```hcl
+module "network" {
+  source = "git::https://github.com/myorg/network-module.git?ref=v1.2.3"
+}
+```
+
+Because the ref is fixed, Terraform will not fetch newer commits.
+
+**Why the other options don't work:**
+- **A. count:** Controls how many instances of a module or resource to create, not updates.
+- **B. lifecycle:** Only applies to resources, not modules.
+- **D. version:** Only applies to registry modules, and even then Terraform may still check for updates unless the version is pinned.
+
+> **Discussion:** [Exam Terraform Associate 004 topic 5 question 13 discussion - ExamTopics](https://www.examtopics.com/discussions/hashicorp/view/402409-exam-terraform-associate-004-topic-5-question-13-discussion/)
 ---
 
 #### Q86. When you run terraform apply -refresh-only, which of the following is not consulted by Terraform to update the state file?
